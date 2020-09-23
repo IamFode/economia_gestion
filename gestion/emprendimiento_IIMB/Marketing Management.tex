@@ -1,0 +1,219 @@
+\documentclass[10pt]{book} 
+\usepackage[text=17cm,left=2.5cm,right=2.5cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} %configuración página
+\usepackage{latexsym,amsmath,amssymb,amsfonts} %(símbolos de la AMS).7
+\parindent = 0cm  %sangria
+\usepackage{lmodern} % tipos de letras
+\usepackage[T1]{fontenc} %acentos en español
+\usepackage[spanish]{babel} %español capitulos y secciones
+\usepackage{graphicx} %gráficos y figuras.
+\pagestyle{empty}%elimina numeración de página
+
+%-----------------------------------------%
+
+\usepackage{titlesec} %formato de títulos
+\usepackage[backref=page]{hyperref} %hipervinculos
+\usepackage{multicol} %columnas
+\usepackage{wrapfig} %Figuras al lado de texto
+\usepackage{tikz}\usetikzlibrary{shapes.misc}
+\usepackage{tikz,tkz-tab} % diseño de cajas
+\usetikzlibrary{matrix,arrows, positioning,shadows,shadings,backgrounds,
+calc, shapes, tikzmark}
+\usepackage{tcolorbox, empheq} %cajas
+\tcbuselibrary{skins,breakable,listings,theorems}
+\usepackage{xparse} % cajas y entornos para teoremas etc
+\usepackage{pstricks} %cambiar color de letra
+\usepackage[Bjornstrup]{fncychap}%diseño de portada de capitulos
+\usepackage{rotating}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{synttree} 
+\usepackage{chngcntr}
+\usepackage{venndiagram}
+\usepackage[all]{xy}%flechas
+\counterwithout{footnote}{chapter}
+\usepackage{xcolor}
+\usetikzlibrary{datavisualization.formats.functions}
+\usepackage{marginnote}%notas en el margen
+
+%------------------------------------------
+
+\newtheorem{axioma}{\large\textbf{Axioma}}
+\newtheorem{teo}{\large\textbf{Teorema}}[chapter]%entorno para teoremas
+\newtheorem{ejem}{{\it\textbf{ Ejemplo}}}[chapter]%entorno para ejemplos
+\newtheorem{def.}{\textbf{Definición}}[chapter]%entorno para definiciones
+\newtheorem{post}{\textbf{Postulado}}[chapter]%entorno de postulados
+\newtheorem{col.}{\textbf{Corolario}}[chapter]
+\newtheorem{ej}{\textbf{Ejercicio}}[chapter]
+\newtheorem{prop}{\textbf{Propiedades}}[chapter]
+\newtheorem{lema}{\textbf{Lema}}[chapter]
+
+%---------------------------------
+
+\titleformat*{\section}{\LARGE\bfseries\sffamily}
+\titleformat*{\subsection}{\Large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\large\bfseries\sffamily}
+\titleformat*{\paragraph}{\normalsize\bfseries\sffamily}
+\titleformat*{\subparagraph}{\small\bfseries\sffamily}
+
+%------------------------------------------
+
+\renewcommand{\labelenumi}{\Roman{enumi}.}%primer piso II) enumerate
+\renewcommand{\labelenumii}{\arabic{enumii}$)$}%segundo piso 2)
+\renewcommand{\labelenumiii}{\alph{enumiii}$)$}%tercer piso a)
+\renewcommand{\labelenumiv}{$\bullet$}%cuarto piso (punto)
+
+%----------Formato título de capítulos-------------
+
+\usepackage{titlesec}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\titleformat{\chapter}[display]
+{\titlerule[2pt]
+\vspace{4ex}\bfseries\sffamily\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}
+
+\setcounter{secnumdepth}{0}
+
+%---------------------------------------------------------
+\begin{document}
+\normalfont
+\input xy
+\xyoption{all}
+\author{\Large por FODE}
+\title{Marketing Management}
+\date{}
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+\let\cleardoublepage\clearpage
+\tableofcontents 								%indice
+
+%------------------------------------------
+ 
+\let\cleardoublepage\clearpage
+
+\chapter{Introducción al Marketing Management}
+\section{Descripción General}
+En esta sección cubriremos:
+\begin{itemize}
+\item Significado y tipos de mercado.
+\item Historia de un cliente.
+\item Historia de un vendedor.
+\end{itemize}
+\subsection{Que es el Marketing}
+Preguntamos a varias personas, esto nos respondieron:
+\begin{itemize}
+\item El marketing, según yo, es la experiencia del cliente. Algo que probablemente te atraiga clientes. Algo que atraería a los clientes hacia su producto.
+\item Creo que el marketing es una actividad detrás de escena para convertir la curiosidad de un consumidor en atención, en el servicio o el producto.
+\item El marketing, según yo, es el proceso de dar palabras a su producto o servicio, de modo que el producto o servicio pueda comunicar sus beneficios a los consumidores.
+\item El marketing, esencialmente, significa cerrar la brecha entre lo que proporcionan las marcas y lo que los consumidores necesitan exactamente. Entonces, eso es lo que el marketing es para mí.
+\item El marketing, para mí, es comunicación.
+\item El marketing muestra al consumidor por qué debería comprar el producto y qué valor le aporta.
+\item Cualquiera que tenga un producto o un servicio para vender, sabe en su mente a quién se lo va a vender, por qué las personas deberían usarlo y cómo usarlo. Entonces, el marketing, para mí, es el mecanismo para llegar a aquellos $"$quién$"$, convencerlos del $"$por qué$"$ y mostrarles el $"$cómo$"$.
+\item Entonces, cuando pienso en marketing, las dos palabras que me vienen a la mente son, relación pública, contacto con clientes y promociones.
+\end{itemize}
+\subsection{Significado y tipos de mercado}
+\subsubsection{¿Qué se entiende por mercado?}
+Tratemos de entender qué es el marketing, pero antes de intentar saber qué es el marketing, primero debemos entender qué significa el mercado. Entonces, ¿qué es un mercado? En la antigüedad, el mercado se definía como un lugar físico donde se reunían potenciales clientes, compradores y vendedores, se reunían y compraban y vendían algunos productos. Hoy, en un entorno empresarial más complejo, un mercado significa un conjunto de compradores, vendedores, intermediarios y organizaciones que participan en el proceso de intercambio.\\
+Según el diccionario ilustrado de Oxford, el mercado es la reunión de personas para la compra y venta de provisiones, ganado, etc., y el espacio, que podría estar abierto o cubierto, se utiliza para el mismo propósito. Aunque el significado de mercado sigue siendo el mismo, existen diferentes tipos de mercados. En términos generales, discutiremos tres tipos de mercado como parte de este curso, uno es el mercado de consumo, el mercado de negocios y, finalmente, el mercado institucional.
+\subsubsection{Tipos de mercado}
+Existen tres tipos referentes de mercado:
+\begin{itemize}
+\item Mercado de consumo (B2C).
+\item Mercado Comercial (B2B).
+\item Mercado Institucional.
+\end{itemize}
+El primer tipo de mercado que discutiremos aquí se llama mercado de consumo. También se llama mercado B2C que es el mercado de empresa a consumidor. Como su nombre lo indica, son los consumidores finales de diversos productos, como los productos, los que el consumidor compra para uso propio o doméstico lo que constituye el mercado de consumo.\\
+Cada semana, usted o su familia podrían comprar verduras del mercado. Además de las verduras, es posible que compre artículos para el hogar o comestibles, artículos para el cuidado del bebé, mantas, toallas, vestidos, muebles, jabón y detergente. Todas estas cosas son parte del mercado de consumo. ¿Qué es común en todos estos artículos? Estos son los productos que se utilizan dentro de los hogares y que utiliza el consumidor final.\\
+Entonces, el mercado involucrado aquí se llama mercado de consumo. Tenga en cuenta que los productos traídos y vendidos en el mercado no deciden el tipo de mercado aquí. Son los compradores y vendedores los que deciden el tipo de mercado. La mayoría de las cosas que discutiremos en parte de este curso se referirán al mercado de consumo.\\
+Sin embargo, ese no es el único mercado aquí. El otro tipo de mercado se llama mercado de negocios. Digamos que quieres comprar aceite de coco. Ahora, cuando se compra un aceite de coco para su propio consumo, se convierte en un mercado de consumo. Si HUL compra el mismo aceite de coco para hacer jabón de glicerina, se convierte en parte de un mercado comercial. Por favor recuerde que los productos son los mismos aquí.\\
+Un mercado de negocios se define como un mercado donde la producción de una forma va como materia prima o como bienes procesados, o como bienes de consumo en otra industria. Esto se llama mercado B2B que es de empresa a empresa. Por lo tanto, en el mercado empresarial, los compradores compran bienes para revenderlos en algún momento y obtener ganancias para algún otro comprador comercial.\\
+Entonces, la principal diferencia entre el mercado de consumo y de negocios es el usuario final. Para un mercado de consumo, el producto es utilizado por el consumidor final, mientras que en un mercado comercial, el producto es utilizado por una entidad comercial para hacer otra cosa, que finalmente se venderá al consumidor final.\\
+En este mercado, los compradores son profesionales que compran sobre la base de una evaluación racional de la oferta, a diferencia del mercado de consumo, donde las personas toman decisiones de compra sobre la base de la experiencia, las emociones, los sentimientos o incluso el impulso. Además, en este mercado de negocios, la compra se realiza generalmente a granel, a diferencia del mercado de consumo donde la gente compra en pequeñas cantidades porque es para el consumo de sus propios hogares.\\
+El tercer tipo de mercado se llama mercado institucional y esto se llama mercado institucional porque la compra la realizan instituciones, organizaciones. La compra es a granel al igual que el mercado empresarial. Sin embargo, no es para obtener ganancias. No es para revender a terceros. Por ejemplo, las provisiones o artículos de papelería comprados por hoteles, hospitales, escuelas, universidades e incluso instituciones como IIMB.\\
+Digamos que IIMB compra sillas, mesas, bancos, computadoras portátiles, escritorios para sus estudiantes, facultades, personal. Todos estos son parte de la compra institucional. Es una compra a granel, pero no para revenderla a otra persona con fines de lucro. Entonces este mercado se llama mercado institucional.
+\subsection{Cliente y del Vendedor}
+Pooja observa a los diversos vendedores de vegetales, algunos que venden en el camino, algunos que venden en el carro, algunos dentro de una tienda, observan varios tipos de vegetales dispuestos de manera diferente. Ella va de un proveedor a otro, revisa varias verduras por su frescura, tal vez por su precio, por su calidad, y también interactúa con los vendedores para discutir, negocia con ellos y compra sus requisitos. También es posible que hayas observado que Pooja compra diferentes artículos en diferentes días. Entonces, ¿por qué es eso? Probablemente depende de las necesidades y deseos de ella, la disponibilidad de artículos frescos en esos días, incluso mejores precios y conveniencia, despues vemos  a un vendedor de vegetales que trata de cumplir con los requisitos de los clientes. Entonces, ¿qué hace el vendedor de verduras para asegurarse de que los productos estén disponibles para el cliente cuando quiera comprarlos? ¿Cuál es el resultado final? Pooja consiguió lo que necesitaba, estaba feliz. El vendedor de verduras consiguió su cliente, le vendió los artículos, lo que la hizo feliz y en el trato también se ganaba la vida.\\
+Entonces, todo lo anterior es una exposición de marketing en el mundo real. Es manifestación de marketing en el mundo real. Para resumir, hay un comprador, hay un vendedor, ambos se unen y hacen posible el marketing. Obviamente, ambos tienen algunos requisitos que se satisfacen por su interacción, por su transacción.
+\section{Definiciones de Marketing}
+Es esta subsección cubriremos:
+\begin{itemize}
+\item Definición de marketing dada por Philip Kotler.
+\item Términos clave en la definición de marketing.
+\item Pocas otras definiciones.
+\end{itemize}
+\subsection{Términos que definen el marketing}
+La palabra marketing abarca una amplia gama de actividades e ideas y, por lo tanto, establecerse en una definición es difícil. En la subsección anterior, vimos cómo diferentes personas proporcionaron una descripción diferente de lo que es el marketing. Algunos lo describen como un puente entre clientes y vendedores, algunos lo llaman comunicación, otros lo interpretan como publicidad, etc.\\
+Durante un período de tiempo, varios expertos, autores y profesionales han descrito el marketing de diferentes maneras utilizando diferentes rutas perceptivas. Algunas de estas descripciones se dan en la tabla a continuación.\\
+\begin{center}
+\begin{tabular}{c c c}
+Un arte&Una ciencia&Una función\\
+Un proceso&Una práctica&Un sistema\\
+Una filosofía&Un proceso de intercambio&Una actividad\\
+\end{tabular}
+\end{center}
+Entonces, ¿cuál de estos términos es correcto? \\
+Cada uno de estos términos tiene razón sobre el marketing, ya que estos términos aportan una u otra dimensión del marketing. Sin embargo, si bien estos términos son correctos, no son suficientes. ¿Por qué? Es porque el marketing es más que cada uno de estos términos tomados por separado e individualmente. Es una sinergia colectiva de cada uno de estos términos individuales. Una suma que es más que las partes individuales. Y esa es la belleza del marketing.\\
+Este es el concepto de marketing que se ve desde la práctica. En cierto modo, lo derivamos de lo que vimos en la práctica. Vimos al cliente (Pooja), vimos al vendedor y vimos su interacción. Y luego, de eso, derivamos lo que es el marketing.
+\subsection{Definición por Philip Kotler} 
+Lo que acabamos de ver fue la manifestación del marketing. Te lo dije antes también. Ahora, el marketing es una de las ramas más importantes en la gestión y es el lado del cliente que enfrenta el negocio.\\
+Entonces, según Kotler, $"$el marketing es un proceso social mediante el cual las personas y los grupos obtienen lo que necesitan y desean al crear, ofrecer e intercambiar libremente productos y servicios de valor con otros$"$. 
+\subsection{Definición de marketing de Kotler explicada}
+¿Cuáles son los términos clave en esta definición?  {\color{blue}Es proceso y es social}. Vimos el comportamiento de compra de Puja, la oferta del vendedor de verduras y la interacción entre ellos y esto ocurre en todas las sociedades, día tras día. Incluye muchas actividades. Por lo tanto, es un proceso, claramente, y ocurre dentro de la sociedad. Por lo tanto, decimos que el marketing es un proceso social en el que el vendedor satisface los requisitos de consumo de los consumidores dentro de la sociedad y, por lo tanto, el punto de partida, que es el proceso social.\\
+El segundo, debe preguntarse por qué dos términos, individuos y grupos, se usan por separado. Ahora los individuos que se comportan individualmente y los individuos que se comportan en un grupo son muy diferentes entre sí. Entonces, cuando va a comprar cualquier artículo individualmente para usted o para su familia, decide en función de sus propias elecciones, mientras que si va con sus amigos o con su familia para comprar incluso un artículo simple, el proceso de toma de decisiones toma una ruta alargada de largo aliento.\\
+Por lo tanto, incluso el comportamiento grupal es diferente del comportamiento individual y este tipo de distinción también se puede ver en el patrón de compra. Lo que compra, cómo compra, cuánto compra, etc. Entonces, {\color{blue}la forma en que un consumidor se comporta en una tienda y elige el producto cuando está solo y cuando está en un grupo es completamente diferente} y, por lo tanto, la definición. Hablaremos sobre los requisitos, y los individuos y grupos de manera diferente en diferentes momentos.\\
+La próxima parte. Necesito y quiero. Una de las cosas más importantes, base importante para el marketing. Los especialistas en marketing claramente intentaron satisfacer las necesidades y deseos de los consumidores, pero hay una diferencia entre necesidad y deseo. {\color{blue}La necesidad es una sensación sentida de privación de algunas necesidades básicas, por ejemplo, alimentos, ropa, refugio o cualquier cosa sin la cual hoy no podrás sobrevivir. Tal vez un teléfono celular también. No lo sé.}\\
+Entonces, por otro lado, los deseos son satisfactores de necesidades específicas. Entonces, se puede decir que el hambre es la necesidad y lo que satisface el hambre, por ejemplo, pizza para un adolescente, biriyani para una persona de mediana edad y roti sabji simple para un cliente mayor es lo que se necesita. Por lo tanto, también puede notar que, {'color{blue}si bien la necesidad sigue siendo la misma, es decir, el hambre en todas las categorías de consumidores, la necesidad cambia con el tipo de segmentos de consumidores.} Entonces esto es algo significativo. Volveremos sobre eso más adelante.\\
+Lo siguiente que me gustaría discutir como parte de la definición es {\color{blue}crear, ofrecer e intercambiar libremente.} Entonces, ¿qué es crear? ¿Qué crean los especialistas en marketing? El producto. El servicio. ¿Y por qué? Porque satisfará las necesidades y deseos del consumidor. Entonces, {\color{blue}si el producto no existe, debe crearse.}\\
+Ejemplo: Sony Walkman, cámaras digitales, iPod, lo que sea. Se nos ocurren muchas cosas, que no estaban allí y había una necesidad, que se identificó y se creó el producto. Si está allí, se ofrecerá. Este tipo de productos fueron creados a través de innovaciones disruptivas. Las cámaras digitales, el Walkman o los iPod con iTunes. Los consumidores pueden haber fallado. La necesidad de tales productos y el negocio crearon el producto para satisfacer la necesidad y los deseos.\\
+Recuerde que las creaciones no siempre son necesariamente grandes creaciones o innovaciones disruptivas. Podría ser pequeños cambios incrementales que vemos con mayor frecuencia, como champús y bolsitas, sales saludables, aceite, jabón líquido. ¿Qué está ofreciendo aquí? La oferta es cuando se crea el producto, incluso si ya existe, {\color{blue}debe ofrecerse al mercado con una combinación óptima de precio, distribución y promoción.}\\
+Por ejemplo, podría haber visto cómo varias compañías de teléfonos inteligentes lanzan sus ofertas. Proporcionan el producto que es el teléfono inteligente. Lo ponen a disposición en la tienda que sea conveniente para el cliente, asegurar que sus precios sean atractivos mediante descuentos o esquemas EMI, etc., y brindar un servicio al consumidor adecuado. Estas son las formas en que se ofrecen los artículos.\\
+Así que ya hemos hecho dos cosas: crear y ofrecer. {\color{blue}Lo tercero es el libre intercambio.} El término libre es muy importante aquí, lo que significa que tanto las partes como el comprador y el vendedor deben tener alternativas. Entonces, ambos deberían tener la libertad de vender o no vender, comprar o no comprar.\\
+Intercambiar en el contexto de marketing significa obtener un producto deseado de alguien al ofrecer algo más a cambio. Compramos artículos que necesitamos y deseamos dándole dinero al vendedor y este proceso se llama intercambio.\\
+{\color{blue}La siguiente parte  es sobre productos y servicios de valor.} El producto y el servicio que le he dicho muchas veces son cualquier cosa que satisfaga sus necesidades. Una botella de champú satisface sus necesidades de higiene, mientras que un automóvil satisface sus necesidades de transporte. Eso significa que estas son sus necesidades de satisfacción. El producto y los servicios también podrían satisfacer múltiples necesidades, no necesita ser solo una.\\
+Por ejemplo, una cena en un hotel de cinco estrellas definitivamente satisface sus necesidades de hambre. Sin embargo, también satisface la estima, las necesidades relacionadas con el ego. Cada uno de estos productos y servicios puede comercializarse. Por lo tanto, los productos y servicios que se crean, ofrecen e intercambian son parte de nuestra actividad de marketing.\\
+Pero para que sucedan todas estas cosas, esto debería ser de valor para el cliente. Los clientes deben identificar que esto es significativo. Esto es ganancia para él. Términos simples, ¿qué es el valor? Utilidad por costo. ¿Cuánto es el beneficio para el cliente que son los beneficios tangibles e intangibles y cuánto tienen que pagar? ¿Cuál es el costo? Nuevamente, tanto el costo físico como el emocional.\\
+{\color{blue}Por ejemplo, en el caso de comprar una lavadora, la utilidad consiste en adquirir el producto físico que es la lavadora, que es la parte tangible. La comodidad en la limpieza, así como el tiempo que ahorra de la actividad de limpieza de la tela, constituye la parte intangible aquí. Ahora el costo, el costo consistiría en el dinero que pagas por él. Esa es la parte física, y el tiempo y la energía que gasta en la búsqueda de la marca adecuada, es decir, la parte emocional. Si según el cliente, la utilidad total es mayor que el costo total, entonces él o ella verá el valor en el producto.}
+\subsection{Otras definiciones del marketing}
+La American Marketing Association ofrece la siguiente definición: El marketing es la actividad, el conjunto de instituciones y el proceso para crear, comunicar, entregar e intercambiar ofertas que tienen valor para el cliente, el cliente, los socios y la sociedad en general. Si observa de cerca esta definición, encontrará rastros de la definición que acabamos de analizar.\\
+Entonces, lo que hemos visto aquí en la definición de la American Marketing Association es nuevamente hablar de un proceso, el marketing es un proceso, también se trata de comunicar, entregar e intercambiar las ofertas, que nuevamente hablaban de lo mismo como en Kotler. Sin embargo, en lugar de hablar de valor solo para el cliente, también se trata de los otros elementos asociados o de los otros interesados en marketing que son los clientes, los socios y la sociedad en general.\\
+Entonces, esto en realidad amplía el alcance del marketing que la definición dada por Philip Kotler, pero el fundamento básico del marketing que satisface las necesidades y los deseos y es un proceso de intercambio entre un comprador y un vendedor, esa cosa sigue siendo la misma. El marketing también se define como "el desempeño de actividades comerciales que dirigen el flujo de bienes y servicios del productor al consumidor o al usuario", una vez más, una definición más directa.\\
+La esencia de todas estas definiciones es que "el marketing ayuda a las empresas comerciales a estimar la demanda del consumidor y producir para su consumo satisfactorio". Por lo tanto, los consumidores están satisfechos y las empresas comerciales también están satisfechas. En la negociación, tanto los consumidores como la empresa comercial cumplen sus objetivos y se embarcan en asociaciones mutuamente beneficiosas.
+\subsubsection{Otras definiciones}
+\begin{itemize}
+\item El marketing es un proceso social mediante el cual las personas y los grupos obtienen lo que necesitan y desean mediante la creación, oferta e intercambio gratuito de productos y servicios de valor con otros.
+\item El marketing es el conjunto de actividades, conjunto de instituciones y procesos para crear, comunicar, entregar e intercambiar ofertas que tienen valor para los clientes, los socios y la sociedad en general.
+\item El marketing es una función organizativa y un conjunto de procesos para crear, comunicar, entregar valor a los clientes y para gestionar las relaciones con los clientes de manera que beneficien a las organizaciones y sus partes interesadas.
+\item El marketing es el desempeño de actividades comerciales que dirige el flujo de bienes y servicios del productor al consumidor o usuario.
+\end{itemize}
+\subsection{Relación de marketing con el sistema social}
+Es muy importante comprender y apreciar la importancia de la relación entre el marketing y el sistema social. Aprendimos lo que significa $"$necesidades y deseos$"$ en la definición de marketing dada por Philip Kotler. Estas necesidades y deseos humanos están formados por la interacción de varias fuerzas sociales.  \\
+Como la sociedad está formada por seres humanos, cada sociedad también tiene un conjunto de necesidades y deseos (colectivos) para sobrevivir. Estas necesidades y deseos de la sociedad podrían ser más que la suma total de las necesidades individuales y requiere un tratamiento integral.  \\
+Por ejemplo, la comida es una necesidad individual; sin embargo, hacer que la comida esté disponible en todos los rincones de la sociedad es una necesidad social que es más que la necesidad individual. Tener suficientes tiendas minoristas y marcas podría resolver la necesidad individual (proporcionar alimentos). La infraestructura superior y el sistema de entrega ayudarían a resolver la necesidad colectiva . El $'$marketing$'$ funciona en ambos frentes de la sociedad.\\
+Así, el marketing evoluciona a través de este sistema social e implica relaciones entre diferentes miembros de la sociedad. Por lo tanto, su importancia se extiende a la sociedad en su conjunto.\\
+Por ejemplo:
+\begin{itemize}
+\item El marketing ayuda a introducir nuevos productos que facilitan o enriquecen la vida de las personas.
+\item Se crea nuevas oportunidades en el mercado donde cada vez hay cualquier deficiencia o necesidad.
+\item Que ayuda en la creación de la demanda de productos y servicios, los cuales, a su vez, crea puestos de trabajo.
+\item Que contribuye a mejorar el estilo de vida de las personas en los distintos niveles económicos de la sociedad mediante la conversión de problema social en una oportunidad de negocio creando de este modo situación beneficiosa para ambas organizaciones y la sociedad.
+\end{itemize}
+Por lo tanto, podemos decir que el marketing no se trata solo de identificar y satisfacer las necesidades y deseos humanos, sino también de ser parte del desarrollo general de una sociedad en su conjunto.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

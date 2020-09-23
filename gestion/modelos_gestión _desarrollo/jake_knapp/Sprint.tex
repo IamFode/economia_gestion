@@ -1,0 +1,143 @@
+\documentclass[10pt]{article}
+\usepackage[text=17cm,left=2.5cm,right=2.5cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} 	
+\usepackage{latexsym,amsmath,amssymb,amsfonts}	%(símbolos de la AMS).7
+\parindent = 0cm 								%sangria
+\usepackage{lmodern}							% tipos de letras
+\usepackage[T1]{fontenc}						%acentos en español
+\usepackage[spanish]{babel}
+\usepackage{titlesec} %formato de títulos
+\pagestyle{empty}								%elimina numeración de página
+\usepackage{multicol}
+\usepackage{color} %resaltar texto
+\usepackage{enumerate}
+
+\begin{document}
+\begin{center}
+\huge Sprint el método para resolver problemas y testar nuevas ideas en sólo cinco días\\
+\vspace*{0.5cm}
+\large Jake Knapp.\\
+\vspace{1cm}
+\Large Apuntes por Fode.
+\vspace{1.5cm}
+\end{center}
+
+\section*{Prefacio}
+De donde salen las mejores ideas?.
+A los individuos se les seguían ocurriendo ideas como había sucedido siempre: estando sentados a su escritorio, mientras esperaban a que les sirvieran en la cafetería o mientras se daban una ducha. Esas ideas generadas por individuos eran las mejores.\\
+¿Y si les añadía esos ingredientes mágicos: centrarnos en el trabajo individual, disponer de tiempo para realizar un prototipo y contar con una fecha tope que no se podía prorrogar? A esa nueva forma de trabajar decidí llamarla Sprint.\\
+Al principio quería que mi jornada laboral fuera productiva y eficaz. Quería centrarme en lo verdaderamente importante y que mi tiempo contase para algo, para mí, para mi equipo y para nuestros clientes.
+\section*{Introducción}
+El sprint es un proceso de solo cinco días durante los cuales Google Ventures debe contestar preguntas cruciales a través de prototipos y probando las ideas con los clientes. Es una combinación de grandes éxitos de la estrategia empresarial, de la innovación, de la ciencia del comportamiento, del diseño y de otros ámbitos comprimidos en un proceso paso a paso que cualquier equipo puede emplear.\\
+\subsection*{El problema de las buenas ideas}
+Es difícil encontrar buenas ideas, y ni siquiera las mejores son garantía de éxito en el mundo real. Esto es así tanto si se dirige una start-up como si se dan clases o se trabaja para una gran organización.\\
+Cuando una idea arriesgada triunfa en un sprint, la recompensa es alucinante. Pero son los fracasos los que, por más dolorosos que resulten, proporcionan las mayores ganancias. Identificar errores graves en sólo cinco días de trabajo es el máximo de la eficacia. Es aprender por las malas, pero sin perjuicio alguno.\\
+El \textbf{lunes}, crearemos un mapa del problema y elegiremos un punto importante en el que centrarnos. El \textbf{martes}, realizaremos un boceto con las posibles soluciones. El \textbf{miércoles}, llega el momento de tomar decisiones difíciles y convertir las ideas en una hipótesis que se pueda poner a prueba. El \textbf{jueves}, construiremos un prototipo realista y el \textbf{viernes}, lo probaremos con seres humanos.
+\begin{center}
+\begin{tabular}{c c c c c}
+Lunes&Martes&Miércoles&Jueves&Viernes\\
+\hline
+Crear un mapa y&Esbozar las &Escoger el mejor&Crear un &Probarlo con \\
+ elegir una meta&posibles soluciones&&prototipo realista&clientes potenciales\\
+\end{tabular}
+\end{center}
+
+\part*{ \center El escenario perfecto}
+Antes de comenzar el sprint es necesario tener el \textbf{desafío} perfecto y el \textbf{equipo} adecuado, además del \textbf{tiempo y el espacio} para llevarlo a cabo. En los siguientes tres capítulos veremos cómo prepararlo todo.
+\begin{multicols}{2}
+\section*{El desafío}
+\subsection*{Cuanto mayor es el desafío, mejor es el sprint}
+Aquí van tres situaciones desafiantes en las que los sprints pueden ayudar:
+\paragraph*{Alto riesgo}
+puede existir un gran problema cuya solución requiere de mucho tiempo y de mucho dinero. Como haría el capitán de un barco, el sprint serviría para comprobar los mapas de navegación y tomar el rumbo correcto antes de desplegar las velas.
+\paragraph*{Sin tiempo suficiente}
+Si existe una fecha tope inamovible,  que debía tenerlo todo preparado para la experiencia piloto de su robot en el hotel, hacen falta buenas soluciones, y rápido. Como sugiere su nombre, un sprint está pensado para ser veloz.
+\paragraph*{Atascado sin remisión}
+Algunos proyectos importantes son difíciles de empezar. Otros pierden fuelle con el paso del tiempo. En estas situaciones, un sprint puede ser como una lanzadera espacial: un acercamiento novedoso a la forma de solucionar problemas que ayuda a soslayar la fuerza de la gravedad.\\\\
+\textbf{Realizar un sprint requiere mucha energía y concentración.} \\
+La lección que se deriva de este caso es que no hay problema demasiado grande para un sprint. Dicho así parece absurdo, pero hay dos buenas razones por las que es cierto:
+\begin{enumerate}[\bfseries 1.]
+\item La primera es que el sprint obliga al equipo a concentrarse en los problemas más acuciantes.
+\item La segunda es que permite aprender de los rasgos más superficiales de un producto final.
+\end{enumerate}
+\subsection*{Solucionar primero lo superficial}
+Lo superficial es importante. Es el punto en el que un producto o servicio se encuentra con los clientes. Los seres humanos somos complejos e inconstantes, así que es imposible predecir cómo reaccionaremos ante una solución novedosa. \textbf{Cuando nuestras nuevas ideas fracasan, normalmente se debe a que estamos demasiado seguros de cómo las comprenderán los clientes o de lo bien que las recibirán.}\\
+Acertar con lo superficial significa poder trabajar todo lo anterior hasta averiguar cómo debe ser el sistema o la tecnología que lo sustenta. Concentrarse en lo superficial permite avanzar deprisa y contestar preguntas importantes antes de comprometerse con la ejecución.
+\section*{Equipo}
+\textbf{El equipo y su líder deben aprovechar al máximo su talento, su tiempo y su energía mientras se nfrentan a un desafío abrumador y emplean su ingenio.}\\
+Para tener un equipo de sprint perfecto se debe tener:
+\subsubsection*{Buscar un desisor (o dos)}
+Si el Decisor tiene dudas, se puede probar con alguno (o con varios) de estos argumentos:
+\paragraph*{Proceso rápido}
+Es importante hacer hincapié en los progresos que se consiguen con el sprint. En una semana es posible contar con un prototipo realista. A algunos Decisores no les hacen gracia las pruebas con clientes (al menos, hasta que las ven en persona).
+\paragraph*{Es un experimento}
+Se puede considerar el primer sprint como un experimento. Cuando termine, el Decisor puede evaluar su efectividad. Hemos descubierto que muchas personas renuentes a cambiar su dinámica de trabajo están abiertas a un experimento.
+\paragraph*{Explicar los cambios}
+El Decisor debe conocer de antemano las reuniones importantes y la carga de trabajo que el equipo perderá durante la semana del sprint. Así sabrá qué elementos se van a saltar y cuáles serán pospuestos y por qué motivo.
+\paragraph*{Lo importante es la concentración}
+Hay que ser muy claro con las motivaciones. Si la calidad del trabajo se resiente porque la carga habitual del equipo es demasiado dispersa, el Decisor tiene que saber que, en lugar de hacer lo justo en todas las tareas, el equipo realizará un trabajo excelente en una sola.
+\subsection*{Ocean´s Seven}
+\textbf{Hemos descubierto que el tamaño ideal para un sprint son siete personas o menos. interesa contar con alguno de los encargados de fabricar el producto o de realizar el servicio, como ingenieros, diseñadores, jefes de producción, etc.}\\
+\textbf{ Los sprints tienen más éxito con la diversidad: el núcleo duro de las personas que trabajan en la ejecución junto con unos cuantos expertos con conocimientos especializados.}\\
+\textbf{Mucha experiencia y una gran emoción ante el desafío. Esta es la clase de persona que se necesita en un sprint.}
+\subsection*{Reclutar un equipo de siete (o menos)}
+\paragraph*{Decisor}
+¿Quién toma las decisiones en el equipo? 
+\paragraph*{Experto financiero}
+¿Quién puede explicar mejor de dónde sale el dinero (y adónde va)?
+\paragraph*{Experto en marketing}
+¿Quién elabora los mensajes de la empresa?
+\paragraph*{Experto en clientes}
+¿Quién suele hablar en persona con los clientes?
+\paragraph*{Experto en tecnología/logística}
+¿Quién comprende mejor lo que la empresa es capaz de fabricar y de entregar?
+\paragraph*{Experto en diseño}
+¿Quién diseña los productos que fabrica la empresa?
+
+\subsection*{Incluir al follonero}
+Antes de cada sprint siempre preguntamos: ¿Quién puede causar problemas si no participa en el proyecto? No nos referimos a gente que lleva la contraria por sistema, sino a esa persona muy inteligente pero con ideas opuestas a las nuestras y que podría incomodar un poco al resto del equipo si se le incluyera en el sprint.
+\subsection*{Incluir personas extra en Lunes}
+Si hay más de siete personas que deberían participar en el sprint, pueden hacerlo en calidad de expertas, con una breve aparición el lunes por la tarde. Durante su visita, podrán dar su opinión al resto del equipo y compartir sus ideas. \textbf{Con media hora para cada experto será suficiente.}
+\subsection*{Escoger a un facilitador}
+Es un responsable de controlar el tiempo, las conversaciones y el proceso en general. Tiene que contar con la confianza necesaria para dirigir una reunión, además de ser capaz de resumir discusiones y de decirle a la gente que deje de hablar y pasen a otro tema.
+\subsection*{Tiempo y espacio}
+\textbf{No cabe la menor duda de que la fragmentación afecta a la productividad} Es decir ser interrumpidos cada momento.\\
+\end{multicols}
+
+Un dia en un sprint es algo así:
+\begin{center}
+\begin{tabular}{c c c c c c c}
+\textbf{Trabajo}&Descanso&\textbf{Trabajo}&Almuerzo&\textbf{Trabajo}&Descanso&\textbf{Trabajo}\\
+\end{tabular}
+\end{center}
+\begin{multicols}{2}
+\textbf{Se empieza a las 10 de la mañana y se termina a las 5 de la tarde}, Solos e trabaja 6 horas de un día sprint.\\
+\textbf{Los sprints requieren de mucha energía y concentración, pero el equipo no podrá dar el máximo si sus miembros están estresados o cansados}.
+\subsection*{Reservar cinco días completos en el calendario}
+Dentro de la sala, todos estarán concentrados al cien por cien en el desafío del sprint. \textbf{El equipo en su totalidad tiene que apagar los portátiles y guardar los móviles.}
+\subsection*{La regla de prohibidos los dispositivos}
+Durante un sprint, el tiempo es oro, de modo que no podemos permitirnos distracciones en la sala. Para ello existe una regla muy sencilla: \textbf{ni portátiles, ni móviles, ni iPads.}\\
+Se tiene dos excepciones a la regla:
+\begin{enumerate}[\bfseries 1.]
+\item Está permitido comprobar durante el descanso.
+\item Está permitido salir de la sala para comprobar el dispositivo.
+\end{enumerate}
+\subsection*{Las pizarras nos hacen mas listos}
+Como seres humanos, nuestra memoria a corto plazo no es demasiado buena, pero nuestra memoria visual es alucinante. Así la sala se convierte en una especie de cerebro compartido por todo el equipo.\\
+\subsection*{Conseguir dos pizarras bien grandes}
+Hay formas sencillas de adquirirlas:
+\paragraph*{Pizarras enrollables}
+Las hay pequeñas y gigantes. Las pequeñas tienen mucho espacio inutilizado pegado al suelo y suelen moverse al desplegarse.
+\paragraph*{Pintura efecto pizarra}
+Es un tipo de pintura que hace que las paredes normales se conviertan en pizarras. Es perfecta para paredes lisas y menos perfecta en las rugosas
+\paragraph*{Papel}
+A falta de pizarras, el papel es mejor que nada. Las notas adhesivas del tamaño de un póster son caras, pero fáciles de colocar y de cambiar.
+\subsection*{Hacer acopio de los materiales adecuados}
+Antes de empezar el sprint hay que abastecerse del material de oficina básico, en el que se incluyen notas adhesivas, rotuladores, lápices, un Time Timer (véase a continuación) y folios, además de aperitivos saludables para mantener el nivel energético del equipo.
+\end{multicols}
+\part*{\center Lunes}
+
+\begin{multicols}{2}
+\end{multicols}
+
+
+\end{document}

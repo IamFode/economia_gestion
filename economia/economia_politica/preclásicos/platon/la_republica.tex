@@ -1,0 +1,92 @@
+\documentclass[10pt]{book}
+\usepackage[text=17cm,left=2.5cm,right=2.5cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} %configuración página
+\usepackage{latexsym,amsmath,amssymb,amsfonts} %(símbolos de la AMS).7
+\parindent = 0cm  %sangria
+\usepackage[T1]{fontenc} %acentos en español
+\usepackage[spanish]{babel} %español capitulos y secciones
+\usepackage{graphicx} %gráficos y figuras.
+
+%---------------FORMATO de letra--------------------%
+
+\usepackage{lmodern} % tipos de letras
+\usepackage{titlesec} %formato de títulos
+\usepackage[backref=page]{hyperref} %hipervinculos
+\usepackage{multicol} %columnas
+\usepackage{tcolorbox, empheq} %cajas
+\usepackage{enumerate} %indice enumerado
+\usepackage{marginnote}%notas en el margen
+\tcbuselibrary{skins,breakable,listings,theorems}
+\usepackage[Bjornstrup]{fncychap}%diseño de portada de capitulos
+\usepackage[all]{xy}%flechas
+\counterwithout{footnote}{chapter}
+\usepackage{xcolor}
+\usepackage[htt]{hyphenat}
+%--------------------GRÀFICOS--------------------------
+
+\usepackage{tkz-fct}
+
+%---------------------------------
+
+\titleformat*{\section}{\LARGE\bfseries\rmfamily}
+\titleformat*{\subsection}{\Large\bfseries\rmfamily}
+\titleformat*{\subsubsection}{\large\bfseries\rmfamily}
+\titleformat*{\paragraph}{\normalsize\bfseries\rmfamily}
+\titleformat*{\subparagraph}{\small\bfseries\rmfamily}
+
+%------------------------------------------
+
+\renewcommand{\labelenumi}{\Roman{enumi}.}%primer piso II) enumerate
+\renewcommand{\labelenumii}{\arabic{enumii}$)$}%segundo piso 2)
+\renewcommand{\labelenumiii}{\alph{enumiii}$)$}%tercer piso a)
+\renewcommand{\labelenumiv}{$\bullet$}%cuarto piso (punto)
+
+%----------Formato título de capítulos-------------
+
+\usepackage{titlesec}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\titleformat{\chapter}[display]
+{\titlerule[2pt]
+\vspace{4ex}\bfseries\sffamily\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}
+
+\begin{document}
+
+\normalfont
+\input xy
+\xyoption{all}
+\author{\Large Apuntes por FODE}
+\title{\small Platón \\ \vspace{1cm} \large LA REPUBLICA}
+\date{}
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+\let\cleardoublepage\clearpage
+\tableofcontents								%indice
+
+
+%------------------------------------------
+ 
+\let\cleardoublepage\clearpage
+
+\chapter*{Libro Primero}
+\section*{Sócrates}
+Céfalo dijo a Sócrates:  debes saber, que á medida que los placeres del cuerpo me abandonan, encuentro mayor encanto en la conversación.\\
+La vejez, en efecto, es un estado de reposo y de libertad respecto de los sentidos. \\
+si hemos de atenernos á lo que se ha dicho más arriba, la justicia hace bien á sus amigos y mal á sus enemigos. \\
+El hombre justo, ¿en qué y en qué ocasión puede hacer mayor bien á sus amigos y mayor mal á sus enemigos? En la guerra, á mi parecer, atacando á los unos y defendiendo á los otros. \\
+\textbf{Dime ahora en qué es útil la justicia durante la paz. Es útil en el comercio.}\\
+\textbf{Trasimaco} dijo: Digo que la justicia no es otra cosa que lo que es provechoso al más fuerte. ¿No sabes que los diferentes Estados son monárquicos ó aristocráticos, ó populares? —Lo sé. —El que gobierna en cada Estado, ¿no es el más fuerte? —Seguramente. — ¿No hace leyes cada uno de ellos en ventaja suya, el pueblo leyes populares, el monarca leyes monárquicas, y asilos demás? Una vez hechas estas leyes, ¿no declaran que la justicia para los gobernados consiste en la observancia de las mismas? ¿No se castiga á los que las traspasan , como culpables de una acción injusta? Aquí tienes mi pensamiento. Encada Estado, la justicia no es más que la utilidad del que tiene la autoridad en sus manos, y, por consiguiente, del más fuerte. De donde se sigue para todo hombre que sabe discurrir, que la justicia y lo que es ventajoso al más fuerte en todas partes y siempre es una misma cosa.\\
+En las transacciones y negocios particulares, hallarás siempre, que el injusto gana en el trato y que el hombre justo pierde. En los negocios públicos, si las necesidades del Estado exigen algunas contribuciones, el justo con fortuna igual suministrará más que el injusto. Tan cierto es, Sócrates, que la injusticia, cuando se la lleva hasta cierto punto, es más fuerte, más libre, más poderosa que la justicia; y que, como dije al principio, la justicia es el interés del más fuerte, y la injusticia es por sí misma útil y provechosa. 
+En respuesta Sócrates menciona: Para comprometer a los hombres á que ejerzan el mando, ba sido preciso proponerles alguna recompensa, como dinero, bonores, ó un castigo si rehusan aceptarlo. \\
+\textbf{Los sabios no quieren tomar parte en los negocios con ánimo de enriquecerse, porque temerían que se les mirara como mercenarios, si exigían manifiestamente algún salario por el mando, ó como ladrones si convertían los fondos públicos en su provecho.} Tampoco tienen en cuéntalos honores, porque no son ambiciosos.  Es preciso, pues, que algún motivo muy poderoso les obligue á tomar parte en el gobierno, como el temor de algún castigo. Y por esta razón se mira como cosa poco delicada el encargarse voluntariamente de la administración pública, sin verse comprometido á ello. Porque el mayor castigo para el hombre de bien, cuando rehusa gobernar á los demás, es el verse gobernado por otro menos digno; y este temor es el que obliga á los sabios á encargarse del gobierno , no por su interés ni por su gusto, sino por verse precisados á ello á falta de otros, tanto ó más dignos de gobernar\\
+Sócrates menciona a esto que es tal, pues, la naturaleza de la injusticia, ya se encuentre en un Estado, ya en un ejército ó en cualquiera otra sociedad, que, en primer lugar, la hace absolutamente  impotente para emprender nada á causa de las querellas y sediciones que provoca; y, en segundo lugar, se hace enemiga de sí misma y de todos los que son á ella contrarios, es decir, de los hombres de bien.\\ \textbf{La justicia es mucho mas ventajosa que la injusticia.}
+\chapter*{Libro segundo}
+Glaucon menciona que la injusticia se trata de someterse a una necesidad y no tanto como un bien. \\
+se ha llegado á amar la justicia, no porque sea un bien en sí misma, sino en razón de la imposibilidad en que nos coloca de dañar á los demás. Hagamos una suposición. Demos al hombre de bien y al hombre malo un poder igual para hacer todo lo que quieran; sigámoslos, y veamos á dónde conduce la pasión al uno y al otro. No tardaremos en sorprender al hombre de bien, siguiendo los pasos del hombre malo. \\
+
+\end{document}
+
+
+

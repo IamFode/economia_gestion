@@ -1,0 +1,99 @@
+\documentclass[10pt]{book}
+\usepackage[text=17cm,left=2.5cm,right=2.5cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} %configuración página
+\usepackage{latexsym,amsmath,amssymb,amsfonts} %(símbolos de la AMS).7
+\parindent = 0cm  %sangria
+\usepackage[T1]{fontenc} %acentos en español
+\usepackage[spanish]{babel} %español capitulos y secciones
+\usepackage{graphicx} %gráficos y figuras.
+
+%---------------FORMATO de letra--------------------%
+
+\usepackage{lmodern} % tipos de letras
+\usepackage{titlesec} %formato de títulos
+\usepackage[backref=page]{hyperref} %hipervinculos
+\usepackage{multicol} %columnas
+\usepackage{tcolorbox, empheq} %cajas
+\usepackage{enumerate} %indice enumerado
+\usepackage{marginnote}%notas en el margen
+\tcbuselibrary{skins,breakable,listings,theorems}
+\usepackage[Bjornstrup]{fncychap}%diseño de portada de capitulos
+\usepackage[all]{xy}%flechas
+\counterwithout{footnote}{chapter}
+\usepackage{xcolor}
+\usepackage[htt]{hyphenat}
+%--------------------GRÀFICOS--------------------------
+
+\usepackage{tkz-fct}
+
+%---------------------------------
+
+\titleformat*{\section}{\LARGE\bfseries\rmfamily}
+\titleformat*{\subsection}{\Large\bfseries\rmfamily}
+\titleformat*{\subsubsection}{\large\bfseries\rmfamily}
+\titleformat*{\paragraph}{\normalsize\bfseries\rmfamily}
+\titleformat*{\subparagraph}{\small\bfseries\rmfamily}
+
+%------------------------------------------
+
+\renewcommand{\labelenumi}{\Roman{enumi}.}%primer piso II) enumerate
+\renewcommand{\labelenumii}{\arabic{enumii}$)$}%segundo piso 2)
+\renewcommand{\labelenumiii}{\alph{enumiii}$)$}%tercer piso a)
+\renewcommand{\labelenumiv}{$\bullet$}%cuarto piso (punto)
+
+%----------Formato título de capítulos-------------
+
+\usepackage{titlesec}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\titleformat{\chapter}[display]
+{\titlerule[2pt]
+\vspace{4ex}\bfseries\sffamily\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}
+
+\begin{document}
+
+\normalfont
+\input xy
+\xyoption{all}
+\author{\Large Apuntes por FODE}
+\title{\small Landreth / Colander \\ \vspace{1cm} \large HISTORIA DEL PENSAMIENTO ECONÓMICO}
+\date{}
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+\let\cleardoublepage\clearpage
+\tableofcontents								%indice
+
+
+%------------------------------------------
+ 
+\let\cleardoublepage\clearpage
+
+\chapter{Introducción}
+\section*{El principal tema de interés del pensamientoe económico moderno}
+A principios de la década de 1900 algunas sociedades adoptaron un sistema de planificación central, que implicaba el control estatal de la asignación de los recursos. En Europa oriental, se observan movimientos para pasar de una economía autoritaria a una economía de mercado, cuyos resultados son inciertos.\\
+Las sociedades modernas de mercado utilizan \textbf{la fuerza, la tradición y la autoridad, además de los mercados.}\\
+\subsection*{Divisiones de la teoría económica moderna}
+En el pensamiento económico moderno, los problemas relacionados con la escasez relativa generalmente se dividen en microeconomía y macroeconomía. La microeconomía analiza las cuestiones de la asignación y la distribución. . La macroeconomía analiza las cuestiones de la estabilidad y el crecimiento. 
+\section*{Nuestro enfoque de la historia del pensamiento económico}
+\subsection*{Enfoque relativista y absolutista}
+A los historiadores relativistas les interesan las fuerzas históricas, económicas, sociológicas y políticas que llevaron a los hombres y a las mujeres a examinar ciertas cuestiones económicas y  el modo en que estas fuerzas determinaron el contenido de la teoría emergente. Sostienen que la historia desempeña un papel importante en el desarrollo de todas las teorías económicas. Un relativista haría hincapié, por ejemplo, en las relaciones entre la aparición y el contenido de la economía clásica y la industrialización de Inglaterra, entre la economía ricardiana y el conflicto entre los terratenientes y los capitalistas ingleses y entre la economía keynesiana y la Gran Depresión de los años 30.\\
+Los historiadores absolutistas ponen el acento en las fuerzas internas, como la creciente profesionalización de la economía, para explicar el desarrollo de la teoría económica. Los absolutistas sostienen que el progreso de la teoría no refleja meramente las circunstancias históricas sino que depende del descubrimiento y la explicación de problemas o paradojas sin resolver por parte de profesionales formados que reaccionan a los avances intelectuales que surgen en el seno de la profesión. Según este enfoque, es posible ordenar las teorías en términos absolutos según su valor; lo más probable es que la teoría más reciente contenga menos errores y se aproxime más a la verdad que las teorías anteriores.\\
+Es más fructífero concebir la historia del pensamiento económico como un proceso dinámico de interacción entre las fuerzas externas e internas de la disciplina que dan origen a nuevos avances teóricos.
+\subsection*{Economistas ortodoxos y heterodoxos}
+Una manera de comprender las cuestiones que separan a los autores ortodoxos de los heterodoxos es examinar las preguntas a las que trataban de responder. Mientras que los teóricos ortodoxos modernos se han ocupado principalmente de los cuatro problemas de la asignación, la distribución, la estabilidad y el crecimiento, los economistas heterodoxos han estudiado las fuerzas que provocan cambios en la sociedad y la economía.
+\section*{El papel de los economistas heterodoxos}
+\subsection*{Cómo influyen los economistas discrepantes en el pensamiento económico y en la profesión}
+Una manera de comprender el papel de los economistas discrepantes es examinar un segmento de la historia del pensamiento económico. 
+
+\subsection*{La economía como arte y como ciencia}
+Tal vez la distinción más importante en el pensamiento económico sea la que se hace entre el arte de la economía, la economía positiva y la economía normativa. La economíapositiva se ocupa de las fuerzas que gobiernan la actividad económica.\\
+La economía normativa se ocupa explícitamente de qué debe ser.\\
+La distinción es importante porque la economía positiva y el arte de la economía tienen metodologías muy distintas. La metodología de la economía positiva es formal y abstracta; trata de separar las fuerzas económicas de las fuerzas políticas y sociales. La metodología del arte de la economía es más compleja, ya que se ocupa de la política económica y debe abordar las relaciones entre la política, las fuerzas sociales y las fuerzas económicas.\\
+\subsection*{La importancia de la verificación empírica}
+$“$Abductivo$”$ es el nombre que dio un filósofo pragmático, Charles Peirce, a una combinación específica del enfoque inductivo y el deductivo. El concepto abductivo es importante para la economía y otros estudios de sistemas complejos. El razonamiento abductivo utiliza tanto la deducción como la inducción para dar una explicación razonable a lo que ocurre. Conjuga la historia, las instituciones y el estudio empírico para comprenderlo; sin embargo, no pretende ofrecer una teoría definitiva, ya que, cuando se trata de un complejo sistema, no es posible llegar a tener una teoría definitiva.\\
+\part{La economía preclásica}
+
+
+\end{document}

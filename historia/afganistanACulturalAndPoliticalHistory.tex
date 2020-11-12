@@ -1,0 +1,90 @@
+\documentclass[10pt]{book}
+\usepackage[text=17cm,left=4cm,right=4cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} %configuración página
+\usepackage{latexsym,amsmath,amssymb,amsfonts} %(símbolos de la AMS).7
+\parindent = 0cm  %sangria
+\usepackage[T1]{fontenc} %acentos en español
+\usepackage[spanish]{babel} %español capitulos y secciones
+\usepackage{graphicx} %gráficos y figuras.
+
+%---------------FORMATO de letra--------------------%
+
+\usepackage{lmodern} % tipos de letras
+\usepackage{titlesec} %formato de títulos
+\usepackage[backref=page]{hyperref} %hipervinculos
+\usepackage{multicol} %columnas
+\usepackage{tcolorbox, empheq} %cajas
+\usepackage{enumerate} %indice enumerado
+\usepackage{marginnote}%notas en el margen
+\tcbuselibrary{skins,breakable,listings,theorems}
+\usepackage[Bjornstrup]{fncychap}%diseño de portada de capitulos
+\usepackage[all]{xy}%flechas
+\counterwithout{footnote}{chapter}
+\usepackage{xcolor}
+\usepackage[htt]{hyphenat}
+%--------------------GRÀFICOS--------------------------
+
+\usepackage{tkz-fct}
+
+%---------------------------------
+
+\titleformat*{\section}{\LARGE\bfseries\rmfamily}
+\titleformat*{\subsection}{\Large\bfseries\rmfamily}
+\titleformat*{\subsubsection}{\large\bfseries\rmfamily}
+\titleformat*{\paragraph}{\normalsize\bfseries\rmfamily}
+\titleformat*{\subparagraph}{\small\bfseries\rmfamily}
+
+%------------------------------------------
+
+\renewcommand{\labelenumi}{\Roman{enumi}.}%primer piso II) enumerate
+\renewcommand{\labelenumii}{\arabic{enumii}$)$}%segundo piso 2)
+\renewcommand{\labelenumiii}{\alph{enumiii}$)$}%tercer piso a)
+\renewcommand{\labelenumiv}{$\bullet$}%cuarto piso (punto)
+
+%----------Formato título de capítulos-------------
+
+\usepackage{titlesec}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\titleformat{\chapter}[display]
+{\titlerule[2pt]
+\vspace{4ex}\bfseries\sffamily\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}
+
+\begin{document}
+
+\normalfont
+\input xy
+\xyoption{all}
+\author{\Large Apuntes por FODE}
+\title{\small Thomas Barfield \\ \vspace{1cm} \large Afghanistan A Cultural and Political History}
+\date{}
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+\let\cleardoublepage\clearpage
+\tableofcontents								%indice
+
+
+%------------------------------------------
+ 
+\let\cleardoublepage\clearpage
+
+
+Afganistán sin litoral se encuentra en el corazón de Asia y une tres regiones culturales y geográficas principales: el subcontinente indio al sureste, Asia central al norte y la meseta iraní al oeste. Puede que la geografía no sea el destino.\\
+Este libro toma un rumbo diferente. Considera a los propios afganos como los principales actores para comprender el país y su dinámica política, examinando la cuestión de cómo los gobernantes de Afganistán obtuvieron legitimidad política a lo largo de los siglos y pusieron orden en la tierra.\\
+Afganistán evitó este tipo de colapso estatal y desorden político durante la mayor parte de su historia porque las únicas personas que competían por el poder eran los "gobernantes profesionales", élites hereditarias que veían al gobierno como asunto suyo.\\
+El surgimiento de una clase de gobernantes profesionales fue el producto de una cultura política jerárquica en la que se creía que solo los hombres de ciertos grupos de ascendencia de élite tenían derecho a gobernar o incluso competir por el poder.\\
+\textbf{Esta tradición bien establecida de autoridad exclusiva de la élite comenzó a erosionarse en el siglo XIX cuando la creciente influencia de las potencias coloniales occidentales cambió la ecología política de la región. Así, desde la fundación de la dinastía Durrani en 1747 hasta 1838, los gobernantes afganos solo tenían parientes cercanos como rivales.} Un golpe comunista en 1978 acabó con la vida de Daud y su república, poniendo fin a 230 años de gobierno dinástico.\\
+\textbf{Más que cualquier otro conjunto de eventos, el golpe comunista y la invasión soviética abrieron la cuestión de la legitimidad política en Afganistán.}\\
+ Si otras guerras habían expulsado a los afganos del país, el final de esta trajo de regreso a unos cuatro millones de personas, la mayor repatriación de refugiados jamás vista (y una realizada en gran parte por los propios afganos).\\
+  Sin embargo, a pesar de las mejores intenciones, la construcción del Estado afgano en el siglo XXI fue fatalmente fallida porque intentó restaurar un sistema diseñado para autócratas en una tierra donde la autocracia ya no era políticamente sostenible.\\
+Optaron por un gobierno centralizado ya que se pensaba que cada sector social tendería a dividir el país, pero irónicamente no paso debido a que el sistema político anterior tenia un mismo pensamiento y principios.\\
+Afganistán también es bíblico en el sentido de que conserva una economía de subsistencia rural no mecanizada, una arquitectura de adobe y caravanas de nómadas que no habrían aparecido fuera de lugar hace dos milenios, Pero las apariencias físicas pueden engañar: estas mismas personas "atemporales" dispararon helicópteros soviéticos desde el cielo usando misiles Stinger estadounidenses en la década de 1980 y ahora son tan adictas a los teléfonos celulares como cualquier otra persona en el planeta.\\
+Ahmad Shah Durrani, el fundador del Imperio afgano, heredó las tierras que gobernó solo después de que su patrón iraní, Nadir Shah Afshar, fuera asesinado. Él y sus herederos impusieron la tradición turca de sucesión real que exigía que el gobernante fuera elegido solo dentro del linaje real. Durante este período, el Imperio afgano perdió lentamente sus provincias más valiosas y se retiró a fronteras similares a las del Afganistán actual.\\
+\textbf{Las políticas de los talibanes para cambiar la sociedad afgana fueron tan radicales como las de los comunistas, pero en la dirección opuesta. }\\
+Se prestó poca atención a las consecuencias de promover políticas sociales relativas a la mujer, los derechos individuales y la educación secular en un país donde desde hace mucho tiempo se cuestionan.
+
+\chapter{personajes y lugares}
+
+\end{document}

@@ -1,7 +1,7 @@
-PWD d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon
-INPUT C:\Users\ASUS\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.tex
-OUTPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.log
+PWD A:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon
+INPUT C:\Users\59173\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
+INPUT la_republica.tex
+OUTPUT la_republica.log
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\bk10.clo
@@ -350,7 +350,7 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\t
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryfadings.code.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryfadings.code.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryfadings.code.tex
-OUTPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.pdf
+OUTPUT la_republica.pdf
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.misc.code.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.misc.code.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes.misc.code.tex
@@ -414,9 +414,9 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tkz-base\tkz-obj-grids.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tkz-base\tkz-obj-marks.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tkz-base\tkz-obj-points.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tkz-base\tkz-obj-rep.tex
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.aux
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.aux
-OUTPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.aux
+INPUT la_republica.aux
+INPUT la_republica.aux
+OUTPUT la_republica.aux
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmr.fd
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmr.fd
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmr10.tfm
@@ -430,13 +430,13 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\refcount\refcount.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\refcount\refcount.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
-OUTPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
+INPUT la_republica.out
+INPUT la_republica.out
+INPUT la_republica.out
+INPUT la_republica.out
+INPUT .\la_republica.out
+INPUT .\la_republica.out
+OUTPUT la_republica.out
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmr10.tfm
@@ -505,19 +505,19 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmr12.tfm
-INPUT C:\Users\ASUS\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
+INPUT C:\Users\59173\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmbx10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmss.fd
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmss.fd
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmssbx10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmssbx10.tfm
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.toc
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.toc
-OUTPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.toc
+INPUT la_republica.toc
+INPUT la_republica.toc
+OUTPUT la_republica.toc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmbx12.tfm
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.aux
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
-INPUT d:\GitHub\ciencias_sociales\economia\economia_politica\preclásicos\platon\la_republica.out
+INPUT la_republica.aux
+INPUT .\la_republica.out
+INPUT .\la_republica.out
 INPUT C:\Program Files\MiKTeX 2.9\fonts\enc\dvips\lm\lm-ec.enc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\lm\lmbx10.pfb

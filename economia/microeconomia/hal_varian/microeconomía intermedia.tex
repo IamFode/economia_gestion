@@ -127,8 +127,32 @@ es la relación en que el consumidor está dispuesto a sustituir el bien $1$ por
 Imaginemos que $\triangle x_1$ es una variación muy pequeña, es decir, una variación marginal. En ese caso, el cociente $\triangle x_2 / \triangle x_1$ mide la relación marginal de sustitución del bien 1 por el 2. A medida que disminuye $\triangle x_1, \triangle x_2 / \triangle x_1$ se aproxima a la pendiente de la curva de indiferencia. En otras palabras La relación marginal de sustitución mide la pendiente de la curva de indiferencia.
 
 \part*{\center La utilidad}
+Una función de utilidad es un instrumento para asignar un número a todas las cestas de consumo posibles de tal forma que las que se prefieren tengan un número más alto que las que no se prefieren. Es decir, la cesta $(x_1,x_2)$ se prefuere a la $(y_1,y_2)$ si y sólo si la utilidad de la primera es mayor que la utilidad de la segunda; en símbolos, $(x_1,x_2) \succ (y_1,y_2)$ si y sólo si $u(x_1,x_2) > u(y_1,y_2)$.\\
+La tasa de variación de $f(u)$ provocada por una variación de $u$ puede medirse observando la variación que experimenta $f$ entre dos valores de $u$, dividida por la variación de $u$: $$\dfrac{\triangle f}{\triangle u}=\dfrac{f(u_2)-f(u_1)}{u_2-u_1}$$ En el caso de una transformación monótona, $f(u_2)-f(u_1)$ siempre tiene el mismo signo que $u_2 - u_1$. Por lo tanto, una función monótona siempre tiene una tasa de variación positiva, lo que significa que el gráfico de una función de este timpo siempre tiene pendiente positiva.\\
+Si $f(u)$ es una transformación monótona cualquiera de una función de utilidad que representa las preferencias $\succeq, f(u(x_1,x_2))$ también es una función de utilidad que representa esas mismas preferencias. Ya que:
+\begin{enumerate}
+    \item Decir que $u(x_1,x_2)$ representa las preferencias $\succeq$ significa que $u(x_1,x_2) > u(y_1,y_2)$ si y sólo si $(x_1,x_2)\succ (y_1,y_2)$
+    \item Pero si $f(u)$ es una transformación monótona, $u(x_1,x_2)>u(y_1,y_2)$ si y sólo si $f(u(x_1,x_2))>f(u(y_1,y_2))$ 
+    \item Por lo tanto, $f(u(x_1,x_2))>f(u(y_1,y_2))$ si y sólo si $(x_1,x_2)\succ (y_1,y_2)$ por lo tanto la función $f(u)$ representa las preferencias $\succeq$ de la misma forma que la función de utilidad original $u(x_1,x_2)$
+\end{enumerate}
+Resumimos este análisis formulando el siguiente principio: Una transformación monótona de un función de utilidad es una función de utilidad que representa las mismas preferencias que la función de utilidad marginal.
+Desde el punto de vista geométrico, una función de utilidad es una forma de denominar las curvas de indiferencia. Dado que todas las cestas de una curva de indiferencia deben tener la misma utilidad, una función de utilidad es un instrumento para asignar números a las distintas curvas de indiferencia de tal manera que las más altas reciban números más altos. Desde este punto de vista una transformación monótona equivale exactamente a denominar de nuevo las curvas de indiferencia. Mientras las curvas de indiferencia que contengan las cestas que se prefieren reciban un número más alto que las que contienen las cestas que no se prefieren, las denominaciones representarán las mismas preferencias.
 
+\section*{Algunos ejemplos de funciones de utilidad}
+Supongamos que la función de utilidad es $u(x_1,x_2)=x_1 x_2$ ¿Como son las curvas de indiferencia?\\
+Sabemos que una curva de indiferencia tipo es el conjunto de todas las $x_1$ y las $x_2$ tal que $k=x_1 x_2$. Y por lo tanto una curva de indiferencia tipo tiene la fórmula: $$x_2=\dfrac{k}{x_1}$$.\\
+Supongamos por otro lado que nos dan la función de utilidad $u(x_1,x_2)=x_1^2 x_2^2$ y en consecuencia $$u(x_1,x_2)=x_1^2 x_2^2 = (x_1,x_2)^2 =u(x_1,x_2)^2$$
 
+\subsection*{Sustitutos perfectos}
+Esta dada por la función $$u(x_1,x_2)=ax_1 + bx_2$$
+
+\subsection*{Complementarios perfectos}
+Esta dada por la función $$u(x_1,x_2)=min\lbrace ax_1, bx_2\rbrace$$
+
+\subsection*{Preferencias cuasilineales}
+Esta dada por la función $$u(x_1,x_2)=k=v(x_1)+x_2$$
+
+\subsection*{Preferencias Cobb-Douglas}
 
 
 \end{document}

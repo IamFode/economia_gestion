@@ -1,0 +1,820 @@
+\documentclass[10pt]{article}
+\usepackage[text=17cm,left=2.5cm,right=2.5cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} 	
+\usepackage{latexsym,amsmath,amssymb,amsfonts}	%(símbolos de la AMS).7
+\parindent = 0cm 								%sangria
+\usepackage{lmodern}							% tipos de letras
+\usepackage[T1]{fontenc}						%acentos en español
+\usepackage[spanish]{babel}
+\usepackage{titlesec} %formato de títulos
+\pagestyle{empty}								%elimina numeración de página
+\usepackage{multicol}
+\usepackage{color} %resaltar texto
+\usepackage{enumerate}
+
+\begin{document}
+\begin{center}
+\huge Sprint el método para resolver problemas y testar nuevas ideas en sólo cinco días\\
+\vspace*{0.5cm}
+\large Jake Knapp.\\
+\vspace{1cm}
+\Large Apuntes por Fode.
+\vspace{1.5cm}
+\end{center}
+
+\section*{Prefacio}
+De donde salen las mejores ideas?.
+A los individuos se les seguían ocurriendo ideas como había sucedido siempre: estando sentados a su escritorio, mientras esperaban a que les sirvieran en la cafetería o mientras se daban una ducha. Esas ideas generadas por individuos eran las mejores.\\
+¿Y si les añadía esos ingredientes mágicos: centrarnos en el trabajo individual, disponer de tiempo para realizar un prototipo y contar con una fecha tope que no se podía prorrogar? A esa nueva forma de trabajar decidí llamarla Sprint.\\
+Al principio quería que mi jornada laboral fuera productiva y eficaz. Quería centrarme en lo verdaderamente importante y que mi tiempo contase para algo, para mí, para mi equipo y para nuestros clientes.
+\section*{Introducción}
+El sprint es un proceso de solo cinco días durante los cuales Google Ventures debe contestar preguntas cruciales a través de prototipos y probando las ideas con los clientes. Es una combinación de grandes éxitos de la estrategia empresarial, de la innovación, de la ciencia del comportamiento, del diseño y de otros ámbitos comprimidos en un proceso paso a paso que cualquier equipo puede emplear.\\
+\subsection*{El problema de las buenas ideas}
+Es difícil encontrar buenas ideas, y ni siquiera las mejores son garantía de éxito en el mundo real. Esto es así tanto si se dirige una start-up como si se dan clases o se trabaja para una gran organización.\\
+Cuando una idea arriesgada triunfa en un sprint, la recompensa es alucinante. Pero son los fracasos los que, por más dolorosos que resulten, proporcionan las mayores ganancias. Identificar errores graves en sólo cinco días de trabajo es el máximo de la eficacia. Es aprender por las malas, pero sin perjuicio alguno.\\
+El \textbf{lunes}, crearemos un mapa del problema y elegiremos un punto importante en el que centrarnos. El \textbf{martes}, realizaremos un boceto con las posibles soluciones. El \textbf{miércoles}, llega el momento de tomar decisiones difíciles y convertir las ideas en una hipótesis que se pueda poner a prueba. El \textbf{jueves}, construiremos un prototipo realista y el \textbf{viernes}, lo probaremos con seres humanos.
+\begin{center}
+\begin{tabular}{c c c c c}
+Lunes&Martes&Miércoles&Jueves&Viernes\\
+\hline
+Crear un mapa y&Esbozar las &Escoger el mejor&Crear un &Probarlo con \\
+ elegir una meta&posibles soluciones&&prototipo realista&clientes potenciales\\
+\end{tabular}
+\end{center}
+
+\part*{ \center El escenario perfecto}
+Antes de comenzar el sprint es necesario tener el \textbf{desafío} perfecto y el \textbf{equipo} adecuado, además del \textbf{tiempo y el espacio} para llevarlo a cabo. En los siguientes tres capítulos veremos cómo prepararlo todo.
+\begin{multicols}{2}
+\section*{El desafío}
+\subsection*{Cuanto mayor es el desafío, mejor es el sprint}
+Aquí van tres situaciones desafiantes en las que los sprints pueden ayudar:
+\paragraph*{Alto riesgo}
+puede existir un gran problema cuya solución requiere de mucho tiempo y de mucho dinero. Como haría el capitán de un barco, el sprint serviría para comprobar los mapas de navegación y tomar el rumbo correcto antes de desplegar las velas.
+\paragraph*{Sin tiempo suficiente}
+Si existe una fecha tope inamovible,  que debía tenerlo todo preparado para la experiencia piloto de su robot en el hotel, hacen falta buenas soluciones, y rápido. Como sugiere su nombre, un sprint está pensado para ser veloz.
+\paragraph*{Atascado sin remisión}
+Algunos proyectos importantes son difíciles de empezar. Otros pierden fuelle con el paso del tiempo. En estas situaciones, un sprint puede ser como una lanzadera espacial: un acercamiento novedoso a la forma de solucionar problemas que ayuda a soslayar la fuerza de la gravedad.\\\\
+\textbf{Realizar un sprint requiere mucha energía y concentración.} \\
+La lección que se deriva de este caso es que no hay problema demasiado grande para un sprint. Dicho así parece absurdo, pero hay dos buenas razones por las que es cierto:
+\begin{enumerate}[\bfseries 1.]
+\item La primera es que el sprint obliga al equipo a concentrarse en los problemas más acuciantes.
+\item La segunda es que permite aprender de los rasgos más superficiales de un producto final.
+\end{enumerate}
+\subsection*{Solucionar primero lo superficial}
+Lo superficial es importante. Es el punto en el que un producto o servicio se encuentra con los clientes. Los seres humanos somos complejos e inconstantes, así que es imposible predecir cómo reaccionaremos ante una solución novedosa. \textbf{Cuando nuestras nuevas ideas fracasan, normalmente se debe a que estamos demasiado seguros de cómo las comprenderán los clientes o de lo bien que las recibirán.}\\
+Acertar con lo superficial significa poder trabajar todo lo anterior hasta averiguar cómo debe ser el sistema o la tecnología que lo sustenta. Concentrarse en lo superficial permite avanzar deprisa y contestar preguntas importantes antes de comprometerse con la ejecución.
+\section*{Equipo}
+\textbf{El equipo y su líder deben aprovechar al máximo su talento, su tiempo y su energía mientras se nfrentan a un desafío abrumador y emplean su ingenio.}\\
+Para tener un equipo de sprint perfecto se debe tener:
+\subsubsection*{Buscar un desisor (o dos)}
+Si el Decisor tiene dudas, se puede probar con alguno (o con varios) de estos argumentos:
+\paragraph*{Proceso rápido}
+Es importante hacer hincapié en los progresos que se consiguen con el sprint. En una semana es posible contar con un prototipo realista. A algunos Decisores no les hacen gracia las pruebas con clientes (al menos, hasta que las ven en persona).
+\paragraph*{Es un experimento}
+Se puede considerar el primer sprint como un experimento. Cuando termine, el Decisor puede evaluar su efectividad. Hemos descubierto que muchas personas renuentes a cambiar su dinámica de trabajo están abiertas a un experimento.
+\paragraph*{Explicar los cambios}
+El Decisor debe conocer de antemano las reuniones importantes y la carga de trabajo que el equipo perderá durante la semana del sprint. Así sabrá qué elementos se van a saltar y cuáles serán pospuestos y por qué motivo.
+\paragraph*{Lo importante es la concentración}
+Hay que ser muy claro con las motivaciones. Si la calidad del trabajo se resiente porque la carga habitual del equipo es demasiado dispersa, el Decisor tiene que saber que, en lugar de hacer lo justo en todas las tareas, el equipo realizará un trabajo excelente en una sola.
+\subsection*{Ocean´s Seven}
+\textbf{Hemos descubierto que el tamaño ideal para un sprint son siete personas o menos. interesa contar con alguno de los encargados de fabricar el producto o de realizar el servicio, como ingenieros, diseñadores, jefes de producción, etc.}\\
+\textbf{ Los sprints tienen más éxito con la diversidad: el núcleo duro de las personas que trabajan en la ejecución junto con unos cuantos expertos con conocimientos especializados.}\\
+\textbf{Mucha experiencia y una gran emoción ante el desafío. Esta es la clase de persona que se necesita en un sprint.}
+\subsection*{Reclutar un equipo de siete (o menos)}
+\paragraph*{Decisor}
+¿Quién toma las decisiones en el equipo? 
+\paragraph*{Experto financiero}
+¿Quién puede explicar mejor de dónde sale el dinero (y adónde va)?
+\paragraph*{Experto en marketing}
+¿Quién elabora los mensajes de la empresa?
+\paragraph*{Experto en clientes}
+¿Quién suele hablar en persona con los clientes?
+\paragraph*{Experto en tecnología/logística}
+¿Quién comprende mejor lo que la empresa es capaz de fabricar y de entregar?
+\paragraph*{Experto en diseño}
+¿Quién diseña los productos que fabrica la empresa?
+
+\subsection*{Incluir al follonero}
+Antes de cada sprint siempre preguntamos: ¿Quién puede causar problemas si no participa en el proyecto? No nos referimos a gente que lleva la contraria por sistema, sino a esa persona muy inteligente pero con ideas opuestas a las nuestras y que podría incomodar un poco al resto del equipo si se le incluyera en el sprint.
+\subsection*{Incluir personas extra en Lunes}
+Si hay más de siete personas que deberían participar en el sprint, pueden hacerlo en calidad de expertas, con una breve aparición el lunes por la tarde. Durante su visita, podrán dar su opinión al resto del equipo y compartir sus ideas. \textbf{Con media hora para cada experto será suficiente.}
+\subsection*{Escoger a un facilitador}
+Es un responsable de controlar el tiempo, las conversaciones y el proceso en general. Tiene que contar con la confianza necesaria para dirigir una reunión, además de ser capaz de resumir discusiones y de decirle a la gente que deje de hablar y pasen a otro tema.
+\subsection*{Tiempo y espacio}
+\textbf{No cabe la menor duda de que la fragmentación afecta a la productividad} Es decir ser interrumpidos cada momento.\\
+\end{multicols}
+
+Un dia en un sprint es algo así:
+\begin{center}
+\begin{tabular}{c c c c c c c}
+\textbf{Trabajo}&Descanso&\textbf{Trabajo}&Almuerzo&\textbf{Trabajo}&Descanso&\textbf{Trabajo}\\
+\end{tabular}
+\end{center}
+\begin{multicols}{2}
+\textbf{Se empieza a las 10 de la mañana y se termina a las 5 de la tarde}, Solos e trabaja 6 horas de un día sprint.\\
+\textbf{Los sprints requieren de mucha energía y concentración, pero el equipo no podrá dar el máximo si sus miembros están estresados o cansados}.
+\subsection*{Reservar cinco días completos en el calendario}
+Dentro de la sala, todos estarán concentrados al cien por cien en el desafío del sprint. \textbf{El equipo en su totalidad tiene que apagar los portátiles y guardar los móviles.}
+\subsection*{La regla de prohibidos los dispositivos}
+Durante un sprint, el tiempo es oro, de modo que no podemos permitirnos distracciones en la sala. Para ello existe una regla muy sencilla: \textbf{ni portátiles, ni móviles, ni iPads.}\\
+Se tiene dos excepciones a la regla:
+\begin{enumerate}[\bfseries 1.]
+\item Está permitido comprobar durante el descanso.
+\item Está permitido salir de la sala para comprobar el dispositivo.
+\end{enumerate}
+\subsection*{Las pizarras nos hacen mas listos}
+Como seres humanos, nuestra memoria a corto plazo no es demasiado buena, pero nuestra memoria visual es alucinante. Así la sala se convierte en una especie de cerebro compartido por todo el equipo.\\
+\subsection*{Conseguir dos pizarras bien grandes}
+Hay formas sencillas de adquirirlas:
+\paragraph*{Pizarras enrollables}
+Las hay pequeñas y gigantes. Las pequeñas tienen mucho espacio inutilizado pegado al suelo y suelen moverse al desplegarse.
+\paragraph*{Pintura efecto pizarra}
+Es un tipo de pintura que hace que las paredes normales se conviertan en pizarras. Es perfecta para paredes lisas y menos perfecta en las rugosas
+\paragraph*{Papel}
+A falta de pizarras, el papel es mejor que nada. Las notas adhesivas del tamaño de un póster son caras, pero fáciles de colocar y de cambiar.
+\subsection*{Hacer acopio de los materiales adecuados}
+Antes de empezar el sprint hay que abastecerse del material de oficina básico, en el que se incluyen notas adhesivas, rotuladores, lápices, un Time Timer (véase a continuación) y folios, además de aperitivos saludables para mantener el nivel energético del equipo.
+\end{multicols}
+\part*{\center Lunes}
+Las discusiones organizadas del lunes establecen el camino que se seguirá durante la semana del sprint. Por la mañana, hay que \textbf{empezar por el final y fijar una meta a largo plazo}. Después será el momento de \textbf{crear un mapa del desafío.} Por la tarde, serán los \textbf{expertos} de la  empresa quienes ofrezcan su opinión y compartan sus conocimientos. Y por último, hay que \textbf{elegir un objetivo}: una parte ambiciosa pero manejable del problema que se pueda solucionar en una semana.
+\begin{multicols}{2}
+\section*{Empezando por el final}
+o si las cosas no se toman con tranquilidad, no se comparten los conocimientos y no se prioriza, se puede acabar malgastando tiempo y esfuerzo en una parte innecesaria del problema.\\
+\textbf{ El primer día del sprint debe dedicarse a establecer una planificación. \\
+El lunes comienza con un ejercicio que llamamos «Empezar por el final». Consiste en mirar hacia delante, hacia el final de la semana de sprint y más allá.} Se debe fijar
+\begin{itemize}
+\item La meta a largo plazo.
+\item Las preguntas difíciles que se deben responder.
+\end{itemize} 
+\subsection*{Establecer una meta a largo plazo}
+\textbf{¿Por qué estamos embarcados en este proyecto? ¿Dónde queremos estar dentro de seis meses, de un año o de cinco?}\\
+Bien, ha llegado el momento de mostrar un cambio de actitud. Todo el mundo era optimista mientras escribían la meta a largo plazo. Imaginaban un futuro perfecto. Ahora ha llegado el momento de ponerse pesimista, de imaginar que ha pasado un año y que el proyecto es un desastre. \textbf{¿Cuál ha sido la causa del fracaso? ¿Cómo es posible que la meta se haya torcido?}\\
+\subsection*{Elaborar una lista con las preguntas del sprint}
+\begin{itemize}
+\item ¿Qué preguntas queremos responder durante este sprint?
+\item Para conseguir la meta a largo plazo, ¿qué debe ser cierto?
+\item Si viajáramos al futuro y el proyecto hubiera fracasado, ¿cuál
+podría ser la causa?
+\end{itemize}
+\textbf{Una parte importante de este ejercicio es el hecho de transformar las hipótesis y los obstáculos en preguntas}\\
+\section*{Mapa}
+Un mapa es un diagrama sencillo que representa una gran complejidad. \textbf{a, el mapa mostrará clientes moviéndose a través de un servicio o de un producto.}\\
+se deben incluir los pasos fundamentales para que los clientes pasen del inicio al final.\\
+¿Los elementos comunes? Cada mapa está centrado en el cliente y muestra una lista de actores fundamentales a la izquierda. Cada mapa es una historia con un principio, un desarrollo y un final. Y, sin importar el tipo de empresa, todos los mapas son simples. Los diagramas solo se componen de palabras, flechas y cajas. A partir de aquí, cada equipo puede hacer el suyo.
+\subsection*{Dibujar un mapa}
+El primer boceto del mapa se realizará el lunes por la mañana, tan pronto como se hayan escrito la meta a largo plazo y las preguntas del sprint.\\
+Para dibujar los mapas, hay que seguir estos pasos
+\begin{enumerate}[\bfseries 1.]
+\item \textbf{Anotar a los actores a la izquierda.}\\
+Por lo general son los distintos tipo de clientes o actores importantes.
+\item \textbf{Escribir el final a la derecha}\\
+Normalmente es más fácil imaginar el final que el desarrollo intermedio de la historia.
+\item \textbf{Palabras y flechas que las unen.}\\
+El mapa debe ser funcional.
+\item \textbf{Que sea sencillo}\\
+El mapa debería tener entre cinco y quince pasos.
+\item \textbf{Pedir ayuda}\\
+Se debe preguntar al equipo, Parece correcto el mapa?
+\end{enumerate}
+\textbf{El primer boceto del mapa debería estar listo en un tiempo de entre treinta y sesenta minutos}
+\section*{Preguntar a los expertos}
+El equipo conoce perfectamente el desafío al que se enfrenta. Pero ese conocimiento está distribuido.\\
+\textbf{La mayor parte de la tarde del lunes se dedicará a preguntar a expertos, internos y externos a la empresa.} que se irá tomando nota.
+\subsection*{Nadie lo sabe todo}
+Decidir con quién hay que hablar es en cierto modo un arte. Se puede seguir el instinto para reunir a los miembros del equipo, pero creemos que es útil contar con al menos un experto que pueda hablar de los siguientes temas:
+\paragraph*{Estrategia}  ¿Qué necesita este proyecto para triunfar?, ¿Contamos con alguna ventaja u oportunidad única?, ¿Cuál es el mayor riesgo?
+\paragraph*{La voz del cliente} ¿Quién habla más que nadie con el cliente? ¿Quién es capaz de ver el mundo desde su perspectiva?
+\paragraph*{Como funcionan las cosas}
+Por lo general hablamos con dos, tres o cuatro expertos en Cómo funcionan las cosas que nos ayudan a entender cómo encaja todo.
+\subsection*{Esfuerzos previos}
+Muchos equipos conformados
+para los sprints obtienen grandes resultados trabajando con una idea a medias o arreglando una que fracasó previamente.\\\\
+Es importante reservar media hora para cada conversación, aunque seguramente no se necesite ni la mitad de ese tiempo. Una vez que el experto está preparado, se sigue un guión muy simple para que las cosas avancen.
+\begin{enumerate}[\bfseries 1)]
+\item Explicar en qué consiste en sprint.
+\item Analizar las pizarras.\\
+Se concede dos minutos al experto para que lea la meta a largo plazo, las preguntas del sprint y el mapa.
+\item Abrir la puerta.\\
+El experto debe contarnos todo lo que sabe sobre el desafío.
+\item Preguntar.\\
+El equipo debe actuar como un grupo de periodistas. Se  le pedirá que les señale aquello en lo que están equivocados. ¿Es capaz de ver en el mapa algo que esté incompleto? ¿Añadiría alguna pregunta a la lista? ¿Ve alguna oportunidad? Aquí van un par de frases útiles: ¿Por qué? y Háblame más de ese tema.
+\item Modificar pizarras.
+\end{enumerate}
+Un método para tomar notas ordenadas y estructuradas, el cual se llama \textbf{¿Cómo podríamos..?} Funciona así: cada persona escribe sus propias notas, de una en una, en un taco de notas adhesivas. Al final del día, se recogen todas las notas, se organizan y se eligen las más interesantes. Esas notas elegidas nos ayudarán a tomar una decisión sobre qué parte del mapa abordar, y el martes nos proporcionarán ideas para los bocetos.
+\subsection*{Como anotar durante el ejercicio de ¿Cómo podríamos...?}
+Cada miembro necesita un taco de notas adhesivas y un rotulador grueso para que las notas sean concisas y fáciles de leer.\\
+Para tomar notas seguimos los siguientes pasos:
+\begin{enumerate}
+\item Escribir CP en la esquina superior izquierda de la nota.
+\item Esperamos.
+\item Cuando oigamos algo interesante, lo convertimos en una pregunta.
+\item Escribimos la pregunta en la nota adhesiva.
+\item Separamos la nota del taco y la ponemos a un lado.
+\end{enumerate}
+La frase «Recuérdanos cómo…» también es una bonita manera de hacer que el experto se sienta cómodo.\\
+\textbf{La idea es volver cada problema en opoertunidad.}
+\subsection*{Organizar las notas del ejercicio ¿Como podríamos...?}
+Después que los expertos terminen de armar, todos deben recopilar sus notas y pegarlas en la pared.\\
+Lo primero para organizar las notas es clasificar las notas que son similares. Diez minutos bastan para organizarlas.
+\subsection*{Votación sobre las notas del ejercicio ¿Cómo podríamos?}
+La votción debe ser por puntos.
+\begin{enumerate}[\bfseries 1.]
+\item Entregamos a cada miembro del equipo dos pegatinas redondas
+grandes.
+\item Entregamos al Decisor cuatro pegatinas redondas grandes, porque su opinión cuenta un poco más.
+\item Todo el equipo debe leer de nuevo el objetivo y las preguntas del sprint.
+\item Pedimos a todos que voten en silencio las preguntas del ejercicio ¿Cómo podríamos…? que les resulten más útiles.
+\item Está permitido votar las notas propias o votar dos veces a la misma.\\
+\end{enumerate}
+Cuando la votación llegue a su fin, despegaremos de la pared las preguntas que tengan más pegatinas y las pegaremos en la pizarra del mapa.
+\section*{Objetivo}
+Se debe construir un mapa luego de recopilar los datos de los expertos.\\
+Tras hablar con los expertos y organizar las notas, la parte más
+importante del proyecto debería saltar del mapa directamente.\\
+\textbf{La última tarea del lunes consiste en elegir un objetivo para el sprint}\\
+¿Quién es el cliente más importante y cuál es el momento crítico en la experiencia de dicho cliente?. 
+\subsection*{Elegir un objetivo}
+El Decisor necesita elegir un cliente y un acontecimiento del mapa. Elija lo que elija, ambas cosas se convertirán en el objetivo del resto del sprint. Los bocetos, el prototipo y la prueba se desarrollarán a partir de esta decisión.
+\paragraph{Pedir al Decisor que elija}
+Es más fácil si el Decisor elige sin que se produzca una discusión larga. Al fin y al cabo, el equipo al completo lleva todo el día hablando y asimilando información. Casi todos los Decisores son capaces de elegir un objetivo el lunes por la tarde con la misma facilidad que demostró Amy. Pero a veces el Decisor pide opiniones antes de elegir. Si ese es el caso, puede hacerse una votación rápida y silenciosa para recopilar la opinión del equipo.
+\paragraph*{Votación silenciosa (si el Desisor pide opciones)}
+Cada miembro del equipo anotará en un trozo de papel el cliente y el acontecimiento que ellos elegirían como objetivo. Una vez que todos hayan hecho su elección, el resultado se escribirá en la pizarra con un rotulador. Terminado el recuento, se discutirán las diferencias de opinión más importantes. Eso debería bastar para el Decisor, que será quien tenga la última palabra.\\
+\subsection*{Notas para el facilitador}
+\begin{enumerate}[\bfseries 1.]
+\item Pedir permiso.
+\item Siempre atento.\\
+A medida que el trabajo avance le preguntará al equipo:
+\begin{itemize}
+\item ¿Les aprece bien esto?
+\item ¿Cómo anoto eso?
+\item ¿Hay alguna manera de anotar esta idea y de avanzar?
+\end{itemize}
+\item Formular preguntas obvias.\\
+El facilitador necesita preguntar muchas veces ¿Por qué?\\
+\textbf{En un sprint hay que actuar como si no se supiera nada.}
+\item Ciudar a las personas.\\
+El Facilitador no solo está al cargo del sprint, también tiene que mantener al equipo en el camino correcto y lograr que la energía siempre sea positiva.
+\begin{itemize}
+\item Hacer descansos frecuentes.\\
+\textbf{. Nos gusta hacer descansos de diez minutos cada hora u hora y media, ya que ese es el tiempo máximo que la gente es capaz de estar concentrada en una tarea o ejercicio.}
+\item La hora del almuerzo.\\
+Un buena idea es hacer un descanso para almorzar a la una del
+mediodía. De esta forma dividiremos la jornada en dos bloques de tres horas: de diez a una y de dos a cinco.
+\item Comer poco y con frecuencia.\\
+Es aconsejable que nadie haga un almuerzo pesado.
+\end{itemize}
+\item Decidir y avanzar.\\
+\textbf{Una toma de decisiones lenta debilita la energía del grupo y supone una amenaza para mantener la planificación prevista. No debe permitir que el grupo mantenga debates poco productivos que no ayuden a tomar una decisión. Cuando la toma de una decisión es lenta o no resulta evidente, el deber del Facilitador consiste en recurrir al Decisor. Él es quien debe tomar una decisión para que el equipo pueda avanzar.}
+\end{enumerate}
+\end{multicols}
+
+\part*{ \center Martes}
+El lunes, el equipo definió el desafío y eligió un objetivo. El martes es el momento de las soluciones. El día empieza buscando la inspiración: una revisión de las ideas existentes, para mezclarlas y mejorarlas. Después, por la tarde, cada persona hará un boceto siguiendo un sistema de cuatro pasos que enfatiza el pensamiento crítico por encima del arte. En otro momento de la semana los mejores bocetos formarán el esquema del prototipo y de la prueba. Esperamos que el equipo haya descansado bien y disfrutado de un desayuno equilibrado, porque el martes es un día importante.
+\begin{multicols}{2}
+\section*{Mezclar y mejorar}
+\textbf{En un sprint vamos a mezclar o fusionar ideas y a mejorarlas, pero nunca a copiar algo al pie de la letra.}\\
+El martes por la mañana empezaremos buscando ideas ya existentes que podamos utilizar por la tarde para conformar nuestra solución. primero hay que reunir las más útiles y después convertirlas en algo original y distinto. Nuestro método para recopilar y sintetizar estas ideas existentes es un ejercicio que llamamos \textbf{Demos rápidas.} \\ 
+\textbf{En turnos de tres minutos, el equipo planteará las soluciones que más le gusten}: de otros productos, de otros ámbitos y de su propia empresa. Este ejercicio se basa en la búsqueda de ideas en bruto, no en copiar a los competidores. \textbf{Hemos descubierto que buscar ideas dentro de los productos del mismo sector no reporta muchos beneficios.} Una y otra vez, las ideas que inspiran las  mejores soluciones proceden de problemas similares pero en distintos entornos. \\
+\subsection*{Demos rápidas}
+Es un ejercicio informal que funciona así:
+\paragraph*{hacer una lista}  Los miembros del equipo tienen que hacer una lista con los productos o servicios que puedan examinar en busca de inspiración. si se prefiere, puede asignarse como deberes para casa el lunes por la noche.
+\paragraph*{Demos de tres minutos} 
+La persona que haya sugerido un producto tendrá tres minutos para explicarle al resto del equipo qué tiene de fantástico. Es una buena idea cronometrar el tiempo. Cada descripción debe durar un máximo de tres minutos. Por supuesto, pueden usarse portátiles, teléfonos móviles o cualquier otro dispositivo para llevar a cabo este ejercicio. Nos gusta conectarlos a una pantalla para que todo el mundo pueda ver con claridad.
+\paragraph*{Anotar las buenas ideas sobre la marcha}
+La primera pregunta para la persona que va a hacer la demo será: \textbf{¿Cuál es la gran idea que puede resultarnos de utilidad?}. Después haremos un boceto rápido de ese componente inspirador, escribiremos una breve descripción encima y anotaremos debajo la fuente.\\
+Cuando se combinan las ideas que acabamos de anotar con el mapa del lunes, las preguntas del sprint y las notas del ejercicio ¿Cómo podríamos…?, se consigue una gran abundancia de material en bruto.\\
+\subsection*{Dividir o agrupar}
+¿Conviene dividir el problema? Echemos un buen vistazo al mapa y
+propongamos al equipo una breve discusión. Si se ha escogido un objetivo muy concreto, no pasará nada si todo el equipo se concentra en la misma parte del problema. Si hay varias piezas importantes que cubrir, sería mejor dividirlos. Si el equipo va a dividirse, la forma más fácil de hacerlo es decirle a cada persona que anote la parte que más le interesa. Tras hacer la ronda por la habitación, anotaremos el nombre de cada persona junto a la parte del mapa que se encargará de esbozar. Si hay demasiados nombres en un lugar y muy pocos en otro, pediremos voluntarios dispuestos a cambiarse.
+\section*{Esbozar}
+\textbf{El martes por la tarde es momento de buscar soluciones. Se trabajara de forma individual. nos tomaremos nuestro tiempo y haremos nuestros bocetos.} Para tal efecto tomaremos el papel y bolígrafo ya que nos pone a la misma altura.\\
+El mentalista es una solución sprint donde cada nota adhesiva representa una página del sitio web.\\
+\subsection*{El poder de los bocetos}
+Haremos un boceto porque estamos convencidos de que es la manera más rápida y fácil de transformar una idea abstracta en una solución concreta.
+\subsection*{Trabajo individual en grupo}
+Para que el trabajo no te parezca intimidante se debe encontrar un primer paso pequeño que nos motive a progresar.
+\subsection*{Bocetos en cuatro pasos}
+Los bocetos en cuatro pasos reúnen todos esos elementos importantes. Empezaremos con veinte minutos para «prepararnos» tomando notas sobre objetivos, oportunidades e inspiraciones que hayamos recopilado por la sala. Después, contaremos con otros veinte minutos para escribir las ideas sin pulir. Tras ese paso, llega la hora de hacer el esfuerzo y explorar alternativas realizando un ejercicio muy rápido llamado Desvarío en 8. Y al final, nos tomaremos media hora o más para dibujar el boceto definitivo con la solución.
+\begin{enumerate}[\bfseries 1.]
+\item \textbf{Notas}\\
+Este primer paso es muy sencillo. El equipo recorrerá la estancia mirando las pizarras y tomando notas. Estas notas son los \textbf{grandes éxitos} de las últimas veinticuatro horas del sprint. \\
+En primer lugar, hay que copiar en el papel la meta a largo plazo. Después, echaremos un vistazo al mapa, a las preguntas del ejercicio ¿Cómo podríamos…? y a las notas de las Demos rápidas. Anotaremos todo lo que nos parezca útil. No hay que esforzarse en buscar nuevas ideas ni preocuparse por anotarlo todo en plan bonito. Estas notas son para uso personal. El equipo contará con veinte minutos para tomar estas notas.
+\item \textbf{Ideas}\\
+Una vez que todos tengan sus notas, ha llegado la hora de buscar ideas. En este paso, cada persona esbozará ideas básicas, garabateando en un folio, escribiendo títulos, diagramas o monigotes que hacen algo. Se tendrá 20 minutos para la generación de ideas.
+\item \textbf{Desvario en 8}\\
+Cada miembro del equipo elige sus
+ideas más potentes y esboza distintas variantes de la misma en ocho minutos.\\
+Cada miembro del equipo empieza Desvarío en 8 con un folio tamaño A4, que doblarán tres veces, para obtener ocho recuadros. Cronometremos un minuto. En cuanto el tiempo comience, empezaremos a esbozar. Un minuto por recuadro, y un total de ocho minutos para crear ocho bocetos en miniatura. Hay que ir rápido, sin preocuparse por la pulcritud. \textbf{Elegimos una de nuestras ideas favoritas de la hoja y nos preguntamos: ¿De qué otra manera podría hacerse esto?}
+\item \textbf{Esbozar una solución}
+Cada boceto consistirá en un guión gráfico dividido en tres viñetas, que son notas adhesivas con dibujos, que mostrarán lo que ven los clientes cuando interactúan con nuestro producto o utilizan nuestros servicios.\\
+Si importar el formato, se debe tomar en cuenta como debe ser escrito cada boceto.
+\begin{enumerate}[\bfseries a.]
+\item \textbf{Que sea explicativo}\\
+El miércoles por la mañana todos los miembros del equipo pondrán su boceto en la pared para que los demás lo vean. Debe explicarse por sí mismo. Ese boceto es la primera prueba que va a pasar nuestra idea. Si nadie es capaz de entenderlo, es poco probable que eso cambie aunque lo pulamos.
+\item \textbf{Mantener el anonimato}\\
+No hay que firmar los bocetos, y debemos asegurarnos de que todos usamos el mismo tipo de papel y de rotulador. El miércoles, al evaluar los bocetos, el anonimato facilitará la tarea de criticar y elegir las mejores ideas.
+\item \textbf{Da igual que sea feo}\\
+Recuadros, monigotes y palabras son más que suficientes. 
+\item \textbf{Las palabras importan}\\
+El buen uso de las palabras es especialmente importante en el ámbito comercial y en el software, ya que las palabras a veces ocupan la mayor parte de la pantalla.
+\item \textbf{Poner un título atractivo}\\
+Puesto que los bocetos no irán firmados, hay que ponerles un título. Más tarde, esos títulos ayudarán a seguirles la pista a las distintas soluciones a medida que las revisemos y las elijamos.
+\end{enumerate}
+\end{enumerate}
+\subsection*{Notas para el facilitador}
+\subsubsection*{Buscar clientes para el viernes}
+El lunes o el martes empezaremos el proceso de búsqueda de clientes para la prueba del viernes. Eso significa que alguna persona del equipo debe hacer horas extra fuera del sprint. Llevará toda la semana, pero solo se necesitarán una hora o dos al día para reunir, seleccionar y reclutar a los más indicados. 
+\subsubsection*{Reclutar clientes}
+Para reclutar gente que coincida exactamente con el cliente objetivo que buscamos, casi siempre usamos las páginas de anuncios clasificados. Parece una locura, pero funciona.
+\subsubsection*{Preparar un cuestionario de selección}
+El cuestionario debe constar de preguntas simples que los interesados respondan. Hay que hacer las preguntas adecuadas para encontrar a la gente adecuada.
+\subsubsection*{Reclutar clientes a través de nuestros contactos}
+Los clientes difíciles de encontrar en realidad no son tan difíciles de encontrar.
+\end{multicols}
+
+\part*{ \center Miercoles}
+El miércoles por la mañana el equipo tendrá un montón de soluciones. Eso es genial, pero también es un problema. No se puede hacer un prototipo y probarlas todas. Hace falta un buen plan. Por la mañana evaluaremos cada solución y \textbf{decidiremos} cuáles tienen más probabilidades de lograr la meta a largo plazo. Después, por la tarde, trasladaremos las escenas ganadoras de los bocetos y las convertiremos en un \textbf{guión gráfico}: un plan paso a paso para el prototipo.
+\begin{multicols}{2}
+\section*{Decisión}
+\textbf{El objetivo para el miércoles por la mañana es decidir sobre qué soluciones hacer el prototipo. Nuestro lema para estas decisiones es poco natural, pero eficiente. Veremos las soluciones de una en una, las evaluaremos a la vez y después tomaremos la decisión todos juntos.}
+\subsection*{Una solución adhesiva}
+\begin{enumerate}[\bfseries 1.]
+\item \textbf{Museo de arte:} Pegamos los bocetos de las soluciones en la pared con cinta adhesiva.
+\item \textbf{Mapa término:} Evaluamos los bocetos en silencio, y utilizamos pegatinas redondas para señalar las partes interesante.
+\item \textbf{Evaluación veloz:} Discutimos brevemente los puntos destacados de cada solución y usamos notas adhesivas para plasmar las mejores ideas.
+\item \textbf{Votación silenciosa:} Cda miembro elige una solución y usa una pegatina redonda para votar por ella.
+\item \textbf{Supervoto:} El decisor toma la decisión final con (sí, eso es) más pegatinas.
+\end{enumerate}
+\textbf{Las notas adhesivas y las pegatinas no son un truco. Las pegatinas nos permiten formar y expresar opiniones sin enzarzarnos en largos debates y la notas adhesivas nos permiten plasmar las mejores ideas sin necesidad de depender de la memoria a corto plazo.}
+\subsection*{Museo del arte}
+El primer paso es sencillo. El miércoles por la mañana cuando lleguemos, nadie habrá visto todavía los bocetos de las soluciones. Queremos que todos los miembros del equipo les echen un vistazo concienzudo, de manera que le hemos robado una idea al Museo del Louvre de París: colgaremos los bocetos en la pared. Más concretamente, los pegaremos con cinta adhesiva, colocándolos de forma espaciada en una larga hilera, como si fueran los cuadros de un museo. Espaciándolos de esa manera el equipo puede examinar los bocetos de forma ordenada, sin aglomerarse. También es una buena idea poner los bocetos más o menos en orden cronológico.
+\subsection*{Mapa término}
+El mapa térmico es un ejercicio que asegura que van a examinarse a fondo los bocetos sin necesidad de una explicación, así que antes de empezar entregaremos a cada miembro del equipo veinte pegatinas redondas y, después, cada persona debe seguir estos pasos:
+\begin{enumerate}[\bfseries 1.]
+\item No se habla.
+\item Miramos un boceto.
+\item Colocamos una pegatina en las partes que más nos gustan (si es que nos gusta alguna)
+\item Ponemos un par de pegatinas en las ideas más brillantes.
+\item Si tenemos alguna pregunta o no vemos algo claro, lo escribimos en una nota adhesiva y la colocamos debajo del boceto.
+\item Avanzamos hasta el siguiente boceto y repetimos el proceso.
+\end{enumerate}
+\subsection*{Evaluación veloz}
+Durante la evaluación veloz, el equipo discutirá sobre cada boceto y anotará las ideas sobresalientes. La conversación seguirá un guión y será cronometrada.
+\begin{enumerate}[\bfseries 1.]
+\item Reunión en torno a un boceto.
+\item Cronómetro en tres minutos.
+\item El facilitador narra el boceto. (Aquí parece que un cliente está pulsando para ver un vídeo, y depués pincha en un enlace para ir a los detalles.)
+\item El facilitador resalta las ideas que tiene más pegatinas redondas. (Hay muchas pegatinas en el vídeo.)
+\item El equipo resalta las ideas sobresalientes que el facilitador haya pasado por alto.
+\item El escriba anota las ideas sobresalientes en notas adhesivas y las pega sobre el boceto. Cada idea debe tener un nombre sencillo como (Vídeo animadoo o regitro en un paso.)
+\item Revisión de las inquietudes y las preguntas.
+\item El creador del boceto guarda silencio hasta el final. (Creador, revela tu identidad y dinos qué hemos pasado por alto.)
+\item EL creador explica cualquier idea que el equipo no haya sido capaz de interpretar y responder todas las preguntas.
+\item Repetimos todos los pasos con los siguientes bocetos. 
+\end{enumerate}
+\subsection*{Votación silenciosa}
+\begin{enumerate}[\bfseries 1.]
+\item Cada miembro del equipo tiene un voto. (Representado pro un pegatina redonda grande; nos gusta que sea de color rosa).
+\item Recordaremos la meta a largo plazo y las preguntas del sprint.
+\item Pediremos a los miembros del equipo que peguen de improdentes y hagan más caso a las ideas arriesgadas con mucho potencial.
+\item Cronometramos diez minutos.
+\item Cada miembro del equipo anotará su opción. Puede ser un boceto completo o solo una idea de un boceto.
+\item Cuando acabe el tiempo, o cuando todos hayan acabado, colocaremos los votos sobre los bocetos.
+\item Cada miembro del equipo explicará brevemente el porqué de su voto (un minuto por persona.)
+\end{enumerate}
+\subsection*{Tomar decisiones sinceras}
+\subsection*{Supervoto}
+El supervoto es la decisión definitiva. Cada Decisor cuenta con tres votos especiales (¡que llevan sus iniciales!) y aquello que vote será la idea a partir de la cual se hará el prototipo y se probará. Los Decisores pueden elegir las ideas que han demostrado ser más populares durante la votación silenciosa, o pueden ignorar por completo esa votación. Pueden votar tres ideas o pueden agrupar sus votos. Básicamente, los Decisores pueden hacer lo que les apetezca y punto.\\
+De todas formas, es una buena idea recordarle al Decisor la meta a largo plazo y las preguntas del sprint (¡que deberían estar todavía en la pizarra!).\\
+\textbf{Los bocetos que tengan supervotos (aunque solo sea uno) son los ganadores.}
+\section*{La pelea callejera}
+\subsection*{Pelea callejera o todos en uno}
+Si hay más de una solución ganadora, el equipo al completo mantendrá una breve discusión para decidir si se opta por una Pelea callejera o si se combina a los ganadores en un único prototipo. Normalmente esta discusión sobre el formato es sencilla. Si no lo es, el Decisor deberá escoger.\\
+\textbf{La solución para esta turbia situación es sencilla e incluso divertida: crearemos marcas falsas.}
+\subsection*{Anotar y votar}
+Durante el sprint, habrá momentos en los que el grupo tenga que aportar ideas o información y después tomar una decisión. Anotar y votar es un atajo. Solo conlleva diez minutos y funciona genial para cualquier cosa, ya sea inventarse marcas falsas o decidir el lugar donde almorzar.
+\begin{enumerate}[\bfseries 1.]
+\item Entregar a cada miembro del equipo un bolígrafo y un papel.
+\item Todo el mundo anota en silencio ideas durante tres minutos.
+\item Todo el mundo revisa su lista de ideas durante dos minutos y la reduce a las dos o tres mejores.
+\item Escribir en la pizarra las mejores ideas de cada miembro del equipo. En un Sprint con siete personas, se obtendrá de quince a veinte ideas.
+\item Todo el mundo tiene dos minutos para elegir en silencio su idea preferida de entre las escritas en la pizarra.
+\item Cada miembro del equipo dice en voz alta su preferida. Por cada voto obtenido, dibujamos un punto al lado de la idea elegida.
+\item El decisor tiene la última palabra. Como siempre, puede dejarse guiar por el grupo o no.
+\end{enumerate}
+\section*{Guión gráfico}
+Usaremos el guión gráfico para imaginar el prototipo ya finalizado, de manera que podamos identificar problemas y puntos confusos antes de crear el prototipo.
+\subsection*{Dibujar una cuadrícula}
+Lo primero es hacer una cuadrícula con unas quince viñetas. Dibujamos un montón de recuadros en una pizarra, cada uno de un tamaño similar al de un folio.\\
+Empezaremos dibujando el guión gráfico en el recuadro superior izquierdo de la cuadrícula. Este recuadro será el momento en el que los clientes realicen la primera toma de contacto el viernes. Así que… ¿Qué debería ser? ¿Cuál es la mejor escena para presentar el prototipo?.\\
+El truco es avanzar un par de pasos con respecto al comienzo de la solución que vamos a poner a prueba.
+\subsection*{Elegir una escena inicial}
+\begin{enumerate}[\bfseries]
+\item Una búsqueda de páginas web con nuestra página entre los resultados.
+\item Una revista en la que haya un anuncio ofreciendo nuestros servicios..
+\item La App Store con nuestra app.
+\item Un artículo de prensa que mencione nuestros servicios, y posiblemente el de nuestros competidores.
+\item Las novedades de Facebook y Twitter con nuestro producto compartido entre las demás publicaciones.
+\end{enumerate}
+\textbf{Casi siempre resulta una buena idea presentar la solución junto con la idea contra la que está compitiendo.}
+\subsection*{Completar el guión gráfico}
+Crearemos nuestra historia viñeta a viñeta, como si fuera un cómic. El equipo discutirá cada paso a medida que avance.\\
+\textbf{Debemos evitar nuevas ideas en este punto, no merece la pena perder tiempo y malgastar esfuerzos en buscar nuevas ideas el miércoles por la tarde.}\\
+Crear el guión gráfico ocupará casi toda la tarde. Para asegurarnos de que acabamos a las 17.00, seguiremos estas directrices:
+\begin{itemize}
+\item \textbf{Trabajar con lo que tenemos} Resistiremos el impulso de buscar nuevas ideas y trabajaremos con las buenas ideas que tenemos.
+\item \textbf{No escribir a la vez} El guión gráfico debería incluir títulos preliminares y frases importantes, pero no es buena idea intentar perfeccionarlos en grupo.
+\item \textbf{Incluir todos los detalles posibles} Usaremos todos los detalles que podamos en el guión gráfico para que nadie tenga que hacer preguntas.
+\item \textbf{El decisor decide} 
+\item \textbf{Ante la duda, arriesgar} El sprint es un ejercicio fantástico para poner a prueba soluciones arriesgadas que pueden ofrecer una gran recompensa, así que habrá que dar un giro radical a nuestras prioridades.
+\item \textbf{La historia no debe extenderse más de quince minutos} 
+Debemos asegurarnos de que el prototipo se puede probar en un cuarto de hora. 
+\end{itemize}
+\end{multicols}
+\part*{ \center Jueves}
+Durante el jueves deberá adoptar la filosofía de la «falsificación» para convertir dicho guión gráfico en un prototipo realista. A lo largo de los siguientes capítulos explicaremos la mentalidad, la estrategia y las herramientas que hacen posible construir un prototipo en siete horas
+\begin{multicols}{2}
+\section*{Todo es falso}
+La idea es sólo construir una fachada y nada más.
+\subsection*{La mentalidad de prototipo}
+\begin{enumerate}[\bfseries 1.]
+\item \textbf{Se puede hacer un prototipo de cualquier cosa}
+\item \textbf{Los prototipos son desechables}
+\item \textbf{El prototipo debe parecer real}
+\end{enumerate}
+\subsection*{La calidad ricitos de oro}
+Debemos trabajar en una calidad media.
+\section*{Prototipo}
+Si no sabemos muy bien cómo crear el prototipo, empezaremos por aquí:
+\begin{itemize}
+\item Si está en una pantalla (página web, aplicación, software, etc.): usaremos Keynote, PowerPoint o una herramienta para crear páginas web como Squarespace.
+\item Si está en papel (informe, folleto, panfleto, etc.): usaremos Keynote, PowerPoint o un procesador de textos como Microsoft Word.
+\item Si se trata de un servicio (atención al cliente, servicio postventa, cuidados médicos, etc.): escribiremos un guión y utilizaremos a los miembros del equipo del sprint como si fueran actores.
+\item Si se trata de un espacio físico (tienda, mostrador de recepción, etc.): modificaremos un espacio existente.
+\item Si se trata de un objeto (producto físico, maquinaria, etc.): modificaremos un objeto existente, imprimiremos el prototipo con una impresora 3D, o crearemos el prototipo de la publicidad con Keynote o PowerPoint, con fotos o imágenes del objeto.
+\end{itemize}
+\subsection*{Divide y vencerás}
+El Facilitador debería ayudar a repartir entre el equipo del sprint los siguientes trabajos:
+\begin{itemize}
+\item \textbf{Creadores (dos o más)}
+\item \textbf{Pegadores (uno)}, es el responsable de recoger los componentes de manos de los Creadores y unirlos sin que se noten fisuras
+\item \textbf{Redactor(uno)}
+\item \textbf{Recopilador de fuentes (uno o más)} Es la persona que buscara recursos como fotos, productos, etc.
+\item \textbf{Entrevistador(uno)}
+\item \textbf{Guión gráfico} 
+\end{itemize}
+\subsection*{Pegarlo todo}
+Los pequeños errores pueden recordarle al cliente que está delante de un producto falso. Por esta razón el pegador tiene que estar atento a que ningún detalle se vaya de sus manos.
+\subsection*{Hacer un ensayo}
+El público principal del ensayo es el Entrevistador, que será quien hable con los clientes el viernes. El Entrevistador debe familiarizarse con el prototipo y con las preguntas del sprint para sacarles todo el provecho a las entrevistas.
+\end{multicols}
+\part*{\center Viernes}
+Pero el viernes daremos un paso más al entrevistar a los clientes y aprender mientras vemos cómo reaccionan ante nuestro prototipo. Esta prueba hace que toda la semana merezca la pena: al final del día sabremos hasta dónde hemos llegado y qué debemos hacer a continuación.
+\begin{multicols}{2}
+\section*{Small data... en pequeñas porciones}
+Durante el viernes del sprint, el equipo vivirá el mismo salto temporal. Verá cómo los clientes objetivo reaccionan ante las nuevas ideas antes de comprometerse al enorme gasto que supone su lanzamiento.\\
+\textbf{El viernes funciona de la siguiente manera: una persona del equipo ejerce de Entrevistador. Hablará por separado con cinco de los clientes objetivo. Les dejará completar una tarea con el prototipo y les hará unas cuantas preguntas para comprender su punto de vista mientras interactúan con el prototipo.}\\
+\subsection*{Cinco es el número mágico}
+Las entrevistas cara a cara personalizadas son un atajo increíble. Permiten probar una fachada del producto mucho antes de haber construido el objeto en sí, y antes de habernos enamorado de él. Proporcionan resultados significativos en un solo día y ofrecen una visión que no se podría conseguir a través de datos obtenidos a gran escala: por qué algo funciona o deja de funcionar.
+\section*{Entrevistas}
+\subsection*{Entrevista en cinco actos}
+Esta conversación estructurada ayuda al cliente a sentirse cómodo, proporciona una base y asegura que se analiza todo el prototipo. Funciona de la siguiente manera:
+\begin{enumerate}[\bfseries 1.]
+\item \textbf{Un cálido recibimiento} al principio de la entrevista.
+\item Una serie de \textbf{preguntas de contextualización} de carácter general y respuesta abierta acerca el cliente.
+\item \textbf{Presentación del prototipo}
+\item \textbf{Tareas} detalladas para que el cliente reaccione ante el prototipo.
+\item Un \textbf{breve resumen} para recapitular las impresiones y sensaciones generales del cliente. 
+\end{enumerate}
+La acción del viernes se desarrolla en dos habitaciones. En la sala del sprint, el equipo observa las entrevistas a través de cámaras de vídeo. (No hay secretismo que valga, pediremos permiso al cliente para grabar y visionar el vídeo.) La entrevista en sí se lleva a cabo en otra sala, más pequeña.\\
+No se necesita una tecnología especial. Usamos un portátil normal y corriente con una webcam y un software para videoconferencias, de modo que podamos compartir el audio y el vídeo. Esto funciona para páginas web, pero también para dispositivos móviles, robots y otros dispositivos físicos. Solo hay que colocar las cámaras de forma que enfoquen lo que queremos ver.
+\subsubsection*{Primer acto Un cálido recibimiento}
+La gente necesita sentirse cómoda para mostrarse abierta, sincera y crítica, de modo que la primera tarea del Entrevistador es recibir al cliente y tranquilizarlo.\\
+El Entrevistador también le preguntará al cliente si está de acuerdo en que graben la entrevista y sea visionada en otra sala, y también debería asegurarse de que el cliente firma cualquier documento legal que los abogados crean conveniente. Nosotros, por ejemplo, usamos una única página en la que se establece una cláusula de confidencialidad, así como el permiso para realizar la grabación y todo lo relativo a los derechos de autor. Estos documentos pueden firmarse electrónicamente antes de la entrevista.
+\subsubsection*{Segundo acto: Preguntas de contextualización}
+Una buena serie de preguntas de contextualización empiezan con una conversación banal que pasa después al ámbito personal, con preguntas relevantes para el sprint. Si el Entrevistador lo hace bien, el cliente ni se dará cuenta de que la entrevista ha empezado. Creerá que es una conversación normal y corriente.
+\subsubsection*{Tercer acto: Presentación del prototipo}
+Ahora, el Entrevistador ya está preparado para que el cliente empiece con el prototipo. Michael siempre comienza diciendo:
+\begin{center}
+¿Te importaría echarle un vistazo a unos prototipos?\\
+Puede que algunas cosas no funcionen bien del todo... Si te topas con algo que no funciona, te avisaré\\
+No hay respuestas buenas o malas. Como no lo he diseñado yo, no vas a herir mis sentimientos ni me vas a halagar. De hecho, las opiniones sinceras y directas son las más importantes.\\
+Te pido por favor que pienses en voz alta mientras avanzamos. Dime lo que intentas hacer y cómo crees que puedes hacerlo. Si algo te confunde o no comprendes alguna cosa, solo tienes que decírmelo. Si ves algo que te gusta, dímelo también.
+\end{center}
+\subsubsection*{Cuarto acto: Tareas y empujoncitos}
+En el mundo real nuestro producto estará solo ante el peligro: la gente lo verá, lo evaluará y lo usará sin que estemos a su lado para guiar sus pasos. Pedirles a los clientes objetivo que realicen tareas realistas durante una entrevista es la mejor manera de simular esa experiencia en el mundo real.
+\begin{center}
+Supongamos que te encuentras con FitStar en la App Store. ¿Cómo decides si quieres probarla?
+\end{center}
+Al empezar con este empujoncito, el cliente lee y evalúa la descripción de la aplicación, la instala y la prueba.\\
+\textbf{Las tareas demasiado específicas son aburridas tanto para el cliente como para el equipo del sprint}\\
+A medida que el cliente va realizando la tarea, el Entrevistador debería hacerle preguntas para ayudar a que piense en voz alta:
+\begin{itemize}
+\item ¿Qué es? ¿Para qué sirve?
+\item ¿Qué te parece eso?
+\item ¿Qué crees que va a hacer?
+\item Bueno, ¿qué piensas al verlo?
+\item ¿Qué te esperas?
+\item ¿Qué harías a continuación? ¿Por qué?
+\end{itemize}
+\subsubsection*{Quinto acto: Breve resumen}
+Para terminar la entrevista, el Entrevistador debe hacer unas cuantas preguntas a modo de resumen. Durante cada entrevista veremos y escucharemos muchas cosas, y es probable que nos cueste escoger las reacciones, los éxitos y los fracasos más importantes. Con esas preguntas a modo de resumen, los clientes pueden ayudarnos a cribar todo lo que hemos oído. Estas son algunas de las preguntas de resumen:
+\begin{itemize}
+\item ¿Qué me dices de este producto comparado con el que usas normalmente?
+\item ¿Qué te ha gustado del producto? ¿Qué no te ha gustado?
+\item ¿Cómo le describirías el producto a un amigo?
+\item Si te concedieran tres deseos para mejorar el producto, ¿qué pedirías?
+\end{itemize}
+Si probamos dos o más prototipos en las entrevistas, que el Entrevistador repase cada uno de ellos (para refrescar la memoria del cliente) y que haga las siguientes preguntas:
+\begin{itemize}
+\item ¿Cómo compararías los diferentes productos? ¿Cuáles son los pros y los contras?
+\item ¿Qué partes de cada uno combinarías para hacer un producto nuevo o mejorado?
+\item ¿Cuál te ha parecido más útil? ¿Por qué?
+\end{itemize}
+\textbf{Hay una brecha entre la visión y el cliente, para que las dos cosas encajen, hay que hablar con la gente.}
+\section*{Trucos para el facilitador}
+\begin{enumerate}[\bfseries 1.]
+\item \textbf{Ser un buen anfitrión.}
+\item \textbf{Hacer preguntas generales.} \\
+Las dos regls principales son:
+\begin{itemize}
+\item \textit{NO hacer preguntas disyuntivas o que se puedan contestar con un sí o un no. ((¿Harías…?, ¿Crees que…?, ¿Es…?) )} y,
+\item \textit{PREGUNTA las cuestiones clave. (¿Quién…?, ¿Qué…?, ¿Dónde…?, ¿Cuándo…?, ¿Por qué…?, ¿Cómo…?)}
+\end{itemize}  
+\item \textbf{Hacer preguntas inacabadas.} Con una pregunta inacabada se anima al cliente a que piense en voz alta sin influir de ninguna manera. También se aprende mucho guardando silencio. No es obligatorio llenar todos los silencios de la conversación. Es mejor observar, esperar y escuchar.
+\item \textbf{Mentalidad curiosa.} 
+\end{enumerate}
+\section*{Aprender}
+\subsection*{El equipo que observa unido aprende unido}
+ observar la entrevista juntos. Es mucho más rápido, porque todos absorben los resultados a la vez. Las conclusiones serán mejores como grupo, dado que serán siete cerebros trabajando juntos. Se evitan también problemas de credibilidad y de confianza, porque cada miembro del sprint puede ver los resultados con sus propios ojos. Y al final del día, el equipo puede tomar una decisión fundamentada sobre qué hacer a continuación. Los resultados de las entrevistas (y del sprint) están frescos en la memoria a corto plazo de todo el mundo.
+\subsection*{Tomar notas de las entrevisas en grupo}
+Antes de que comience la primera entrevista, dibujaremos una tabla en una pizarra grande de la sala del sprint. Crearemos cinco columnas (una por cada cliente al que vamos a entrevistar) y unas cuantas filas (una por cada prototipo, cada sección del prototipo o cada pregunta del sprint que queramos contestar).\\
+Usaremos un rotulador de distinto color en función de la nota: verde para las positivas, rojo para las negativas y negro para las neutras. Si solo hay rotuladores negros, se puede escribir un signo de menos o de más en una esquina de la nota y dejar el espacio en blanco para las neutras. es recomendable hacer un descanso entre cada entrevista.\\
+\subsection*{Buscamos patrones}
+Pediremos al equipo que se reúna en torno a la pizarra. Todos deberían estar lo bastante cerca para leer las notas. Leeremos en silencio durante unos cinco minutos, y después cada uno anotará en un bloc los patrones que vea. Buscaremos patrones que se repitan en tres o más clientes. Si solo dos clientes han reaccionado de la misma manera pero ha sido una reacción muy fuerte, lo anotaremos también.
+\subsection*{Regreso al futuro}
+El lunes redactamos una lista de preguntas para el sprint. Son las incógnitas que se interponen entre el equipo y la meta a largo plazo. Ahora que hemos realizado la prueba e identificado los patrones en sus resultados, es el momento de repasar las preguntas. Esas cuestiones nos ayudarán a decidir qué patrones son más importantes y nos indicarán el camino de los siguientes pasos.
+\subsection*{Siempre hay ganador}
+Tal vez lo mejor de un sprint sea que no se puede perder. Si probamos el prototipo con clientes, ganaremos el mayor premio de todos: la oportunidad de aprender, en cinco días, si vamos por el buen camino con nuestras ideas. 
+\subsection*{Hecho por las personas}
+\end{multicols}
+\part*{\center Despegue}
+\begin{multicols}{2}
+\begin{itemize}
+\item En vez de ir directo a las soluciones, nos tomaremos tiempo para hacer un mapa del problema y establecer un objetivo inicial. Empezaremos despacio para coger carrerilla después.
+\item En vez de ofrecer ideas en grupo, es mejor trabajar de forma independiente y hacer bocetos detallados de posibles soluciones. Los brainstormings grupales son un método trillado, pero existe uno mejor.
+\item En lugar de realizar debates abstractos y reuniones infinitas, usaremos un sistema de votos y a un Decisor para tomar decisiones claras que reflejen las prioridades del equipo. Es la sabiduría de la multitud sin necesidad de pasar por la reflexión en grupo.
+\item En lugar de anotar todos los detalles antes de poner a prueba nuestra solución, es mejor crear una fachada. Adoptar la mentalidad de prototipo para aprender rápido.
+\item En vez de hacer suposiciones y de confiar en ir por el camino correcto, mientras invertimos una gran cantidad de dinero y de tiempo en nuestras ideas, es mejor poner a prueba un prototipo con clientes buscados a propósito y obtener sus reacciones sinceras.
+\end{itemize}
+\textbf{¡Dios mío, me pregunto qué podríamos
+conseguir entre todos si tuviéramos confianza en nuestras ideas y pusiéramos todo nuestro empeño y energía en llevarlas a cabo tal como han hecho los Wright!}
+
+\part*{\center Listas}
+Llevar a cabo un sprint es, a grandes rasgos, como preparar un bizcocho: si no seguimos la receta nos puede salir algo asqueroso. Si no ponemos el azúcar y los huevos, no podemos esperar que el bizcocho salga bien; de la misma manera, no podemos saltarnos el paso de la creación del prototipo y de la prueba y esperar que nuestro sprint funcione. Durante el primer sprint hay que seguir todos los pasos. Una vez cogido el truco, hay libertad para experimentar, como cualquier repostero avezado. Y si alguien encuentra algo nuevo que mejore el proceso, ¡que nos lo haga saber!
+\section*{Montar el escenario perfecto}
+\begin{itemize}
+\item \textbf{Elegir un desafío importante.} Usaremos los sprints cuando haya algo importante en juego, cuando no tengamos tiempo suficiente o cuando estemos atascados, simple y llanamente
+\item \textbf{Buscar un Decisor (o dos).} Sin un Decisor, las decisiones no serán firmes. Si el Decisor no puede unirse al sprint completo, que nombre un sustituto que sí pueda y que actúe en su nombre.
+\item \textbf{Reclutar al equipo del sprint.} Siete personas o menos. Que tengan distintas habilidades y que formen parte del grupo que trabaja día a día en el proyecto.
+\item \textbf{Incluir expertos extra.} No todos los expertos estarán disponibles para participar durante toda la semana en el sprint. Organizaremos encuentros de quince o veinte minutos el lunes por la tarde con expertos ajenos al proceso. Reservaremos unas dos o tres horas en total.
+\item \textbf{Escoger a un Facilitador.} Será quien controle el tiempo, las conversaciones y el proceso al completo del sprint. Debe ser alguien con capacidad de liderazgo en las reuniones y que sepa cortar discusiones de raíz.
+\item \textbf{Reservar cinco días laborales.} Reservar tiempo para trabajar con el equipo de 10.00 a 17.00 de lunes a jueves, y de 09.00 a 17.00 el viernes.
+\item \textbf{Reservar una sala con dos pizarras.} Reservar una habitación para celebrar el sprint durante toda la semana. Si no tiene dos pizarras, las compraremos o improvisaremos. Reservar una segunda sala para las entrevistas del viernes.
+\end{itemize}
+\subsection*{Ideas clave}
+\begin{itemize}
+\item  \textbf{Nada de distracciones.} No se permiten portátiles, teléfonos móviles ni iPads. Si alguien necesita usarlos, que lo haga fuera de la estancia o que espere a un descanso.
+\item \textbf{Programación estricta.} Una programación estricta aporta confianza en el proceso del sprint. Usar un Time Timer para fomentar la concentración y la sensación de urgencia
+\item \textbf{Planear el almuerzo a la una.} Haremos una pausa para comer algo sobre las 11.30 y fijaremos el almuerzo a la una de la tarde. De esta manera se mantendrá la energía y evitaremos la hora punta de los restaurantes.
+\end{itemize}
+\subsection*{Material para el sprint}
+\begin{itemize}
+\item \textbf{Muchas pizarras.} Las mejores son las que van montadas en la pared, pero también pueden servir las enrollables. Alternativas: pintura blanca de efecto pizarra con rotuladores de borrado en seco, paneles donde colocar las notas adhesivas o papel blanco fijado a la pared. Necesitaremos dos pizarras grandes (o su equivalente).
+\item \textbf{Notas adhesivas rectangulares.} Las clásicas de color amarillo, porque las de colores distraen demasiado. Harán falta quince tacos.
+\item \textbf{Rotuladores negros para pizarras.} Un rotulador de punta gruesa ayudará a escribir las ideas con nitidez y a que el equipo las lea sin problemas. Preferimos los de punta gruesa a los rotuladores permanentes porque son más versátiles, huelen menos y evitan la preocupación de cometer un error accidental al escribir en una pizarra para no poder borrarlo después. Necesitaremos diez rotuladores.
+\item \textbf{Rotuladores verdes y rojos para pizarra.} Para las notas del viernes. Diez de cada color. 
+\item \textbf{Rotuladores negros de punta fina.} Para los bocetos del martes. Que no sean demasiado finos, ya que invita a escribir con letra diminuta. Nos gusta que sean de un grosor intermedio. Harán falta diez.
+\item \textbf{Folios.} Para los bocetos (por desgracia, no todo tiene cabida en una nota adhesiva). Necesitaremos un paquete de cien. Pueden ser de tamaño A4.
+\textbf{Cinta adhesiva.} Para pegar los bocetos de las soluciones en la pared. Un rollo será suficiente. 
+\item \textbf{Pegatinas redondas pequeñas (de 5 mm).} Para los votos del mapa térmico. Deben ser del mismo color (nos gusta el azul). Necesitaremos unas doscientas.
+\item \textbf{Pegatinas redondas grandes (2 cm).} Para los votos del ejercicio ¿Cómo podríamos…?, la votación silenciosa y los supervotos. Deben ser del mismo color, y de otro color distinto del de las pegatinas pequeñas (nos gusta el rosa o el naranja). Serán necesarias unas cien.
+\item \textbf{Time Timers} (u otro mecanismo para cronometrar el tiempo). Para seguir el horario previsto durante el sprint. Harán falta dos: uno para las actividades puntuales y otro para señalar los descansos.
+\item \textbf{Tentempiés saludables.} Nos ayudarán a mantener el nivel de energía a lo largo del día. Necesitamos comida de verdad, como manzanas, plátanos, yogures, queso y frutos secos. Si necesitamos un buen empujón, también podemos añadir chocolate negro, café y té. Nos aseguraremos de que haya de sobra para todos.
+\end{itemize}
+\end{multicols}
+\vspace{2cm}
+\section*{\center Lunes}
+\begin{multicols}{2}
+\textbf{Nota: la programación es aproximada. No hay que preocuparse si se tarda algo más. Hay que hacer un descanso cada hora u hora y media (o sobre las 11.30 y las 15.30 todos los días).}
+\paragraph{10:00}
+\begin{itemize}
+\item \textbf{Escribir esta lista en una pizarra.} Al terminar, borrar este primer elemento. Es sencillo. Seguiremos borrando elementos a lo largo del día.
+\item \textbf{Presentaciones.} Si alguien no conoce a los demás, haremos una ronda de presentaciones. Señalaremos quién es el Facilitador y el Decisor y explicaremos sus funciones.
+\item \textbf{Explicar el sprint.} Describir la dinámica de los cincos días (se pueden usar las diapositivas disponibles en thesprintbook.com). Repasar esta lista y describir brevemente cada actividad.
+\end{itemize}
+\paragraph{10:15}(minuto arriba o abajo)
+\begin{itemize}
+\item \textbf{Establecer una meta a largo plazo.} Hay que ser optimista. Pregunta: ¿Por qué estamos haciendo este proyecto? ¿Dónde queremos estar dentro de seis meses? Escribir la meta a largo plazo en la pizarra.
+\item \textbf{Elaborar una lista con las preguntas del sprint.} Hay que ser \textbf{pesimista}. Pregunta: ¿En qué podemos fallar? Convertiremos estos miedos en preguntas que podíamos responder a lo largo de esta semana. Escribirlas en la pizarra.
+\end{itemize}
+\paragraph{11:30}(mas o menos)
+\begin{itemize}
+\item \textbf{Dibujar un mapa.} Situaremos a los clientes y a los jugadores clave en la parte izquierda. Dibujar el final, con la meta conseguida, a la derecha. El último paso es hacer un diagrama en la parte central que muestre cómo interactúan los clientes con el producto. Debe ser sencillo: que tenga entre cinco y quince pasos.
+\end{itemize}
+\paragraph{13:00}
+\begin{itemize}
+\item \textbf{Descanso para almorzar.} Si es posible, comeremos juntos (es divertido). No olvidar que lo mejor es un menú ligero para mantener la energía durante la tarde. Si a alguien le entra hambre después, podrá tomar un tentempié.
+\end{itemize}
+\paragraph{14:00}
+\begin{itemize}
+\item \textbf{Preguntar a los expertos.} Hablar con los expertos que forman parte del equipo y con los invitados a los que hemos citado. Cada entrevista debe durar entre quince y treinta minutos. Preguntaremos sobre la visión, el análisis de mercado, el funcionamiento de las cosas y los esfuerzos previos. Imaginemos que somos periodistas. Actualizaremos la meta a largo plazo, las preguntas y el mapa a medida que avancemos.
+\item \textbf{Explicar el ejercicio ¿Cómo podríamos…?.} Repartir los rotuladores y las notas adhesivas. Los problemas deben convertirse en oportunidades. Que todos escriban en la esquina superior izquierda de la nota adhesiva CP. Una idea por nota adhesiva. Haremos un taco a medida que vayamos escribiendo.
+\end{itemize}
+\paragraph{16.00}(aproximadamente)
+\begin{itemize}
+\item \textbf{Organizar las notas del ejercicio anterior.} Las pegaremos en una pared sin importar el orden. Después, las organizaremos por temas. Los títulos se pondrán a medida que dichos temas vayan surgiendo. No hay que ser perfecto. El proceso debe durar unos diez minutos.
+\item \textbf{Votación acerca de las notas del ejercicio ¿Cómo
+podríamos…?.} Cada miembro del equipo tiene dos votos, puede votar sus propias notas o incluso puede votar dos veces la misma. Trasladar las notas ganadoras al mapa.
+\end{itemize}
+\paragraph{16.30}(más o menos)
+\begin{itemize}
+\item \textbf{Elegir un objetivo.} Rodearemos con un círculo al cliente más importante y con otro una de las ideas clave del mapa. El equipo puede opinar, pero el Decisor tiene la última palabra. 
+\end{itemize}
+\subsection*{IDEAS CLAVE}
+\begin{itemize}
+\item  \textbf{Empezar por el final.} Empezaremos con el resultado final e imaginaremos qué riesgos se presentarán a lo largo del camino. Después, retrocederemos para ir descubriendo qué pasos son necesarios para llegar hasta la meta.
+\item \textbf{Nadie lo sabe todo.} Ni siquiera el Decisor. El conocimiento del equipo del sprint se encuentra encerrado en los cerebros de los miembros del equipo. Para resolver los grandes problemas, habrá que liberar dicho conocimiento y construir un entendimiento compartido.
+\item \textbf{Convertir los problemas en oportunidades.} Escucharemos bien para identificar los problemas. Los convertiremos en oportunidades mediante el ejercicio ¿Cómo podríamos…?.
+\end{itemize}
+\subsection*{TRUCOS PARA EL FACILITADOR}
+\begin{itemize}
+\item \textbf{Pedir permiso al grupo para ejercer de Facilitador.} Debe explicar que va a intentar mantener al equipo en la senda correcta, lo que hará que el sprint sea más productivo para todos.
+\item \textbf{Siempre atento.} Tendrá que resumir las discusiones del equipo y convertirlas en notas escritas en la pizarra. Puede improvisar cuando lo necesite. Se preguntará en todo momento ¿Cómo
+puedo expresar eso?.
+\item \textbf{Formular preguntas obvias.} Debe fingir que no sabe nada y preguntar constantemente ¿Por qué?.
+\item \textbf{Cuidar a las personas.} El equipo debe mantenerse con el nivel de energía óptimo. Establecerá descansos cada sesenta o noventa minutos y les recordará que coman un tentempié o que elijan un almuerzo ligero.
+\item \textbf{Decidir y avanzar.} Las soluciones lentas merman la energía y amenazan la programación del sprint. Si el grupo se sume en un debate largo, le pedirá al Decisor que tome una decisión.
+\end{itemize}
+\end{multicols}
+\section*{ \center Martes}
+\begin{multicols}{2}
+\paragraph{10:00}
+\begin{itemize}
+\item \textbf{Demos rápidas.} Buscaremos grandes soluciones en distintas empresas, la nuestra incluida. Tres minutos por demo. Las buenas ideas se plasmarán con un dibujo en la pizarra.
+\end{itemize}
+\paragraph{12:30}(aproximadamente)
+\begin{itemize}
+\item \textbf{Dividir o agrupar.} Hay que decidir quién esbozará cada parte del mapa. Si vamos a trabajar con un gran pedazo del mapa durante el sprint, lo dividiremos y cada miembro del equipo se hará cargo de una sección.
+\end{itemize}
+\paragraph{13:00}
+\begin{itemize}
+\item \textbf{Almuerzo.}
+\end{itemize}
+\paragraph{14:00}
+\begin{itemize}
+\item \textbf{Bocetos en cuatro pasos.} Explicar brevemente los cuatro pasos. Todo el mundo va a participar. Cuando hayamos acabado, agruparemos los bocetos y los dejaremos para el día siguiente.
+\begin{enumerate}
+\item \textbf{Notas.} Veinte minutos. Un paseo en silencio por la sala para ir tomando notas.
+\item \textbf{Ideas.} Veinte minutos. Dibujaremos en silencio y de forma individual algunas ideas básicas, rodeando las más prometedoras con un círculo.
+\item \textbf{Desvarío en 8.} Ocho minutos. Doblaremos un folio hasta obtener ocho recuadros. De forma individual dibujaremos en cada recuadro una variante de nuestra mejor idea. Un minuto para cada recuadro.
+\item \textbf{Esbozar una solución.} De treinta a noventa minutos. Crearemos un guión gráfico pegando tres notas adhesivas en un folio. El boceto debe ser explicativo y anónimo. Da igual que sea feo. Las palabras importan. Que tenga un título atractivo.
+\end{enumerate}
+\end{itemize}
+\subsection*{IDEAS CLAVE}
+\begin{itemize}
+\item \textbf{Mezclar y mejorar.} Todos los grandes inventos se basan en ideas existentes.
+\item \textbf{Todo el mundo puede hacer un boceto.} Casi todos los bocetos de las soluciones consisten en recuadros y texto.
+\item \textbf{Lo concreto es mejor que lo abstracto.} Los bocetos se utilizarán para convertir las ideas abstractas en soluciones concretas que puedan ser evaluadas por otros.
+\item \textbf{Trabajo individual en grupo.} Los brainstormings grupales no funcionan. Cada miembro del equipo debe trabajar a solas para desarrollar sus propias soluciones.
+\end{itemize}
+\paragraph{SELECCIONAR CLIENTES PARA LA PRUEBA DEL VIERNES}
+\begin{itemize}
+\item \textbf{Poner a alguien al cargo de la selección.} Supondrá una o dos horas extra de trabajo durante los días del sprint.
+\item \textbf{Reclutar clientes a través de las páginas de anuncios.} Publicar un anuncio genérico que llame la atención de una audiencia numerosa. Podemos ofrecer una gratificación (usamos una tarjeta regalo de cien dólares). Debe tener un enlace al cuestionario de selección.
+\item \textbf{Preparar un cuestionario de selección.} Debe incluir preguntas que nos ayuden a identificar a los clientes ideales, pero sin revelar lo que estamos buscando.
+\item \textbf{Reclutar clientes a través de nuestra red de contactos.} Si necesitamos expertos o clientes ya existentes, usaremos nuestra red de contactos para encontrarlos.
+\item \textbf{Establecer contacto con un mensaje de correo electrónico o una llamada telefónica.} A lo largo de la semana, hay que ponerse en contacto con cada cliente para asegurarnos de que va a participar en la prueba del viernes.
+\end{itemize}
+\end{multicols}
+\section*{\center Miercoles}
+\begin{multicols}{2}
+\paragraph{10:30}
+\begin{itemize}
+\item \textbf{Decisión adhesiva.} Con estos cinco pasos podremos elegir las soluciones más potentes:
+\begin{itemize}
+\item \textbf{Museo de arte.} Pegar los bocetos de la soluciones a la pared con cinta adhesiva formando una hilera larga.
+\item \textbf{Mapa térmico.} Todos los miembros del equipo deben evaluar en silencio los bocetos y pegar las pegatinas redondas pequeñas junto aquellas partes que más les gusten.
+\item \textbf{Evaluación veloz.} Tres minutos por boceto. Discutir en grupo los puntos fuertes de cada solución. Anotar las ideas y las objeciones más importantes. Al final, si quedan dudas, podremos preguntar a la persona que ha realizado el boceto.
+\item \textbf{Votación silenciosa.} Cada miembro del equipo elige en silencio su idea preferida. A la vez, todos los miembros del grupo colocan una pegatina grande junto a la idea para que quede constancia de su voto (no vinculante).
+\item \textbf{Supervoto.} El Decisor tiene tres pegatinas grandes con sus iniciales en ellas. El prototipo y la prueba de la solución que se lleven a cabo serán los elegidos por él.
+\end{itemize}
+\end{itemize}
+\paragraph{11:30}(aproximadamente)
+\begin{itemize}
+\item \textbf{Separar a los ganadores de los A lo mejor más adelante.}
+Agrupar los bocetos que tengan los supervotos.
+\item \textbf{Pelea callejera o todos en uno.} Decidir si los ganadores pueden encajar en un único prototipo o si las ideas opuestas requieren dos o tres prototipos que compitan en una Pelea callejera.
+\item \textbf{Crear marcas falsas.} En una Pelea callejera usaremos el sistema de Anotar y votar para escoger los nombres de marcas falsas. 
+\item \textbf{Anotar y votar.} Utilizaremos esta técnica cada vez que necesitemos reunir ideas con rapidez y reducirlas para tomar una decisión. Los miembros del grupo escribirán sus ideas individualmente y las trasladaremos a la pizarra. Votaremos, pero será el Decisor quien elija la ganadora.
+\end{itemize}
+\paragraph{13:00}
+\begin{itemize}
+\item \textbf{Almuerzo.}
+\end{itemize}
+\paragraph{14:00}
+\begin{itemize}
+\item \textbf{Elaborar un guión gráfico.} Usaremos un guión gráfico para planear nuestro prototipo.
+\item \textbf{Dibujar una cuadrícula.} Debe haber unos quince rectángulos en una pizarra. Elegir una escena inicial. Debemos pensar en cómo descubren los clientes el producto o los servicios. La escena inicial debe ser simple: una búsqueda online, un artículo periodístico, la estantería de un supermercado, etc..
+\item \textbf{Completar el guión gráfico.} Siempre que se pueda, trasladar los bocetos existentes al guión gráfico. Dibujaremos cuando eso sea imposible, pero sin escribir. Incluiremos los detalles suficientes para ayudar a que el equipo desarrolle el prototipo el jueves. Cuando surjan dudas, lo mejor es arriesgarse. La historia completa debe tener de cinco a quince pasos.
+\end{itemize}
+\subsection*{TRUCOS PARA EL FACILITADOR}
+\begin{itemize}
+\item \textbf{No agotar la batería.} Cada decisión provoca una pérdida de energía. Si aparecen decisiones difíciles de tomar, que sea el Decisor quien asuma el control. Si aparecen pequeñas decisiones, las dejaremos para mañana. No hay que permitir que se cuelen ideas abstractas. Trabajaremos con lo que tenemos.
+\end{itemize}
+\end{multicols}
+\section*{\center Jueves}
+\begin{multicols}{2}
+\paragraph{10:00}
+\begin{itemize}
+\item \textbf{Escoger las herramientas adecuadas.} Es mejor no utilizar las herramientas que usamos todos los días. Están pensadas para obtener algo de calidad. En su lugar, usaremos herramientas que sean rápidas y permitan flexibilidad.
+\item \textbf{Divide y vencerás.} Hay que asignar los trabajos: Creador, Pegador, Redactor, Recopilador de fuentes y Entrevistador. También se puede dividir el guión gráfico en escenas más pequeñas y asignar cada una a los distintos miembros del equipo.
+\item \textbf{¡Prototipo!.}
+\end{itemize}
+\paragraph{13:00}
+\begin{itemize}
+\item \textbf{Almuerzo}.
+\end{itemize}
+\paragraph{14:00}
+\begin{itemize}
+\item \textbf{¡Prototipo!}
+\item \textbf{Pegarlo todo.} Es fácil perder la visión de conjunto una vez distribuido el trabajo. El Pegador se asegura de que no se pierda la calidad y de que todas las partes tengan sentido una vez unidas.
+\end{itemize}
+\paragraph{15:00}(aproximadamente)
+\begin{itemize}
+\item \textbf{Hacer un ensayo.} Hay que probar el prototipo y buscar errores. Nos aseguraremos de que lo ven tanto el Entrevistador como el Decisor.
+\item \textbf{Acabar el prototipo.}
+\end{itemize}
+\paragraph{A lo largo del día}
+\begin{itemize}
+\item \textbf{Escribir el guión para la entrevista.} El Entrevistador se prepara escribiendo un guión para la prueba del viernes. 
+\item \textbf{Recordar a los clientes que deben presentarse para participar en la prueba del viernes.} Un mensaje de correo electrónico está bien, pero una llamada telefónica es mejor.
+\item \textbf{Comprar tarjetas regalo para los clientes.} Normalmente regalamos tarjetas por un valor de cien dólares.
+\end{itemize}
+\subsection*{IDEAS CLAVE}
+\begin{itemize}
+\item \textbf{La mentalidad de prototipo.} Se puede hacer un prototipo de cualquier cosa. Los prototipos son desechables. Construiremos lo justo para aprender, no más, pero el prototipo debe parecer real.
+\item \textbf{La calidad Ricitos de Oro.} Crearemos un prototipo con la calidad justa para obtener reacciones sinceras de los clientes.
+\end{itemize}
+\end{multicols}
+\section*{\center Viernes}
+\begin{multicols}{2}
+\subsection*{LABORATORIO IMPROVISADO}
+\begin{itemize}
+\item \textbf{Dos habitaciones.} En la sala del sprint, el equipo visionará las entrevistas en directo. Necesitaremos una segunda sala, más pequeña, donde llevar a cabo las entrevistas. Esa habitación debe estar limpia y resultar cómoda para los clientes.
+\item \textbf{Instalar cámaras.} Colocaremos una webcam para poder observar las reacciones de los clientes. Si los clientes van a usar un smartphone, un iPad o cualquier otro dispositivo, prepararemos un visualizador de documentos y un micrófono.
+\item \textbf{Preparar la conexión de vídeo.} Utilizaremos cualquier software para videoconferencias para poder ver la entrevista desde la sala del sprint. Nos aseguraremos de tener una buena calidad de sonido y de que el audio y el vídeo sean en un solo sentido.
+\end{itemize}
+\subsection*{IDEAS CLAVE}
+\begin{itemize}
+\item \textbf{Cinco es el número mágico.} Tras entrevistar a cinco
+clientes, surgirán patrones. Haremos las cinco entrevistas en un día.
+\item \textbf{El equipo que observa unido, aprende unido.} No hay que disolver el equipo del sprint. Observar juntos es más eficiente y sacaremos mejores conclusiones.
+\item \textbf{Siempre hay ganador.} El prototipo puede ser un fracaso eficiente o un éxito a medias. En cualquier caso, aprenderemos lo necesario para el siguiente paso.
+\end{itemize}
+\subsection*{ENTREVISTAS EN CINCO ACTOS}
+\begin{itemize}
+\item \textbf{Un cálido recibimiento.} Dar la bienvenida al cliente para que se sienta a gusto. Le explicaremos que buscamos una opinión sincera.
+\item \textbf{Preguntas de contextualización.} Empezaremos hablando de cosas sin importancia para seguir después con las preguntas relacionadas con el prototipo que queremos poner a prueba (véase). Presentación del prototipo. El cliente tiene que saber que algunas cosas tal vez no funcionen y que no es a él a quien se está poniendo a prueba. Le pediremos que piense en voz alta.
+\item \textbf{Tareas y empujoncitos.} Observar al cliente mientras trata de hacerse con el prototipo. Empezaremos con un leve empujoncito y con preguntas que le ayuden a pensar en voz alta.
+\item \textbf{Breve resumen.} Formularemos preguntas que inviten al cliente a resumir. Después, le daremos las gracias y la tarjeta regalo y lo acompañaremos a la salida.
+\end{itemize}
+\subsection*{TRUCOS PARA EL ENTREVISTADOR}
+\begin{itemize}
+\item \textbf{Ser un buen anfitrión.} La comodidad del cliente es lo primero durante la entrevista. Usaremos el lenguaje corporal y una sonrisa frecuente para parecer más amigables.
+\item \textbf{Hacer preguntas generales.} Preguntaremos por el quién, el qué, el dónde, el cuándo, el cómo o el porqué, y no plantearemos
+cuestiones que se respondan con un sí o un no, ni tampoco que tengan múltiples respuestas.
+\item \textbf{Hacer preguntas inacabadas.} Dejaremos algunas preguntas en el aire. El silencio muchas veces anima al cliente a hablar sin predisponerlo.
+\item \textbf{Mentalidad curiosa.} Nos mostraremos fascinado por las reacciones y las ideas del cliente.
+\end{itemize}
+\subsection*{OBSERVADORES DE LA ENTREVISTA}
+\paragraph{Antes de la primera entrevista}
+\begin{itemize}
+\item \textbf{Dibujar una tabla en la pizarra.} Una columna para cada cliente. Una fila para cada prototipo y sección del prototipo.
+\end{itemize}
+\paragraph{Durante cada entrevista}
+\begin{itemize}
+\item \textbf{Tomar notas durante la entrevista.} Entregar al equipo notas adhesivas y rotuladores. Escribiremos palabras textuales,
+observaciones e interpretaciones, indicando si es positivo o negativo.
+\end{itemize}
+\paragraph{Después de cada entrevista}
+\begin{itemize}
+\item \textbf{Pegar las notas.} Pegaremos las notas en la fila y columna correctas de la tabla de la pizarra. Someteremos cada entrevista a una breve discusión, pero sin sacar conclusiones.
+\item \textbf{Breve descanso.}
+\end{itemize}
+\paragraph{Al final de la jornada}
+\begin{itemize}
+\item \textbf{Buscar patrones.} Al concluir las entrevistas leeremos la pizarra en silencio, anotaremos los patrones y crearemos una lista con todos los patrones que el equipo ha identificado. Los etiquetaremos como positivos, negativos o neutros.
+\item \textbf{Conclusión.} Revisaremos la meta a largo plazo y las preguntas del sprint. Los compararemos con los patrones que hemos observado durante las entrevistas y decidiremos cómo conviene proceder tras el sprint. Para terminar, lo anotaremos.
+\end{itemize} 
+\end{multicols}
+\end{document}

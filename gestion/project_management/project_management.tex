@@ -1,0 +1,273 @@
+\documentclass[10pt]{book}
+\usepackage[text=17cm,left=2.5cm,right=2.5cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} %configuración página
+\usepackage{latexsym,amsmath,amssymb,amsfonts} %(símbolos de la AMS).7
+\parindent = 0cm  %sangria
+\usepackage[T1]{fontenc} %acentos en español
+\usepackage[spanish]{babel} %español capitulos y secciones
+\usepackage{graphicx} %gráficos y figuras.
+
+%---------------FORMATO de letra--------------------%
+
+\usepackage{lmodern} % tipos de letras
+\usepackage{titlesec} %formato de títulos
+\usepackage[backref=page]{hyperref} %hipervinculos
+\usepackage{multicol} %columnas
+\usepackage{tcolorbox, empheq} %cajas
+\usepackage{enumerate} %indice enumerado
+\usepackage{marginnote}%notas en el margen
+\tcbuselibrary{skins,breakable,listings,theorems}
+\usepackage[Bjornstrup]{fncychap}%diseño de portada de capitulos
+\usepackage[all]{xy}%flechas
+\counterwithout{footnote}{chapter}
+\usepackage{xcolor}
+
+%--------------------GRÀFICOS--------------------------
+
+\usepackage{tkz-fct}
+
+%---------------------------------
+
+\titleformat*{\section}{\LARGE\bfseries\rmfamily}
+\titleformat*{\subsection}{\Large\bfseries\rmfamily}
+\titleformat*{\subsubsection}{\large\bfseries\rmfamily}
+\titleformat*{\paragraph}{\normalsize\bfseries\rmfamily}
+\titleformat*{\subparagraph}{\small\bfseries\rmfamily}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+%------------------------------------------
+
+\renewcommand{\labelenumi}{\Roman{enumi}.}%primer piso II) enumerate
+\renewcommand{\labelenumii}{\arabic{enumii}$)$}%segundo piso 2)
+\renewcommand{\labelenumiii}{\alph{enumiii}$)$}%tercer piso a)
+\renewcommand{\labelenumiv}{$\bullet$}%cuarto piso (punto)
+
+%----------Formato título de capítulos-------------
+
+\usepackage{titlesec}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\titleformat{\chapter}[display]
+{\titlerule[2pt]
+\vspace{4ex}\bfseries\sffamily\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}
+
+\usepackage[htt]{hyphenat}
+
+\begin{document}
+\normalfont
+\input xy
+\xyoption{all}
+\author{\Large Apuntes por FODE}
+\title{Project Management}
+\date{}
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+\let\cleardoublepage\clearpage
+\tableofcontents								%indice
+
+
+%------------------------------------------
+ 
+\let\cleardoublepage\clearpage
+
+\chapter{Inicio del Proyecto}
+
+    \section{Identificar los objetivos del proyecto}
+    Se necesita una imagen clara de lo que está tratando de lograr, como lo va a lograr y como sabe cuándo se a logrado.
+
+    \subsection{Pasos}
+    \begin{enumerate}[\bfseries 1.]
+	\item \textbf{Objetivo del proyecto.-} Es el resultado deseado del proyecto. Es lo que le pidieron que haga y lo que está tratando de lograr.
+	\item \textbf{Se debe tener muy claro el objetivo del proyecto.-} Los objetivos bien definidos son tanto específicos como medibles. 
+	\item Una vez que tenga los objetivos definidos, es hora de examinar el proyecto. \textbf{Entregables.-} Se refiere a los resultados tangibles del proyecto. En otras palabras, es lo que se produce o presenta al final de una tarea, evento o proceso. 
+	\item \textbf{Hay dos tipos de de entragables.-} Un informe, cuando se alcanza una meta puede ver visiblemente los resultados documentados en un cuadro, gráfico o presentación. 
+    \end{enumerate}
+
+    \subsection{Cómo establecer objetivos SMART}
+    El método SMART agrega tres consideraciones para el éxito:
+    \begin{enumerate}[\bfseries 1.]
+	\item \textbf{Ser específico.}
+	\item \textbf{Ser medible.}
+	\item \textbf{Ser alcanzables.-} Deben ser objetivos desafiantes.
+	\item \textbf{Ser relevantes.-} ¿Tiene sentido alcanzar este objetivo?.
+	\item \textbf{Estar sujetos a plazos.}\\\\
+    \end{enumerate}
+
+    \begin{enumerate}[\bfseries 1.]
+
+	\item Los objetivos \textbf{específicos} deben responder al menos dos de las preguntas siguientes.
+	\begin{itemize}
+	    \item ¿Qué quiero lograr?.
+	    \item ¿Por qué es esto un objetivo?.
+	    \item ¿Tiene una razón, propósito o beneficio específico?.
+	    \item ¿quién esta involucrado y quién es el destinatario: empleados, clientes, al comunidad en general?
+	    \item ¿Dónde debería cumplirse el objetivo?
+	    \item ¿En qué medida? ¿Qué son los requisitos y limitaciones?.\\
+	\end{itemize}
+	
+	\item Puedo saber si una meta es \textbf{medible} preguntando:
+	\begin{itemize}
+	    \item ¿Cuántos y cómo sabré cuando se cumpla?.
+	    \item ¿Aprendiste a tocar guitarra? Si o no.
+	    \item Ponga un punto de referencia para el inicio de la métrica.\\
+	\end{itemize}
+	
+	\item Una pista para ayudar a descubrir si tu objetivo es \textbf{alcanzable} es preguntar
+	    \begin{itemize}
+		\item ¿Cómo se puede lograr?
+		\item Divida el objetivo en partes pequeñas y ver si tiene sentido.
+	    \end{itemize}
+
+	\item Es \textbf{relevante}
+	    \begin{itemize}
+		\item ¿Tiene sentido intentar alcanzar este objetivo?.
+		\item Piense en como se alinea con otras metas, prioridades y valores.
+		\item ¿La meta parece valiosa?.
+		\item ¿El esfuerzo involucrado equilibra el beneficio?.
+		\item ¿Coincide con el de su organización?.
+		\item Hay una audiencia que continuará utilizar el producto o servicio una vez entragado?
+		\item La empresa ¿podrá sostener el proyecto en el tiempo?.
+	    \end{itemize}
+
+	\item \textbf{Límite de Tiempo} 
+	    \begin{itemize}
+		\item El tiempo y las métricas van de la mano.
+	    \end{itemize}
+    \end{enumerate}
+
+    \subsection{Creación de OKR para su proyecto}
+    Se definirá y creará objetivos y entregables de proyectos medibles. OKR -> Objetivos y resultados clave. Combinan un objetivo y una métrica para determinar un resultado medible. 
+	\subsubsection{Creación de OKR para su proyecto}
+	    \begin{enumerate}[\bfseries 1.]
+		\item \textbf{Fija tus objetivos.-} deben cumplir los siguientes criterios
+		    \begin{itemize}
+			\item Aspiracionales.
+			\item Alineado con los objetivos de la organización.
+			\item Acción orientada.
+			\item Concretos.
+			\item Significativos.
+		    \end{itemize}
+
+		\item Para dar forma a cada objetivo pregúntese.
+		\begin{itemize}
+		    \item ¿El objetivo ayuda a lograr las metas generales del proyecto?
+		    \item ¿El objetivo se alinea con los OKR de la empresa y del departamento?
+		    \item ¿Es el objetivo inspirador y motivador?
+		    \item ¿Conseguir el objetivo tendrá un impacto significativo?
+		\end{itemize}
+	    \end{enumerate}
+
+	    \paragraph{Ejemplos}
+	    \begin{itemize}
+		\item Cree el software de seguridad de datos más seguro.
+		\item Mejorar continuamente la analítica web y las conversiones.
+		\item Brindar un servicio de alto rendimiento.
+		\item Crea una aplicación disponible universalmente.
+		\item Incrementar el alcance del mercado.
+		\item Logre las mejores ventas entre los competidores de la región.
+	    \end{itemize}
+
+	\subsubsection{Desarrollar resultados clave}
+	A continuación agregue 2-3 resultados clave para cada objetivo. Los resultados clave deben estar sujetos a plazos.
+	\begin{enumerate}[\bfseries 1.]
+	\item Los resultados clave sólidos cumplen los siguientes criterios.
+	\begin{itemize}
+	    \item Orientado a resultados, no una tarea.
+	    \item Medible y verificable.
+	    \item Específico y de duración determinada.
+	    \item Agresivo pero realista.
+	\end{itemize}
+	
+	\item Para ayudar a dar forma a sus resultados clave, pregúntese:
+	\begin{itemize}
+	    \item ¿Qué significa el éxito?
+	    \item ¿Qué métricas probarían que hemos logrado el objetivo con éxito?
+	\end{itemize}
+	\end{enumerate}
+
+	    \paragraph{Ejemplos}
+	    \begin{itemize}
+		\item $X\%$ de nuevos registros en el primer trimestre posterior al lanzamiento
+		\item Aumentar la inversión de los anunciantes en un $X\%$.
+		\item La adopción de nuevas funciones es de al menos un $X\%$. 
+		\item Los clientes informan un máximo de 2 errores críticos por Sprint.
+		\item Mantener la tasa de cancelación de suscripción al boletín en $X\%$.
+	    \end{itemize}
+
+	    \textbf{El objetivo describe lo que quiere hacer y el resultado clave describe cómo sabrá que lo hizo.}
+    
+    \section{Apuntes}
+    \begin{itemize}
+	\item Utilizamos los OKR para ayudar a las personas a mantenerse enfocadas en los objetivos más importantes y evitar que se distraigan con objetivos urgentes pero menos importantes.
+	\item Los OKR tienen dos variantes y es importante diferenciarlas:
+	    \begin{enumerate}
+		\item Los compromisos son OKR que acordamos que se cumplirán, y estaremos dispuestos a ajustar los cronogramas y los recursos para asegurarnos de que se cumplan.
+		\item Por el contrario, los OKR aspiracionales expresan cómo nos gustaría que se viera el mundo, aunque no tenemos una idea clara de cómo llegar allí y / o los recursos necesarios para entregar el OKR.
+	    \end{enumerate}
+    \end{itemize}
+
+\section{Alcance del proyecto}
+\begin{itemize}
+    \item Un alcance claramente definido describe todos los detalles de un proyecto y regula lo que puede ser agregado o eliminado a medida que avanza.
+    \item Es un entendimiento acordado sobre lo que es incluido o excluido de un proyecto.
+    \item El alcance ayuda a garantizar que su proyecto está claramente definido y trazado.
+    \item Incluye el \textbf{cronograma del proyecto, presupuestos y recursos.}\\\\
+\end{itemize}
+
+\begin{enumerate}[\bfseries 1.]
+    \item Preguntas para determinar el alcance del proyecto.
+    \begin{itemize}
+	\item ¿De dónde surgió el proyecto?
+	\item ¿Por qué es necesario?
+	\item ¿Qué se espera lograr con el proyecto?
+	\item ¿Qué tiene en mente el patrocinador del proyecto?
+	\item ¿Quién aprueba los resultados finales?\\\\
+    \end{itemize}
+\end{enumerate}
+    Tomarse el tiempo para hacer preguntas y asegurarse de que comprende el alcance del proyecto ayudará a reducir los gastos, el reproceso, la frustración y la confusión. Asegúrese de comprender quién , qué , cuándo , dónde , por qué y cómo se aplica al alcance.\\
+
+    \subsection{Seguimiento y mantenimiento del alcance del proyecto}
+    \begin{enumerate}[\bfseries 1.]
+	\item Se debe identificar los cambios de alcance y ser proactivo.
+	\item Para combatir el deslizamiento del alcance (cambiar el proyecto después que comienza), es bueno saber que hay dos fuentes principales de las cuales vienen.
+	\begin{itemize}
+	    \item Externo.- Se debe tener los objetivos bien específicos para que las partes interesadas no cambien el rumbo del proyecto.
+	    \item Interno.
+	\end{itemize}
+    \end{enumerate}
+
+    \subsection{Gestionar cambios en el alcance de un proyecto}
+    \begin{itemize}
+	\item La gestión del alcance va de la mano con el establecimiento de objetivos.\\\\
+    \end{itemize}
+    \begin{enumerate}[\bfseries 1.]
+	\item Para decidir si un cambio de alcance es aceptable y qué impacto tendrá, se deber aplicar el modelo de triple restricción.
+	\begin{enumerate}
+	    \item \textbf{Alcance}.
+	    \item \textbf{Tiempo.} Se refiere al cronograma y los plazos del proyecto.
+	    \item \textbf{Costo.} Incluye el presupuesto y también cubre los recursos y las personas que trabajarán en el proyecto.
+	\end{enumerate}
+	\item Comprender cómo el cambio de una restricción afecta a las otras dos limitaciones es clave.
+	\item Necesita una comprensión clara de las prioridades del proyecto.
+	\item A pesar de todo si hay una buena justificación se pueden realizar cambios.
+    \end{enumerate}
+    
+    \subsection{La importancia de mantenerse dentro del alcance}
+    \begin{itemize}
+	\item El deslizamiento del alcance es cuando el alcance cambia después de haber comenzado el proyecto.
+    \end{itemize}
+
+    \subsection{Estrategias para controlar el deslizamiento del alcance}
+    \begin{itemize}
+	\item \textbf{Defina los requisitos de su proyecto.} Comuníquese con sus partes interesadas o clientes para averiguar exactamente qué quieren del proyecto y documente esos requisitos durante la fase de inicio. 
+	\item \textbd{Establezca un cronograma de proyecto claro.} La gestión del tiempo y las tareas son esenciales para ceñirse al alcance de su proyecto. Su cronograma debe describir todos los requisitos de su proyecto y las tareas que son necesarias para lograrlos.
+	\item \textbf{Determine qué está fuera de alcance.} Asegúrese de que las partes interesadas, los clientes y el equipo del proyecto comprendan cuándo los cambios propuestos están fuera de alcance. Llegue a un acuerdo claro sobre los impactos potenciales al proyecto y documente su acuerdo. 
+	\item \textbf{Brindar  alternativas.} Sugiera soluciones alternativas a su cliente o accionista. También puede ayudarlos a considerar cómo los cambios propuestos podrían crear riesgos adicionales. Realice un análisis de costo-beneficio, si es necesario.
+	\item \textbf{Configure un proceso de control de cambios.} Durante el transcurso de su proyecto, algunos cambios son inevitables. Determine el proceso de cómo se definirá, revisará y aprobará (o rechazará) cada cambio antes de agregarlo a su plan de proyecto. Asegúrese de que su equipo de proyecto esté al tanto de este proceso.
+	\item \textbf{Aprenda a decir que no.} A veces tendrá que decir que no a los cambios propuestos. Decir no a una parte interesada o cliente clave puede resultar incómodo, pero puede ser necesario para proteger el alcance de su proyecto y su calidad general. Si se le pide que asuma tareas adicionales, explique cómo interferirán con el presupuesto, el cronograma y / o los recursos definidos en los requisitos iniciales de su proyecto. 
+	\item \textbf{Recaude los  costos del trabajo fuera de su alcance.} Si se requiere trabajo fuera del alcance, asegúrese de  documentar todos los costos incurridos. Eso incluye los costos de trabajo afectados indirectamente por el aumento del alcance. Asegúrese de indicar para qué son los cargos. 
+    \end{itemize}
+\end{document}

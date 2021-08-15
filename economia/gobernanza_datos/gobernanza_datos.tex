@@ -1,0 +1,88 @@
+\documentclass[10pt]{book}
+\usepackage[text=17cm,left=2.5cm,right=2.5cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} %configuración página
+\usepackage{latexsym,amsmath,amssymb,amsfonts} %(símbolos de la AMS).7
+\parindent = 0cm  %sangria
+\usepackage[T1]{fontenc} %acentos en español
+\usepackage[spanish]{babel} %español capitulos y secciones
+\usepackage{graphicx} %gráficos y figuras.
+
+%---------------FORMATO de letra--------------------%
+
+\usepackage{lmodern} % tipos de letras
+\usepackage{titlesec} %formato de títulos
+\usepackage[backref=page]{hyperref} %hipervinculos
+\usepackage{multicol} %columnas
+\usepackage{tcolorbox, empheq} %cajas
+\usepackage{enumerate} %indice enumerado
+\usepackage{marginnote}%notas en el margen
+\tcbuselibrary{skins,breakable,listings,theorems}
+\usepackage[Bjornstrup]{fncychap}%diseño de portada de capitulos
+\usepackage[all]{xy}%flechas
+\counterwithout{footnote}{chapter}
+\usepackage{xcolor}
+
+%--------------------GRÀFICOS--------------------------
+
+\usepackage{tkz-fct}
+
+%----------Formato título de capítulos-------------
+
+\usepackage{titlesec}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\titleformat{\chapter}[display]
+{\titlerule[2pt]
+\vspace{4ex}\bfseries\sffamily\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}
+
+\usepackage[htt]{hyphenat}
+
+\begin{document}
+
+%------------------------------------------
+ 
+
+\chapter*{Gobernanza de datos}
+
+\begin{center}
+Por Christian L. Paredes Aguilera.
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{multicols}{2}
+La Inteligencia artificial (IA) está abriendo rápidamente una nueva frontera en los campos de los negocios, las prácticas corporativas y las políticas gubernamentales. Por estas razones, se ha convertido en una de  las  principales  prioridades  de  la  agenda  de  diferentes  naciones  del  mundo.  La  IA  puede  conducir  a  transformar  una amplia gama de aplicaciones industriales, intelectuales y sociales, mucho más allá de las generadas por revoluciones industriales anteriores. Por este motivo, desde el año 2016, varios gobiernos de todo el mundo comenzaron a reflexionar sobre la necesidad  de  diseñar  estrategias  en  sus  políticas  en  torno  a  la  IA.  Téngase  en  cuenta  que  países  como  China, Estados Unidos de América y la mayor parte de la Unión Europea ya han implementado técnicas de IA para mejorar los procesos gubernamentales internos, la prestación de servicios y la interacción con los  ciudadanos,  y/o  han  desarrollado  una  estrategia  nacional  para  la  implementación  de  IA.  Si  bien  la  inversión    en    nuevas    tecnologías    basadas    en    inteligencia    artificial    ha    sido    una    de    las    estrategias  críticas  del  sector  público  en  varios  niveles  de  gobierno  en  varios  países  del  mundo,  no  necesariamente se hizo bajo un marco de referencia de uso ético y responsable. De ahí la importancia de definir una estrategia para el diseño, uso y aprovechamiento de la IA.
+
+\section*{Talento y habilidades}
+Se debe contar con una población formada y capacitada para sostener los procesos políticos necesarios lo cual implica desarrollar políticas de educación en inteligencia artificial. La educación como un eje transversal para el desarrollo de una estrategia que aproveche las oportunidades que genera la IA. Desde la independencia de los países Latinoamericanos, la educación fue la base para la conformación de los Estados. El desarrollo de la IA es sistémico por lo que resulta todo un desafío establecer un ecosistema virtuoso para la formación de talento humano que permita asegurar las libertades individuales y la independencia regional. Para ello, uno de los desafíos es forjar programas de educación de calidad, ya que la misma debe ser considerada socia de la IA. \footnote{Débora Schapira}.\\
+Complementariamente, se analizó la importancia de la formación de talentos, para lo que se mencionaron las estrategias de los distintos países, los desafíos y oportunidades que existen, la importancia de la capacitación en los entornos laborales y de investigación, y la necesidad de inversión. En la formación de talento también se resaltó la necesidad de empoderar a la ciudadanía en las nuevas tecnologías mediante la educación, para que pueda participar de las discusiones y debates en relación al uso y aplicación de la IA en nuestra sociedad latinoamericana \footnote{UNESCO}.\\
+las estrategias de abordaje de la IA en la región presentan diversos desafíos para su implementación, por ejemplo: Las Universidades de la región latinoamericana, especialmente las públicas, enfrentan masivas matrículas con bajos presupuestos e infraestructuras inadecuadas, más allá de los desafíos y oportunidades que trae el avance tecnológico.\\
+Transformar la educación superior exige generar capacidades institucionales adecuadas junto a las reformas curriculares.\\
+La región posee recursos humanos competitivos como los de cualquier otra parte del mundo, el desafío es retenerlos en nuestros países y que trabajen cooperativamente, ya que los mejores son absorbidos por los polos de desarrollo globales fuera de la región. Para evitar el éxodo, es necesario generar oportunidades competitivas de inserción local para los académicos e investigadores de alto nivel en las áreas de IA en LATAM. Es necesario fortalecer el ecosistema y dar los incentivos adecuados para que surjan oportunidades que permitan que la región desarrolle, con base en sus talentos, el sector de IA.\\
+Se debe fomentar la colaboración entre la industria y las universidades para una interacción fluida y diálogo acertado para resultados prometedores. La pregunta ¿es como hacemos ese vinculo?
+\begin{enumerate}[i)]
+    \item Fomentando la transferencia de tecnología entre países de Latinoamérica para el desarrollo de la región.
+    \item Invertir en investigación científica sobre IA.
+\end{enumerate}
+
+\section*{Infraestructura}
+La infraestructura es considerada a nivel global como un habilitador para el desarrollo sostenible. En el marco del ODS número 9 $“$Industria, Innovación e Infraestructura$”$, de la Agenda 2030, se reconoce que $“$el crecimiento económico, el desarrollo social y la acción contra el cambio climático dependen en gran medida de la inversión en infraestructuras, desarrollo industrial sostenible y progreso tecnológico. Para ello se debe contar con políticas basadas en infraestructura digital que contribuyan a disminuir la brecha digital.\\ Se necesita contar con infraestructura digital pero es complicado hacer IA en Latinoamérica donde existen porciones de la población sin agua o electricidad. Por lo que es necesario proporcionar a la población buenas carreteras, atención médica y educación. Estos también son habilitadores para que la región pueda competir y disfrutar de los beneficios de la Cuarta Revolución Industrial \footnote{Cumbre de IA en América Latina. El presente y el futuro de la IA en Colombia}. \\
+Los nuevos datos de la UIT revelan una creciente aceptación de Internet pero una creciente brecha digital de género. Unos $4.100$ millones de personas están ahora en línea, pero en los países en desarrollo el uso de Internet por parte de las mujeres es menor.\\
+
+\section*{Ecosistema de datos}
+Sobre la importancia de los datos, tener políticas de acceso a los mismos es el elemento principal. Así es que se remarcó la necesidad por trabajar en estrategias de impulso a los datos abiertos y ganar confianza por parte de la población.
+
+    \subsection*{Problemas y desafíos asociados a los datos}
+    Entre los problemas y desafíos que se tiene, destacan:
+
+    \begin{itemize}
+	\item Interoperabilidad y acceso a los datos.
+	\item Gobernanza de datos flexibles.
+	\item Reconversión de los organizaciones hacia un enfoque de datos e IA.
+	\item Gobernanza de datos basada en ética y derechos humanos.
+    \end{itemize}
+
+\end{multicols}
+
+\end{document}

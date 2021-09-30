@@ -1,0 +1,38 @@
+\begin{enumerate}[\Large\bfseries 1.]
+
+%--------------------1.
+\item  \textbf{Construcción del agregado a partir de las decisiones individuales, y cálculo del equilibrio de mercado.} Se pide:
+
+    \begin{enumerate}
+
+	%----------1.a.
+	\item[\bfseries 1.a]  \textbf{Construcción de la curvas de demanda de mercado.} Considere dos consumidores $i$ y $h$, donde sus respectivas curvas de demanda individuales de una mercancía son:
+
+    \end{enumerate}
+
+donde sus respectivas curvas de demanda individuales de una mercancía son:
+$$q^i = d^i(p) = 21 - p$$ $$q^h = d^h(p) = 12-2p$$ 
+
+	%----------1.b.
+	\item[\bfseries 1.b.] Obtenga la \textbf{curva de demanda de mercado de un bien} $Q = D(p)$ como suma horizontal de las demandas individuales $(Q = D(p) \equiv d^i(p) + d^h(p))$\\\\
+	    Respuesta.-\; $$Q = D(p) \equiv d^i(p) + d^h(p) = (21 - p) + (12 - 2p) = 33-3p$$\\
+
+	%----------2.c.
+	\item[\bfseries 1.c.]  Dibuje las curvas de demanda individuales, y la curva de demanda de mercado una al lado de la otra horizontalmente. En los tres gráficos indique las cantidades individuales y las de mercado que se consumen a un precio $p = 4$.
+	    \begin{multicols}{3}
+		\begin{center}
+		    \begin{tikzpicture}[scale=.5]
+			% abscisa y ordenada
+			\tkzInit[xmax= 5,xmin=-2,ymax=12,ymin=-1]
+			\tiny\tkzLabelXY[opacity=0.6,step=1, orig=false]
+			% label x, f(x)
+			\tkzDrawX[opacity= .6,label=x,right=0.3]
+			\tkzDrawY[opacity= .6,label=f(x),below = -0.6]
+			%dominio y función
+			\draw [color=red,domain=0:12,thick,scale=.5] plot(\x,{33-3*\x}); 
+			\tkzText[above,opacity=0.6](3.3,3){\tiny $f(x)=x$}
+		    \end{tikzpicture}
+		\end{center}
+	    \end{multicols}
+
+\end{enumerate}

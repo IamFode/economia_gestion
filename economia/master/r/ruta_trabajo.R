@@ -1,3 +1,0 @@
-getwd()
-getwd("Directorio")
-getwd()

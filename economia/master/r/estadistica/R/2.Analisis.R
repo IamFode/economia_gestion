@@ -11,8 +11,8 @@ x <- epa$EDAD1
 
 mean(x)
 summary(x)
-mean(x,na.rm=TRUE) # Datos faltantes NA
-var(x) # cuasivarianza (varianza muestral)
+mean(x,na.rm=TRUE) # Datos faltantes (na.rm = TRUE)
+var(x) # cuasivarianza (varianza muestral) 
 sd(x) # cuasidesviación típica
 
 var(x)*(length(x)-1)/length(x) # varianza poblacional
@@ -35,7 +35,7 @@ hist(x) # histograma
 plot(density(x)) # represetación no paramétrica del histograma
 
 ### Sobre poner gráficas
-hist(x, freq = FALSE)
+hist(x, freq = FALSE) #  histograma de densidades (freq =FALSE)
 lines(density(x),col = "red")
 boxplot(x)
 
@@ -53,6 +53,7 @@ dat <- epa[epa$EDAD1>=16,c("SEXO", "EDAD1","REDAD","FACTOREL","OPI")]
 x <- dat$SEXO
 y <- dat$EDAD1
 by(y,x,mean) # media condicionada de la edad para cada sexo
+by(y,x,moda) # moda de la edad para cada sexo
 by(y,x,cv) # coeficiente de variación
 aggregate(y,list(x),mean) # tabla de la media
 boxplot(y~x)
@@ -66,7 +67,8 @@ prop.table(table(x, dat$REDAD), 2) # tabla de contingencias condicionada por col
 rm(x,y,t)
 
 ## Crear estadística de los parados
-aggregate(FACTOREL~SEXO,data = dat[dat$OPI=="P",], length)
+aggregate(FACTOREL~SEXO,data = dat[dat$OPI=="P",], length) # factorel-> Cuantos encuestados hay hombre y mujer 
+aggregate(FACTOREL~SEXO,data = dat[dat$OPI=="P",], sum) # inferencia la cantidad de parados 
 parados <- aggregate(FACTOREL~SEXO,data = dat[dat$OPI=="P",], sum)
 names(parados)[2] <- "NumParados"
 parados

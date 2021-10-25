@@ -1,3 +1,7 @@
+Wang Liping\\
+Arocena Arezo Emiliano\\
+Paredes Aguilera, Christian Limbert\\
+
 \subsection*{\center Ejercicio 5C. Teoría del consumidor}
 \vspace{1cm}
 
@@ -310,16 +314,21 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 			\draw[red,dashed](3,5)--(4,5)--(4,4.5)--(3,4.5);
 			\filldraw[red] (4,4)node[below left]{$(4,8)$} circle (1.5pt);
 
+			\draw[green,dashed,->>](0,6)--(1,6);
+			\draw[green,dashed,->>](1,5.5)--(2,5.5);
+			\draw[green,dashed,->>](2,5)--(3,5);
+			\draw[green,dashed,->>](3,4.5)--(4,4.5);
+
 		    \end{tikzpicture}
 		\end{center}
 		\vspace{1cm}
 
 
-		Suponiendo que primero nos encontramos con el anaquel de las latas sueltas entonces nos preguntaremos entonces nos preguntas si para $x$ cesta, 
+		Suponiendo que primero nos encontramos con el anaquel de las latas sueltas entonces nos preguntaremos si para $x$ cesta, 
 		\begin{tcolorbox}[colframe=white]
 		\begin{center}¿Debo meter una bolsa de patatas fritas en el carro?\end{center}
 	    \end{tcolorbox}
-		Para ello aplicamos la regla de decisión racional como también la relación marginal de sustitución $(RMS)$ y la relación marginal de intercambio $RMI = \dfrac{\overline{p_1}}{\overline{p_2}}$\\
+		Para ello aplicamos la regla de decisión racional, conjuntamente con la relación marginal de sustitución $(RMS)$ y la relación marginal de intercambio $RMI = \dfrac{\overline{p_1}}{\overline{p_2}}$\\
 		\vspace{.5cm}
 
 			\begin{center}
@@ -335,7 +344,7 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 			    \vspace{1cm}
 		    \end{center}
 
-		    Por lo tanto ya que el beneficio es igual al coste, la elección optima  estará dado por la cesta,\\
+		    Por lo tanto ya que el beneficio es igual al coste, la elección optima estará dada por la cesta,\\
 		    \begin{tcolorbox}[colframe=white]
 			\begin{center}
 			    $(4,8)$
@@ -407,6 +416,10 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 			\draw[red, <->, dashed](3.4,5)--(3.4,6);
 			\draw[red](3.9,5.5)node[]{$RMI$};
 
+			\draw[green,dashed,->>](0,6)--(1,6);
+			\draw[green,dashed,->>](1,5)--(2,5);
+			\draw[green,dashed,->>](2,4)--(3,4);
+
 		    \end{tikzpicture}
 		\end{center}
 		\vspace{1cm}
@@ -455,7 +468,7 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 \vspace{.5cm}
 
     %--------------------5.
-    \item ¿Cómo varía la decisión óptima cuando se modifica el conjunto presupuestario (cambios en precios o renta)?
+    \item \textbf{¿Cómo varía la decisión óptima cuando se modifica el conjunto presupuestario (cambios en precios o renta)?}
 	\begin{center}
 	    \begin{tikzpicture}[scale=.9]
 		% abscisa y ordenada
@@ -468,11 +481,11 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 		%dominio y función
 		\draw[step=1cm,black,very thin,opacity=.05] (0,0) grid (7,7);
 
-		\filldraw(4,1)node[below left]{$(4,1)$} circle (1.5pt);
-		\filldraw(3,2)node[below left]{$(3,2)$} circle (1.5pt);
-		\filldraw(2,4)node[below left]{$(2,4)$} circle (1.5pt);
+		\filldraw[red](4,1)node[below left]{$(4,1)$} circle (1.5pt);
+		\filldraw[red](3,2)node[below left]{$(3,2)$} circle (1.5pt);
+		\filldraw[red](2,4)node[below left]{$(2,4)$} circle (1.5pt);
 
-		\draw(1.6,6)--(2,4)--(3,2)--(4,1)--(6,0.6);
+		\draw[red](1.6,6)--(2,4)--(3,2)--(4,1)--(6,0.6);
 
 
 	    \end{tikzpicture}
@@ -481,31 +494,195 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 
 
 
+
+
 \subsubsection*{\center IV. Cálculo analítico de la función de demanda.}
 \vspace{.5cm}
 
     %--------------------6.
-    \item ¿Cómo calcular analíticamente la cesta óptima y la función de demanda?\\\\
+    \item \textbf{¿Cómo calcular analíticamente la cesta óptima y la función de demanda?}\\\\
 	Suponga que las preferencias de un consumidor están representadas por la función de utilidad continua $u(x_1, x_2) = min\lbrace2x_1, x_2\rbrace$. Se pide:
 
 	\begin{enumerate}[\bfseries a)]
 
 	    %---------- a)
-	    \item \textbf{Función de demanda.} Suponga que el precio de las mercancías es $(p_1, p_2)$ y la renta del consumidor es $M$. Calcule analíticamente las funciones de demanda marshallianas;\\\\
-		\textbf{Respuesta.-}\; Sean el conjunto de consumo, $$\mathcal{X} = \lbrace (x_1,x_2 \; / \; p \geq 0, c\geq 0 \rbrace,$$
-		el conjunto presupuestario, $$\lbrace(x_1,x_2)\in \mathcal{X} \; / \; \overline{p_1}x_1 + \overline{p_2} x_2 \leq \overline{M}\rbrace,$$
-		y la función de utilidad $$u(x_1,x_2) = min\lbrace2x_1,x_2\rbrace$$
-		entonces, el problema de consumidor estará dado por:
+	    \item \textbf{Función de demanda.} El precio de las mercancías están dadas por $(p_1, p_2)$ y la renta del consumidor por $M$.\\\\
+		Sean el conjunto de consumo, \\
+		$$\mathcal{X} = \lbrace (x_1,x_2 \; / \; p \geq 0, c\geq 0 \rbrace,$$
+		el conjunto presupuestario,\\ 
+		$$\lbrace(x_1,x_2)\in \mathcal{X} \; / \; \overline{p_1}x_1 + \overline{p_2} x_2 \leq \overline{M}\rbrace$$
+		y la función de utilidad \\
+		$$u(x_1,x_2) = min\lbrace2x_1,x_2\rbrace$$\\
+		entonces, el problema de consumidor estará dado por:\\
+		\begin{tcolorbox}[colframe=white]
 		$$\left\{\begin{array}{ccc}
 			\max\limits_{x_1,x_2}&&u(x_1,x_2)=min\lbrace2x_1,x_2\rbrace\\\\
 					     &s.a.&\begin{array}{rcl} \overline{p_1}x_1 + \overline{p_2}x_2&\leq &\overline{M}\\ x_1&\leq&0\\ x_2&\geq & 0 \end{array}\\\\
 			   &dado&\overline{p_1},\overline{p_2},\overline{M}\\
 		\end{array}\right.$$
+		\end{tcolorbox}
+		\vspace{1cm}
+
+	    Ya que la función (Leontief) dada, no es derivable lo que se hará es igualar $x_1$ y $x_2$ como sigue:
+	    
+	    \begin{tcolorbox}[colframe=white]
+		$$2x_1=x_2 \; \Longrightarrow \; x_1 = \dfrac{x_2}{2} \qquad (1)$$
+	    \end{tcolorbox}
+	    Sabiendo que los dos mercancías se consumen juntos, entonces supondremos que el consumidor gastará todo su dinero en un único bien cuyo precio será $\overline{p_1}+\overline{p_2}.$ Como se verá a continuación:\\
+	    $$\overline{p_1}x_1 + \overline{p_2}x_2 =  \overline{M} \; \Longrightarrow \; \overline{p_1}\dfrac{x_2}{2} + \overline{p_2}x_2 =  \overline{M} \; \Longrightarrow \; x_2 = 2\left(\dfrac{\overline{M}}{p_1+2p_2}\right) \qquad (2)$$\\
+	    Resolviendo análogamente para $x_1$,\\ 
+	    $$\overline{p_1}x_1 + \overline{p_2}x_2 =  \overline{M} \; \Longrightarrow \; \overline{p_1}x_1 + 2\overline{p_2}x_1 = \overline{M} \; \Longrightarrow \; x_1 = \dfrac{\overline{M}}{p_1+2p_2}\qquad (3)$$\\
+	    Luego por (1), (2) y (3) las funciones de demandas Marshallianas vienen dadas por:
+	    \begin{tcolorbox}[colframe=white]
+		$$x_1 = \dfrac{\overline{M}}{p_1+2p_2}$$
+	    \end{tcolorbox}
+	    \begin{tcolorbox}[colframe=white]
+		$$x_2=2(x_1)$$
+	    \end{tcolorbox}
+	    \vspace{1cm}
+
+	    %----------b)
+	    \item \textbf{Elección óptima.} \\\\
+
+		\begin{enumerate}[\bfseries b1)]
+
+		    %-----b1
+		    \item Precios $\overline{p} =  (\overline{p_1},\overline{p_2}) = (1.00,1.00)$ y renta $\overline{M} = 12$.\\\\
+
+			Reemplazando en las funciones de demanda Marshallianas tenemos,\\
+			$$x_1 = \dfrac{\overline{M}}{p_1+2p_2} = \dfrac{12}{1+2\cdot 1 } = 4 \qquad y \qquad x_2 = 2\left(x_1\right) = 2\left( 4 \right) = 8 $$\\\\
+			de donde la cesta estará dada por,\\
+			\begin{tcolorbox}[colframe=white]
+			    $$(4,8)$$
+			\end{tcolorbox}
+			\vspace{1cm}
+
+
+		    %-----b2
+		    \item Precios $\overline{p}^{'} =  (\overline{p_1}^{'},\overline{p_2}) = (2.00,1.00)$ y renta $\overline{M} = 12$.\\\\
+
+			Reemplazando en las funciones de demanda Marshallianas tenemos,\\
+			$$x_1 = \dfrac{\overline{M}}{p_1+2p_2} = \dfrac{12}{2+2\cdot 1 } = 3 \qquad y \qquad x_2 = 2\left(x_1\right) = 2\left( 3 \right) = 6 $$\\\\
+			de donde la cesta estará dada por,\\
+			\begin{tcolorbox}[colframe=white]
+			    $$(3,6)$$
+			\end{tcolorbox}
+			\vspace{1cm}
+
+		    %-----b3
+		    \item Precios $\overline{p}^{''} =  (\overline{p_1}^{''},\overline{p_2}) = (4.00,1.00)$ y renta $\overline{M} = 12$.\\\\
+
+			Reemplazando en las funciones de demanda Marshallianas tenemos,\\
+			$$x_1 = \dfrac{\overline{M}}{p_1+2p_2} = \dfrac{12}{4+2\cdot 1 } = 2 \qquad y \qquad x_2 = 2\left(x_1\right) = 2\left( 2 \right) = 4 $$\\\\
+			de donde la cesta estará dada por,\\
+			\begin{tcolorbox}[colframe=white]
+			    $$(2,4)$$
+			\end{tcolorbox}
+			\vspace{1cm}
+
+		\end{enumerate}
+
+	    %----------c)
+	    \item \textbf{Curvas de demanda}\\\\
+		Sabiendo que la renta es $\overline{M}=12$ y los precios $\overline{p} =  (\overline{p_1},\overline{p_2}) = (1.00,1.00)$, $\overline{p}^{'} =  (\overline{p_1}^{'},\overline{p_2}) = (2.00,1.00)$ y $\overline{p}^{''} =  (\overline{p_1}^{''},\overline{p_2}) = (4.00,1.00)$ entonces la curva de demanda vendrá dada por, \\\\
+		\begin{multicols}{2}
+		\begin{center}
+		    \begin{tikzpicture}[scale=.8]
+			% abscisa y ordenada
+			\tkzInit[xmax= 6.5,xmin=0,ymax=6.5,ymin=0,ystep=1]
+			\tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
+			\tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
+			% label x, f(x)
+			\tkzDrawX[opacity= 1,label=$x_1$, right=.1]
+			\tkzDrawY[opacity= 1,label=$p_1$, below = -.5]
+			%dominio y función
+			\draw[step=1cm,black,very thin,opacity=.05] (0,0) grid (7,7);
+
+			\filldraw[red](4,1)node[below left]{$a.$} circle (1.5pt);
+			\filldraw[red](3,2)node[below left]{$b.$} circle (1.5pt);
+			\filldraw[red](2,4)node[below left]{$c.$} circle (1.5pt);
+
+			\draw[blue](1.6,6)..controls(1.9,2.4)and(4,0.4)..(6,.2);
+
+			\draw[yellow,dashed,opacity=.5](0,4)--(2,4)--(2,0);
+			\draw[yellow,dashed,opacity=.5](0,2)--(3,2)--(3,0);
+			\draw[yellow,dashed,opacity=.5](0,1)--(4,1)--(4,0);
+
+		    \end{tikzpicture}
+		\end{center}
+		\begin{center}
+		    \begin{tabular}{c|ccccc}
+			&cesta&$x_1$&$\overline{p_1}$&$\overline{p_2}$&$\overline{M}$\\
+			\hline
+			a.&(4,8)&4&1&1&12\\
+			b.&(3,6)&3&2&1&12\\
+			c.&(2,4)&2&4&1&12\\
+		    \end{tabular}
+		\end{center}
+		\end{multicols}
+		\vspace{1cm}
+
+		Por otro lado, para $x_2$ y teniendo un mismo precio, se observará tres curvas de demanda desplazadas ya que dependen del precio del otro bien.\\\\
+
+		\begin{multicols}{2}
+		\begin{center}
+		    \begin{tikzpicture}[scale=.7]
+			% abscisa y ordenada
+			\tkzInit[xmax= 10.5,xmin=0,ymax=6.5,ymin=0,ystep=1]
+			\tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
+			\tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
+			% label x, f(x)
+			\tkzDrawX[opacity= 1,label=$x_2$, right=.1]
+			\tkzDrawY[opacity= 1,label=$p_2$, below = -.5]
+			%dominio y función
+			\draw[step=1cm,black,very thin,opacity=.05] (0,0) grid (11,7);
+
+			\filldraw[red](4,1)node[below left]{$c.$} circle (1.5pt);
+			\filldraw[red](6,1)node[below left]{$b.$} circle (1.5pt);
+			\filldraw[red](8,1)node[below left]{$a.$} circle (1.5pt);
+
+			\draw[blue](1.6,6)..controls(1.9,2.4)and(4,0.4)..(6,.2);
+			\draw[blue](2.6,6)..controls(2.8,4)and(5,.7)..(8,.2);
+			\draw[blue](3.6,6)..controls(3.8,4)and(6.7,1)..(10,.2);
+
+			\draw[yellow,dashed,opacity=1](0,1)--(11,1);
+
+		    \end{tikzpicture}
+		\end{center}
+		\begin{center}
+		    \begin{tabular}{c|ccccc}
+			&cesta&$x_2$&$\overline{p_2}$&$\overline{p_1}$&$\overline{M}$\\
+			\hline
+			a.&(4,8)&8&1&1&12\\
+			b.&(3,6)&6&1&2&12\\
+			c.&(2,4)&4&1&4&12\\
+		    \end{tabular}
+		\end{center}
+	    \end{multicols}
+		\vspace{1cm}
+
+
+	    %----------d)
+	    \item \textbf{Función indirecta de utilidad}\\\\
+		Definiendo la función indirecta de utilidad se tiene que 
+		$$u(x_1,x_2) = min\lbrace \alpha x_1,\beta x_2\rbrace$$
+		entonces,
+		$$x_1=\dfrac{\overline{M}}{\overline{p_1}+\frac{\alpha}{\beta}\overline{p_2}}, \qquad x_2=\dfrac{\overline{M}}{\frac{\beta}{\alpha}\overline{p_1}+\overline{p_2}}$$
+		así remplazando en la función de utilidad obtenemos,
+		$$\mathcal{V}(\overline{p},\overline{m}) = min \left\{ \dfrac{\alpha \overline{M}}{\overline{p_1} + \dfrac{\alpha}{\beta}\overline{p_2}},\dfrac{\beta \overline{M}}{\dfrac{\beta}{\alpha}\overline{p_1}+\overline{p_2}} \right\} = min \left\{ \dfrac{\dfrac{\alpha}{\alpha} \overline{M}}{\dfrac{\overline{p_1}}{\alpha} + \dfrac{\alpha}{\beta}\dfrac{\overline{p_2}}{\alpha}},\dfrac{\dfrac{\beta}{\beta} \overline{M}}{\dfrac{\beta}{\alpha}\overline{p_1}+\dfrac{\overline{p_2}}{\beta}} \right\} = min \left\{ \dfrac{\overline{M}}{\dfrac{\overline{p_1}}{\alpha} + \dfrac{\overline{p_2}}{\beta}},\dfrac{\overline{M}}{\dfrac{\overline{p_1}}{\alpha}+\dfrac{\overline{p_2}}{\beta}} \right\}$$
+		observamos que las ecuaciones son las mismas y por lo tanto,\\
+		$$\mathcal{V}(\overline{p},\mathcal{M}) = \dfrac{\overline{M}}{\dfrac{\overline{p_1}}{\alpha}+\dfrac{\overline{p_2}}{\beta}}$$\\\\
+		Luego de manera particular, sabiendo que la función de utilidad viene dada por 
+		$$min\lbrace 2x_1,x_2\rbrace$$
+		entonces la función indirecta de utilidad será 
+
+		\begin{tcolorbox}[colframe=white]
+		    $$\mathcal{V}(\overline{p},\overline{M}) = \dfrac{\overline{M}}{\dfrac{\overline{p_1}}{2}+\overline{p_2}} = \dfrac{2\overline{M}}{2\overline{p_2}+\overline{p_1}}$$
+	    \end{tcolorbox}
+
+
 
 	\end{enumerate}
-
-	y sabiendo que las preferencias son monótonas con lo que $$\overline{p_1}x_1+\overline{p_2}x_2=\overline{M}\; \Longrightarrow \; x_2 = \dfrac{\overline{M}}{\overline{p_2}}-\dfrac{\overline{p_1}}{\overline{p_2}}x_1$$ de donde sustituyéndolo en la función de utilidad nos queda,
-	$$\theta(x_1) = min\lbrace$$
 
 
 \end{enumerate}

@@ -10,9 +10,25 @@ Invita a unos amigos a ver un partido en casa. Sus amigos quieren patatas fritas
 
     %----------1.
     \item \textbf{¿Qué relación binaria caracteriza sus gustos con respecto a estas dos mercancías?}\\\\
-	\textbf{Respuesta.-}\; En primer lugar el conjunto de consumo viene dado por las patatas fritas y las cervezas, es decir, $$\mathcal{X}^i = \lbrace x \in \mathbb{Z}^2 \; : \; x_l \geq 0 \; \mbox{para} \; l=1,2\rbrace.$$
-	En segundo lugar, identificamos las cestas indiferentes. Por ejemplo, la cesta $"$bolsas de patatas fritas$"$ $\left( \mbox{cesta}\; (1,0) \right)$, es indiferente a la cesta $"$latas de cervezas sueltas$"$ $\left(\mbox{cesta}\; (0,2) \right)$, ya que, 
-    $$\left.\begin{array}{rcl} (1,0)&\succeq&(0,2) \\ (0,2) & \succeq&(1,0) \end{array}\right\}\Longrightarrow (1,0) \sim (2,0)$$\\
+	En primer lugar el conjunto de consumo viene dado por las patatas fritas y las cervezas, es decir, 
+
+	\begin{tcolorbox}[colframe=white]
+	$$\mathcal{X}^i = \lbrace x \in \mathbb{Z}^2 \; : \; x_l \geq 0 \; \mbox{para} \; l=1,2\rbrace.$$
+	\end{tcolorbox}
+
+	En segundo lugar, identificamos las cestas indiferentes.  
+
+	Ya que las mercancías complementarias perfectas y dados los gustos de mis amigos de tomar una bolsa de patatas fritas por cada dos cervezas sueltas entonces nos será indiferente colocar en la cesta dos bolsas de patatas fritas y dos de cerveza o  una bolsa de patatas fritas y 4 de cerveza, como se ve a continuación,\\
+    $$\left.\begin{array}{rcl} (2,2)&\succeq&(1,4) \\ (1,4) & \succeq&(2,2) \end{array}\right\}\Longrightarrow (2,2) \sim (1,4)$$\\
+	Análogamente nos será indiferente tomar 3 bolsas de patatas fritas y 4 de cerveza ó 2 patatas fritas y 6 cervezas ya que los gustos de mis amigos serán tomar 2 patatas fritas y 4 cervezas sueltas.\\
+	$$\left.\begin{array}{rcl} (3,4)&\succeq&(2,6) \\ (2,6) & \succeq&(3,4) \end{array}\right\}\Longrightarrow (3,4) \sim (2,6)$$\\
+	Por lo tanto una cesta $x=(x_1,x_2)$ es indiferente a otra $y=(y_1,y_2)$ si, \\
+	\begin{tcolorbox}[colframe=white]
+	$$min\lbrace 2x_1,x_2\rbrace = min\lbrace 2y_1,y_2\rbrace$$
+	\end{tcolorbox}
+
+	Por ejemplo, se cumple la igualdad para $\mathcal{I}_2$,\\ $$min\lbrace 5\cdot 2 = 10, 4 \rbrace = min\lbrace 8,4 \rbrace =min\lbrace 6,4 \rbrace =min\lbrace 4, 4\rbrace = min\lbrace 2\cdot 2= 4,6 \rbrace =min\lbrace 4,8 \rbrace =min\lbrace 4,10\rbrace $$
+	tal como se muestra en el gráfico siguiente,\\
 	\begin{center}
 	    \begin{tikzpicture}
 		% abscisa y ordenada
@@ -24,48 +40,61 @@ Invita a unos amigos a ver un partido en casa. Sus amigos quieren patatas fritas
 		\tkzDrawY[opacity= 1,label=Latas de cervezas, below = -.5]
 		%dominio y función
 		\draw[step=1cm,black,very thin,opacity=.1] (0,0) grid (6,6);
-		\draw[color=red](1,0)--(0,1);
-		\draw[color=red](2,0)--(0,2);
-		\draw[color=red](3,0)--(0,3);
-		\draw[color=red](4,0)--(0,4);
-		\draw[color=red](5,0)--(0,5);
+		\draw[color=red](1,6)--(1,1)--(6,1);
+		\draw[color=red](2,6)--(2,2)--(6,2);
+		\draw[color=red](3,6)--(3,3)--(6,3);
+		\draw[color=red](4,6)--(4,4)--(6,4);
+		\draw[color=red](5,6)--(5,5)--(6,5);
 
 		\filldraw[black] (0,0)node[above right]{$(0,0)$} circle (1.5pt);
 
-		\filldraw[black] (1,0)node[above right]{$(1,0)$} circle (1.5pt);
-		\filldraw[black] (0,1)node[above right]{$(0,2)$} circle (1.5pt);
-
-		\filldraw[black] (2,0)node[above right]{$(2,0)$} circle (1.5pt);
+		\filldraw[black] (5,1)node[above right]{$(5,2)$} circle (1pt);
+		\filldraw[black] (4,1)node[above right]{$(4,2)$} circle (1pt);
+		\filldraw[black] (3,1)node[above right]{$(3,2)$} circle (1pt);
+		\filldraw[black] (2,1)node[above right]{$(2,2)$} circle (1pt);
 		\filldraw[black] (1,1)node[above right]{$(1,2)$} circle (1.5pt);
-		\filldraw[black] (0,2)node[above right]{$(0,4)$} circle (1.5pt);
+		\filldraw[black] (1,2)node[above right]{$(1,4)$} circle (1pt);
+		\filldraw[black] (1,3)node[above right]{$(1,6)$} circle (1pt);
+		\filldraw[black] (1,4)node[above right]{$(1,8)$} circle (1pt);
+		\filldraw[black] (1,5)node[above right]{$(1,10)$} circle (1pt);
 
-		\filldraw[black] (3,0)node[above right]{$(3,0)$} circle (1.5pt);
-		\filldraw[black] (2,1)node[above right]{$(2,2)$} circle (1.5pt);
-		\filldraw[black] (1,2)node[above right]{$(1,4)$} circle (1.5pt);
-		\filldraw[black] (0,3)node[above right]{$(0,6)$} circle (1.5pt);
-
-		\filldraw[black] (4,0)node[above right]{$(4,0)$} circle (1.5pt);
-		\filldraw[black] (3,1)node[above right]{$(3,1)$} circle (1.5pt);
+		\filldraw[black] (5,2)node[above right]{$(5,4)$} circle (1pt);
+		\filldraw[black] (4,2)node[above right]{$(4,4)$} circle (1pt);
+		\filldraw[black] (3,2)node[above right]{$(3,4)$} circle (1pt);
 		\filldraw[black] (2,2)node[above right]{$(2,4)$} circle (1.5pt);
-		\filldraw[black] (1,3)node[above right]{$(1,6)$} circle (1.5pt);
-		\filldraw[black] (0,4)node[above right]{$(0,8)$} circle (1.5pt);
+		\filldraw[black] (2,3)node[above right]{$(2,6)$} circle (1pt);
+		\filldraw[black] (2,4)node[above right]{$(2,8)$} circle (1pt);
+		\filldraw[black] (2,5)node[above right]{$(2,10)$} circle (1pt);
 
-		\filldraw[black] (5,0)node[above right]{$(5,0)$} circle (1.5pt);
-		\filldraw[black] (4,1)node[above right]{$(4,2)$} circle (1.5pt);
-		\filldraw[black] (3,2)node[above right]{$(3,4)$} circle (1.5pt);
-		\filldraw[black] (2,3)node[above right]{$(2,6)$} circle (1.5pt);
-		\filldraw[black] (1,4)node[above right]{$(1,8)$} circle (1.5pt);
-		\filldraw[black] (0,5)node[above right]{$(0,10)$} circle (1.5pt);
+		\filldraw[black] (5,3)node[above right]{$(5,6)$} circle (1pt);
+		\filldraw[black] (4,3)node[above right]{$(4,6)$} circle (1pt);
+		\filldraw[black] (3,3)node[above right]{$(3,6)$} circle (1.5pt);
+		\filldraw[black] (3,4)node[above right]{$(3,8)$} circle (1pt);
+		\filldraw[black] (3,5)node[above right]{$(3,10)$} circle (1pt);
+
+		\filldraw[black] (5,4)node[above right]{$(5,8)$} circle (1pt);
+		\filldraw[black] (4,4)node[above right]{$(4,8)$} circle (1.5pt);
+		\filldraw[black] (4,5)node[above right]{$(4,10)$} circle (1pt);
+
+		\filldraw[black] (5,5)node[above right]{$(5,10)$} circle (1.5pt);
+
+		\draw[red](6,1)node[right]{$\mathcal{I}_1$};
+		\draw[red](6,2)node[right]{$\mathcal{I}_2$};
+		\draw[red](6,3)node[right]{$\mathcal{I}_3$};
+		\draw[red](6,4)node[right]{$\mathcal{I}_4$};
+		\draw[red](6,5)node[right]{$\mathcal{I}_5$};
+
 	    \end{tikzpicture}
 	\end{center}
 	\vspace{.5cm}
 
-	Análogamente la cesta $(2,0)$ es indiferente a las cestas $(0,4)$ y $(1,2)$, como también la cesta $(3,0)$ es indiferente a las cestas $(0,6),\; (1,4)$ y $(2,2)$. Por lo tanto una cesta $x=(x_1,x_2)$ es indiferente a otra $y=(y_1,y_2)$ si, $$2x_1 + x_2 = 2y_1 + y_2.$$
-	Por último caracterizamos formalmente los gustos a través de la relación binaria $"$ser como mínimo tan preferido como$"$ como sigue,
+	Por último caracterizamos formalmente los gustos a través de la relación binaria $"$ser como mínimo tan preferido como$"$ de la siguiente manera,\\
+	\begin{tcolorbox}[colframe=white]
 	\begin{center}
-	    Dado cualquier par de cestas $x,y \in \mathcal{X}^i$ entonces $x \succeq^i y \; \Longleftrightarrow 2x_1 + x_2 \geq 2y_1 + y_2$.
+	    Dado cualquier par de cestas $x,y \in \mathcal{X}^i$ entonces $x \succeq^i y \; \Longleftrightarrow min\lbrace 2x_1,x_2 \rbrace \geq min\lbrace 2y_1, y_2\rbrace$.
 	\end{center}
-	\vspace{.5cm}
+	\end{tcolorbox}
+	\vspace{1cm}
 
     %----------2.
     \item \textbf{¿Puede representar sus gustos a través de conjuntos de indiferencia?}\\
@@ -73,94 +102,84 @@ Invita a unos amigos a ver un partido en casa. Sus amigos quieren patatas fritas
 	\begin{enumerate}[\bfseries (2.1)]
 
 	    %----------(2.1)
-	    \item Siendo que cumplen los axiomas de completitud y transitividad, tenemos que,
-		$$x,y\in \mathcal{X}^i \; \mbox{entonces} \; x\succeq^i y \; \Longleftrightarrow \; 2x_1+x_2 \geq 2y_1+y_2.$$
-		Luego y sabiendo que las ordenaciones serán consistente, es decir, que podemos identificar conjuntos de cestas indiferentes, podemos definirlas como, 
-		$$\mathcal{I}^i(x) = \lbrace y\in \mathcal{X}^i\; : \;  2x_1 + x_2 = 2y_1 + y_2\rbrace.$$
-		Y por lo tanto, los gustos están representados por $\left(\mathcal{X}^i,\lbrace \mathcal{I}^i(x)\rbrace_{x\in \mathcal{X}^i}\right)$. Por ejemplo, ya que $2\cdot 1 + 0 = 2\cdot 0 + 2$ entonces,
-		$$\mathcal{I}^i (1,0) = \lbrace (0,2) \rbrace$$
-		
-		\begin{center}
-		    \begin{tikzpicture}
-			% abscisa y ordenada
-			\tkzInit[xmax= 5,xmin=0,ymax=10,ymin=0,ystep=2]
-			\tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
-			\tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
-			% label x, f(x)
-			\tkzDrawX[opacity= 1,label=Patatas fritas , right=.5]
-			\tkzDrawY[opacity= 1,label=Latas de cervezas, below = -.5]
-			%dominio y función
-			\draw[step=1cm,black,very thin,opacity=.1] (0,0) grid (5,5);
-			\draw[color=red](1,0)--(0,1);
-			\draw[color=red](2,0)--(0,2);
-			\draw[color=red](3,0)--(0,3);
-			\draw[color=red](4,0)--(0,4);
-			\draw[color=red](5,0)--(0,5);
-			\draw[opacity=.7](-.1,0)node[above right]{$\mathcal{I}_a$};
-			\draw[opacity=.7](.4,.5)node[above right]{$\mathcal{I}_b$};
-			\draw[opacity=.7](.9,1)node[above right]{$\mathcal{I}_c$};
-			\draw[opacity=.7](1.4,1.5)node[above right]{$\mathcal{I}_d$};
-			\draw[opacity=.7](1.9,2)node[above right]{$\mathcal{I}_e$};
-			\draw[opacity=.7](2.4,2.5)node[above right]{$\mathcal{I}_f$};
-		    \end{tikzpicture}
-		\end{center}
-		\vspace{.5cm}
-
-		De manera similar $$\mathcal{I}^i(2,0) = \lbrace (1,2),(0,4) \rbrace \quad;\quad \mathcal{I}^i(3,0) = \lbrace (2,2),(1,4),(0,6) \rbrace \quad ...$$\\
+	    \item Siendo que cumplen los axiomas de completitud y transitividad, tenemos que,\\
+		\begin{tcolorbox}[colframe=white]
+		$$x,y\in \mathcal{X}^i \; \mbox{entonces} \; x\succeq^i y \; \Longleftrightarrow \; min\lbrace 2x_1,x_2\rbrace \geq min\lbrace 2y_1,y_2\rbrace$$
+		\end{tcolorbox}
+		Luego y sabiendo que las ordenaciones serán consistente, es decir, que podemos identificar conjuntos de cestas indiferentes, podemos definirlas como, \\
+		\begin{tcolorbox}[colframe=white]
+		$$\mathcal{I}^i(x) = \lbrace y\in \mathcal{X}^i\; : \;  min\lbrace 2x_1,x_2 \rbrace = min\lbrace 2y_1, y_2 \rbrace \rbrace.$$
+		\end{tcolorbox}
+		Y por lo tanto, los gustos están representados por,\\
+		\begin{tcolorbox}[colframe=white]
+		$$\left(\mathcal{X}^i,\lbrace \mathcal{I}^i(x)\rbrace_{x\in \mathcal{X}^i}\right)$$
+		\end{tcolorbox}
+		\vspace{1cm}
 
 	    %----------(2.2)
-	    \item El gráfico de conjuntos indiferentes para $(1,2)$, $(2,4)$ y $(3,6)$ esta dado por
+	    \item El gráfico de conjuntos indiferentes para $(1,2)$, $(2,4)$ y $(3,6)$ esta dado por,\\
 
-		\begin{center}
+	    \begin{center}
+		\begin{tikzpicture}
+		    % abscisa y ordenada
+		    \tkzInit[xmax= 5.5,xmin=0,ymax=11,ymin=0,ystep=2]
+		    \tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
+		    \tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
+		    % label x, f(x)
+		    \tkzDrawX[opacity= 1,label=Patatas fritas , right=.5]
+		    \tkzDrawY[opacity= 1,label=Latas de cervezas, below = -.5]
+		    %dominio y función
+		    \draw[step=1cm,black,very thin,opacity=.1] (0,0) grid (6,6);
+		    \draw[color=red](1,6)--(1,1)--(6,1);
+		    \draw[color=red](2,6)--(2,2)--(6,2);
+		    \draw[color=red](3,6)--(3,3)--(6,3);
 
-		    \begin{tikzpicture}
-			% abscisa y ordenada
-			\tkzInit[xmax= 6,xmin=0,ymax=12,ymin=0,ystep=2]
-			\tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
-			\tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
-			% label x, f(x)
-			\tkzDrawX[opacity= 1,label=Patatas fritas , right=.5]
-			\tkzDrawY[opacity= 1,label=Latas de cervezas, below = -.5]
-			%dominio y función
-			\draw[step=1cm,black,very thin,opacity=.1] (0,0) grid (6,6);
-			\draw[color=red](2,0)--(0,2);
-			\draw[color=red](4,0)--(0,4);
-			\draw[color=red](6,0)--(0,6);
+		    \filldraw[black] (0,0)node[above right]{$(0,0)$} circle (1.5pt);
 
-			\filldraw[black] (2,0)node[above right]{$(2,0)$} circle (1.5pt);
-			\filldraw[red] (1,1)node[above right]{$\mathcal{I}^i(1,2)$} circle (1.5pt);
-			\filldraw[black] (0,2)node[above right]{$(0,4)$} circle (1.5pt);
+		    \filldraw[black] (5,1)node[above right]{$(5,2)$} circle (1pt);
+		    \filldraw[black] (4,1)node[above right]{$(4,2)$} circle (1pt);
+		    \filldraw[black] (3,1)node[above right]{$(3,2)$} circle (1pt);
+		    \filldraw[black] (2,1)node[above right]{$(2,2)$} circle (1pt);
+		    \filldraw[black] (1,1)node[above right]{$(1,2)$} circle (1.5pt);
+		    \filldraw[black] (1,2)node[above right]{$(1,4)$} circle (1pt);
+		    \filldraw[black] (1,3)node[above right]{$(1,6)$} circle (1pt);
+		    \filldraw[black] (1,4)node[above right]{$(1,8)$} circle (1pt);
+		    \filldraw[black] (1,5)node[above right]{$(1,10)$} circle (1pt);
 
-			\filldraw[black] (4,0)node[above right]{$(4,0)$} circle (1.5pt);
-			\filldraw[black] (3,1)node[above right]{$(3,1)$} circle (1.5pt);
-			\filldraw[red] (2,2)node[above right]{$\mathcal{I}^i(2,4)$} circle (1.5pt);
-			\filldraw[black] (1,3)node[above right]{$(1,6)$} circle (1.5pt);
-			\filldraw[black] (0,4)node[above right]{$(0,8)$} circle (1.5pt);
+		    \filldraw[black] (5,2)node[above right]{$(5,4)$} circle (1pt);
+		    \filldraw[black] (4,2)node[above right]{$(4,4)$} circle (1pt);
+		    \filldraw[black] (3,2)node[above right]{$(3,4)$} circle (1pt);
+		    \filldraw[black] (2,2)node[above right]{$(2,4)$} circle (1.5pt);
+		    \filldraw[black] (2,3)node[above right]{$(2,6)$} circle (1pt);
+		    \filldraw[black] (2,4)node[above right]{$(2,8)$} circle (1pt);
+		    \filldraw[black] (2,5)node[above right]{$(2,10)$} circle (1pt);
 
-			\filldraw[black] (6,0)node[above right]{$(6,0)$} circle (1.5pt);
-			\filldraw[black] (5,1)node[above right]{$(5,1)$} circle (1.5pt);
-			\filldraw[black] (4,2)node[above right]{$(4,4)$} circle (1.5pt);
-			\filldraw[red] (3,3)node[above right]{$\mathcal{I}^i(3,6)$} circle (1.5pt);
-			\filldraw[black] (2,4)node[above right]{$(2,8)$} circle (1.5pt);
-			\filldraw[black] (1,5)node[above right]{$(1,10)$} circle (1.5pt);
-			\filldraw[black] (0,6)node[above right]{$(0,12)$} circle (1.5pt);
-		    \end{tikzpicture}
+		    \filldraw[black] (5,3)node[above right]{$(5,6)$} circle (1pt);
+		    \filldraw[black] (4,3)node[above right]{$(4,6)$} circle (1pt);
+		    \filldraw[black] (3,3)node[above right]{$(3,6)$} circle (1.5pt);
+		    \filldraw[black] (3,4)node[above right]{$(3,8)$} circle (1pt);
+		    \filldraw[black] (3,5)node[above right]{$(3,10)$} circle (1pt);
+
+		    \draw[red](6,1)node[right]{$\mathcal{I}_{(1,2)}$};
+		    \draw[red](6,2)node[right]{$\mathcal{I}_{(2,4)}$};
+		    \draw[red](6,3)node[right]{$\mathcal{I}_{(3,6)}$};
+
+		\end{tikzpicture}
+	    \vspace{1cm}
 
 		    $\begin{tabular}{rcl}
-			$\mathcal{I}^i(1,2)$&$=$&$\lbrace (0,4),(2,0) \rbrace$\\\\
-			$\mathcal{I}^i(2,4)$&$=$&$\lbrace (0,8),(1,6),(3,1),(4,0)\rbrace$\\\\
-			$\mathcal{I}^i(3,6)$&$=$&$\lbrace (0,12),(1,10),(2,8),(4,4),(5,1),(6,0) \rbrace$\\
+			$\mathcal{I}^i(1,2)$&$=$&$\lbrace \ldots, (5,2),(4,2),(3,2),(2,2),(1,2),(1,4),(1,6),(1,8), (1,10),\ldots \rbrace$\\\\
+			$\mathcal{I}^i(2,4)$&$=$&$\lbrace \ldots, (5,4),(4,4),(3,4),(2,6),(2,8),(2,10),\ldots\rbrace$\\\\
+			$\mathcal{I}^i(3,6)$&$=$&$\lbrace \ldots,(5,6),(4,6),(3,6),(3,10), \ldots \rbrace$\\
 		    \end{tabular}$\\
     
-		\end{center}
-		\vspace{.5cm}
+		    \end{center}
+		\vspace{1cm}
 
 	    %----------(2.3)
-	    \item Sabiendo que la relación marginal de sustitución es lo máximo que estaría dispuesto a renunciar para consumir otra mercancía (pendiente de la curva de indiferencia), entonces la $RMS$ de consumir una $"$bolsa patatas fritas$"$ estaría dado por $2$ $"$latas de cervezas$"$, es decir, 
-		$$MRS(patatas) = 2.$$
-		En su defecto podríamos decidir consumir una $"$lata de cerveza$"$ más, entonces la $RMS$ estará dado por  media bolsa de $"$patatas fritas$"$, es decir,
-		$$MRS(cerveza) = \dfrac{1}{2}.$$
-		Con el único inconveniente que no podemos que no podemos eligir media bolsa de patatas fritas.\\\\
+	    \item Según el capítulo 3 de Varian se menciona que, \begin{center}$"$las preferencias por los complementarios perfectos se caracterizan por el hecho de que la RMS no puede ser más que 0 o infinita$"$\end{center}
+		En particular, y teniendo en cuenta los gustos de mis amigos. Si elegimos la curva de indiferencia $\mathcal{I}_{(2,4)}$ entonces la RMS será infinita porque mis amigos estarán dispuestos a renunciar cervezas por patatas fritas. De lo contrario, la RMS será cero ya que mis amigos no querrán cambiar cervezas por conseguir una bolsa más de patatas fritas.
+		\vspace{1cm}
 
 	\end{enumerate}
 
@@ -168,36 +187,42 @@ Invita a unos amigos a ver un partido en casa. Sus amigos quieren patatas fritas
     \item \textbf{¿Puede representar sus gustos a través de una función de utilidad?}\\
 
 	\begin{enumerate}[\bfseries (3.1)]
+
 	    %----------(3.1)
 	    \item Para tal efecto necesitamos que a cada cesta se le asigne un número real de tal forma que se cumple el criterio de que si una cesta es indiferente a una segunda entonces le daremos el mismo valor numérico y si una cesta es estrictamente mas preferida que una tercera entonces se dará valores distintos. Se representa de la siguiente manera:     
+		\begin{tcolorbox}[colframe=white]
 		\begin{center}
 		    \begin{tabular}{rccc|ccc}
 			$u:$&$\mathcal{X}$ & $\longmapsto$ & $\mathbb{R}$ & $x \sim y$ & $\Rightarrow$ & $u(x)=u(y)$\\
 			    & $x$ & $\longmapsto$ & $u(x_1,x_2)$ & $x\succ z$&$\Rightarrow$&$u(x)>u(z)$\\
 		    \end{tabular}
 		\end{center}
+		\end{tcolorbox}
 		\vspace{.3cm}
 		Luego podríamos asignar dicha función de utilidad en función a la cantidad total de cervezas. 
-		$$u(x_1,x_2)=2x_1+x_2$$
+
+		\begin{tcolorbox}[colframe=white]
+		$$u(x_1,x_2)=min\lbrace 2x_1,x_2 \rbrace$$
+		\end{tcolorbox}
 		Por ejemplo
 
 		\begin{center}
 		    \begin{tabular}{cccccc}
 			$u:$&$\mathcal{X}$&$\longmapsto$&$\mathbb{R}$&&\\
-			 & $(x_1,x_2)$ & $\longmapsto$&$u(x_1,x_2)$&$=$&$2x_1+x_2$\\
+			 & $(x_1,x_2)$ & $\longmapsto$&$u(x_1,x_2)$&$=$&$min\lbrace 2x_1,x_2\rbrace$\\
 			    & $(0,0)$ & $\longmapsto$ & $u(0,0)$ & $=$ & $0$\\
-			    & $(1,0)$ & $\longmapsto$ & $u(1,0)$ & $=$ & $2$\\
-			    & $(0,2)$ & $\longmapsto$ & $u(0,2)$ & $=$ & $2$\\
-			    & $(2,0)$ & $\longmapsto$ & $u(2,0)$ & $=$ & $4$\\
-			    & $(1,2)$ & $\longmapsto$ & $u(1,2)$ & $=$ & $4$\\
-			    & $(0,4)$ & $\longmapsto$ & $u(0,4)$ & $=$ & $4$\\
-			    & $(3,0)$ & $\longmapsto$ & $u(3,0)$ & $=$ & $6$\\
-			    & $(2,2)$ & $\longmapsto$ & $u(2,2)$ & $=$ & $6$\\
-			    & $(1,4)$ & $\longmapsto$ & $u(1,4)$ & $=$ & $6$\\
-			    & $(0,6)$ & $\longmapsto$ & $u(0,6)$ & $=$ & $6$\\
+			    & $(2,2)$ & $\longmapsto$ & $u(2,2)$ & $=$ & $2$\\
+			    & $(1,2)$ & $\longmapsto$ & $u(1,2)$ & $=$ & $2$\\
+			    & $(1,4)$ & $\longmapsto$ & $u(1,4)$ & $=$ & $2$\\
+			    & $(3,4)$ & $\longmapsto$ & $u(3,4)$ & $=$ & $4$\\
+			    & $(2,4)$ & $\longmapsto$ & $u(2,4)$ & $=$ & $4$\\
+			    & $(2,6)$ & $\longmapsto$ & $u(2,6)$ & $=$ & $4$\\
+			    & $(4,6)$ & $\longmapsto$ & $u(4,6)$ & $=$ & $6$\\
+			    & $(3,6)$ & $\longmapsto$ & $u(3,6)$ & $=$ & $6$\\
+			    & $(3,8)$ & $\longmapsto$ & $u(3,8)$ & $=$ & $6$\\
 		    \end{tabular}
 		\end{center} 
-		\vspace{.6cm}
+		\vspace{1cm}
 
 		%----------(3.2)
 		\item Anteriormente para los cardinalistas, la función de utilidad que representaba las preferencias de un consumidor era única y  la representación de los gustos individuales de un consumidor en la teoría económica moderna es ordinalista es decir, se representan a través de una representación binaria que ordena cestas . Acá la cuestión es si existe una relación entre la herramienta de los cardinalistas (la función de utilidad) y la herramienta de los ordinalistas (relación de preferencias). \\
@@ -221,7 +246,7 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 	    \item Sabiendo que los gustos de mis amigos son tomar una bolsa de patatas fritas por cada dos cervezas, entonces la cesta que elegiría sería la $(4,8)$, ya que querrán comer lo máximo en patatas como también cerveza en función a las preferencias mencionadas.\\\\ 
 
 	    %----------(4.2)
-	    \item El conjunto de consumo como sabemos esta dado por,
+	    \item El conjunto de consumo esta dado por,
 		$$\mathcal{X} = \lbrace (p,c) \; /\; p,c > 0\rbrace,$$
 		luego la renta y los precios están  dados por,
 		\begin{center} $\overline{M} = 12 \EUR$ , $\qquad (\overline{p_1},\overline{p_2}) = (1,1)$, \end{center}
@@ -232,69 +257,197 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 		\begin{center}
 		    \begin{tikzpicture}[scale=.9]
 			% abscisa y ordenada
-			\tkzInit[xmax= 12.5,xmin=0,ymax=25,ymin=0,ystep=2]
+			\tkzInit[xmax= 12.5,xmin=0,ymax=16.5,ymin=0,ystep=2]
 			\tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
 			\tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
 			% label x, f(x)
 			\tkzDrawX[opacity= 1,label=Patatas fritas (p), right=.1]
 			\tkzDrawY[opacity= 1,label=Latas de cervezas (c), below = -.5]
 			%dominio y función
-			\draw[step=1cm,black,very thin,opacity=.03] (0,0) grid (12,12);
-			\draw[opacity = 0.1,color=red](1,0)--(0,1);
-			\draw[opacity = 0.1,color=red](2,0)--(0,2);
-			\draw[opacity = 0.1,color=red](3,0)--(0,3);
-			\draw[opacity = 0.1,color=red](4,0)--(0,4);
-			\draw[opacity = 0.1,color=red](5,0)--(0,5);
-			\draw[opacity = 0.1,color=red](6,0)--(0,6);
-			\draw[opacity = 0.1,color=red](7,0)--(0,7);
-			\draw[opacity = 0.1,color=red](8,0)--(0,8);
-			\draw[opacity = 0.1,color=red](9,0)--(0,9);
-			\draw[opacity = 0.1,color=red](10,0)--(0,10);
-			\draw[opacity = 0.1,color=red](11,0)--(0,11);
-			\draw[opacity = 0.1,color=red](12,0)--(0,12);
+			\draw[step=1cm,black,very thin,opacity=.05] (0,0) grid (12,8);
+
+			\draw[color=yellow,opacity=.7](1,8)--(1,1)--(12,1);
+			\draw[color=yellow,opacity=.7](2,8)--(2,2)--(12,2);
+			\draw[color=yellow,opacity=.7](3,8)--(3,3)--(12,3);
+			\draw[color=yellow,opacity=.7](4,8)--(4,4)--(12,4);
+
 			\draw[opacity = 1,color=blue](12,0)--(0,6);
+
+			\filldraw[black] (0,0)node[below left]{$(0,0)$} circle (1.5pt);
+			\filldraw[black] (1,1)node[below left]{$(1,2)$} circle (1.5pt);
+			\filldraw[black] (2,2)node[below left]{$(2,4)$} circle (1.5pt);
+			\filldraw[black] (3,3)node[below left]{$(3,6)$} circle (1.5pt);
+
+
 
 			\draw[blue](12,-1)node[]{$\left(\frac{\overline{M}}{\overline{p_1}},0\right)\equiv (12,0)$};
 			\draw[blue](-1.8,6)node[]{$\left(0,\frac{\overline{M}}{\overline{p_2}}\right)\equiv (0,12)$};
 
-			\filldraw[black] (1,6)node[above]{$(1,12)$} circle (1.5pt);
-			\filldraw[green] (1,5)node[below]{$(1,10)$} circle (1.5pt);
-			\filldraw[red] (1,5.5)node[above right]{$(1,11)$} circle (1.5pt);
+			\filldraw[black] (1,6)node[above right]{$(1,12)$} circle (1.5pt);
+			\filldraw[red] (1,5.5)node[below left]{$(1,11)$} circle (1.5pt);
 
-			\draw[green,dashed](1,6)--(1,5);
-			\draw[green, dashed](0,6)--(1,6);
-			\draw[green, dashed](0,5)--(1,5);
-			\draw[green, <->, dashed](-0.6,5)--(-0.6,6);
-			\draw[green](-1,5.5)node[]{$RMS$};
+			\draw[green,dashed](0,6)--(1,6)--(1,1)--(0,1);
+			\draw[green, <->, dashed](-0.6,1)--(-0.6,6);
+			\draw[green](-1,3.5)node[]{$RMS$};
 
-			\draw[red,dashed](1,6)--(2.5,6)--(2.5,5.5)--(1,5.5);
-			\draw[red, <->, dashed](2.8,5.5)--(2.8,6);
-			\draw[red](3.3,5.75)node[]{$RMI$};
+			\draw[red,dashed](1,6)--(2,6)--(2,5.5)--(1,5.5);
+			\draw[red, <->, dashed](3.4,5.5)--(3.4,6);
+			\draw[red](3.9,5.75)node[]{$RMI$};
 
-			\draw[green,dashed](1,5.5)--(2,5.5);
-			\filldraw(2,5.5)node[below right]{$(2,11)$} circle (1.5pt);
+			\draw[green,dashed](1,5.5)--(2,5.5)--(2,2)--(1,2);
+			\filldraw(2,5.5)node[above right]{$(2,11)$} circle (1.5pt);
+
+			\draw[red,dashed](2,5.5)--(3,5.5)--(3,5)--(2,5);
+			\filldraw[red] (2,5)node[below left]{$(2,10)$} circle (1.5pt);
+			\filldraw(3,5)node[above right]{$(3,10)$} circle (1.5pt);
+
+			\draw[green,dashed](2,5)--(3,5)--(3,3)--(2,3);
+			\filldraw(4,4.5)node[above right]{$(4,9)$} circle (1.5pt);
+			\draw[red,dashed](3,5)--(4,5)--(4,4.5)--(3,4.5);
+			\filldraw[red] (3,4.5)node[below left]{$(3,9)$} circle (1.5pt);
+
+			\draw[green,dashed](3,4.5)--(4,4.5)--(4,4)--(3,4);
+			\draw[red,dashed](3,5)--(4,5)--(4,4.5)--(3,4.5);
+			\filldraw[red] (4,4)node[below left]{$(4,8)$} circle (1.5pt);
 
 		    \end{tikzpicture}
 		\end{center}
+		\vspace{1cm}
+
+
+		Suponiendo que primero nos encontramos con el anaquel de las latas sueltas entonces nos preguntaremos entonces nos preguntas si para $x$ cesta, 
+		\begin{tcolorbox}[colframe=white]
+		\begin{center}¿Debo meter una bolsa de patatas fritas en el carro?\end{center}
+	    \end{tcolorbox}
+		Para ello aplicamos la regla de decisión racional como también la relación marginal de sustitución $(RMS)$ y la relación marginal de intercambio $RMI = \dfrac{\overline{p_1}}{\overline{p_2}}$\\
 		\vspace{.5cm}
 
-		    Suponiendo que primero nos encontramos con el anaquel de las latas sueltas entonces nos preguntaremos..\\
-
-		\begin{enumerate}[1.-]
-
-		    \item (0,12) ¿Debo meter una bolsa de patatas fritas en el carro?\\\\
-			Para ello aplicamos la regla de decisión racional como también la relación marginal de sustitución $(RMS)$ y la relación marginal de intercambio $RMI = \dfrac{\overline{p_1}}{\overline{p_2}}$\\
 			\begin{center}
-			    \begin{tabular}{rcccccl}
-				&&$B(p)$&$>$&$C(p)$&&\\\\
+			    \begin{tabular}{c|ccc}
+				Cestas&$B(p)$&$>$&$C(p)$\\\\
 				\hline\\
-				$RMS$ & $=$ & $2$ & $>$ & $1$ & $=$ & $RMI$\\\\
+				$(0,12)$&$RMS=10$ & $>$ & $RMI=1$\\
+				$(1,11)$&$9$ & $>$ & $1$\\
+				$(2,10)$ & $7$ & $>$ & $1$\\
+				$(3,9)$ & $4$ & $>$ & $1$ \\
+				$(4,8)$ & $1$ & $=$ & $1$ \\
 			    \end{tabular}
+			    \vspace{1cm}
 		    \end{center}
 
-		    \item (1,11)
+		    Por lo tanto ya que el beneficio es igual al coste, la elección optima  estará dado por la cesta,\\
+		    \begin{tcolorbox}[colframe=white]
+			\begin{center}
+			    $(4,8)$
+			\end{center}
+		    \end{tcolorbox}
+		    \vspace{1cm}
 
-		\end{enumerate}
+
+	    %----------4.3.
+		\item Sabiendo que los gustos de mis amigos son tomar una bolsa de patatas fritas por cada dos cervezas, y los precios vienen dados por $(\overline{p_1},\overline{p_2} = (2,1)$ entonces la cesta que elegirán será la $(3,6)$, ya que querrán comer lo máximo en patatas como también cerveza en función a las preferencias mencionadas.\\\\ 
+
+	    Luego, el conjunto de consumo esta dado por,
+		$$\mathcal{X} = \lbrace (p,c) \; /\; p,c > 0\rbrace,$$
+		la renta y los precios están  dados por,
+		\begin{center} $\overline{M} = 12 \EUR$ , $\qquad (\overline{p_1},\overline{p_2}) = (2,1)$, \end{center}
+		por último el conjunto presupuestario será,
+		$$\beta(\overline{p_1},\overline{p_2},\overline{M}) = \lbrace (p,c) \in \mathcal{X} \; /\; \overline{p_1}\cdot p + \overline{p_2}\cdot c \leq \overline{M}\rbrace.$$
+		\vspace{.1 cm}
+
+		\begin{center}
+		    \begin{tikzpicture}[scale=.9]
+			% abscisa y ordenada
+			\tkzInit[xmax= 8.25,xmin=0,ymax=16.5,ymin=0,ystep=2]
+			\tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
+			\tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
+			% label x, f(x)
+			\tkzDrawX[opacity= 1,label=Patatas fritas (p), right=.1]
+			\tkzDrawY[opacity= 1,label=Latas de cervezas (c), below = -.5]
+			%dominio y función
+			\draw[step=1cm,black,very thin,opacity=.05] (0,0) grid (8,8);
+
+			\draw[color=yellow,opacity=.7](1,8)--(1,1)--(8,1);
+			\draw[color=yellow,opacity=.7](2,8)--(2,2)--(8,2);
+			\draw[color=yellow,opacity=.7](3,8)--(3,3)--(8,3);
+
+			\draw[opacity = 1,blue](6,0)--(0,6);
+
+			\filldraw[black] (0,0)node[below left]{$(0,0)$} circle (1.5pt);
+			\filldraw[black] (1,1)node[below left]{$(1,2)$} circle (1.5pt);
+			\filldraw[black] (2,2)node[below left]{$(2,4)$} circle (1.5pt);
+
+
+
+			\draw[blue](6,-1)node[]{$\left(\frac{\overline{M}}{\overline{p_1}},0\right)\equiv (6,0)$};
+			\draw[blue](-1.8,6)node[]{$\left(0,\frac{\overline{M}}{\overline{p_2}}\right)\equiv (0,12)$};
+
+			\filldraw[black] (1,6)node[above right]{$(1,12)$} circle (1.5pt);
+
+			\filldraw[red] (1,5)node[below left]{$(1,10)$} circle (1.5pt);
+			\filldraw[red] (2,4)node[below left]{$(2,8)$} circle (1.5pt);
+			\filldraw[red] (3,3)node[below left]{$(3,6)$} circle (1.5pt);
+
+			\filldraw(1,6)node[above right]{$(1,12)$} circle (1.5pt);
+			\filldraw(2,5)node[above right]{$(2,10)$} circle (1.5pt);
+			\filldraw(3,4)node[above right]{$(3,8)$} circle (1.5pt);
+
+			%lineas verdes
+			\draw[green,dashed](0,6)--(1,6)--(1,1)--(0,1);
+			\draw[green,dashed](1,5)--(2,5)--(2,2)--(1,2);
+			\draw[green,dashed](2,4)--(3,4)--(3,3)--(2,3);
+
+			%lineas rojas
+			\draw[red,dashed](1,6)--(2,6)--(2,5)--(1,5);
+			\draw[red,dashed](2,5)--(3,5)--(3,4)--(2,4);
+
+			\draw[green, <->, dashed](-0.6,1)--(-0.6,6);
+			\draw[green](-1,3.5)node[]{$RMS$};
+
+			\draw[red, <->, dashed](3.4,5)--(3.4,6);
+			\draw[red](3.9,5.5)node[]{$RMI$};
+
+		    \end{tikzpicture}
+		\end{center}
+		\vspace{1cm}
+
+		Análogamente al anterior apartado primero nos encontramos con el anaquel de las latas sueltas entonces nos preguntaremos entonces nos preguntas si para $x$ cesta, 
+		\begin{tcolorbox}[colframe=white]
+		\begin{center}¿Debo meter una bolsa de patatas fritas en el carro?\end{center}
+	    \end{tcolorbox}
+		Para ello aplicamos la regla de decisión racional como también la relación marginal de sustitución $(RMS)$ y la relación marginal de intercambio $RMI = \dfrac{\overline{p_1}}{\overline{p_2}}$\\
+		\vspace{.5cm}
+
+			\begin{center}
+			    \begin{tabular}{c|ccc}
+				Cestas&$B(p)$&$>$&$C(p)$\\\\
+				\hline\\
+				$(0,12)$&$RMS=10$ & $>$ & $RMI=2$\\
+				$(2,10)$&$8$ & $>$ & $2$\\
+				$(3,8)$ & $6$ & $>$ & $2$ \\
+				$(3,6)$ & $2$ & $=$ & $2$ \\
+			    \end{tabular}
+			    \vspace{1cm}
+		    \end{center}
+
+		    Por lo tanto ya que el beneficio es igual al coste, la elección optima  estará dado por la cesta,\\
+		    \begin{tcolorbox}[colframe=white]
+			\begin{center}
+			    $(3,6)$
+			\end{center}
+		    \end{tcolorbox}
+		    \vspace{1cm}
+
+
+	    %----------- 4.4
+		\item Suponiendo que los precios de las patatas fritas y las latas de cerveza sueltas son $$\overline{p}^{''} = \left( \overline{p_1}^{''},\overline{p_2}\right) = (4.00,1.00).$$ 
+		    Entonces la cesta que eligirá es la cesta, 
+		    \begin{tcolorbox}[colframe=white]
+			$$(2,4)$$
+		    \end{tcolorbox}
+		    Luego podemos afirmar que la teoría económica puede explicar porque eligió la cesta $(2,4)$ a otra, fijándonos en los beneficios y costes de poder intercambiar un bien por otro bien  con un enfoque marginal.\\\\ 
+		    
+
 
 	\end{enumerate}
 
@@ -302,7 +455,30 @@ A pesar del hecho que para los cardinalistas la función de preferencias de un c
 \vspace{.5cm}
 
     %--------------------5.
-    \item ¿Cómo vería la decisión óptima cuando se modifica el conjunto presupuestario (cambios en precios o renta)?
+    \item ¿Cómo varía la decisión óptima cuando se modifica el conjunto presupuestario (cambios en precios o renta)?
+	\begin{center}
+	    \begin{tikzpicture}[scale=.9]
+		% abscisa y ordenada
+		\tkzInit[xmax= 6.5,xmin=0,ymax=6.5,ymin=0,ystep=1]
+		\tiny\tkzLabelX[opacity=0.4,step=1, orig=false]
+		\tiny\tkzLabelY[opacity=0.4,step=1, orig=false]
+		% label x, f(x)
+		\tkzDrawX[opacity= 1,label=Patatas fritas (q), right=.1]
+		\tkzDrawY[opacity= 1,label=Precio (p), below = -.5]
+		%dominio y función
+		\draw[step=1cm,black,very thin,opacity=.05] (0,0) grid (7,7);
+
+		\filldraw(4,1)node[below left]{$(4,1)$} circle (1.5pt);
+		\filldraw(3,2)node[below left]{$(3,2)$} circle (1.5pt);
+		\filldraw(2,4)node[below left]{$(2,4)$} circle (1.5pt);
+
+		\draw(1.6,6)--(2,4)--(3,2)--(4,1)--(6,0.6);
+
+
+	    \end{tikzpicture}
+	\end{center}
+	\vspace{1cm}
+
 
 
 \subsubsection*{\center IV. Cálculo analítico de la función de demanda.}

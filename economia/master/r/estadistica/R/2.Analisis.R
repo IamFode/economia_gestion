@@ -1,7 +1,7 @@
 # Análisis
 
 source("Funciones.R")
-source("1.Preparar.EPA.R")
+# source("1.Preparar.EPA.R")
 
 epa <- read.csv2(file="../Dat/EPA/EPA_2021T2_prep.csv",encoding = "UTF8")
 

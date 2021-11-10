@@ -1,0 +1,30 @@
+---
+title: "Encuesta de Hogares"
+author: "Christian Limbert Paredes Aguilera"
+date: "7/11/2021"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+\section{1. Recopilación y preparación de datos}
+
+```{r}
+library(haven)
+personas = as.data.frame(read_sav("../Dat/EH2020_Persona.sav"))
+```
+
+```{r}
+dim(personas)
+```
+
+Este data set se tiene 37092 filas y 258 columnas
+
+\subsection{Sexo}
+
+```{r}
+table(personas$s01a_02)
+```
+
+se tiene 

@@ -85,4 +85,21 @@ por lo tanto,
     \hat{\beta_1} = \frac{\sum\limits_{i=1}^n (x_i-\overline{x})(y_i-\overline{y})}{\sum\limits_{i=1}^n (x_i-\overline{x})^2}.
 \end{equation}
 \end{tcolorbox}
-Ésta ecuación no es nada mas que la covarianza muestral en $x$ e $y$ dividida entre la variación muestral de $x$.
+Ésta ecuación no es nada mas que la covarianza muestral en $x$ e $y$ dividida entre la variación muestral de $x$. Esto tiene sentido porque $\beta_1$ es igual a la covarianza poblacional dividida entre la varianza de $x$ cuando $E(u)=0$ y $Cov(x,u) = 0$. Como consecuencia directa se tiene que si en la muestra $x$ e $y$ están correlacionadas positivamente, entonces $\hat{\beta_1}$ es positiva y contrariamente.\\\\
+Para todo $\hat{\beta_0}$ y $\hat{\beta_1}$ se define el valor ajustado para $y$ cuando $x=x_i$ como 
+\begin{equation}
+	\hat{y_i} = \hat{\beta_0} + \hat{\beta_1}x_i.
+\end{equation}
+Este es el valor que se predice para $y$ cuando $x=x_i$.\\\\
+El \textbf{residual} de la observación $i$ es la diferencia entre el verdadero valor $y_i$ y si valor ajustado.\begin{equation} 
+    \hat{u} = y_i - \hat{y_i} = y_i - \hat{\beta_0} - \hat{\beta_1}x_i.
+\end{equation}
+Los residuales no son lo mismo que la ecuación (2.2)\\\\
+Supongamos que $\hat{\beta_0}$ y $\hat{beta_1}$, se eligen de manera que la suma de residuales cuadrados, 
+\begin{equation}
+    \sum\limits_{i=1}^n \hat{u_i}^2 = \sum\limits_{i=1}^n (y_i - \hat{\beta_0} - \hat{\beta_1}x_i)^2
+\end{equation}
+sea tan pequeña como sea posible. 
+
+
+

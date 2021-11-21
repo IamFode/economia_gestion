@@ -1,4 +1,4 @@
-**** use "C:\Users\fode\Desktop\diplomadoUPB\stata\practicas\practica1\data\mroz.dta" ****
+use "C:\Users\fode\Desktop\diplomadoUPB\stata\practicas\practica1\data\mroz.dta"
 
 *** 1. Construya un archivo Do File con su nombre y su profesión que tenga como título ***
 

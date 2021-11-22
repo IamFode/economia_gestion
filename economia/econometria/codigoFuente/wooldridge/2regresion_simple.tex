@@ -95,11 +95,16 @@ El \textbf{residual} de la observación $i$ es la diferencia entre el verdadero 
     \hat{u} = y_i - \hat{y_i} = y_i - \hat{\beta_0} - \hat{\beta_1}x_i.
 \end{equation}
 Los residuales no son lo mismo que la ecuación (2.2)\\\\
-Supongamos que $\hat{\beta_0}$ y $\hat{beta_1}$, se eligen de manera que la suma de residuales cuadrados, 
+Supongamos que $\hat{\beta_0}$ y $\hat{\beta_1}$, se eligen de manera que la suma de residuales cuadrados, 
 \begin{equation}
     \sum\limits_{i=1}^n \hat{u_i}^2 = \sum\limits_{i=1}^n (y_i - \hat{\beta_0} - \hat{\beta_1}x_i)^2
 \end{equation}
-sea tan pequeña como sea posible. 
+sea tan pequeña como sea posible. \\\\
+
+\textbf{Minimización de la suma de los residuos cuadrados.-}
+Se mostrará que $\hat{\beta_0}$ y $\hat{\beta_1}$ estimados de MCO minimizan la suma de los residuales cuadrados. Formalmente, el problema es encontrar las soluciones $\hat{\beta_0}$ y $\hat{\beta_1}$ del problema de minimización 
+$$\min_{b_0,b_1} \sum_{i=1}^n (y_i-b_0-b_ix_i)^2$$
+donde $b_0$ y $b_1$ son argumentos ficticios en el problema de optimización. Para simplificar llámesele a esta función $Q(b_0,b_1)$. Una condición para que $\hat{\beta_0}$ y $\hat{\beta_1}$ sean soluciones del problema de minimización es que las derivadas parciales de $Q(b_0,b_1)$ respecto a $b_0$ y $b_1$ evaluadas en $$\hat{\beta_0},\hat{\beta_1}: \quad \dfrac{\partial Q(\hat{\beta_0},\hat{\beta_1})}{\partial b_0}=0 \qquad y \qquad \dfrac{\partial Q(\hat{\beta_0},\hat{\beta_1})}{\partial b_1}=0$$
 
 
 

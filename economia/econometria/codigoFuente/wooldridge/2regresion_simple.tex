@@ -105,6 +105,16 @@ sea tan pequeña como sea posible. \\\\
 Se mostrará que $\hat{\beta_0}$ y $\hat{\beta_1}$ estimados de MCO minimizan la suma de los residuales cuadrados. Formalmente, el problema es encontrar las soluciones $\hat{\beta_0}$ y $\hat{\beta_1}$ del problema de minimización 
 $$\min_{b_0,b_1} \sum_{i=1}^n (y_i-b_0-b_ix_i)^2$$
 donde $b_0$ y $b_1$ son argumentos ficticios en el problema de optimización. Para simplificar llámesele a esta función $Q(b_0,b_1)$. Una condición para que $\hat{\beta_0}$ y $\hat{\beta_1}$ sean soluciones del problema de minimización es que las derivadas parciales de $Q(b_0,b_1)$ respecto a $b_0$ y $b_1$ evaluadas en $$\hat{\beta_0},\hat{\beta_1}: \quad \dfrac{\partial Q(\hat{\beta_0},\hat{\beta_1})}{\partial b_0}=0 \qquad y \qquad \dfrac{\partial Q(\hat{\beta_0},\hat{\beta_1})}{\partial b_1}=0$$
-
+Con ayuda de la regla de la cadena del cálculo, estas dos ecuaciones se convierten en,
+$$-2\sum_{i=1}^n \hat{u} = -2\sum_{i=1}^n(y_i-\hat{\beta}_0 - \hat{\beta}_1 x_i)=0, \qquad -2\sum_{i=1}^n x_1\hat{u} = -2\sum_{i=1}^n x_i(y_i-\hat{\beta}_0 - \hat{\beta}_1 x_i)=0$$
+Una manera de comprobar que se ha minimizado la suma de los residuos cuadrados es expresando, para cualquier $b_0$ y $b_1$,
+$$\begin{array}{rcl}
+    Q(b_0,b_1)&=&\sum\limits_{i=1}^n \left[y_i-\hat{\beta}_0 - \hat{\beta}_1 + (\hat{\beta}_0 - \hat{\beta}_1 - b_0) + (\hat{\beta}_i - b_1)x_i\right]^2\\\\
+	      &=&\sum\limits_{i=1}^n \left[\hat{u}_i + (\hat{\beta}_0 - b_0) + (\hat{\beta}_i - b_1)x_i\right]^2\\\\
+	      &=&\sum\limits_{i=1}^n \hat{u}_1^2 + n(\hat{\beta}_0-b_0)^2 + (\hat{\beta}_1-b_1)\sum\limits_{i=1}^n x_i^2 + 2(\hat{\beta}_0-b_0)(\hat{\beta}_1-b_1)\sum\limits_{i=1}^n x_i\\\\
+\end{array}$$
+Luego ya que el primer termino no depende de $b_0$ ni de $b_1$ entonces,
+$$\sum_{i=1}^n \left[(\hat{\beta}_0-b_0)+(\hat{\beta}_1-b_1)x_i\right]^2$$
+Dado que ésta es una suma de términos al cuadrado, el menor valor que puede tener es 0. Por lo tanto, tendrá el menor valor posible cuando $b_o=\hat{\beta}_0$ y $b_1=\hat{\beta}_1$.\\\\
 
 

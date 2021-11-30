@@ -61,7 +61,7 @@ y
 \begin{equation}
     n^{-1} \sum\limits_{i=1}^n x_i(y_i - \beta_0 - \beta_1x_i) = 0
 \end{equation}
-Luego por la ecuación (2.9) tenemos que 
+también llamada \textbf{condiciones de primer orden para los estimadores de MCO}. Luego por la ecuación (2.9) tenemos que 
 \begin{equation}
     \overline{y} = \hat{\beta_0} + \hat{\beta_1}\overline{x}.
 \end{equation}
@@ -117,4 +117,28 @@ Luego ya que el primer termino no depende de $b_0$ ni de $b_1$ entonces,
 $$\sum_{i=1}^n \left[(\hat{\beta}_0-b_0)+(\hat{\beta}_1-b_1)x_i\right]^2$$
 Dado que ésta es una suma de términos al cuadrado, el menor valor que puede tener es 0. Por lo tanto, tendrá el menor valor posible cuando $b_o=\hat{\beta}_0$ y $b_1=\hat{\beta}_1$.\\\\
 
+Con MCO se podrá obtener insesgamiento, consistencia y otras propiedades estadísticas de una manera relativamente sencilla. Además, como sugiere la motivación en las ecuaciones (2.8) y (2.9)  y como se verá en la sección 2.5, el método de MCO es adecuado para estimar los parámetros que aparecen en la función de la media condicional.\\\\
 
+Una vez que se han determinado las estimaciones por MCO del intercepto y de la pendiente,
+se obtiene la \textbf{línea de regresión de MCO o función de regresión muestral (FRM)}:
+
+\begin{tcolorbox}[colframe=white]
+    \begin{equation}
+	\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x.
+    \end{equation}
+\end{tcolorbox}
+
+Donde se entiende que $\hat{\beta}_0$ y $\hat{\beta}_1$ han sido obtenidas empleando las ecuaciones (2.12) y (2.13). La notación $\hat{y}$ que se lee $y \; gorro$ indica los valores predichos por la ecuación (2.17) son estimaciones. \\\\
+En la mayoría de los casos, la pendiente estimada, se puede expresar como,
+\begin{equation}
+    \hat{\beta}_1 = \dfrac{\triangle \hat{y}}{\triangle x}
+\end{equation}
+es de mayor interés, pues indica la cantidad en la que cambia $\hat{y}$ cuando $x$ se incrementa en una unidad. De manera equivalente,
+\begin{equation}
+    \hat{y} =  \hat{\beta}_1 \triangle x.
+\end{equation}
+
+\section{Propiedades de MCO en cualquier muestra de datos}
+El residual de MCO correspondiente a la observación $i$, $\hat{u}_i$, es la diferencia entre $y_i$ y su valor ajustado, como se indica en la ecuación (2.15). Si $\hat{u}_i$ es positivo, la línea predice un valor inferior al de $y_i$; si $\hat{u}_i$ es negativo, la linea predice un valor superior al de $y_i$. Lo ideal para la observación $i$ es cuando $\hat{u}_i = 0$, pero en la mayoria de los casos todos los residuales son distintos de cero. 
+
+\subsection{Propiedades algebraicas de los estadísticos de MCO}

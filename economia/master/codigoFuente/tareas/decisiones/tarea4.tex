@@ -24,56 +24,56 @@
 	    \end{enumerate}
 
 	    \begin{multicols}{3}
-		    \begin{center}
-		    \begin{tikzpicture}[scale=.14]
-			% abscisa y ordenada
-			\tkzInit[xmax= 23,xmin=0,ymax=23,ymin=0]
-			\tiny\tkzLabelXY[opacity=0.3,step=2, orig=false]
-			% label x, f(x)
-			\tkzDrawX[opacity= 1,label=$q^i$,right=0]
-			\tkzDrawY[opacity= 1,label=p,below = -0.2]
-			%dominio y función
-			\draw [green,domain=0:21,thick,scale=1] plot(\x,{21-\x}); 
-			\tkzText[red,above,opacity=1](10,22){\tiny $q^i = d^i(p)=21-p$}
-			\draw[blue,dashed](0,4)--(17,4)--(17,0);
-			\draw[blue](17,-1.5)node[below]{$q^i = 17$};
-			\draw[blue](-1.5,4)node[left]{$p=4$};
-		    \end{tikzpicture}
-		    \end{center}
+		\begin{center}
+		\begin{tikzpicture}[scale=.14]
+		    % abscisa y ordenada
+		    \tkzInit[xmax= 23,xmin=0,ymax=23,ymin=0]
+		    \tiny\tkzLabelXY[opacity=0.3,step=2, orig=false]
+		    % label x, f(x)
+		    \tkzDrawX[opacity= 1,label=$q^i$,right=0]
+		    \tkzDrawY[opacity= 1,label=p,below = -0.2]
+		    %dominio y función
+		    \draw [green,domain=0:21,thick,scale=1] plot(\x,{21-\x}); 
+		    \tkzText[red,above,opacity=1](10,22){\tiny $q^i = d^i(p)=21-p$}
+		    \draw[blue,dashed](0,4)--(17,4)--(17,0);
+		    \draw[blue](17,-1.5)node[below]{$q^i = 17$};
+		    \draw[blue](-1.5,4)node[left]{$p=4$};
+		\end{tikzpicture}
+		\end{center}
 
-		    \begin{center}
-		    \begin{tikzpicture}[scale=.14]
-			% abscisa y ordenada
-			\tkzInit[xmax=21,xmin=0,ymax=23,ymin=0]
-			\tiny\tkzLabelXY[opacity=0.3,step=2, orig=false]
-			% label x, f(x)
-			\tkzDrawX[opacity= 1,label=$q^h$,right=0]
-			\tkzDrawY[opacity= 1,label=p,below = -0.2]
-			%dominio y función
-			\draw [green,domain=0:12,thick,scale=1] plot(\x,{6-(\x/2)}); 
-			\tkzText[red,above,opacity=1](10,22){\tiny $q^h = d^h(p) = 12-2p$}
-			\draw[blue,dashed](4,0)--(4,4)--(0,4);
-			\draw[blue](-1.5,4)node[left]{$p=4$};
-			\draw[blue](4,-1.5)node[below]{$q^i = 4$};
-		    \end{tikzpicture}
-		    \end{center}
+		\begin{center}
+		\begin{tikzpicture}[scale=.14]
+		    % abscisa y ordenada
+		    \tkzInit[xmax=21,xmin=0,ymax=23,ymin=0]
+		    \tiny\tkzLabelXY[opacity=0.3,step=2, orig=false]
+		    % label x, f(x)
+		    \tkzDrawX[opacity= 1,label=$q^h$,right=0]
+		    \tkzDrawY[opacity= 1,label=p,below = -0.2]
+		    %dominio y función
+		    \draw [green,domain=0:12,thick,scale=1] plot(\x,{6-(\x/2)}); 
+		    \tkzText[red,above,opacity=1](10,22){\tiny $q^h = d^h(p) = 12-2p$}
+		    \draw[blue,dashed](4,0)--(4,4)--(0,4);
+		    \draw[blue](-1.5,4)node[left]{$p=4$};
+		    \draw[blue](4,-1.5)node[below]{$q^i = 4$};
+		\end{tikzpicture}
+		\end{center}
 
-		    \begin{center}
-		    \begin{tikzpicture}[scale=.14]
-			% abscisa y ordenada
-			\tkzInit[xmax= 33,xmin=0,ymax=23,ymin=0]
-			\tiny\tkzLabelXY[opacity=0.3,step=2, orig=false]
-			% label x, f(x)
-			\tkzDrawX[opacity= 1,label=Q,right=0]
-			\tkzDrawY[opacity= 1,label=p,below = -0.2]
-			%dominio y función
-			\draw [green,domain=0:33,thick,scale=1] plot(\x,{11-(\x/3)}); 
-			\tkzText[red,above,opacity=1](10,22){\tiny $Q=D(p)=33-3p$}
-			\draw[blue,dashed](0,4)--(21,4)--(21,0);
-			\draw[blue](21,-3.3)node[below]{$Q = 21$};
-			\draw[blue](-1.5,4)node[left]{$p=4$};
-		    \end{tikzpicture}
-		    \end{center}
+		\begin{center}
+		\begin{tikzpicture}[scale=.14]
+		    % abscisa y ordenada
+		    \tkzInit[xmax= 33,xmin=0,ymax=23,ymin=0]
+		    \tiny\tkzLabelXY[opacity=0.3,step=2, orig=false]
+		    % label x, f(x)
+		    \tkzDrawX[opacity= 1,label=Q,right=0]
+		    \tkzDrawY[opacity= 1,label=p,below = -0.2]
+		    %dominio y función
+		    \draw [green,domain=0:33,thick,scale=1] plot(\x,{11-(\x/3)}); 
+		    \tkzText[red,above,opacity=1](10,22){\tiny $Q=D(p)=33-3p$}
+		    \draw[blue,dashed](0,4)--(21,4)--(21,0);
+		    \draw[blue](21,-3.3)node[below]{$Q = 21$};
+		    \draw[blue](-1.5,4)node[left]{$p=4$};
+		\end{tikzpicture}
+		\end{center}
 	    \end{multicols}
 	    \vspace{.1cm}
 
@@ -85,7 +85,7 @@
 
 		%----------i)
 		\item Obtenga la \textbf{curva de oferta de mercado de un bien} $Q = D(p)$ como suma horizontal de las demandas individuales $(Q = O(p) \equiv o^j(p) + o^k(p))$\\\\
-	    Respuesta.-\; $$Q = O(p) \equiv o^j(p) + o^k(p) = (5p-1) + (p-2) = 6p-3$$\\
+		    Respuesta.-\; $$Q = O(p) \equiv o^j(p) + o^k(p) = (5p-1) + (p-2) = 6p-3$$\\
 
 		%----------ii)
 		\item Dibuje las curvas de oferta individuales, y la curva de oferta de mercado una al lado de la otra horizontalmente. En los tres gráficos indique las cantidades individuales y las de mercado que se consumen a un precio $p = 4$.
@@ -302,3 +302,4 @@ cantidades ofertadas o a la curva de oferta):
 		\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
+

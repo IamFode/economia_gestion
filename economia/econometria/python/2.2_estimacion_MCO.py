@@ -14,3 +14,4 @@ x = list(map(float,input("Introducir vector x: ").strip().split()))
 y = list(map(float,input("Introducir vector y: ").strip().split()))
 
 print(beta1_0(x,y))
+

@@ -1,30 +1,36 @@
-# 1 normal
+"
+Alumno: Chistian Limbert Paredes Aguilera
+Asignatura: Métodos cuantitativos (Estadística)
+Tema: 2
+"
 
-#a
+############################### 1. normal ######################################
+
+# a)
 1-pnorm(1700,1500,167)
 
-#b 
-b- pnorm(1600,1500,167) - pnorm(1200,1500,167) 
+# b) 
+pnorm(1600,1500,167) - pnorm(1200,1500,167) 
 
-#c
+# c)
 pnorm(1100,1500,167)
 
-#d
+# d)
 qnorm(0.1,1500,167)
 
-#e
+# e)
 curve(dnorm(x,1500,167),xlim=c(950,2050),col="red",lwd=2,
       xlab="x",ylab="f(x)",main="Función de Densidad N(1500,167)")
 
 curve(pnorm(x,1500,167),xlim=c(950,2050),col="red",lwd=2,
       xlab="x",ylab="F(x)",main="Función de Distribución N(1500,167)")
 
-#f
+# f)
 sim = rnorm(1000,1500,167)
 summary(sim)
 sd(sim)
 
-#g
+# g)
 h<-bw.SJ(sim)
 hist(sim,xlab = "gasto mensual", col = "blue")
 hist(sim, freq = FALSE, main = "Kernel density estimation",
@@ -33,7 +39,16 @@ hist(sim, freq = FALSE, main = "Kernel density estimation",
 lines(density(sim), lwd = 2)
 rug(sim, col = "darkgray")
 
-#h
+# h)
 hist(sim,freq=FALSE,xlab = "gasto mensual", breaks = 30, col = "purple")
 lines(density(sim),lwd=4,col="green")
+
+###################### Distribución en el muestro ##############################
+# a)
+M = 2
+
+# b)
+# c)
+
+
 

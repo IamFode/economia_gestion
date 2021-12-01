@@ -1,5 +1,3 @@
-
-
 ####################################################################
 # QUANTITATIVE METHODS: STATISTICS 
 # Chapter 3: Statistical Inference
@@ -11,6 +9,11 @@
 # SCRIPT 1: MONTE CARLO STUDIES AND THE BOOTSTRAP
 ####################################################################
 
+"
+Consiste en:
+1. Simular una muestra con una distribución conocida
+2. Evaluar un estimador de un parametro de esa muestra simulada
+"
 
 ####################################################################
 # Monte Carlo simulation to check the performance of the sample mean
@@ -18,32 +21,32 @@
 
 
 # Fix the number of Monte Carlo simulations M
-M=10000 # Repetir varias veces la simulación
+M <- 10000 # Repetir varias veces la simulación
 
 # Create a vector that will save the values of the estimator
-mu.est=numeric(M) # vector m para guardar valores de media
+mu.est=numeric(M) # vector m para guardar valores de media muestral
 mu.est
 # Fix the true value of the parameter
-mu=2 
+mu <- 2 
 
 # Fix the sample size (consider several values)
-n=25 # tamaño muestral
+n <- 25 # tamaño muestral
 
 # Repeat in a loop M times
 for (i in 1:M){
 	# Step 1.: simulate a sample from a distribution with mean mu	
-  	x=rexp(n,rate=1/mu)  
+  	x <- rexp(n,rate=1/mu)  
   	# Step 2.: evaluate the estimator in the simulated sample
-  	mu.est[i]=mean(x)   # compute the estimator
+  	mu.est[i] <- mean(x)   # compute the estimator
   }
 hist(x)
 mean(x)
 # The vector "mu.est" contains M observations of the random variable sample mean. 
 # Analyse the distribution of this random variable. For example:
-( mse.est=mean((mu.est-mu)^2) )
-( bias.est=mean(mu.est-mu) )#Sesgo nos debería dar un estimador muy próximo a 0 
-mean(mu.est)
-( variance.est=var(mu.est) )
+( mse.est <- mean((mu.est-mu)^2) )
+( bias.est <- mean(mu.est-mu) )#Sesgo nos debería dar un estimador muy próximo a 0 
+( mean(mu.est) )
+( variance.est <- var(mu.est) )
 " La media de la diferencia de la mu.est - mu al cuadrado debe ser muy parecido
 a la varianza de mu.est "
 
@@ -54,12 +57,13 @@ hist(mu.est,freq=F,xlab="sample mean",main=paste("n=",n,sep=""))
 ####### Para n = 50 ##########
 M = 10000
 mu.est <- numeric(M)
-mu = 2
+mu = 2 
 n = 50 
 for (i in 1:M){
   x <- rexp(n,rate=1/mu)
   mu.est[i] <- mean(x)
 }
+mean(mu.est)
 ( mse.est=mean((mu.est-mu)^2) )
 ( bias.est=mean(mu.est-mu) )
 ( variance.est=var(mu.est) )
@@ -68,14 +72,15 @@ round(c(bias.est,variance.est,mse.est),4)
 hist(mu.est,freq=F,xlab="sample mean",main=paste("n=",n,sep=""))
 
 ####### Para n = 100 ##########
-M = 10000
+M <- 10000
 mu.est <- numeric(M)
-mu = 2
-n = 100 
+mu <- 2
+n <- 100 
 for (i in 1:M){
   x <- rexp(n,rate=1/mu)
   mu.est[i] <- mean(x)
 }
+mean(mu.est)
 ( mse.est=mean((mu.est-mu)^2) )
 ( bias.est=mean(mu.est-mu) )
 ( variance.est=var(mu.est) )
@@ -83,13 +88,33 @@ for (i in 1:M){
 round(c(bias.est,variance.est,mse.est),4)
 hist(mu.est,freq=F,xlab="sample mean",main=paste("n=",n,sep=""))
 
+####### Para n = 200 #######
+M = 10000
+mu.est <- numeric(M)
+mu <- 2
+n <- 200
+
+for (i in 1:M){
+ x <- rexp(n,rate = 1/mu) 
+ mu.est[i] <- mean(x)
+}
+
+( mean(mu.est) )
+( mse.est <- mean(mu.est-mu)^2 )
+( bias.est <- mean(mu.est-mu) )  
+( variance.est <- var(mu.est) )
+
+round(c(bias.est,variance.est,mse.est),4)
+hist(mu.est,freq=F,xlab="sample mean",main=paste("n=",n,sep=""))
+
+
 ############################ Métodos de los momentos ###########################
-x = runif(20,min=0,max=7)
+x <- runif(20,min=0,max=7)
 mean(x)*2
 
 ########################### Métodos de maximasimilitud #########################
-sort(x)
-
+x <- sort(x, decreasing = TRUE)
+x[1]
 
 "
 Para poder comparar cual de los estimadores es mejor podemos utilizar el método 
@@ -104,14 +129,15 @@ de monte carlo, como se vera a continuación.
 M=10000
 
 # Create a vector that will save the values of the estimator
-theta.est.1=numeric(M)
-theta.est.2=numeric(M)
+theta.est.1 <- numeric(M)
+theta.est.2 <- numeric(M)
+theta.est.3 <- numeric(M) # mejor estimador
 
 # Fix the true value of the parameter
-theta=2
+theta <- 2 
 
 # Fix the sample size (consider sereral values)
-n=25
+n <- 25
 
 # Repeat in a loop M times
 for (i in 1:M){
@@ -119,28 +145,37 @@ for (i in 1:M){
   	x=runif(n,min=0,max=theta)  
   	
   	# Step 2.: evaluate the estimator in the simulated sample
-  	theta.est.1[i]=2*mean(x)   # method of moments estimator
-  	theta.est.2[i]=max(x)   # maximum likelihood estimator
+  	theta.est.1[i] <- 2*mean(x)   # method of moments estimator
+  	theta.est.2[i] <- max(x)   # maximum likelihood estimator
+  	theta.est.3[i] <- max(x)*(n+1)/n   # maximum likelihood estimator
+  	
   }
 
 # Bias, variance and MSE:
-( bias.est.1=mean(theta.est.1-theta) )
-( variance.est.1=var(theta.est.1) )
-( mse.est.1=mean((theta.est.1-theta)^2) )
-( bias.est.2=mean(theta.est.2-theta) )
-( variance.est.2=var(theta.est.2) )
-( mse.est.2=mean((theta.est.2-theta)^2) )
+( bias.est.1 <- mean(theta.est.1-theta) )
+( variance.est.1 <- var(theta.est.1) )
+( mse.est.1 <- mean((theta.est.1-theta)^2) )
+
+( bias.est.2 <- mean(theta.est.2-theta) )
+( variance.est.2 <- var(theta.est.2) )
+( mse.est.2 <- mean((theta.est.2-theta)^2) )
+
+#mejor estimador (n-1)/n
+( bias.est.3 <- mean(theta.est.3-theta) )
+( variance.est.3 <- var(theta.est.3) )
+( mse.est.3 <- mean((theta.est.3-theta)^2) )
+
 # all values in a row:
 round(c(bias.est.1,variance.est.1,mse.est.1,bias.est.2,variance.est.2,mse.est.2),4)
 "
 El método de momentos se comporta mejor en temas de sesgo y el método de monte
 carlo se comporta mejor en términos de varianza.
-El método de monte Carlo es mejor por tiene menor error cuatrático medio.
+El método de monte Carlo es mejor porque tiene menor error cuatrático medio.
 Mientas más datos entonces el método monte carlo es mejor que el método de momentos
 "
+
 # Eficiencia relativa entre los errores cuadráticos medios de dos estimadores
 ( mse.est.2=mean((theta.est.2-theta)^2) ) / ( mse.est.1=mean((theta.est.1-theta)^2) )
-
 
 par(mfrow=c(1,2))
 #estimador de momentos
@@ -165,7 +200,7 @@ mu.est <- numeric(M)
 median.est <- numeric(M)
 mu = 7 
 sigma = 1  
-n = 25 
+n = 200 
 for (i in 1:M){
   x <- rnorm(n,mean=mu,sd=sigma)
   mu.est[i] <- mean(x)
@@ -176,16 +211,27 @@ for (i in 1:M){
 ( variance.est=var(mu.est) )
 ( mse.est=mean((mu.est-mu)^2) )
 
-( bias.est=mean(median.est-mu) )
-( variance.est=var(median.est) )
-( mse.est=mean((median.est-mu)^2) )
+( bias.est_m=mean(median.est-mu) )
+( variance.est_m=var(median.est) )
+( mse.est_m=mean((median.est-mu)^2) )
 
+c25 <- round(c(bias.est,variance.est,mse.est,bias.est_m,variance.est_m,mse.est_m),4)
+c50 <- round(c(bias.est,variance.est,mse.est,bias.est_m,variance.est_m,mse.est_m),4)
+c100 <- round(c(bias.est,variance.est,mse.est,bias.est_m,variance.est_m,mse.est_m),4)
+c200 <- round(c(bias.est,variance.est,mse.est,bias.est_m,variance.est_m,mse.est_m),4)
+
+c25 
+c50
+c100
+c200
 # ¿Es la mediana de la muestra un estimador insesgado? ¿Por qué?
 ## Si, porque su sesgo es pequeño como también su varianza
 
 "Para cada tamaño de muestra, calcule la eficiencia relativa entre los estimadores. 
 ¿Qué concluirías? ¿Qué estimador tiene un mejor desempeño práctico?"
-"El mejor estimador será para mean ya que su error cuadratico medio es menor"
+
+" Respuesta. El mejor estimador pero por cas nada será para mean ya que su error
+cuadratico medio es menor "
 
 # MSE_mean / MSE_median
 ( mse.est=mean((mu.est-mu)^2) ) / ( mse.est=mean((median.est-mu)^2) )
@@ -193,6 +239,25 @@ for (i in 1:M){
 hist(x)
 
 ################################ Ejercicio 2 ###################################
+# Parametros de interes varianza 
+M <- 10000
+var.est <- numeric(M)
+var.est <- numeric(M)
+var <- 1 
+mu <- 0 
+n <- 10 
+
+for (i in 1:M){
+  x <- rnorm(n,mean=mu,sd=sigma)
+  var.est[i] <- var(x)
+}
+mean(var.est)
+
+( bias.est <- mean(var.est-var) )
+( variance.est <- var(var.est) )
+( mse.est <- mean((var.est-var)^2) )
+
+hist(var.est)
 
 
 ####################################################################
@@ -208,7 +273,7 @@ tau.est.1=numeric(M)
 tau.est.2=numeric(M)
 
 # Fix the sample size (consider sereral values)
-n=50
+n=400
 
 # Repeat in a loop M times
 for (i in 1:M){

@@ -2,7 +2,8 @@
 source("funciones.R")
 library(ggplot2)
 
-###########################
+################################## CAPÍTULO 2 ##################################
+########################### REGRESIÓN LINEAL SIMPLE ############################
 
 ############################## EJERCICIO 2.3 ###################################
 # Sueldo de los directores generales (CEO) y rendimiento sobre le capital

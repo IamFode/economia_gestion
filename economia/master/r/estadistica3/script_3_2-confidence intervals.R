@@ -5,6 +5,20 @@
 # Juan Carlos Pardo Fernández - UVigo
 ####################################################################
 
+" Luego de realizar el estimador es ver el intervalo del verdadero valor"
+" cuando no tenemos intervalos exacto o invervalos asintotivo, es decir se cumplirá
+cuando las muestras seas grandes"
+
+# t-student .- 
+" al tener mas grados de libertad la t de estudent baja el peso que se puso encima
+de la normal" 
+qnorm(0.95)
+qt(.95,df=9)
+qt(.95,df=19)
+qt(.95,df=999)
+
+qt(0.975,df = 9)
+qnorm(0.975)
 
 
 ####################################################################

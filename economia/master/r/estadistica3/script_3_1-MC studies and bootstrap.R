@@ -305,10 +305,41 @@ hist(tau.est.2,freq=F,xlab="parametric estimator",main=paste("n=",n,sep=""))
 abline(v=tau,lty=2,col="red",lwd=2)
 
 
+################################################################################
+################################ bootstrap #####################################
+"Es muy importante saber con que variabilidad trabajan las estimaciones, error 
+estandar o desviación típica"
 
+"Primer paso es construir el estimador y el segundo paso es analizar cual es la 
+distribución de ese etimador y en particular es analizar su error estándar"
 
+" En los estimadores no parametricos El plug in de la desviación estandar poblacional será la cuasi desviación 
+muestra S/raiz cuadrada de n"
 
+#-------------------------------------------------------------------------------
+"En el mundo real se tiene una variable aleatoria con una determina distribución
+ de las cual se optine una muestra y luego se estima"
+"El mundo bootstrap empieza con la propia muestra para luego cosntruir una función
+de distribución con la misma muestra, que implica que conocemos la función de
+distribución, de donde podemos generar tantas muestra como querraramos para luego
+tener un estimador de esa muestra.
+Es parecido a la técnica de monte carlo pero partiendo de nuestra muestra de donde 
+podemos estudiar sesgo, distribución etc.
+"
 
+"
+Sea u v.a. $X$ que tiene función de distribución F con un parametro 
+Bootstrap se repite varias 
+Pasos:
+1. Sacar una muestra de nuestra distribución empírica es decir sacar una remuestra 
+de nuestra muestra, obtener una muestra de tamaño n con remplazamiento de nuestros
+datos originales.
+2. Con esa muestra bootstrap calcularemos nuestro estimador del parametro que estudiamos
+al principio. De donde obtendremos un monton de muestras bootstrap.
+Para calcular el sesgo, calculo la media de todas las estimaciones bootstrap y lo 
+comparo con el parametro original. 
+Algunas de los estimadores no tienen plug-ins para poder estimar 
+"
 
 ###############################################
 #   BOOTSTRAP
@@ -321,7 +352,9 @@ abline(v=tau,lty=2,col="red",lwd=2)
 
 # data:
 x = c(0.05, 0.07, 0.08, 0.15, 0.18, 0.21, 0.43, 0.48, 0.52, 0.62, 0.65, 0.67, 0.70, 0.81, 0.86, 0.89, 0.91, 0.96, 1.02, 1.05, 1.19, 1.23, 1.44, 1.58, 1.65, 1.79, 1.82, 1.84, 1.93, 1.97, 2.26, 2.27, 2.34, 2.59, 2.76, 3.09, 3.39, 3.54, 3.62, 3.70, 4.28, 4.33, 4.60, 4.69, 4.91, 5.19, 5.35, 6.02, 6.38, 6.76)
-
+hist(x)
+mean(x)
+sd(x)/sqrt(length(x))
 # sample size
 n=length(x)
 
@@ -336,13 +369,43 @@ for (b in 1:B){
 	}
 
 # estimation of the bias the estimator or theta:
-( bias.boot=mean(theta.boot)-theta.est )
+( bias.boot=mean(theta.boot)-theta.est)
 
 # approximation of the standard error of the estimator or theta
 ( se.boot=sd(theta.boot) )
 
 hist(theta.boot)
 
+################### estimación bootstrap para la mediana #######################
+x = c(0.05, 0.07, 0.08, 0.15, 0.18, 0.21, 0.43, 0.48, 0.52, 0.62, 0.65, 0.67, 0.70, 0.81, 0.86, 0.89, 0.91, 0.96, 1.02, 1.05, 1.19, 1.23, 1.44, 1.58, 1.65, 1.79, 1.82, 1.84, 1.93, 1.97, 2.26, 2.27, 2.34, 2.59, 2.76, 3.09, 3.39, 3.54, 3.62, 3.70, 4.28, 4.33, 4.60, 4.69, 4.91, 5.19, 5.35, 6.02, 6.38, 6.76)
+n=length(x)
+theta.est=median(x)
+median(x)
+sd(x)/sqrt(length(x))
+# bootstrap algorithm
+B = 1000
+theta.boot <- numeric(B)
+for (b in 1:B){
+  xboot <- sample(x,n,replace = T)
+  theta.boot[b] <- median(xboot)
+}
+( bias.boot = median(theta.boot) - theta.est )
+( se.boot <- sd(theta.boot) )
+hist(theta.boot)
 
-
-
+########################### cuantil 0.9 ########################################
+x = c(0.05, 0.07, 0.08, 0.15, 0.18, 0.21, 0.43, 0.48, 0.52, 0.62, 0.65, 0.67, 0.70, 0.81, 0.86, 0.89, 0.91, 0.96, 1.02, 1.05, 1.19, 1.23, 1.44, 1.58, 1.65, 1.79, 1.82, 1.84, 1.93, 1.97, 2.26, 2.27, 2.34, 2.59, 2.76, 3.09, 3.39, 3.54, 3.62, 3.70, 4.28, 4.33, 4.60, 4.69, 4.91, 5.19, 5.35, 6.02, 6.38, 6.76)
+n=length(x)
+theta.est=quantile(x,.9)
+median(x)
+sd(x)/sqrt(length(x))
+# bootstrap algorithm
+B = 1000
+theta.boot <- numeric(B)
+for (b in 1:B){
+  xboot <- sample(x,n,replace = T)
+  theta.boot[b] <- quantile(xboot,.9)
+}
+( bias.boot = median(theta.boot) - theta.est )
+( se.boot <- sd(theta.boot) )
+hist(theta.boot)

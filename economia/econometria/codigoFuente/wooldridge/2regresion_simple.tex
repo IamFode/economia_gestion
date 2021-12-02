@@ -142,3 +142,21 @@ es de mayor interés, pues indica la cantidad en la que cambia $\hat{y}$ cuando 
 El residual de MCO correspondiente a la observación $i$, $\hat{u}_i$, es la diferencia entre $y_i$ y su valor ajustado, como se indica en la ecuación (2.15). Si $\hat{u}_i$ es positivo, la línea predice un valor inferior al de $y_i$; si $\hat{u}_i$ es negativo, la linea predice un valor superior al de $y_i$. Lo ideal para la observación $i$ es cuando $\hat{u}_i = 0$, pero en la mayoria de los casos todos los residuales son distintos de cero. 
 
 \subsection{Propiedades algebraicas de los estadísticos de MCO}
+Las estimaciones de $MCO$ y sus correspondientes estadísticos tiene varias propiedades útiles. A continuación se verán las tres más importantes.
+\begin{enumerate}[\bfseries 1.]
+
+    \item La suma y por tanto el promedio muestral de los residuales de MCO, es cero. Matemáticamente
+	\begin{equation}
+	    \sum_{i=1}^n \hat{u}_i = 0.
+	\end{equation}
+
+    \item La covarianza muestral entre los regresores y los residuales de MCO es cero. Esto es consecuencia de la condición de primer orden (2.10) que en términos de los residuales puede expresarse como
+    	\begin{equation}
+	    \sum_{i=1}^n x_i \hat{u}_i = 0.
+	\end{equation}
+
+	El promedio muestral de los residuos de MCO, es cero, por lo que el lado izquierdo de la ecuación anterior es proporcional a la covarianza entre las $x_i$ y los $\hat{u}_i$.
+
+    \item El punto $(\overline{x},\overline{y})$ se encuentran siempre sobre la línea de regresión de MCO. En otras palabras, si en la ecuación $\hat{y} = \hat{beta}_i x + \hat{beta}_o$ se sustituye $\overline{x}$ por $x$, el valor predicho es $\overline{y}$. Esto es exactamente lo que dice la ecuación $\overline{y} = \hat{\beta}_0 + \hat{beta}_1 \overline{x}$.\\\\
+\end{enumerate}
+

@@ -78,7 +78,7 @@ de donde, reordenando, tenemos que
 $$\sum_{i=1}^n x_i(y_i-\overline{y}) = \hat{\beta_1}\sum_{i=1}^n x_i(x_i-\overline{x}).$$
 en consecuencia por las propiedades de la sumatoria, 
 $$\sum_{i=1}^n x_i(x_i-\overline{x}) = \sum_{i=1}^n (x_i-\overline{x})^2 \quad y \quad \sum_{i=1}^n x_i(y_i-\overline{y}) = \sum_{i=1}^n (x_i-\overline{x})(y_i-\overline{y})$$\\
-ya que $\sum\limits_{i=1}^n (x_i-\overline{x})(y_i-\overline{y})=\sum\limits_{i=1}^n x_i y_i - \overline{y}\sum\limits_{i=1}^n x_i - \overline{x}\sum\limits_{i=1}^n y_i + \overline{y} \overline{x}\sum\limits_{i=1}^n 1 $, luego ya que $\sum\limits_{i=1}^n x_i = n\overline{x}$ entonces $\sum\limits_{i=1}^n x_iy_i - n\overline{yx} - n\overline{xy} + n\overline{xy} = \sum\limits_{i=1}^n (x_i-\overline{x})y_i$
+ya que $\sum\limits_{i=1}^n (x_i-\overline{x})(y_i-\overline{y})=\sum\limits_{i=1}^n x_i y_i - \overline{y}\sum\limits_{i=1}^n x_i - \overline{x}\sum\limits_{i=1}^n y_i + \overline{y} \overline{x}\sum\limits_{i=1}^n 1 $, luego ya que $\sum\limits_{i=1}^n x_i = n\overline{x}$ entonces $\sum\limits_{i=1}^n x_iy_i - n\overline{yx} - n\overline{xy} + n\overline{xy} = \sum\limits_{i=1}^n x_i(y_i-\overline{y})$
 por lo tanto, 
 \begin{tcolorbox}[colframe=white]
 \begin{equation}
@@ -91,7 +91,7 @@ Para todo $\hat{\beta_0}$ y $\hat{\beta_1}$ se define el valor ajustado para $y$
 	\hat{y_i} = \hat{\beta_0} + \hat{\beta_1}x_i.
 \end{equation}
 Este es el valor que se predice para $y$ cuando $x=x_i$.\\\\
-El \textbf{residual} de la observación $i$ es la diferencia entre el verdadero valor $y_i$ y si valor ajustado.\begin{equation} 
+El \textbf{residual} de la observación $i$ es la diferencia entre el verdadero valor $y_i$ y su valor ajustado.\begin{equation} 
     \hat{u} = y_i - \hat{y_i} = y_i - \hat{\beta_0} - \hat{\beta_1}x_i.
 \end{equation}
 Los residuales no son lo mismo que la ecuación (2.2)\\\\

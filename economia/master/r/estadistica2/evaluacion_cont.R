@@ -43,12 +43,59 @@ rug(sim, col = "darkgray")
 hist(sim,freq=FALSE,xlab = "gasto mensual", breaks = 30, col = "purple")
 lines(density(sim),lwd=4,col="green")
 
+
+
 ###################### Distribución en el muestro ##############################
+
 # a)
-M = 2
+set.seed(2021)
+n <- 2 # Tamaño muestral
+p <- 0.1883 # Probabilidad de éxito
+
+k1 <- 10 # N° realizaciones
+x1 <- rbinom(n, k1, p) # Simulación de una m.a.s de tamaño 10
+mean(x1)/k1
+
+k2 <- 1000 
+x2 <- rbinom(n, k2, p) # Simulación de una m.a.s de tamaño 1000
+mean(x2)/k2
+
+k3 <- 10000 
+x3 <- rbinom(n, k3, p) # Simulación de una m.a.s de tamaño 10000
+mean(x3)/k3
+
+"
+Si realizamos dos muestras aleatorias de tamaño 10 la proporción de personas que se encuentran en
+riesgo de pobreza es de 25%, de tamaño 1000 es de 17.25% y de tamaño 10000 es
+de 18.605%.
+"
 
 # b)
-# c)
+suma <- mean(x1)/k1 + mean(x2)/k2 + mean(x3)/k3 
+suma/3
 
+# c) 
+set.seed(2021)
+n <- 10 
+p <- 0.1883 
+kb1 <- 1000 
+xb1 <- rbinom(n,kb1,p)
+hist(xb1,
+     xlab = "Riesgo de pobreza",
+     main = "Histograma de 1000 muestras de tamaño 10")
+
+nb <- 1000 
+kb2 <- 1000
+xb2 <- rbinom(nb,kb2,p)
+hist(xb2,
+     xlab = "Riesgo de pobreza",
+     main = "Histograma de 1000 muestras de tamaño 1000")
+
+"
+Observando los dos histogramas vemos que el experimento binomial de 1000 muestras
+de tamaño 1000 se aproxima a una normal contrariamente al experimiento a partir de 
+1000 realizaciones muestrales de tamaño 10 que no tiene una distribución teórica
+clara.
+"
 
 

@@ -1,0 +1,326 @@
+\chapter{Análisis de Regresión simple}
+\begin{multicols}{2}
+%-------------------- ecuación 1.1
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	Y_i = \beta_0 + \beta_1 X_i + u_i 
+    \end{equation}
+\end{tcolorbox}
+
+\textbf{Nota}.- $u$ en algunas veces es descrito como ruido.\\\\
+
+\setcounter{section}{1}
+\section{Regresión de mínimos cuadrados con una variable explicativa}
+%-------------------- ecuación 1.2
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	\hat{Y}_i = b_1 + b_2 X_i 
+    \end{equation}
+\end{tcolorbox}
+\textbf{El primer paso}.- es definir que se conoce como residuo de cada observación. El residuo es la diferencia entre el valor real de $Y$ en cualquier observación y el valor ajustado dado por la línea de regresión.
+
+%-------------------- ecuación 1.3
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	e_i = Y_i - \hat{Y}_i
+    \end{equation}
+\end{tcolorbox}
+
+Substituyendo (1.2) en (1.3) obtenemos:
+
+%-------------------- ecuación 1.4
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	e_i = Y_i - b_1 - b_2 X_i
+    \end{equation}
+\end{tcolorbox}
+y por lo tanto el residuo en cada observación depende de la elección de $b_1$ y $b_2$. Obviamente, deseamos ajustar la recta de regresión, es decir, elegir $b_1$ y $b_2$, de tal manera que los residuos sean lo más pequeños posible. La mejor manera de hacer esto posible es es minimizando $RSS$ el residuo de las sumas cuadradas 
+
+%-------------------- ecuación 1.5
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	RSS = e_1^2 + e_2^2 + ... + e_n^2
+    \end{equation}
+\end{tcolorbox}
+
+\section{Calculando los coeficientes de regresión}
+Supondremos que el verdadero modelo es
+%-------------------- ecuación 1.6
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	Y_i = \beta_0 + \beta_1 X_i + u_i 
+    \end{equation}
+\end{tcolorbox}
+y supondremos que los coeficientes $b_1$ y $b_2$ de la ecuación 
+%-------------------- ecuación 1.7
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	\hat{Y}_i = b_1 + b_2 X_i
+    \end{equation}
+\end{tcolorbox}
+La tabla siguiente nos hará entender mejor el asunto
+$$\begin{array}{cccc}
+    X&Y&\hat{Y}&e\\\\
+    \hline\\
+     1&3&b_1+b_2&e_1 = 3-b_1-b_2\\\\
+     2&5&b_1+2b_2&e_2 = 5-b_1-2b_2\\\\
+     3&6&b_1+3b_2&e_3 = 6-b_1-3b_2
+\end{array}$$
+Por lo tanto aplicando (1.5)
+%-------------------- ecuación 1.8
+
+\begin{equation}
+\begin{tabular}{rcl}
+    RSS & = & $(3-b_1-b_2)^2 + (5-b_1-2b_2)^2 + (6-b_1-3b_2)^2$\\\\
+	& = & $9+b_1^2 + b_2^2 - 6b_1 - 6b_2 + 2b_1b_2 + 25 + b_1^2 + 4b_2^2 - 10b_1$ \\\\
+	&  & $- 20b_2 + 4b_1b_2 + 36 +b_1^2 + 9b_2^2 - 12b_1 - 36b_2 + 6b_1b_2 $\\\\
+	& = &  $70 + 3b_1^2 + 14b_2^2 -28b_1 -62b_2 +12b_1b_2$\\
+\end{tabular}
+\end{equation}
+
+
+Ahora queremos elegir $b_1$ y $b_2$ para minimizar $RSS$. Para ello usamos al calculo para definir estos valores y pueda satisfacer las condiciones de primer orden
+%-------------------- ecuación 1.9
+\begin{tcolorbox}[colframe = white]
+\begin{equation}
+    \dfrac{\partial RSS}{\partial b_1} = 0 \qquad y \qquad \dfrac{\partial RSS}{\partial b_2} = 0
+\end{equation}
+\end{tcolorbox}
+Tomando diferencias parciales,
+%-------------------- ecuación 1.10
+\begin{equation}
+    \dfrac{\partial RSS}{\partial b_1} = 6b_1 + 12b_2 -28 
+\end{equation}
+\vspace{.5cm}
+%-------------------- ecuación 1.11
+\begin{equation}
+    \dfrac{\partial RSS}{\partial b_2} = 28b_2 + 12b_1 - 62 
+\end{equation}
+así tenemos que
+%-------------------- ecuación 1.12
+\begin{equation}
+    3b_1 + 6b_2 - 14 = 0
+\end{equation}
+y
+%-------------------- ecuación 1.13
+\begin{equation}
+    6b_1 +14b_2 - 31 = 0
+\end{equation}
+Resolviendo estas dos ecuaciones, obtenemos que $b_1=1.67$ y $b_2=1.5$ por lo tanto la regresión estará dada por
+%-------------------- ecuación 1.14
+\begin{equation}
+    Y_i = 1.67 + 1.5 X_i
+\end{equation}
+\vspace{.5cm}
+
+\subsection{Regresión de mínimos cuadrados con una variable explicativa: Caso general}
+Supongamos que hay $n$ observaciones para dos variables $X$ y $Y$ y este depende de $X$, ajustaremos la ecuación
+%-------------------- ecuación 1.15
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	\hat{Y}_i = b_1 + b_2 X_i,
+    \end{equation}
+\end{tcolorbox}
+El ajustado de la variable dependiente en $i$ observaciones, $\hat{Y}_i$, será $(b_1+b_2X_i)$ y el residuo $e_i$ será $(Y_i -b_1 - b_2X_i)$, entonces para minimizar el residuo de los mínimos cuadrados $RSS$, se tendrá la ecuación,
+%-------------------- ecuación 1.16
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	RSS = e_1^2 + \ldots + e_n^2 = \sum_{i=1}^{n} e_i^2
+    \end{equation}
+\end{tcolorbox}
+
+Sabremos que encontramos el $RSS$ minimizado cuando 
+%-------------------- ecuación 1.17
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	b_2 = \dfrac{\sum\limits_{i=1}^n \left(X_i-\overline{X}\right)\left(Y_i - \overline{Y}\right)}{\sum\limits_{i=1}^n \left(X_i - \overline{X}\right)^2}
+    \end{equation}
+\end{tcolorbox}
+
+y
+%-------------------- ecuación 1.18
+\begin{equation}
+    b_1 = \overline{Y} - b_2 \overline{X}
+\end{equation}
+
+Para demostrar comenzaremos expresando el cuadrado del residual en la observación $i$ en términos de $b_1, b_2$ y los datos de $X$ e $Y$:
+%-------------------- ecuación 1.19
+\begin{equation}
+    \begin{tabular}{rcl}
+	$e_i^2$ &=& $\left(Y_i - \hat{Y_i}\right)^2$\\\\ 
+	      &=& $\left(Y_i - b_i - b_2 X_i\right)^2$ \\\\
+	      &=& $Y_i^2 + b_i^2 b_2^2X_i^2 - 2b_iY_i - 2b_2X_iY_i + 2b_i b_2X_i$\\\\
+    \end{tabular}
+\end{equation}
+Sumando sobre todas las $n$ observaciones, podemos escribir $RSS$ como sigue,\\
+%-------------------- ecuación 1.20
+\begin{equation}
+    \begin{tabular}{rcl}
+	$RSS$&=&$\left(Y_i - b_i -b_2X-i\right)^2 + \ldots + \left(Y_n - b_1 - b_2X_n\right)^2$\\\\
+	     &=&$Y_i^2 + b_i^2 + b_2^2X_i^2 - 2b_iY_i -2b_2X_iY_i + 2b_ib_2X_i$\\\\
+	     &=&$\ldots$\\\\
+	     &=&$Y_n^2 + b_i^2 + b_2^2X_n^2 - 2b_iY_n - 2b_2X_nY_n + 2b_1b_2 X_n$\\\\
+	     &=&$\sum\limits_{i=1}^n Y_i^2 + nb_1^2 + b_2^2\sum\limits_{i=1}^n X_1^2 - 2b_1\sum\limits_{i=1}^n Y_i $\\\\
+	     &&$- 2b_2 \sum\limits_{i=1}^n X_iY_i + 2b_i b_2 \sum\limits_{i=1}^n X_i$\\\\
+    \end{tabular}
+\end{equation}
+Luego la condición de primer orden para minimizar, $\partial RSS / \partial b_i = 0$ y $\partial RSS / \partial b_2 = 0$ esta dado por las siguientes ecuaciones,
+%-------------------- ecuación 1.21
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	2nb_1 - 2\sum\limits_{i=1}^n Y_i + 2b_2\sum\limits_{i=1}^n X_i = 0
+    \end{equation}
+\end{tcolorbox}
+%-------------------- ecuación 1.22
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	2b_2\sum\limits_{i=1}^n X_i^2 + 2\sum\limits_{i=1}^n X_iY_i + 2b_1\sum\limits_{i=1}^n X_i = 0
+    \end{equation}
+\end{tcolorbox}
+
+Notemos que (1.21) nos permite escribir $b_1$ en términos de $\overline{Y}$, $\overline{X}$ y el aún desconocido $b_2$. Sea $\overline{X}=\dfrac{1}{n}\sum X_i$ y $\overline{Y} = \dfrac{1}{n}\sum Y_i$ podemos reescribirlo como,
+%-------------------- ecuación 1.23
+\begin{equation}
+    2nb_1 - 2n\overline{Y} + 2b_2n\overline{X} = 0
+\end{equation}
+y por lo tanto,\\
+%-------------------- ecuación 1.24
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	b_1 = \overline{Y} - b_2\overline{X}
+    \end{equation}
+\end{tcolorbox}
+Así sustituyendo por $b_i$ en (1.22) y notanto que $\sum X_i = n\overline{X}$ obtenemos
+%-------------------- ecuación 1.25
+\begin{equation}
+    2b_2 \sum\limits_{i=1}^n X_i^2 + 2\sum\limits_{i=1}^n X_iY_i + 2\left(\overline{Y} - b_2 \overline{X}\right) n\overline{X} = 0
+\end{equation}
+%-------------------- ecuación 1.26
+\begin{equation}
+    2b_2\left(\sum\limits_{i=1}^n X_i^2 -n\overline{X}^2 \right) = 2\sum\limits_{i=1}^n X_i Y_i - 2n\overline{X}\overline{Y}
+\end{equation}
+%-------------------- ecuación 1.27
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	b_2 = \dfrac{\sum\limits_{i=1}^n X_iY_i - n\overline{X}}{2\sum\limits_{i=1}^n X_i^2 - n\overline{X}}
+    \end{equation}
+\end{tcolorbox}
+
+alternativamente podemos escribir como sigue,\\
+%-------------------- ecuación 1.28
+\begin{tcolorbox}[colframe = white]
+    \begin{equation}
+	b_2 = \dfrac{\sum\limits_{i=1}^n \left(X_i - \overline{X}\right) \left(Y_i - \overline{Y}\right)}{\sum\limits_{i=1}^n \left( X_i - \overline{X}\right)^2}
+    \end{equation}
+\end{tcolorbox}
+Lo demostramos de la siguiente manera,\\
+%-------------------- ecuación 1.29
+\begin{equation}
+    \begin{tabular}{rcl}
+	&&$\sum\limits_{i=1}^n \left(X_i - \overline{X}\right) \left(Y_i - \overline{Y}\right)$\\\\
+	&=&$\sum\limits_{i=1}^n X_iY_i - \sum\limits_{i=1}^n X_i \overline{Y} - \sum\limits_{i=1}^n \overline{X}Y_i + \sum\limits_{i=1}^n \overline{X} \overline{Y}$\\\\
+	&=&$\sum\limits_{i=1}^n X_iY_i - \overline{Y}\sum\limits_{i=1}^n X_i - \overline{X}\sum\limits_{i=1}^nY_i + n\overline{XY}$\\\\
+	&=&$\sum\limits_{i=1}^n X_iY_i - \overline{Y}\left(n\overline{X}\right) - \overline{X}\left(n\overline{Y}\right)+n\overline{XY}$\\\\
+	&=&$\sum\limits_{i=1}^n X_iY_i -n\overline{XY}.$\\\\
+    \end{tabular}
+\end{equation}
+Análogamente podemos demostrar para, \\
+%-------------------- ecuación 1.30
+\begin{equation}
+    \sum\limits_{i=1}^n X_i^2 - n\overline{X}^2 = \sum\limits_{i=1}^n \left(X_i - \overline{X}\right)^2 
+\end{equation}
+Por último sustituimos $b_2$ en (1.24)\\\\
+
+\subsection{Dos descomposiciones de la variable dependiente}
+La primera descomposición se relaciona con el proceso mediante el cual se generan los valores de $Y$:
+%-------------------- ecuación 1.31
+\begin{equation}
+	Y_i = \beta_i + \beta_2X_i + u_i 
+\end{equation}
+
+$Y_i$ es generado como la suma de dos componentes, el no estocástico componente $\beta_i + \beta_2 X_i$ y el termino de perturbación $u_i$. Usaremos esto en el análisis de las propiedades de los estimadores de la regresión. En la figura se tiene que $QT$ es el no estocástico componente de $Y$ y $PQ$ es el termino de perturbación.
+
+\begin{center}
+    \begin{tikzpicture}[scale=.8,draw opacity = 0.6]
+	% abscisa y ordenada
+	\tkzInit[xmax= 10,xmin=0,ymax=7,ymin=0]
+	\tiny\tkzLabelXY[opacity=0,step=1, orig=false]
+	% etiqueta x, f(x)
+	\tkzDrawX[opacity=0.6,label=X,right=0.3]
+	\tkzDrawY[opacity=0.6,label=Y,below = -0.6]
+	%dominio y función
+	\draw [domain=0:7,thick] plot(\x,{1/3*\x + 2})node[right]{$\hat{Y} = b_i + b_2X$};
+	\draw [domain=0:8,dashed] plot(\x,{2/3*\x + .5})node[right]{$Y = \beta_i + \beta_2X$};
+	\draw(0,0.5)node[left]{$\beta_1$};
+	\draw(0,2)node[left]{$b_1$};
+	\draw[<->](3,0)node[below]{$X_i$}--(3,2.3)node[above right]{$Q$};
+	\draw[<->](3,2.7)--(3,4)node[above right]{$P$};
+	\filldraw[black] (3,4.2) circle (2pt);
+	\filldraw[black] (3,2.5) circle (2pt);
+	\draw(3,1.1)node[right]{$\beta_i +\beta_2 X_i$};
+	\draw(3,3.4)node[left]{$u_i$};
+	\draw(3,0.2)node[right]{$T$};
+    \end{tikzpicture}
+\end{center}
+La otra descomposición se relaciona con la línea de regresión:
+\begin{equation}
+    Y_i = \hat{Y}_i + e_i = b_i + b_2X_i + e_i 
+\end{equation}
+donde RT es el valor ajustado y PR es el residuo.
+
+%-------------------- ecuación 1.32
+
+\begin{center}
+    \begin{tikzpicture}[scale=.8,draw opacity = 0.6]
+	% abscisa y ordenada
+	\tkzInit[xmax= 10,xmin=0,ymax=7,ymin=0]
+	\tiny\tkzLabelXY[opacity=0,step=1, orig=false]
+	% etiqueta x, f(x)
+	\tkzDrawX[opacity=0.6,label=X,right=0.3]
+	\tkzDrawY[opacity=0.6,label=Y,below = -0.6]
+	%dominio y función
+	\draw [domain=0:7,thick] plot(\x,{1/3*\x + 2})node[right]{$\hat{Y} = b_i + b_2X$};
+	\draw [domain=0:8,dashed] plot(\x,{2/3*\x + .5})node[right]{$Y = \beta_i + \beta_2X$};
+	\draw(0,0.5)node[left]{$\beta_1$};
+	\draw(0,2)node[left]{$b_1$};
+	\draw[<->](3,0)node[below]{$X_i$}--(3,2.75)node[above right]{$R$};
+	\draw[<->](3,3.2)--(3,4)node[above right]{$P$};
+	\filldraw[black] (3,4.2) circle (2pt);
+	\filldraw[black] (3,3) circle (2pt);
+	\draw(3,1.1)node[right]{$b_i +b_2 X_i$};
+	\draw(3,3.6)node[left]{$e_i$};
+	\draw(3,0.2)node[right]{$T$};
+    \end{tikzpicture}
+\end{center}
+
+\section{Ejercicios}
+\begin{enumerate}[\bfseries 1.1]
+
+    %---------- ejercicio 1.1
+    \item Supongase que la recta ajustada es $\hat{Y}=b_1+b_1X$ con $b_1$ y $b_2$ definida como las ecuaciones (1.24) y $(1.28)$. Demostrar que la recta ajustada debe pasar a través del punto $\lbrace\overline{X},\overline{Y}\rbrace$ que representa la media de las observaciones en la muestra.\\\\
+	Demostración.-\; Sea $X=\overline{X}$ entonces, $\hat{Y} = b_1 + b_2\overline{X}$ luego por (1.24) se tiene que,
+	$$\hat{Y} = \overline{Y} - b_2\overline{X} + b_2\overline{X}$$
+	de donde,
+	$$\overline{Y} = \hat{Y}$$
+	Por lo tanto la recta ajustada pasa por el punto $(\overline{X},\overline{Y})$.\\\\
+
+    %---------- ejercicio 1.2
+    \item Usando la ecuación normal (1.21) y $(1.22)$, muestre que $b_1$ esta definido, pero $b_2$ no lo está, si $X_i = 0$ para todo $i$. Dar una explicación intuitiva de este resultado.\\\\
+	Demostración.-\; Sabiendo que 
+	$$2nb_1 - 2\sum\limits_{i=1}^n Y_i + 2b_2\sum\limits_{i=1}^n X_i = 0$$
+	$$y$$
+	$$2b_2\sum\limits_{i=1}^n X_i^2 + 2\sum\limits_{i=1}^n X_iY_i + 2b_1\sum\limits_{i=1}^n X_i = 0$$
+	Luego $X_i = 0, \forall i$  en (1.21) entonces,
+	$$b_1 = \dfrac{2\sum\limits_{i=1}^n Y_i}{2n}$$
+	de donde demostramos que $b_1$ está definida. Y no así para $b_2$ por la el hecho de que si remplazamos $X_i=0 \forall i$ en (1.22) no nos dice nada nuevo.\\\\
+
+    %---------- ejercicio 1.3
+    \item Demostrar a partir de los primeros principios que el estimador de mínimos cuadrados de $\beta_i$ en el modelo primitivo donde $Y$ consiste simplemente en una constante más un término de perturbación,
+	$$Y_i = \beta_i + u_i$$
+	es $b_i = \overline{Y}$\\\\
+	Demostración.-\; 
+ 
+
+\end{enumerate}
+
+\end{multicols}

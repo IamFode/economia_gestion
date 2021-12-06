@@ -58,6 +58,7 @@ twoway (scatter r2 tenure)
 
 corr r2 educ exper tenure 
 
+
 /*10 Realice la prueba de variables omitidas/*
 estat ovtest
 

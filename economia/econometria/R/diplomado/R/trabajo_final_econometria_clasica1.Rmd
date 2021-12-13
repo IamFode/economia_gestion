@@ -1,0 +1,587 @@
+---
+title: "Trabajo final de econometría clásica 1"
+author: "Christian Limbert Paredes Aguilera"
+date: "11/12/2021"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+# libreria
+```{r}
+library(wooldridge)
+```
+
+# Introducción 
+Éste proyecto tiene como finalidad analizar la base datos "Wage1", aplicando métodos econométricos basado y aplicado  en el libro "Introductory econometrics, Jeffrey M. Wooldridge". 
+Estos son datos de la Encuesta de población en 1976,fueron recopilados por Henry Farber, con el fin de investigar que factores determinan los ingresos promedio en dolares en EEUU.
+
+En particular daremos a la respuesta a si la brecha salarial con el mismo nivel de educación, experiencia y antigüedad fue menor o mayor entre las mujeres y los hombres en 1976.
+
+# Marco teórico
+
+## Formato de base de datos "Wage1"
+
+Contiene  526 observaciones en 24 variables:\\
+
+\begin{itemize}
+\item wage: average hourly earnings
+\item educ: years of education
+\item exper: years potential experience
+\item tenure: years with current employer
+\item nonwhite: =1 if nonwhite
+\item female: =1 if female
+\item married: =1 if married
+\item numdep: number of dependents
+\item smsa: =1 if live in SMSA
+\item northcen: =1 if live in north central U.S
+\item south: =1 if live in southern region
+\item west: =1 if live in western region
+\item construc: =1 if work in construc. indus.
+\item ndurman: =1 if in nondur. manuf. indus.
+\item trcommpu: =1 if in trans, commun, pub ut
+\item trade: =1 if in wholesale or retail
+\item services: =1 if in services indus.
+\item profserv: =1 if in prof. serv. indus.
+\item profocc: =1 if in profess. occupation
+\item clerocc: =1 if in clerical occupation
+\item servocc: =1 if in service occupation
+\item lwage: log(wage)
+\item expersq: $exper^2$
+\item tenursq: $tenure^2$
+\end{itemize}
+
+
+## El modelo de regresión simple
+
+El modelo de regresión simple es utilizado para estudiar la relación entre dos variables que representan alguna población donde nos interesa explicar la variable $Y$ en términos de $X$. Para ello se debe pensar en tres preguntas:
+\begin{enumerate}
+\item ¿Cómo permitimos que otros factores distintos de $X$ afecten a $Y$?.
+\item ¿Cuál es la forma funcional de la relación entre $X$ y $Y$?
+\item ¿Cómo estamos seguros de que se captura ceteris paribus al estimar la relación entre $X$ e $Y$?
+\end{enumerate}
+El modelo estándar de regresión lineal simple es el siguiente:
+$$y=\beta_0 + \beta_1x + u$$
+Llamamos a $Y$ dependiente, explicada o regresando y a $X$ llamamos independiente, variable explicativa, predictora o regresora. $u$ es el término de error, también llamdo perturbación. $\beta_0$ se llama intersección y $\beta_1$ es el parámetro de la pendiente, éste último por lo general es el foco de atención y nos dice como cambia la variable de dependiente si la variable independiente se incrementa en una unidad. Esta interpretación solo es cierta cuando todas las demás cosas permanecen iguales cuando la variable independiente aumenta en una unidad. Como esto generalmente no es válido, el modelo de regresión lineal simple rara vez es aplicable en la práctica.
+
+La inferencia causal se puede hacer solo cuando la variable explicativa no contiene ninguna información sobre la media de los factores no observados (en $u$). $E(u|x)=0$ establece que el valor medio de $u$ es el mismo independientemente del valor de $x$. Podemos decir que $u$ es media independiente de $x$. Dado que tenemos la intersección que se puede ajustar, simplemente podemos hacer $E(u)=0$. Por lo tanto, tenemos una suposición de media condicional cero: $E(u|x)=0$.
+
+$E(y|x)$ se denomina función de regresión poblacional. Se obtiene tomando la ecuación de regresión original y condicionando las expectativas a $x$. $\beta_0 + \beta_1x$ se denomina parte sistémica de $y$ y $u$ se denomina parte no sistemática.
+$$E(y|x) = E(\beta_0+\beta_1x+ u|x)= \beta_0+\beta_1 + E(u|x)=\beta_0 +\beta_1 x$$
+¿Cómo derivamos estimaciones de mínimos cuadrados ordinarios $\beta_0$ y $\beta_1$? Para hacer eso, necesitamos  Los estimadores de MCO como se verá a continuación:
+$$\hat{\beta}_1 = \dfrac{\sum\limits_{i=1}^n (x_i-\overline{x})(y_i - \overline{y})}{\sum\limits_{i=1}^n (x_i - \overline{x})^2} \qquad y \qquad \hat{\beta}_0 = \overline{y}-\hat{\beta}_1 \overline{x}$$
+
+$\beta_1$ también se puede escribir como correlación muestral multiplicada por la desviación estándar muestral de $y$ dividida por la desviación estándar muestral de $x$. Luego 
+$$\hat{\beta}_1 = \hat{\rho}_{xy}\left(\dfrac{\hat{\sigma}_y}{\hat{\sigma}_x}\right)$$
+Estas estimaciones de $\beta_0$ y $\beta_1$ se denominan estimaciones de mínimos cuadrados ordinarios (MCO). Este nombre proviene del hecho de que estas estimaciones minimizan la suma de los residuos cuadrados.
+
+Así el valor ajustado estará dado por,
+$$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$$
+
+Luego las desviaciones de la línea de regresión (residuales) serán:
+$$\hat{u}_i = y_i - \hat{y}_i$$
+
+### Alguna propiedades de la MCO:
+\begin{enumerate}
+\item La suma y el promedio muestral de los residuos de MCO es cero.
+\item La covarianza muestral entre los regresores y los residuales de MCO es cero.
+\item Los promedios muestrales de $xy$ e $y$ se encuentran en la línea de regresión de MCO.\\
+\end{enumerate}
+
+Podemos descomponer cada observación de $Y_i$ en un valor ajustado y un residual. Definamos la suma total de cuadrados (SST), la suma de cuadrados explicada (SSE) y la suma de cuadrados residual (SSR) de la siguiente manera:
+
+$$\begin{array}{rcl}
+  SST&=&\sum\limits_{i=1}^n (y_i-\overline{y})^2\\\\
+  SSE&=&\sum\limits_{i=1}^n (\hat{y}_i - \overline{y})^2\\\\
+  SSR&=&\sum\limits_{i=1}^n (\hat{u}_i)^2\\\\
+\end{array}$$
+
+También podemos medir qué tan bien nuestra línea de regresión MCO estimada se ajusta a los datos utilizando las definiciones de SST, SSE y SSR. El R cuadrado de la regresión (también conocido como coeficiente de determinación) se define como la suma explicada de cuadrados dividida por la suma total de cuadrados.
+
+$$SST = SSE + SSR$$\\
+$$R^2 = \dfrac{SSE}{SST} = 1 -\dfrac{SSR}{SST}$$\\
+
+Se interpreta como la fracción de la variación muestral en y que se explica por $x$. R-cuadrado siempre está entre 0 y 1. Los R-cuadrados bajos no son infrecuentes. Es importante señalar que un R-cuadrado bajo no considera que la regresión sea inútil. Lo más importante es centrarse en qué tan bien se satisfacen los supuestos subyacentes.
+
+Si se toma una nueva muestra aleatoria, obtendríamos diferentes valores para los coeficientes estimados $\beta_0$ y $\beta_1$. La pregunta es qué se estimará  en promedio y qué tan grande será su variabilidad en muestras repetidas?, para ello necesitamos hacer algunas suposiciones. Los llamamos supuestos de Gauss-Markov para regresión simple como se veŕa a continuación:
+
+\begin{itemize}
+  \item \textbf{Lneal en parámetros}. La relación entre $x$ e $y$ es lineal.
+  \item \textbf{Muestreo Aleatorio}. Tenemos una muestra aleatoria siguiendo el modelo de población. 
+  \item \textbf{Variación de la muestra}. En los resultados de la muestra en $x$ no todos tiene el mismo valor.
+  \item \textbf{Media condicional es cero}. El error $u$ tiene una media condicional igual a cero.
+  \item \textbf{Homocedasticidad}. El error $u$ tiene una misma varianza dado cualquier valor de $x$.
+\end{itemize}
+
+Por las 4 primeras suposiciones, podemos mostrar que los estimadores de MCO son insesgados, esto significa que si tomamos varias muestras para una misma población, en promedio, los coeficientes estimados serán igual a los valores que caracterizan la verdadera relación entre $x$ e $y$ en la población.
+
+### Teorema 1. "Falta de sesgo" de MCO
+$$E(\hat{\beta_0}) = \beta_0, \qquad E(\hat{\beta}_1) = \beta_1$$
+
+Es esencial un cálculo válido de la varianza para los estimadores de $MCO$ cuando queremos conocer el intervalo de confianza y el test de hipótesis. Sin embargo, si tenemos heterocedasticidad, el calculo estandar de la varianza para $\beta_0$ y $\beta_1$ es válido. Se tiene que los términos de error son heterocedasticos cuando la varianza de $u$ depende de $x$, es decir, $Var(u|x)$. En otras palabras, $u$ tiene varianza no contante entre los niveles de $x$.
+
+### Teorema 2. Varianza de los estimadores de MCO
+$$Var(\hat{\beta_1}_i) = \dfrac{\sigma^2}{\sum\limits_{i=1}^n (x_i-\overline{x})^2} = \dfrac{\sigma^2}{SST_x} \quad y \quad Var(\hat{\beta_0}_0) = \dfrac{\sigma^2 n^{-1}\sum\limits_{i=1}^n (x_i^2)}{\sum\limits_{i=1}^n (x_i-\overline{x})^2} = \dfrac{\sigma^2 n^{-1}\sum\limits_{i=1}^n x_i^2}{SST_X}$$
+
+Una nota sobre la diferencia entre errores y residuales. Aparecen errores en la ecuación que contiene los parámetros de la población. Los residuos aparecen en la ecuación estimada. Si bien se desconocen los errores, los residuos se pueden calcular.
+
+La varianza de $u$ no depende de $x$, es equivalente a decir que la varianza de $u$ con respecto a $x$ es igual a la varianza incodicional de $u$.\\
+$$Var(u_i|x_i) = \sigma^2 = Var(u_i)$$\\
+
+Se puede obtener una estimación insesgada del error de la varianza restando el número de coeficientes de regresión estimados del número de observaciones.\\
+$$\sigma^2 = \dfrac{1}{n-2}\sum\limits_{i=1}^n \hat{u}_i^2$$\\
+
+Las desviaciones standar estimados del coeficiente de regresión son llamados errores estandar, el cual miden con que precisión los coeficientes de regresión son estimado. Estos son calculados como siguen.
+$$se(\hat{\beta}_1) = \sqrt{Var(\hat{\beta_1}_i)} = \sqrt{\hat{\sigma}^2 / SST_x} \qquad y \qquad se(\hat{\beta}_0) = \sqrt{Var(\hat{\beta_0}_i)} = \sqrt{\hat{\sigma}^2n^{-1} \sum x_i^2  / SST_x}$$ 
+
+### Teorema 3. "Falta de sesgo" de la varianza de error
+$$E(hat{\sigma}^2) = \sigma^2$$
+
+Hasta ahora hemos tratado variables que son cuantitativas o variables medibles como años de educación, salario, salario, edad y similares. Sin embargo, existen muchas variables cualitativas. en este caso se presentan dos tipos: variables binarias (dummy) y variables ordinales. Las variables ficticias solo pueden tomar valores de 0 o 1. Por lo general, 1 indica que el individuo pertenece a algún grupo y 0 que el individuo no. Por ejemplo, blanco o no blanco, nacido en el extranjero o no, tiene coche o no. Las variables ordinales agrupan a los individuos en grupos donde el orden importa. Por ejemplo, cuánta educación se ha completado: 0: ninguna, 1: escuela primaria, 2: escuela secundaria, 3: algo de universidad, 4: licenciatura o más.
+
+Por ahora, trataremos con variables binarias (dummy) en un modelo de regresión simple. Suponga que la variable x puede tomar un valor igual a 0 o 1. Supongamos el mismo modelo de regresión lineal simple. Sea $x=0$ o $x=0$, siempre que $X=0$ donde no importa cuál sea el valor de $\beta_1$ entonces la única variale que queda es $\beta_0$, siempre que $x=1$, $y=\beta_0+\beta_1$ como se verá acontinuación,\\
+$$Y=\beta_0+\beta_1x+u$$
+
+$$E(y|x=1) = \beta_0, \qquad E(y|x=1)=\beta_0+\beta_1x$$\\
+
+En otras palabras $\beta_1$ encuentra la diferencia esperada de la media cuando $x=1$ y $x=0$.\\
+$$\beta_1 = E(y|x=1)-E(y|x=0)$$\\
+
+## Análisis de regresión multiple: estimación
+El análisis de regresión múltiple es más adecuado para el supuesto ceteris paribus porque nos permite controlar explícitamente muchos factores que afectan simultáneamente a la variable dependiente. Agregar variables más relevantes puede aumentar la variación explicada de la variable dependiente y ayudarnos a construir mejores modelos para predecir la variable dependiente.
+
+El modelo de regresión múltiple es el vehículo más utilizado para el análisis empírico en economía y otras ciencias sociales. De manera similar, MCO es el método más utilizado para estimar los parámetros del modelo de regresión múltiple.
+
+Un modelo de regresión múltiple explica la variable dependiente $Y$ en tperminos de múltiples variables independientes.\\ 
+$$Y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_k x_k + u$$
+
+La incorporación de variables adicionales explicativas  nos permite mantener explícitamente más variables que nos permiten medir con mayor precisión los efectos que nos interesan. Además, también nos permite utilizar formas funcionales más flexibles.
+
+En el modelo con dos variables independientes, la suposición clave acerca de cómo $u$ se relaciona con $X_1$ y $X_2$ es:
+$$E(u|X_1,X_2) = 0$$
+
+El cual significa que para cualquier valor de $X_1$ y $X_2$ en la población, el promedio de los factores no observados es igual a cero.
+
+En modelos con más de dos variables independientes, la suposición de media condicional cero requiere:
+$$E( u |X_1,X_2,\ldots ,X_k) = 0$$
+
+Por otro lado, si se omiten las variables clave que están correlacionadas con una de las variables independientes, tendremos un gran problema, los resultados estarán sesgados. En otras palabras, subestimaremos o sobrepredeciremos el efecto de la variable independiente sobre la variable dependiente.
+
+¿Cómo obtenemos las estimaciones para $\beta_0,\beta_1$ ¿y el resto? Usamos nuevamente los mínimos cuadrados ordinarios (MCO) que elige las estimaciones para minimizar la suma de los residuos cuadrados. Este problema de minimización se resuelve mediante cálculo multivariado.
+
+Sea $\lbrace x_{i1},x_{i2},\ldots, x_{ik},y_i\rbrace para i=1,\ldots,n$ entonces 
+$$\hat{u}_i = y_i - \hat{\beta}_0 - \hat{\beta}_1 x_{i1} - \hat{\beta}_2 x_{i2} - \ldots - \hat{\beta}_k x_{ik}$$
+
+para luego 
+
+$${\min\sum\limits_{i=1}^n \hat{u}_i^2 \to \hat{\beta}_1, \hat{\beta}_2, \ldots, \hat{\beta}_k}$$
+
+Como en el análisis de regresión simple, derivaremos la línea de regresión MCO o la función de regresión muestral . $\hat{\beta}_0$ se llamará la intersección de MCO y el resto de las estimaciones beta se llamarán estimaciones de la pendiente de MCO.
+
+Aún diremos que ejecutamos una regresión MCO de $Y$ sobre $X_1,X_2,X_3, \ldots$ Siempre incluiremos la intersección en el análisis a menos que se especifique lo contrario.
+
+Las estimaciones de beta tienen efectos parciales o interpretaciones ceteris paribus. El modelo de regresión lineal múltiple logra mantener fijos los valores de otras variables explicativas incluso si, en realidad, están correlacionados con la variable explicativa considerada. Sin embargo, asumimos que los factores no observados no cambian si se cambian las variables explicativas, lo que puede ser cierto o no.
+$$\beta_j=\dfrac{\triangle Y}{\triangle X_j}$$
+
+Como vimos anteriormente, el análisis de regresión múltiple nos permite mantener otras variables fijas mientras trabajamos con entornos no controlados.
+
+Otras propiedades de los valores ajustados y residuales de MCO son: (1) las desviaciones de la línea de regresión suman cero; (2) la covarianza entre desviaciones y regresores es cero; (3) los promedios muestrales de Y y de los regresores se encuentran en la línea de regresión.
+
+#### Valores ajustados
+$$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1x_{i1} + \hat{\beta}_2x_{i2}+\ldots + \hat{\beta}_{k}x_{ik}$$
+
+#### residuales
+$$\hat{u}_i = Y_i - \hat{Y}_i$$
+
+#### Las desviaciones de la línea de regresión suman cero
+$$\sum\limits_{i=1}^n \hat{u}_i = 0$$
+
+#### Covarianza entre desviacióny regresores son igual a cero
+$$\sum\limits_{i=1}^n x_{ij}\hat{u}_i = 0$$
+
+#### Medias muestrales de $Y$ y de los regresoresse encuentran en la línea de regresión
+$$\overline{Y} = \hat{\beta}_0 + \hat{\beta}_1\overline{x}_{i1} + \hat{\beta}_2\overline{x}_{i2}+\ldots + \hat{\beta}_{k}\overline{x}_{ik}$$
+
+No es sorprendente que las regresiones lineales simples y múltiples estén relacionadas. Se puede demostrar que el coeficiente estimado de una variable explicativa en una regresión múltiple se puede obtener en dos pasos:
+
+\begin{enumerate}
+\item Regresar la variable explicativa en todas las demás variables explicativas.
+\item Realice una regresión de Y sobre los residuos de la primera regresión
+\end{enumerate}
+
+Definamos ahora a suma total de cuadrados (SST), la suma de cuadrados explicada (SSE) y la suma de cuadrados residual (SSR) como en la regresión simple. La suma total de cuadrados se puede separar en la suma de cuadrados explicada y residual:SST= SSmi+ SSR. La bondad de ajuste se define mediante R cuadrado al igual que en la regresión simple:
+
+$$R^2 = SSE/SST = 1-SSR/SST = \dfrac{\left(\sum\limits_{i=1}^n (y_i - \overline{y})(\hat{y}_i - \overline{Y})\right)^2}{\left[\sum\limits_{i=1}^n (y_i - \overline{y})^2 \right] \left[\sum\limits_{i=1}^n \left(\hat{y}_i - \overline{\hat{y}}\right)^2\right]}$$
+
+
+Ahora discutiremos los cinco supuestos bajo los cuales los estimadores de MCO son insesgados para los parámetros de población. Estos supuestos colectivamente se conocen como supuestos de Gauss-Markov.
+
+\begin{enumerate}
+\item La relación entre $Y$ y $X$ es lineal. (Lineal en parámetros)
+\item Tenemos una muestra aleatoria siguiendo el modelo de población. (Muestreo aleatorio)
+\item Ninguna de las variables independientes es constante y no existen relaciones lineales exactas entre las variables independientes. (Sin colinealidad perfecta)
+\item El error tiene un valor esperado de cero dados los valores de las variables independientes. (Media condicional cero)
+\item El error U tiene la misma varianza dado cualquier valor de las variables explicativas. (Homocedasticidad)
+\end{enumerate}
+
+
+El supuesto 1 de regresión lineal múltiple (MLR.1) establece que la relación poblacional (o verdadera) entre las variables dependientes e independientes es lineal.
+
+$$y=\beta_o + \beta_1x_1 + \beta_2x_2 + \ldots + \beta_kx_k + u$$
+
+El supuesto 2 establece que nuestros datos son una muestras aleatoria extraída de la población.
+
+Para el tercer supuesto se requiere que en las muestras haya al menos alguna variación en cada una de las variables independientes. Si hay una variable independiente que es constante, no ayuda a predecir la variación de $Y$. También podemos pensar en ellos como colineales con la intersección. Ésta supocisión tampoco permite relaciones lineales exactas entre las variables independientes. Si una variable explicativa es una combinación lineal perfecta de otras variables explicativas, es superflua y puede eliminarse. Se permite una correlación imperfecta entre variables independientes.
+
+La suposición cuatro establece que el valor esperado de $u$ dada cualquier variable independiente $X$ es 0. En otras palabras, las variables explicativas no deben contener ninguna información sobre la media de los factores no observados. En un modelo de regresión múltiple, es mucho más probable que se cumpla la suposición de media condicional cero porque menos cosas terminan en el error. Recuerde que en la regresión lineal simple solo teníamos una variable explicativa mientras que todas las demás terminaron en $u$. En la regresión lineal múltiple, podemos controlar muchos más factores explícitamente y menos factores terminan en $u$.
+
+La suposición cinco establece que el valor de las variables explicativas no contiene información sobre la varianza de los factores no observados. Por lo general, es extremadamente difícil justificar esta suposición.
+
+$$E(u_i|x_{i1},x_{i2},\ldots, x_{ik}) = 0$$
+
+$$Var(u_i|x_{i1},x_{i2},\ldots, x_{ik})=\sigma^2$$
+
+
+### Teorema 1 insesgado de MCO
+Bajo los supuestos 1 al 4, los estimadores MCO son estimadores insesgados de los parámetros de población
+
+#### Teorema 2 Varianzas muestrales de los estimadores de pendiente de MCO
+Bajo los supuestos 1 al 5, la varianza de los estimadores de MCO se define de la siguiente manera,
+
+$$Var(\hat{\beta}_j) = \dfrac{\sigma^2}{SST_j(1-R^2_j)}, \quad j=1,\ldots,k$$
+
+El tamaño de la varianza del estimador MCO es importante, ya que una varianza más grande significa un estimador menos preciso, intervalos de confianza más grandes y pruebas de hipótesis menos precisas, como veremos en el próximo capítulo.
+
+La inclusión de variables irrelevantes en un modelo de regresión a veces se denomina sobreespecificación del modelo. No es un gran problema ya que simplemente estimaremos un coeficiente de pendiente muy bajo, sin embargo, la inclusión de variables irrelevantes aumenta la varianza muestral y conduce a estimadores ligeramente menos precisos y pruebas de hipótesis menos precisas.
+
+Supongamos que $X_!$ y $X_2$ están relacionados linealmente. Reemplazando la ecuación para $X_2$ en el modelo, podemos derivar el sesgo en la intersección estimada, el coeficiente de pendiente para $X_1$ y el término de error.
+
+$$X_2 = \delta_0 + \delta_1x_1 + v \quad \Longrightarrow \quad Y= \beta_0 + \beta_1x_1 + \beta_2(\delta_0 + \delta_1x_1 + v)+u = (\beta_0 + \beta_2\delta_0)+(\beta_1+\beta_2\delta_1)x_1+(\beta_2 v + u)$$
+
+Vemos que omitir una variable relevante provoca que todos los coeficientes estimados estén sesgados.
+
+La dirección del sesgo depende de cómo se correlacione la variable omitida con las variables independientes.
+
+Algunos componentes de las variaciones de MCO: 
+
+\begin{enumerate}
+\item La varianza del error:
+\begin{itemize}
+\item Una varianza de error alta aumenta la varianza de muestreo porque hay más "ruido" en la ecuación.
+\item Una gran variación de error no necesariamente hace que las estimaciones sean imprecisas.
+\item La varianza del error no disminuye con el tamaño de la muestra.
+\end{itemize}
+\item La variación muestral total en la variable explicativa:
+\begin{itemize}
+\item Una mayor variación de la muestra conduce a estimaciones más precisas.
+\item La variación total de la muestra aumenta automáticamente con el tamaño de la muestra.
+\item Por tanto, aumentar el tamaño de la muestra es una forma de obtener estimaciones más precisas.
+\end{itemize}
+\item Relaciones lineales entre las variables independientes:
+\begin{itemize}
+\item Regresor $X_j$ en todas las demás variables independientes (incluida la constante). El R-cuadrado de esta regresión será mayor cuandoXj puede explicarse mejor por las otras variables independientes.
+\item La varianza muestral del estimador de pendiente para $X_j$ será mayor cuando pueda ser explicado mejor por las otras variables independientes.
+\item Bajo multicolinealidad perfecta, la varianza del estimador de pendiente se acercará al infinito.
+\end{itemize}
+\end{enumerate}
+
+#### Multicolinealidad
+
+La multicolinealidad es una correlación alta pero no perfecta entre dos o más variables independientes. Si tenemos una alta multicolinealidad, significa que una de las variaciones de una variable independiente puede explicarse por la variación de otras variables independientes. En algunos casos, puede ser una buena idea eliminar algunas variables independientes para reducir la multicolinealidad. Sin embargo, eso puede causar un sesgo de variable omitida. En otros casos, puede ser una buena idea agrupar algunas variables independientes en una sola variable cuando los efectos individuales no se puedan desenredar. Además, no solo se inflará la varianza muestral de las variables involucradas en la multicolinealidad. Las estimaciones de otros efectos pueden ser muy precisas. Además, tenga en cuenta que la multicolinealidad no es una violación de del supuesto 3 en sentido estricto.
+
+La multicolinealidad se puede detectar a través de "factores de inflación de la varianza". Como regla general, la varianza del factor de inflación no debe ser mayor que 10.
+
+$$Y= \beta_0 + \beta_1X_1 + \beta_2X_2 + u \longleftarrow \mbox{Modelo inicial}$$
+$$ \hat{Y} = \beta_0 + \beta_1X_1 + \hat{u} $$
+
+Si la teoría económica sugiere que es necesario incluir una determinada variable para inferir causalidad, entonces no podemos simplemente descartar variables independientes altamente correlacionadas. Sin embargo, debemos ser conscientes de que la multicolinealidad es un problema y abordar este problema. La decisión de incluir una variable en particular en una regresión se puede tomar analizando la compensación entre sesgo y varianza. Puede darse el caso de que el sesgo de la variable omitida probable en el modelo mal especificado sea compensado en exceso por una varianza más pequeña.
+
+Si la variable adicional no es relevante, no crea sesgo, sino que solo aumenta la varianza. No queremos una varianza más alta ya que afecta la inferencia y la prueba de hipótesis, por lo que debemos omitir las variables independientes irrelevantes. Sin embargo, si la variable independiente adicional es relevante pero está altamente correlacionada con otras variables independientes, debemos ser cautelosos. La exclusión de esta variable aumenta el sesgo pero disminuye la varianza; incluirlo disminuye el sesgo pero aumenta la varianza.
+
+Si $X_1$ Y $X_2$ están correlacionados, se asume una relación de regresion lineal entre ellos.
+$$X_2  = \delta_0 + \delta_1X_1 + v \quad \Longrightarrow \quad y = \beta_0 + \beta_1X_1 + \beta_2(\delta_0+\delta_1X_1 + v) + u = (\beta_0 + \beta_2\delta=) + (\beta_1 + \beta_2\delta_1)X_1 + (\beta_2 v + u)$$
+El estimador insesgado de la varianza del error en el caso de regresión múltiple general es:
+
+$$\hat{\sigma}^2 = \dfrac{\sum\limits_{i=1}^n \hat{u}_i^2}{n-k-1}$$
+
+Se puede obtener una estimación insesgada de la varianza del error restando el número de coeficientes de regresión estimados del número de observaciones. El número de observaciones menos el número de parámetros estimados también se denomina grados de libertad. Los n residuos cuadrados estimados en la suma no son completamente independientes sino que están relacionados a través de las ecuaciones k + 1 que definen las condiciones de primer orden del problema de minimización.
+
+#### Teorema 3 Estimador insesgado de $\sigma^2$
+
+Bajo los supuestos de Gauss_markov y las suposiciones 1 y 5, 
+$$E(\hat{\sigma}^2) = \sigma^2$$
+
+Mejor implica la varianza más baja. Lineal significa que podemos expresar el estimador MCO como una función lineal de los datos de la variable dependiente. La importancia del teorema de Gauss-Markov es que, cuando se cumplen los supuestos estándar, ninguno de los estimadores alternativos será mejor que los estimadores MCO. Sin embargo, si uno de los supuestos falla, el estimador estará sesgado (si falla el supuesto de la media de condición cero) o no tendrá la varianza más pequeña (si hay heterocedasticidad).
+
+$$Var(\hat{\beta}_j) \leq Var(\tilde{\beta_j}), \qquad j=0,1,\ldots, k\quad  \mbox{para todo}\quad \tilde{\beta}_j = \sum\limits_{i=1}^n w_{ij} Y_i, \quad \mbox{para cada}\quad E(\tilde{\beta}_j)=\beta_j\quad j=0, \ldots,k$$
+
+## Análisis de regresión múltiple: Inferencia
+
+Psamos a probar hipótesis y construir intervalos de confianza. para realizar inferencias estadísticas, necesitamos conocer la distribución muestral completa del $\beta_j$ estimado, que puede tener prácticamente cualquier forma. Para derivar la distribución, necesitamos suposiciones adicionales sobre la distribución de errores.
+
+Se tiene que el error poblacional $u$ es independiente de las variables explicativas $X_1,X_2, . . .X_k$ y se distribuye normalmente con media cero y varianza $\sigma_2$. 
+
+El término de error es la suma de diferentes factores no observados. Las sumas de muchos factores aleatorios independientes se distribuyen normalmente de acuerdo con el teorema del límite central. Sin embargo, hay algunas debilidades de este supuesto: los factores en $u$ pueden tener distribuciones muy heterogéneas, es decir, los factores en $U$ no son necesariamente independientes entre sí.
+
+La normalidad del término de error es una cuestión empírica. En la mayoría de los casos, la normalidad es cuestionable o imposible por definición. 
+Sin embargo, la distribución de errores debería ser al menos cercana a lo normal. En algunos casos, la normalidad se puede lograr mediante transformaciones de la variable dependiente. En condiciones normales, MCO es el mejor estimador insesgado (incluso no lineal). A los efectos de la inferencia estadística, el supuesto de normalidad puede reemplazarse por un tamaño de muestra grande.
+
+\begin{itemize}
+\item De los supuestos 1 a 5 se denominan supuestos de Gauss-Markov.
+\item De los supuestos 1 a 6 se denominan supuestos del modelo lineal clásico.
+\end{itemize}
+
+#### Teorema 4.1
+
+Distribuciones muestrales normales Bajo los supuestos CLM condicionados a los valores muestrales de las variables independientes, los estimadores se distribuyen normalmente alrededor de los parámetros verdaderos y los estimadores estandarizados siguen una distribución normal estándar.
+
+Los estimadores tienen distribución normal alrededor de los parámetros verdaderos con la varianza que se derivó anteriormente 
+$$\hat{\beta}_j \sim \; Normal(\beta_j,Var(\hat{\beta}_j))$$
+
+Los estimadores estandarizados siguen una distribución normal estándar
+
+$$\dfrac{\hat{\beta}_j - \beta_j}{sd(\hat{\beta}_j)} \sim \; Normal(0,1)$$
+
+#### Teorema 4.2. Distribuciones t para los estimadores estandarizados
+
+Bajo los supuestos del modelo lineal clásico, si la estandarización se realiza usando el error estándar, la distribución normal puede ser reemplazada por una distribución t con $df = n-k-1$
+
+Si la estandarización se realiza utilizando la desviación estándar estimada (= error estándar), la distribución normal se reemplaza por una distribución t
+
+$$\dfrac{\hat{\beta}_j - \beta_j}{se(\hat{\beta}_j)} \sim t_{n-k-1}$$
+
+El parámetro de población es igual a cero, es decir, después de controlar las otras variables independientes, no hay efecto de $ _j $ en $Y$
+
+$$H_0: \; \beta_j = 0$$
+Ahora nuestro objetivo es definir una regla de rechazo para que si es cierta, $H_0$ se rechaze con una pequeña probabilidad que llamaremos nivel de significancia por lo general un $5\%$
+
+Para determinar una regla para rechazar $H_0$, necesitamos definir la hipótesis alternativa relativa. Hay alternativas unilaterales y bilaterales. Primero, examinemos la alternativa unilateral. Consideremos la hipótesis alternativa unilateral de la forma $H1:\beta_j>0$. Para probar la hipótesis, necesitamos decidir el nivel de significancia: la probabilidad de rechazar $H_0$ cuando, de hecho, es cierto. Por lo general, un nivel significativo del $5\%$ es suficientemente grande. Rechazamos la hipótesis nula a favor de la hipótesis alternativa si el coeficiente estimado es demasiado grande (es decir, mayor que un valor crítico). Construimos el valor crítico de modo que, si la hipótesis nula es cierta, se rechace, por ejemplo, en el $5\%$ de los casos.
+
+
+
+
+# Marco práctico
+
+## Análsis de regresión simple en el salario de los Estadounidenses en 19
+Para ponernos en contexto a continuación empezamos describiendo el modelo lineal simple que se relacionará a nuestra base de datos (wage1).\\
+
+ $$wage = \beta_0 + \beta_1 educ + u$$ \\ 
+Este modelo relaciona el salario de la persona (wage) con la educación observada (educ) y otros factores no observados (u). Si el salario se mide en dólares por hora y educ son los años de educación adquiridos, entonces $\beta_1$ mide el cambio en el salario por hora dado un año adicional de educación, manteniendo constantes todos los demás factores (en $u$). Consideremos qué tan bien se mantienen los supuestos del modelo. El supuesto de linealidad implica que el cambio de ningún año de educación a un año de educación tiene el mismo efecto en su salario que el cambio de once a doce años de educación. De hecho, podemos esperar rendimientos crecientes o decrecientes de la educación. Es probable que la suposición lineal no sea realista en este caso. El supuesto ceteris paribus implica que la educación es independiente de otros factores, como la capacidad o el talento innatos. Sin embargo, es casi seguro que esto no sea cierto. Las personas con mayores habilidades o talentos naturales tienen muchas más probabilidades de obtener más años de educación. En otras palabras, ¿espera que un individuo que no terminó la escuela secundaria y alguien con una maestría tengan la misma habilidad natural? Si bien es cierto para algunos, probablemente no sea cierto para la mayoría. La violación del supuesto de cateris paribus significa que no podemos inferir causalidad: usando este modelo simple no podemos afirmar que la educación causa un aumento en el salario manteniendo todos los demás constantes, pero si tendremos un punto de partida para lograr nuestro cometido.
+
+Estimemos $\beta_0$ y $\beta_1$ en R.
+
+
+```{r}
+{ plot(wage~educ,data = wage1) + abline(lm(wage~educ,data = wage1)) }
+```
+
+```{r}
+summary(lm(wage ~ educ, data = wage1))
+```
+
+Tenemos que ser cautelosos aquí porque esta ecuación predice que una persona sin educación tendrá un salario negativo de $90$ centavos la hora (lo cual no es coherente). La ecuación predice mal debido a muy pocas observaciones de personas con muy poca educación. Con cada año en educación, pronosticamos que el salario aumentará en $54$ centavos por hora, lo que equivale a $\$ 2.16$ en la actualidad. Ese es un efecto muy grande. Es muy probable que el efecto real sea menor y probablemente no lineal.
+
+Tenga en cuenta las unidades. Es importante realizar un seguimiento de las unidades de medida para poder leer correctamente los resultados de la regresión.
+
+Otro aspecto importante es la forma funcional del modelo econométrico. Hasta ahora analizamos una relación lineal simple. Sin embargo, también podemos considerar otras relaciones. Primero, tomaremos el logaritmo natural de la variable dependiente. ¡La interpretación cambia! Ahora, la variable dependiente cambiará en un porcentaje constante cuando la variable independiente aumente en $1$ unidad.
+
+Esto puede resultar especialmente útil con la ecuación de rendimiento de la educación. Echemos un vistazo al modelo original, pero esta vez usemos el logaritmo natural del salario. El modelo se ve así:
+
+$$\log(wage) = \beta_0 + \beta_1 + u$$
+
+$$\beta_1 = \dfrac{\triangle \log(wage)}{\triangle educ} = \dfrac{\frac{\triangle wage}{wage}}{\triangle educ}$$
+En nuestro nuevo modelo, $\beta_1$ indica en qué porcentaje aumenta el salario si los años de educación aumentan en un año. $\beta_1 \cdot 100$ a menudo se denomina semielástica de $y$ con respecto a $x$.
+
+Podemos ejecutar el siguiente código en R para obtener las estimaciones de MCO y hacer nuevos gráficos:
+
+```{r}
+summary(lm(log(wage) ~ educ, data=wage1))
+```
+
+```{r}
+{ plot(log(wage)~educ,data = wage1) + abline(lm(log(wage)~educ,data = wage1)) }
+```
+```{r}
+{ reg1=lm(log(wage) ~ educ, data=wage1)
+ plot(wage~educ, data=wage1)
+a0=1/length(fitted(reg1)) * sum(exp(reg1$residuals))
+points(exp(reg1$fitted.values)*a0~wage1$educ,col="blue",lwd=5) }
+```
+
+Encontramos que el salario aumenta en un $8,3\%$ con un año adicional de educación, de lo contrario se mantiene constante.
+
+Siempre es útil crear gráficos. Le ayuda a comprender mejor los datos y ayudan a comunicar los resultados. Si tomamos el logaritmo de los salarios y la educación, podemos graficar directamente los valores ajustados de la regresión de MCO . Sin embargo, no estamos acostumbrados a pensar en términos de logaritmos de salario, por lo que es mejor convertir de nuevo a las unidades habituales: dólares. En la Gráfica 2, podemos observar visualmente la relación no lineal entre salario y educación. Este parece ser un ajuste mucho mejor que el modelo lineal simple realizado anteriormente.
+
+El modelo log-log es otro modelo popular en el que las variables del lado izquierdo (LHS) y del lado derecho (RHS) se convierten a sus logaritmos naturales. Se llama modelo de elasticidad constante. En este modelo, $\beta_1$ se denomina elasticidad de $y$ con respecto a $X$.
+
+Cuando hablamos de variables dummy podemos relacionar el salario y el color de piel de los Estadounidenses de la siguiente forma:
+
+```{r}
+summary(lm(wage~nonwhite, data=wage1))
+```
+
+Vemos que, de hecho, se predice que los salarios de las personas no blancas en los EE. UU. Serán más bajos en 47 centavos por hora. Sin embargo, el resultado no es estadísticamente significativo.
+
+## Análisis de regresión multiple: Estimación.
+
+En nuestro modelo de salario y educación, podemos incluir variables independientes adicionales como la experiencia, género, entre otras. Supongamos que decidimos incluir una variable independiente adicional: experiencia (exper). Así podremos  preguntarnos, el efecto de $\beta_1$ y $\beta_2$ en dicho modelo?. Cabe mencionar que $\beta_1$ ahora mide el efecto de la educación manteniendo explícitamente fija la experiencia. Similarmente, $\beta_2$ mide el efecto de la experiencia sobre los salarios que mantienen explícitamente fija la educación. Vea el modelo a continuación.
+$$wage = \beta_0 + \beta_1 educ + \beta_2 exper + u$$
+Ahora, necesitamos que estos niveles medios de capacidad natural sean los mismos en todas las combinaciones de educación y experiencia de la población activa. Si esto no es cierto (y probablemente no lo sea), entonces nuestras estimaciones estarán sesgadas.
+
+Ahora realizamos una regresión log(wage) para eduación, experiencia y antiguedad como sigue:
+
+```{r}
+reg1 <- lm(log(wage)~educ+exper+tenure,data = wage1)
+reg1
+```
+Vemos que todos los efectos parciales son positivos. Dado que usamos el log(wage), el coeficiente de 0.092 significa que, manteniendo fija la experiencia y la tenencia, se predice que otro año de educación aumentará el log(wage) en 0.092, lo que se traduce en un aumento del 9.2$\%$ en el salario, es decir,
+
+```{r}
+{plot(wage~educ, data=wage1)
+x=0:18
+a0=1/length(fitted(reg1)) * sum(exp(reg1$residuals))
+reg1coeff=reg1$coefficients
+yfit1=exp(reg1coeff[1]+reg1coeff[2]*x+reg1coeff[3]*1+reg1coeff[4]*1)
+points(yfit1*a0~x,col="green",lwd=5)
+yfit35=exp(reg1coeff[1]+reg1coeff[2]*x+reg1coeff[3]*35+reg1coeff[4]*1)
+points(yfit35*a0~x,col="red",lwd=5)}
+```
+```{r}
+yfit35 - yfit1
+```
+
+Esta figura muestra los salarios previstos de una persona con 1 (línea verde) y con 35 años (línea roja) de experiencia con 1 año de permanencia en la empresa actual. Dado que usamos log (salario), un año adicional de educación aumenta el salario en el mismo porcentaje, dada la experiencia y la permanencia fijadas. En otras palabras, la relación entre salario y educación no es lineal.
+
+Usando la ecuación estimada anterior, variamos la experiencia (entre 1 y 35) y mantuvimos la tenencia fija. Luego, pudimos ver los diferentes efectos de la educación para alguien con más y menos experiencia. Sin embargo, también podemos variar la tenencia. Por ejemplo, podríamos haber comparado los efectos de la educación en los salarios de alguien con muchos años de experiencia y un largo período en el cargo con alguien con poca experiencia y sin cargo.
+
+Según el teorema 3 de la parte de análisis de regresión multiple, si la capacidad y la educación están relacionadas, tendremos el retorno a la educación 
+
+$$wage = \beta_0 + \beta_1educ + \beta_2 abil + u$$
+$$abil = \delta_0 + \delta_1educ + v$$
+$$wage = (\beta_0 + \beta_2\delta0)+(\beta_1 + \beta_2 \delta_1)educ + (\beta_2v + u)$$
+
+## Análisis de regresión multiple: Inferencia
+Sea
+
+$$log(wage) = \beta_0 + \beta_1 educ + \beta_2 exper + \beta_3 tenure$$
+```{r}
+reg1 <- lm(log(wage) ~ educ+exper+tenure, data = wage1)
+summary(reg1)
+```
+
+Ahora nuestras pendientes estimadas y errores estándar se muestran a continuación. Digamos, estamos interesados ​​en probar si el retorno a la experiencia, controlando la educación y la tenencia, es cero en la población, contra la hipótesis alternativa de que es positivo.
+
+$$ \hat{log}(wage) = 0.284 + 0.092 educ + 0.0041exper + 0.022tenure$$
+
+con $n=526$ y $R^2 = 0.216$ y desviaciónes estándar 0.104, 0.007, 0.0017, 0.003 respectivamente entonces podemos querer inferir
+
+$$test\; H_0: \beta_{exper}=0, \qquad H_1:\beta_{exper}>0$$
+de donde $t_{exper} = \dfrac{0.0041}{0.0017} = 2.41$ y $df=n-k-1=526-3-1=522$
+
+Teniendo 522 grados de libertad, podemos calcular el estadístico t en un nivel de significancia elegido (intentemos $5\%$ y $1\%$). Dado que tenemos tantos grados de libertad, también podemos usar la distribución normal estándar. A partir del resumen de la regresión (reg1), vemos que el estadístico t para la experiencia es 2.391, que es mayor que 1.6 o 2.3, por lo que podemos rechazar la hipótesis nula y afirmar que el efecto parcial de la experiencia (mantener la educación y la tenencia constante), aunque no es grande, es estrictamente positivo.
+
+```{r}
+alfa <- c(0.05,0.01)
+qt(1-alfa,522)
+```
+
+```{r}
+qnorm(1-alfa)
+```
+
+ahora es posible que desee probar si existe una diferencia estadística entre los rendimientos de la educación de los años pasados en una universidad de dos años y de cuatro años. Para este caso, el estadístico t se construye como se muestra a continuación. La diferencia entre las estimaciones se normaliza mediante la desviación estándar estimada de la diferencia. La hipótesis nula debería rechazarse si la estadística es "demasiado negativa" para creer que la verdadera diferencia entre los parámetros es igual a cero.
+
+$$log(wage) =\beta_0 + \beta_1jc + \beta_2iniv + \beta_3exper + u$$
+
+$$test\; H_0: \beta_1-\beta_2 = 0,\qquad H_1: \beta_1-\beta_2 < 0$$
+
+$$t=\dfrac{\hat{\beta}_1-\hat{\beta}_2}{se(\hat{\beta}_1-\hat{\beta}_2)}$$
+
+Sin embargo, el error estándar de la diferencia en los parámetros es imposible de calcular con la salida de regresión estándar.
+
+$$se(\hat{\beta}_1-\hat{\beta}2)=\sqrt{Var(\hat{\beta}_1 -\hat{\beta}_2)} = \sqrt{Var(\hat{\beta}_1)+Var(\hat{\beta}_2)-2Cov(\hat{\beta}_1,\hat{\beta}_2)}$$
+
+donde $\theta_1 = \beta_1 -\beta_2$ y el test $$H_0: \theta_1=0,\qquad H_1:\theta_1<0$$ 
+
+luego, 
+
+$$log(wage)=\beta_0 + (\theta_1+\beta_2)jc+\beta_2univ + \beta_3exper + u = \beta_0 + \theta_1 jc + \beta_2(jc + univ) + \beta_3 exper + u9$$
+
+Existe un método alternativo para probar si existe una diferencia estadística entre los años pasados en la universidad secundaria y la universidad de cuatro años. Si simplemente realizamos una regresión con la universidad secundaria como una variable independiente y el total de años de universidad (tanto la secundaria como la de cuatro años), podemos estimar si hay un efecto estadístico diferente sobre el salario. Nuestra nueva hipótesis nula es $H0:\theta_1 = 0,\quad H1:\theta1< 0.$
+
+```{r}
+reg1 = lm(lwage ~ jc+univ+exper, data=twoyear);
+summary(reg1)
+```
+
+Los resultados se muestran a continuación. Calculamos que el estadístico t es -1,48, el intervalo de confianza es (-0,0237, 0,0003) y el valor p es 0,070. A un nivel de significancia del 5%, no rechazamos la hipótesis nula.
+
+$$\hat{log}(wage) = 1.472 - 0.0102 jc + 0.0769 totalcoll + 0.0049 exper$$
+con $n=6.763$, $R^2 = 0.222$, $t=\dfrac{-0.0102}{0.0069 = -1.48}$, $p-value = P(t-ratio<-1.48) = 0.070-0.0102\pm 1.96(0.0069) = (-0.0237,0.0003)9$
+
+## Análisis de regresión múltiple con información cualitativa
+
+Los factores cualitativos a menudo vienen en forma de información binaria: una persona es hombre o mujer, una persona tiene o no tiene un automóvil, un estado aplica la pena capital o no, y así sucesivamente ... Este tipo de información se puede capturar con una variable binaria (variable cero-uno). En econometría, las variables binarias generalmente se conocen como variables ficticias. Podemos usar este tipo de variables tanto como variables dependientes como independientes pero por ahora, las usaremos mayoritariamente como variables explicativas.
+
+Con una variable ficticia, el valor de 1 debe asignarse a una de las dos posibilidades o resultados. Por ejemplo, mujer = 1 y hombre = 0, o podríamos tener hombre = 1 y mujer = 0. En nuestro modelo de regresión, solo podemos usar uno: no podemos usar tanto masculino como femenino como variables explicativas separadas debido a la perfecta colinealidad (esto a veces se denomina trampa de variable ficticia). En otras palabras, debemos seleccionar un grupo como punto de referencia (valor de variable binaria asignado de 0) y estimar la diferencia entre ese grupo de referencia y el grupo de interés (con el valor de variable binaria de 1).
+
+El caso más simple es agregar una variable ficticia como variable explicativa. Por ejemplo, considere el siguiente modelo de determinación de salario por hora. Postulamos que existe una diferencia entre los salarios masculinos y femeninos (discriminación contra la mujer).
+
+$$wage=\beta_0 + \beta_1educ + \beta_2 female + u$$
+
+```{r}
+reg1=lm(wage~educ+female, data=wage1)
+summary(reg1)
+```
+
+```{r}
+x=seq(from=min(wage1$educ), to=max(wage1$educ), by=1)
+val_m = data.frame(educ=x, female=0)
+pred_m=predict(reg1, val_m, interval = "confidence")
+val_f = data.frame(educ=x, female=1)
+pred_f=predict(reg1, val_f, interval = "confidence")
+{plot(wage1$wage~wage1$educ)
+lines(x, pred_f[,1], pch=18, col="blue", type="b", lty=2)
+lines(x, pred_m[,1], pch=19, col="red", type="b")
+legend(0, 25, legend=c("Male", "Female"),col=c("red", "blue"), lty=1:2, cex=1.5)}
+```
+
+En este caso, simplemente movemos la intersección para las mujeres hacia abajo en la cantidad estimada. Esta diferencia estimada es la diferencia en el salario medio entre hombres y mujeres con la misma educación. ¡Encontramos que las mujeres con la misma educación ganan 2,27 dólares menos que los hombres! ¡Recuerde que estos son salarios de 1976!
+
+Agreguemos más variables explicativas:
+
+$$wage=\beta_0+\beta_1educ + \beta_2 female + \beta_3 exper + \beta_4 tenure + u$$
+```{r}
+reg2=lm(wage~educ+female+exper+tenure, data=wage1)
+summary(reg2)
+```
+```{r}
+x=seq(from=min(wage1$educ), to=max(wage1$educ), by=1)
+val_m2 = data.frame(educ=x, female=0, exper=mean(wage1$exper), tenure=mean(wage1$tenure))
+pred_m2=predict(reg2, val_m2, interval = "confidence")
+val_f2 = data.frame(educ=x, female=1, exper=mean(wage1$exper), tenure=mean(wage1$tenure))
+pred_f2=predict(reg2, val_f2, interval = "confidence")
+{plot(wage1$wage~wage1$educ)
+lines(x, pred_f2[,1], pch=18, col="blue", type="b", lty=2)
+lines(x, pred_m2[,1], pch=19, col="red", type="b")
+legend(0, 25, legend=c("Male", "Female"),col=c("red", "blue"), lty=1:2, cex=1.5)}
+```
+
+Ya hemos comentado que normalmente es más apropiado utilizar log (salarios) y que probablemente tengamos relaciones no lineales (cuadráticas). Consideremos un modelo más complicado que agrega términos al cuadrado de experiencia y antigüedad y usa el logaritmo del salario:
+
+$$log(wage) = \beta_0 + \beta_1 educ +\beta_2 female + \beta_3 exper + \beta_4 tenure + \beta_5exper^2 + \beta_6 tenure^2 + u$$
+
+```{r}
+reg3=lm(log(wage)~educ+female+exper+tenure+expersq+tenursq, data=wage1)
+summary(reg3)
+```
+
+# Conclusión 
+
+Hasta donde tuve la capacidad de analizar la base datos seleccionada llegue a la conclusión de que la brecha salarial fue desigual entre las mujeres y los hombres esto con el mismo nivel de educación, experiencia y antigüedad. 
+Las mujeres ganaban un $29,65\%$ menos que los hombre. Sin embargo, este número es una aproximación. Encontramos que el salario de la mujer en promedio fue un $25,66\%$ inferior al salario de un hombre comparable.
+
+Por supuesto, podemos considerar muchas otras variables ficticias relevantes para nuestro modelo. Por ejemplo, una variable ficticia para casados, o una variable ficticia para pertenecer a una unión, etc.
+
+

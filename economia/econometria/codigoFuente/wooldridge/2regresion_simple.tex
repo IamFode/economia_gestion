@@ -48,7 +48,7 @@ Luego
 y 
 
 \begin{equation}
-    E\left[x(y - \beta_0 -\beta_i x )= 0\right]
+    E\left[x(y - \beta_0 -\beta_i x )\right] = 0.
 \end{equation}
 
 Como hay que estimar dos parámetros desconocidos, se espera que las dos ecuaciones anteriores puedan servir para obtener buenos estimadores de $\beta_0$ y $\beta_1$. En efecto estas ecuaciones pueden servir para la estimación de estos parámetros.\\\\
@@ -139,7 +139,7 @@ es de mayor interés, pues indica la cantidad en la que cambia $\hat{y}$ cuando 
 \end{equation}
 
 \section{Propiedades de MCO en cualquier muestra de datos}
-El residual de MCO correspondiente a la observación $i$, $\hat{u}_i$, es la diferencia entre $y_i$ y su valor ajustado, como se indica en la ecuación (2.15). Si $\hat{u}_i$ es positivo, la línea predice un valor inferior al de $y_i$; si $\hat{u}_i$ es negativo, la linea predice un valor superior al de $y_i$. Lo ideal para la observación $i$ es cuando $\hat{u}_i = 0$, pero en la mayoria de los casos todos los residuales son distintos de cero. 
+El residual de MCO correspondiente a la observación $i$, $\hat{u}_i$, es la diferencia entre $y_i$ y su valor ajustado, como se indica en la ecuación (2.15). Si $\hat{u}_i$ es positivo, la línea predice un valor que subestima al de $y_i$; si $\hat{u}_i$ es negativo, la linea predice un valor en exceso al de $y_i$. Lo ideal para la observación $i$ es cuando $\hat{u}_i = 0$, pero en la mayoría de los casos todos los residuales son distintos de cero. 
 
 \subsection{Propiedades algebraicas de los estadísticos de MCO}
 Las estimaciones de $MCO$ y sus correspondientes estadísticos tiene varias propiedades útiles. A continuación se verán las tres más importantes.
@@ -157,6 +157,60 @@ Las estimaciones de $MCO$ y sus correspondientes estadísticos tiene varias prop
 
 	El promedio muestral de los residuos de MCO, es cero, por lo que el lado izquierdo de la ecuación anterior es proporcional a la covarianza entre las $x_i$ y los $\hat{u}_i$.
 
-    \item El punto $(\overline{x},\overline{y})$ se encuentran siempre sobre la línea de regresión de MCO. En otras palabras, si en la ecuación $\hat{y} = \hat{beta}_i x + \hat{beta}_o$ se sustituye $\overline{x}$ por $x$, el valor predicho es $\overline{y}$. Esto es exactamente lo que dice la ecuación $\overline{y} = \hat{\beta}_0 + \hat{beta}_1 \overline{x}$.\\\\
+    \item El punto $(\overline{x},\overline{y})$ se encuentran siempre sobre la línea de regresión de MCO. En otras palabras, si en la ecuación $\hat{y} = \hat{\beta}_i x + \hat{\beta}_o$ se sustituye $\overline{x}$ por $x$, el valor predicho es $\overline{y}$. Esto es exactamente lo que dice la ecuación $\overline{y} = \hat{\beta}_0 + \hat{\beta}_1 \overline{x}$.\\\\
 \end{enumerate}
 
+Sea 
+\begin{equation}
+    y_i = \hat{y}_i + \hat{u}_i.
+\end{equation}
+Por la propiedad 1, el promedio de los residuos es cero, equivalentemente, el promedio muestral de los valores ajustados $\hat{y}_i$, es el mismo que el promedio muestral de $y_i$ o $\overline{\hat{y}} = \overline{y}$\\
+además por la propiedad 1 y 2  muestra que la covarianza muestral entre $\hat{y}$ y $\hat{u}$ es cero. Entonces podemos ver que a $MCO$  como la descomposición de $y_i$ en dos partes, un valor ajustado y un residual. De los cuales no están correlacionados en la muestra.\\\\
+
+Definamos el \textbf{total de la suma de los cuadrados}\\
+
+\begin{equation}
+    SST = \sum\limits_{i=1}^n (y_i - \overline{y})^2
+\end{equation}
+SST es una medida de la variación total de la muestra en $y_i$; es decir, mide qué tan dispersos están los $y_i$ en la muestra. Si dividimos por $n-1$ obtendremos la varianza muestral de $y$\\\\
+
+luego el \textbf{Suma Explicada de cuadrados}\\
+
+\begin{equation}
+    SSE = \sum\limits_{i=1}^n (\hat{y}_i - \overline{y})^2
+\end{equation}
+SSE mide la variación muestral en $\hat{y}_i$ (donde usamos el hecho de que $\overline{\hat{y}} = \overline{y}$\\\\ 
+Y la \textbf{suma de cuadrados residuales (SSR)}
+
+\begin{equation}
+    SSR = \sum\limits_{i=1}^n \hat{u}_i^2 
+\end{equation}
+SSR mide la variación muestral en $\hat{u}_i$\\\\
+
+La variación total en $y$ puede expresarse como la suma de las variaciones explicativas y la variación no explicativa SSR, 
+\begin{equation}
+	SST = SSE + SSR
+\end{equation}
+Demostración.-\; 
+$$\begin{array}{rcl}
+    \sum\limits_{i=1}^n (y_i - \overline{y})^2&=&\sum\limits_{i=1}^n\left[(y_i - \hat{y})+(\hat{y}_i - \overline{y})\right]^2\\\\
+					      &=&\sum\limits_{i=1}^n \left[\hat{u}_i + (\hat{y}_i - \overline{y})\right]^2 \\\\
+					      &=&\sum\limits_{i=1}^n \hat{u}_i + 2\sum\limits_{i=1}^n\hat{u}(\hat{y}-\overline{y}) + \sum\limits_{i=1}^n (\hat{y}_i - \overline{y})^2\\\\
+					      &=&SSR + \sum\limits_{i=1}^n \hat{u}_i (\hat{y}_i - \overline{y}) + SSE\\\\
+\end{array}$$
+Ahora (2.36) es verdadera si se muestra que 
+$$\sum_{i=1}^n \hat{u}_i (\hat{y}_i - \overline{y}) = 0$$
+Pero ya se a dicho que la covarianza mueestral entre los residuos y los valores ajustados es vero y esta covarianza es precisamente (2.37) dividida entre $n-1$.\\\\
+
+\subsection{Bondad de ajuste}
+Hasta ahora, no tenemos forma de medir qué tan bien la variable explicativa o independiente, $x$, explica la variable dependiente $y$. Para ello dividimos (2.26) por $SST$ para que nos quede $1=SSE/SST + SSR/SST$. EL r cuadrado de la regresión, a veces es llamado \textbf{coeficiente de determinación} y es definido por,
+\begin{equation}
+	R^2 = SSE/SST = 1 - SSE/SST
+\end{equation}
+
+$R^2$ es el razón de la variación explicada en comparación con la variación total. Por tanto, se interpreta como la fracción de la variación muestral en $y$ que se explica por $x$. Usualmente el resultado es multiplicado por $100$ para que nos de en un porcentaje.\\
+\textbf{Si todos los puntos de datos se encuentran en la misma línea, MCO proporciona un ajuste perfecto a los datos. En este caso, $R_2 = 1$. Un valor de $R_2$ que es casi igual a cero indica un mal ajuste de la línea MCO}.\\
+De hecho, se puede demostrar que $R_2$ es igual al cuadrado del coeficiente de correlación muestral entre $y_i$ y $hat{y}^i$.\\\\
+Vale la pena enfatizar ahora que un R cuadrado aparentemente bajo no significa necesariamente que una ecuación de regresión MCO sea inútil. Tenga en cuenta que el uso de R-cuadrado como principal indicador del éxito de un análisis econométrico puede generar problemas.\\\\
+
+\subsection{Unidades de medida y forma funcional}

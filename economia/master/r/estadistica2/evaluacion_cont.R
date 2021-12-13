@@ -55,14 +55,17 @@ p <- 0.1883 # Probabilidad de éxito
 k1 <- 10 # N° realizaciones
 x1 <- rbinom(n, k1, p) # Simulación de una m.a.s de tamaño 10
 mean(x1)/k1
+k1*p
 
 k2 <- 1000 
 x2 <- rbinom(n, k2, p) # Simulación de una m.a.s de tamaño 1000
 mean(x2)/k2
+k2*p
 
 k3 <- 10000 
 x3 <- rbinom(n, k3, p) # Simulación de una m.a.s de tamaño 10000
 mean(x3)/k3
+k3*p
 
 "
 Si realizamos dos muestras aleatorias de tamaño 10 la proporción de personas que se encuentran en
@@ -71,8 +74,13 @@ de 18.605%.
 "
 
 # b)
-suma <- mean(x1)/k1 + mean(x2)/k2 + mean(x3)/k3 
-suma/3
+estim <- c(x1/k1,x2/k2,x3/k3) # extrayendo las proporciones de cada muestra
+mean(estim) 
+
+"
+Luego de extraer las proporciones de las 6 muestras prosigo a estimar la media de
+estas 6 muestras como estimador, el cual nos da una proporción del 20.2 %.
+"
 
 # c) 
 set.seed(2021)
@@ -93,8 +101,8 @@ hist(xb2,
 
 "
 Observando los dos histogramas vemos que el experimento binomial de 1000 muestras
-de tamaño 1000 se aproxima a una normal contrariamente al experimiento a partir de 
-1000 realizaciones muestrales de tamaño 10 que no tiene una distribución teórica
+de tamaño 1000 se aproxima a una normal, contrariamente al experimiento a partir de 
+1000 realizaciones muestrales de tamaño 10 el cual no tiene una distribución teórica
 clara.
 "
 

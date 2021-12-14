@@ -2,12 +2,12 @@
 library(ggplot2)
 library(wooldridge)
 
+
 ################################## CAPÍTULO 2 ##################################
 ########################### REGRESIÓN LINEAL SIMPLE ############################
 
 ############################## EJERCICIO 2.3 ###################################
 # Sueldo de los directores generales (CEO) y rendimiento sobre le capital
-load("~/git/ciencias_sociales/economia/econometria/R/wooldridge/data/ceosal1.RData")
 y = ceosal1$salary
 x = ceosal1$roe
 summary(y)
@@ -16,7 +16,7 @@ summary(lm(y~x))
 beta1(y,x)
 beta0(y,x)
 residual(y,x) # si es positivo predice un valor inferior al de y_i
-ggplot(data = data, aes(roe, salary)) +
+ggplot(aes(x, y)) +
   geom_point( color = "black", size = 2) +
   geom_smooth(method = lm, formula = y~x, color = "blue") +
   xlab("Rendimiento sobre el capital (ROE) en %") +
@@ -31,7 +31,6 @@ sueldo(30)
 # Salario y educación
 # y = salario en dolares por hora
 # x = educación en años
-load("~/git/ciencias_sociales/economia/econometria/R/wooldridge/data/wage1.RData")
 y = wage1$wage
 x = wage1$educ
 summary(lm(y~x))
@@ -62,7 +61,6 @@ salario(8)
 
 ############################## EJERCICIO 2.5 ###################################
 # Resultados de una votación y gastos de campaña
-load("~/git/ciencias_sociales/economia/econometria/R/wooldridge/data/vote1.RData")
 # y = porcentaje de votos obtenidos por el candidato A
 # x = porcentaje del total de los gastos de campaña atribuidos al candidato A
 y <- vote1$voteA
@@ -117,6 +115,30 @@ r2(y,x)
 la participación de los gastos de campaña explica más del 85% de la variación en
 los resultados electorales para esta muestra. Esta es una porción considerable."
 
+################################# Ejemplo 2.10 #################################
+y <- log(wage1$wage)
+x <- wage1$educ
+beta0(y,x)
+beta1(y,x)
+length(y)
+r2(y,x)
+"
+el salario aumenta en un 8,3% por cada año adicional de educación.
+"
+
+################################# Ejemplo 2.11 #################################
+y <- log(ceosal1$salary)
+x <- log(ceosal1$sales)
+beta1(y,x)
+beta0(y,x)
+length(y)
+r2(y,x)
+"
+Significa que un 1% de incrementos de los ingresos de la empresa incrementa en
+0.257% del sueldo de los CEOs.
+"
+
 ################################## funciones ###################################
 source("funciones.R")
+
 

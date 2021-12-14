@@ -83,7 +83,7 @@ SSE <- function(y){
   return(sum)
 }
 
-# SSR suma de quadrados residuales
+# SSR suma de cuadrados residuales
 
 SSR <- function(y,x){
   res <- 0

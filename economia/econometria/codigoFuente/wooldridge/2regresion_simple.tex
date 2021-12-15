@@ -213,4 +213,40 @@ $R^2$ es el razón de la variación explicada en comparación con la variación 
 De hecho, se puede demostrar que $R_2$ es igual al cuadrado del coeficiente de correlación muestral entre $y_i$ y $hat{y}^i$.\\\\
 Vale la pena enfatizar ahora que un R cuadrado aparentemente bajo no significa necesariamente que una ecuación de regresión MCO sea inútil. Tenga en cuenta que el uso de R-cuadrado como principal indicador del éxito de un análisis econométrico puede generar problemas.\\\\
 
+\setcounter{section}{4}
 \section{Valores esperados y varianzas de los estimadores de MCO}
+Ahora veremos a $\hat{\beta}_0$ y $\hat{\beta}_1$ como estimadores de los parametros $\beta_0$ y $\beta_1$
+
+\subsection{Insesgamiento de MCO}
+\subsubsection{Supuesto 1 SLR.1.- Liniealidad en los parametros}
+\begin{tcolorbox}[colframe=white]
+    En el modelo poblacional, la variable dependiente $y$ es relacionado con la variable independiente $x$ y el error (o perturbación) $u$ como 
+    \begin{equation}
+	y = \beta_0 + \beta_1 x + u
+    \end{equation}
+\end{tcolorbox}
+
+\subsubsection{Supuesto 2 SLR.2.- Muestro aleatorio}
+\begin{tcolorbox}[colframe=white]
+    tenemos una variable aleatoria de tamaño $n$, $\lbrace(x_i,y_i): i = 1,2,\ldots,n\rbrace$, siguiendo un modelo poblacional de (2.28)
+\end{tcolorbox}
+
+Podemos escribir 2.28 en terminos de variable aleatoria, como 
+\begin{tcolorbox}[colframe=white]
+    \begin{equation}
+	y_i = \beta_0 + \beta_1 x_i + \epsilon_i
+    \end{equation}
+\end{tcolorbox}
+
+\subsubsection{Supuesto 3 SLR.3.- Variación aleatoria en la variable explicativa}
+\begin{tcolorbox}[colframe=white]
+    Los resultados de la muestra en $x$, es decir, $\lbrace x_i,i=1,\ldots, n\rbrace$, no todos tienen el mismo valor.
+\end{tcolorbox}
+
+\subsubsection{Supuesto 4 SLR.4.- Media condicional cero}
+\begin{tcolorbox}[colframe=white]
+    El error $u$ tiene una valor esperado cero dado cualquier valor de la variable explicativa, en otras palabras,
+    $$E(u|x) = 0$$
+    Para una muestra aleatoria, este supuesto implica que $E(u_i|x_i), \; \forall i = 1,2,,\ldots,n.$
+\end{tcolorbox}
+

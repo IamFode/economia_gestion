@@ -250,3 +250,19 @@ Podemos escribir 2.28 en terminos de variable aleatoria, como
     Para una muestra aleatoria, este supuesto implica que $E(u_i|x_i), \; \forall i = 1,2,,\ldots,n.$
 \end{tcolorbox}
 
+Ahora tomemos el hecho de que $\sum\limits_{i=1}^n (x_i-\overline{x})y_i = \sum\limits_{i=1}^n (x_i-\overline{x})y_i$ para escribir el estimador de la pendiente de $MCO$ como sigue: 
+\begin{equation}
+    \hat{\beta}_1 = \dfrac{\sum\limits_{i=1}^n (x_i-\overline{x})y_i}{\sum\limits_{i=1}^n (x_i-\overline{x})^2}
+\end{equation}
+
+Ahora consideremos a $\hat{beta}_1$ como una variable aleatoria.\\\\
+Sustituyendo la ecuación $y_i = \beta_0 + \beta_1 x_i + \epsilon_i$ dentro (2.30) tenemos que 
+
+
+\begin{equation}
+    \hat{\beta}_1 = \dfrac{\sum\limits_{i=1}^n (x_i-\overline{x})y_i}{\sum\limits_{i=1}^n (x_i-\overline{x})^2} = \dfrac{\sum\limits_{i=1}^n (x_i-\overline{x})(\beta_0 + \beta_1 x_i + u_i)}{SST_x} = \dfrac{\beta_0\sum\limits_{i=1}^n (x_i-\overline{x}) + \beta_1\sum\limits_{i=1}^n (x_i - \overline{x})x_i + \sum\limits_{i=1}^n (x_i-\overline{x})u_i}{SST_x} 
+\end{equation}
+
+Dado que $\sum\limits_{i=1}^n (x_i-\oerline{x}) = 0$ y $$
+
+

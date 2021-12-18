@@ -250,13 +250,26 @@ Podemos escribir 2.28 en terminos de variable aleatoria, como
     Para una muestra aleatoria, este supuesto implica que $E(u_i|x_i), \; \forall i = 1,2,,\ldots,n.$
 \end{tcolorbox}
 
-Ahora tomemos el hecho de que $\sum\limits_{i=1}^n (x_i-\overline{x})y_i = \sum\limits_{i=1}^n (x_i-\overline{x})y_i$ para escribir el estimador de la pendiente de $MCO$ como sigue: 
+Ahora tomemos el hecho de que $\sum\limits_{i=1}^n (x_i-\overline{x})(y_i-\overline{y}) = \sum\limits_{i=1}^n (x_i-\overline{x})y_i$
+Esto se demuestra de la siguiente manera:\\\\
+Sea $$\sum\limits_{i=1}^n x_i \overline{y} = \sum\limits_{i=1}^n \overline{x}y_i = n(\overline{x}\overline{y})$$
+ya que $\overline{y}\sum\limits_{i=1}^n x_i  \frac{n}{n}\;$ o $\;\overline{x}\sum\limits_{i=1}^n y_i  \frac{n}{n}$ entonces 
+$$\begin{array}{rcl}
+    \sum\limits_{i=1}^n (x_i-\overline{x})(y_i-\overline{y})&=&\sum\limits_{i=1}^n x_iy_i - \sum\limits_{i=1}^n x_i\overline{y} - \sum\limits_{i=1}^n \overline{x}y_i + \sum\limits_{i=1}^n \overline{x}\overline{y}\\\\
+							    &=&\sum\limits_{i=1}^n x_iy_i - n(\overline{x}\overline{y}) - n(\overline{x}\overline{y})+n(\overline{x}\overline{y})\\\\
+							    &=&\sum\limits_{i=1}^n x_iy_i - n(\overline{x}\cdot \overline{y})\\\\
+							    &=&\sum\limits_{i=1}^n x_iy_i - \sum\limits_{i=1}^n \overline{x}\cdot \overline{y}\\\\
+							    &=&\sum\limits_{i=1}^n \left( x_iy_i - \overline{x}\cdot \overline{y}\right)\\\\\
+							    &=&\sum\limits_{i=1}^n x_i(y_i-\overline{y}) \;\; o \; \; \sum\limits_{i=1}^n(x_i-\overline{x})y_i\\\\
+\end{array}$$
+
+Luego escribimos el estimador de la pendiente de $MCO$ como sigue: 
 \begin{equation}
     \hat{\beta}_1 = \dfrac{\sum\limits_{i=1}^n (x_i-\overline{x})y_i}{\sum\limits_{i=1}^n (x_i-\overline{x})^2}
 \end{equation}
 
 Ahora consideremos a $\hat{\beta}_1$ como una variable aleatoria.\\\\
-Sustituyendo la ecuación $y_i = \beta_0 + \beta_1 x_i + \epsilon_i$ dentro (2.30) tenemos que 
+Sustituyendo la ecuación $y_i = \beta_0 + \beta_1 x_i + u_i$ dentro (2.30) tenemos que 
 
 
 \begin{equation}
@@ -273,5 +286,19 @@ donde $d_i = x_i - \overline{x}$.\\\\
 Ahora vemos que el estimador $\hat{\beta}_1$ es igual a la pendiente de la población $\beta_1$, más un termino que es una combinación lineal en los errores $[u_1,u_2,\ldots,u_n]$. Condicional a los valores de $x_i$, la aleatoriedad en $\hat{\beta}_1$ se debe enteramente a los errores en la muestra. El hecho de que estos errores sean generalmente diferentes de cero es lo que hace que $\hat{\beta}_1$ difiera de $\beta_1$. Usando la representación en (2.32), podemos probar la primera propiedad estadística importante de MCO.\\
 
 %teorema 2.1
-\begin{teo}[Insesgamiento de MCO]
+\begin{teo}[Insesgamiento de los estimadores de MCO]
+    Usando los supuestos SRL.1 al SRL.4
+    \begin{equation}
+	E(\hat{\beta}_0)  = \beta_0 \quad y \quad E(\hat{\beta}_1) = \beta_1
+    \end{equation}
+    Para cuaquier valore de $\beta_0$ y $\beta_1$. $\hat{\beta}_0$ es un estimador insesgado por $\beta_0$ y $\hat{\beta}_1$ es un estimador insesgado por $\beta_1$.\\\\
+    Demostración.-\; En esta demostración, los valores esperados son condicionales sobre los valores muestrales de la variable independiente.  Porque $SST_x$ y $d_i = x_i - \overline{x}$  son funciones solo de $x_i$, estos son no aleatorios bajo el condicionamiento. Luego por (2.32) y manteniendo el condicional sobre $\lbrace x_1,x_2,\ldots,x_n\rbrace$ implícito, tenemos 
+    $$E(\hat{\beta}_1) = \beta_1 + E\left[(1/SST_x)\sum_{i=1}^n d_i u_i\right] = \beta_1 + (1/SST_x)\sum_{i=1}^n E(d_iu_i) = \beta_1 + (1/SST_x) \sum_{i=1}^n d_i E(U_i) = \beta_1 + (1/SST_x) \sum_{i=1}^n d\cdot 0 = \beta_1$$
+    Donde tenemos que usar el hecho de que el valor esperado de cada $u_i$ (condiciones sobre $\lbrace x_i,x_2,\ldots,x_n \rbrace$) es cero bajo los supuestos de SLR.2 y SLR.4. Dado que el insesgamiento es válido para cualquier resultado sobre $\lbrace x_1,x_2,\ldots,x_n \rbrace$, la insesgadez también es válida sin el concionamiento sobre $\lbrace{x_1,x_2,\ldots , x_n\rbrace}$.\\
+    La prueba para $\hat{\beta}_0$ es ahora simple. Se promedia (2.28) sobre todas las $i$ y se obtiene $\overline{y} = \beta_0 + \beta_1 \overline{x} + \overline{u}$ y se sustituye en la fórmula para $\hat{\beta}_0$
+    $$\hat{\beta}_0 = \hat{\beta_1}\overline{x} = \beta_0 + \beta_1 \overline{x} + \overline{u} - \hat{\beta}_1 \overline{x} = \beta_0 + (\beta_1 - \hat{\beta}_1)\overline{x} + \overline{u}$$
+    se sigue que condicionado sobre los valores de las $x_i$
+    $$E(\hat{\beta}_0) = \beta_0 + E\left[\beta_1 -\hat{\beta}_1 \overline{x}\right] + E(\overline{u}) = \beta_0 + E\left[\beta_1 - \hat{\beta_1}\right]\overline{x}$$
+    ya que $E(\overline{u}) = 0$ de acuerdo con los supuestos de SLR.2 y SLR.4. Pero, ya se mostró que $E(\beta_1) = \beta_1$, lo que implica que $E\left[\hat{\beta_1}-\beta_1\right]=0$. Por lo tanto, $E(hat{\beta}_0) = \beta_0$. Estos dos argumentos son válidos para todos los valores de $\beta_0$ y $\beta_1$ con lo que queda demostrado el insesgamiento.
+
 \end{teo}

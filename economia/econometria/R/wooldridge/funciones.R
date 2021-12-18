@@ -98,3 +98,54 @@ r2 <- function(y,x){
   return( 1-SSR(y,x)/SST(y) )
 } 
 
+# pruebas
+var <- function(x){
+  sum <- 0
+  for (i in 1:length(x)){
+    sum <- sum + ( x[i] - mean(x) )^2
+  }
+  return(sum)
+}
+
+var1 <- function(x){
+  sum <- 0
+  for (i in 1:length(x)){
+    sum <-  sum + x[i]^2
+  }
+  return(sum - length(x)*(mean(x))^2)
+}
+
+var(x)
+var1(x)
+
+uno <- function(x,y){
+  sum <- 0
+  for (i in 1:length(x)){
+    sum <- sum + ( x[i]*( y[i] - mean(y) ) )
+  }
+  return(sum)
+}
+
+uno1 <- function(x,y){
+  sum <- 0
+  for (i in 1:length(x)){
+    sum <- sum + ( y[i]*( x[i] - mean(x) ) )
+  }
+  return(sum)
+}
+
+dos <- function(x,y){
+  sum <- 0
+  for (i in 1:length(x)){
+    sum <-  sum + x[i]*y[i]
+  }
+  return( sum - ( length(x)*mean(x)*mean(y) ) )
+}
+
+uno(x,y)
+uno1(x,y)
+dos(x,y)
+
+prueb <- function(){
+  
+}

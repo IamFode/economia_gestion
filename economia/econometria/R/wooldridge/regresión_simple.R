@@ -142,3 +142,11 @@ Significa que un 1% de incrementos de los ingresos de la empresa incrementa en
 source("funciones.R")
 
 
+################################## Ejemplo 2.12 ################################
+y <- meap93$math10
+x <- meap93$lnchprg
+summary(lm(y~x))
+beta0(y,x)
+beta1(y,x)
+r2(y,x)
+length(x)

@@ -218,16 +218,15 @@ Vale la pena enfatizar ahora que un R cuadrado aparentemente bajo no significa n
 Ahora veremos a $\hat{\beta}_0$ y $\hat{\beta}_1$ como estimadores de los parametros $\beta_0$ y $\beta_1$
 
 \subsection{Insesgamiento de MCO}
-\subsubsection{Supuesto 1 SLR.1.- Liniealidad en los parametros}
-\begin{tcolorbox}[colframe=white]
+
+\begin{tcolorbox}[title={Supuesto 1 SLR.1. Liniealidad en los parametros},colback = white]
     En el modelo poblacional, la variable dependiente $y$ es relacionado con la variable independiente $x$ y el error (o perturbación) $u$ como 
     \begin{equation}
 	y = \beta_0 + \beta_1 x + u
     \end{equation}
 \end{tcolorbox}
 
-\subsubsection{Supuesto 2 SLR.2.- Muestro aleatorio}
-\begin{tcolorbox}[colframe=white]
+\begin{tcolorbox}[title={Supuesto 2 SLR.2. Muestro aleatorio},colback = white]
     tenemos una variable aleatoria de tamaño $n$, $\lbrace(x_i,y_i): i = 1,2,\ldots,n\rbrace$, siguiendo un modelo poblacional de (2.28)
 \end{tcolorbox}
 
@@ -238,13 +237,11 @@ Podemos escribir 2.28 en terminos de variable aleatoria, como
     \end{equation}
 \end{tcolorbox}
 
-\subsubsection{Supuesto 3 SLR.3.- Variación aleatoria en la variable explicativa}
-\begin{tcolorbox}[colframe=white]
+\begin{tcolorbox}[title={Supuesto 3 SLR.3. Variación aleatoria en la variable explicativa},colback = white]
     Los resultados de la muestra en $x$, es decir, $\lbrace x_i,i=1,\ldots, n\rbrace$, no todos tienen el mismo valor.
 \end{tcolorbox}
 
-\subsubsection{Supuesto 4 SLR.4.- Media condicional cero}
-\begin{tcolorbox}[colframe=white]
+\begin{tcolorbox}[title={Supuesto 4 SLR.4. Media condicional cero},colback = white]
     El error $u$ tiene una valor esperado cero dado cualquier valor de la variable explicativa, en otras palabras,
     $$E(u|x) = 0$$
     Para una muestra aleatoria, este supuesto implica que $E(u_i|x_i), \; \forall i = 1,2,,\ldots,n.$
@@ -299,6 +296,21 @@ Ahora vemos que el estimador $\hat{\beta}_1$ es igual a la pendiente de la pobla
     $$\hat{\beta}_0 = \hat{\beta_1}\overline{x} = \beta_0 + \beta_1 \overline{x} + \overline{u} - \hat{\beta}_1 \overline{x} = \beta_0 + (\beta_1 - \hat{\beta}_1)\overline{x} + \overline{u}$$
     se sigue que condicionado sobre los valores de las $x_i$
     $$E(\hat{\beta}_0) = \beta_0 + E\left[\beta_1 -\hat{\beta}_1 \overline{x}\right] + E(\overline{u}) = \beta_0 + E\left[\beta_1 - \hat{\beta_1}\right]\overline{x}$$
-    ya que $E(\overline{u}) = 0$ de acuerdo con los supuestos de SLR.2 y SLR.4. Pero, ya se mostró que $E(\beta_1) = \beta_1$, lo que implica que $E\left[\hat{\beta_1}-\beta_1\right]=0$. Por lo tanto, $E(hat{\beta}_0) = \beta_0$. Estos dos argumentos son válidos para todos los valores de $\beta_0$ y $\beta_1$ con lo que queda demostrado el insesgamiento.
+    ya que $E(\overline{u}) = 0$ de acuerdo con los supuestos de SLR.2 y SLR.4. Pero, ya se mostró que $E(\beta_1) = \beta_1$, lo que implica que $E\left[\hat{\beta_1}-\beta_1\right]=0$. Por lo tanto, $E(\hat{\beta}_0) = \beta_0$. Estos dos argumentos son válidos para todos los valores de $\beta_0$ y $\beta_1$ con lo que queda demostrado el insesgamiento.
 
 \end{teo}
+
+\subsection{Varianza de los estimadores de MCO}
+Se agregará un supuesto tradicional en el análisis de corte transversal y que establece que la varianza de los factores inobservables $u$, condicionales en $x$, es constante. Esto se conoce como el supuesto de homocedasticidad o de varianza constante.\\\\
+
+
+\begin{tcolorbox}[title={Supuesto RLS.5. homocedasticidad},colback = white]
+    El error $u$ tiene la misma varianza para cualquier valor de la variable explicativa. En otras palabras 
+    $$Var(u|x) = \sigma^2$$
+\end{tcolorbox}
+
+Se debe señalar que el supuesto de homocedasticidad es totalmente distinto al de media condicional cero, $E(u|x) = 0$. Añadimos el supuesto SLR.5 porque simplifica los cálculos para $\hat{\beta}_0$ y $\hat{\beta}_1$ y porque implica que los mínimos cuadrados ordinarios tienen ciertas propiedades de eficiencia.\\\\ 
+Ya que $Var(x|u) = E(u^2|x) - E^2(u|x)$ y $E(u|x) = 0$, $\sigma^2 = E(u^2|x)$, 
+
+
+

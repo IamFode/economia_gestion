@@ -146,6 +146,13 @@ uno(x,y)
 uno1(x,y)
 dos(x,y)
 
-prueb <- function(){
-  
+prueb <- function(x){
+  sum <- 0
+  for (i in 1:length(x)){
+    sum <- sum + mean(x)^2
+  }
+  return(sum)
 }
+
+prueb(x)
+length(x)*(mean(x))^2

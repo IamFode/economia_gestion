@@ -310,7 +310,46 @@ Se agregará un supuesto tradicional en el análisis de corte transversal y que 
 \end{tcolorbox}
 
 Se debe señalar que el supuesto de homocedasticidad es totalmente distinto al de media condicional cero, $E(u|x) = 0$. Añadimos el supuesto SLR.5 porque simplifica los cálculos para $\hat{\beta}_0$ y $\hat{\beta}_1$ y porque implica que los mínimos cuadrados ordinarios tienen ciertas propiedades de eficiencia.\\\\ 
-Ya que $Var(x|u) = E(u^2|x) - E^2(u|x)$ y $E(u|x) = 0$, $\sigma^2 = E(u^2|x)$, 
+Si se supone que $u$ y $x$ son independientes, entonces la distribución de $u$ dada $x$ no depende de $x$, entonces $E(u|x) = E(u) = 0$ y $Var(u|x) = 0 = \sigma^2$. Pero la independencia es algunas veces muy fuerte de suponer.\\
+Ya que $Var(x|u) = E(u^2|x) - E^2(u|x)$ y $E(u|x) = 0$, $\sigma^2 = E(u^2|x)$, el cual significa que $\sigma^2$  es también esperanza incondicional de $u^2$. Por lo tanto, $\sigma^2 = E(u^2) = Var(u)$ por que $E(u) = 0$. En otras palabras, $\sigma^2$ es la varianza incondicional de $u$ y $\sigma^2$ a menudo es llamado el \textbf{la varianza del error} o varianza de la perturbación. La raíz cuadrada de $\sigma^2$ es $\sigma$ la desviación estándar del error. Una $\sigma$ mayor, indica que la distribución de los factores inobservables que afectan a $y$ tiene una mayor dispersión.\\\\
 
+A menudo es útil escribir los supuestos SRL.4 y SLR.5 en términos de la media condicional y la varianza condicional de $y$:
+\begin{equation}
+    E(y|x) = \beta_0 + \beta_1 x + u
+\end{equation}
 
+\begin{equation}
+    Var(y|x) = \sigma^2
+\end{equation}
+
+En otras palabras la esperanza condicional de $y$ dado $x$ es lineal en $x$, pero la varianza de $y$ dado $x$ es constante. \\
+Cuando $Var(u|x) $ depende de $x$ se dice que el término de error exhibe heterocedasticidad o varianza no constante. Como $Var(u|x) = Var(y|x)$, la heterocedasticidad está presente siempre que $Var(y|x)$ sea función de $x$.\\\\
+Una vez que se asume la homocedasticidad se está listo para establecer lo siguiente,\\
+
+\begin{teo}[Varianza de muestro de los estimadores de MCO]
+    Bajo los supuestos SLR.1 al SLR.5
+    \begin{equation}
+	Var(\hat{\beta}_1) = \dfrac{\sigma^2}{\sum\limits_{i=1}^n (x_i-\overline{x})^2} = \sigma^2 / SST_x,
+    \end{equation}
+    y
+    \begin{equation}
+	Var(\hat{\beta}_0) = \dfrac{\sigma^2 n^{-n} \sum\limits_{i=1}^n x_i^2}{\sum\limits_{i=1}^n (x_i-\overline{x})^2}
+    \end{equation}
+    Donde estos son condicionales sobre los valores muestrales $\lbrace x_1,\ldots , x_n\rbrace$\\\\
+    Demostracíón.-\; Deduciremos la fórmula para $Var(\hat{\beta}_1)$, dejando la otra como ejercici0 2.10. Nuestro punto de partida será (2.32).
+    $$\hat{\beta}_1 = \beta_1 + (1/SST_x) \sum\limits_{i=1}^n d_i u_i$$. Como $\beta_1$ es constante y que se está condicionando sobre las $x_i$, $SST_x$ y $d_i = x_i-\overline{x}$ también son no aleatorias. Además, como las $u_i$ son variables aleatorias independientes sobre todos los $i$ (por muestro aleatorio), la varianza es la suma de las varianzas. Usando este hecho tenemos,
+    $$\begin{array}{rcl}
+	Var(\hat{\beta}_1)&=&(1/SST_x)^2 Var\left(\sum\limits_{i=1}^n d_iu_i\right)  \\\\
+			  &=&(1/SST_x)^2 \left[\sum\limits_{i=1}^n d_i^2 Var(u_i)\right]\\\\
+			  &=&(1/SST_x)^2 \left(\sum\limits_{i=1}^n d_i^2 \sigma^2\right) \\\\
+			  &=&\sigma^2 (1/SST_x)^2\left(\sum\limits_{i=1}^nd_i^2\right)\\\\
+			  &=&\sigma^2 (1/SST_x)^2 SST_x\\\\
+			  &=&\sigma^2/SST_x\\\\
+    \end{array}$$
+    Lo cual es lo que se quería demostrar.
+\end{teo}
+
+Las ecuaciones (2.36) y (2.37) son fórmulas estándar para el análisis de regresión simple y no son válidas en presencia de heterocedasticidad. Esto será importante cuando se estudien los intervalos de confianza y las pruebas de hipótesis en el análisis de regresión simple.
+
+\subsection{Estimación de la varianza de error}
 

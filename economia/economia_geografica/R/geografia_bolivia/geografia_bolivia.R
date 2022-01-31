@@ -75,12 +75,15 @@ my_dist <- function(lat1, long1, lat2=-16.290154, long2=-63.588653) {
 }
 
 ## regresion
-modelo <- lm(log(expor) ~ log(pib) + log(dist_bol) + log(pob), data = df)
+modelo <- lm(log(expor) ~ log(pib) + log(dist_bol), data = df)
 summary(modelo)
 
 ## graficos
 ggplot(data = df, aes(x = log(dist_bol), y = log(expor))) + 
-  geom_text(label = df$pais,size=2.4) +
+  ggtitle("Gravity equation export and distance (2019)") + 
+  xlab("Distancia a Bolivia")+
+  ylab("Exportaciones") +
+  geom_text(label = df$pais,size=2, angle = 0) +
   geom_smooth(method = "lm")
 
 ggplot(data = df, aes(x = log(pob), y = log(expor))) + 

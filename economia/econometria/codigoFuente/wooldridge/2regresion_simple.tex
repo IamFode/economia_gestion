@@ -15,7 +15,7 @@ Sea $\left\{(x_i,y_i): i = 1,\ldots,n\right\}$, una muestra aleatoria de tamaño
 En tanto el intercepto $\beta_0$ aparezca en la ecuación, nada se altera al suponer que el valor promedio de $u$ en la población, es cero. Es decir, $E(u)=0$.\\
 El supuesto crucial es que el valor promedio de $u$ no depende del valor de $x$. Este supuesto se expresa como $u$ $E(u\backslash x) = E(u)$. Esta última ecuación indica que el valor promedio de los factores no observables es el mismo en todas las fracciones de la población determinados por los valores de $x$ y que este promedio común es necesariamente igual al promedio al promedio de $u$ en toda la población. Y por lo tanto $u$ es media independiente de $x$. Combinando la independencia de la media con el supuesto de $E(u)=0$ se obtiene el supuesto de media condicional cero, $E(u\backslash x) = 0$\\\\
 
-En la población, $u$ no está correlacionada con $x$. Por tanto, se tiene que el valor esperado de $u$ es cero y que la covarianza entre $x$ y $y$ es cero:
+En la población, $u$ no está correlacionada con $x$. Por tanto, se tiene que el valor esperado de $u$ es cero y que la covarianza entre $x$ y $u$ es cero:
 \begin{equation}
     E(u)=0
 \end{equation}
@@ -31,7 +31,7 @@ En la población, $u$ no está correlacionada con $x$. Por tanto, se tiene que e
     Cov(X,Y) = E\left[(X-\mu_x)(Y-\mu_y)\right]
 \end{equation}
 
-que también suele denotarse como $\sigma_{XY}.$  \\
+Que también suele denotarse como $\sigma_{XY}.$  \\
 Algunas expresiones para útiles para calcular $Cov(X,Y)$ son las siguientes
 
 \begin{equation}
@@ -40,7 +40,7 @@ Algunas expresiones para útiles para calcular $Cov(X,Y)$ son las siguientes
 
 De donde se sigue que si $E(X)=0$ o $E(Y)=0$, entonces $Cov(X,Y) = E(XY)$.\\\\
 
-Luego  
+Luego de 2.3 y 2.4 
 \begin{equation}
     E(y - \beta_0 - \beta_1x) = 0
 \end{equation}
@@ -200,10 +200,10 @@ $$\begin{array}{rcl}
 \end{array}$$
 Ahora (2.36) es verdadera si se muestra que 
 $$\sum_{i=1}^n \hat{u}_i (\hat{y}_i - \overline{y}) = 0$$
-Pero ya se a dicho que la covarianza mueestral entre los residuos y los valores ajustados es vero y esta covarianza es precisamente (2.37) dividida entre $n-1$.\\\\
+Pero ya se a dicho que la covarianza mueestral entre los residuos y los valores ajustados es cero y esta covarianza es precisamente (2.37) dividida entre $n-1$.\\\\
 
 \subsection{Bondad de ajuste}
-Hasta ahora, no tenemos forma de medir qué tan bien la variable explicativa o independiente, $x$, explica la variable dependiente $y$. Para ello dividimos (2.26) por $SST$ para que nos quede $1=SSE/SST + SSR/SST$. EL r cuadrado de la regresión, a veces es llamado \textbf{coeficiente de determinación} y es definido por,
+Hasta ahora, no tenemos forma de medir qué tan bien la variable explicativa o independiente, $x$, explica la variable dependiente $y$. Para ello dividimos (2.26) por $SST$ para que nos quede $1=SSE/SST + SSR/SST$. EL R cuadrado de la regresión, a veces es llamado \textbf{coeficiente de determinación} y es definido por,
 \begin{equation}
 	R^2 = SSE/SST = 1 - SSE/SST
 \end{equation}

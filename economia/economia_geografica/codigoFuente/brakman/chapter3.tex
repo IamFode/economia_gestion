@@ -22,5 +22,28 @@ El ejemplo es útil, ya que ilustra algunos aspectos importantes de la economía
 \end{itemize}
 
 \section{La estructura del modelo}
+El modelo central identifica dos regiones, etiquetadas como 1 y 2. Hay dos sectores en la economía, el sector manufacturero y el sector alimentario. Los consumidores en ambas regiones consisten en trabajadores agrícolas y trabajadores de manufactura. Los trabajadores agrícolas obtienen sus ingresos trabajando en las granjas de su región. El flujo de ingresos de los trabajadores agrícolas es parte de una transferencia bilateral: obtienen un ingreso a cambio de su oferta de mano de obra.\\
+El sector manufacturero consta de empresas $N_1$ en la región 1 y empresas $N_2$ en la región 2. Cada empresa manufacturera produce un producto diferenciado, es decir, produce una variedad única de manufacturas. Utiliza solo mano de obra en el proceso de producción, que se caracteriza por economías internas de escala. Esto implica que las empresas tienen poder de monopolio, que utilizan para determinar el precio de su producto. Además, los costos de transporte están involucrados en la venta de un bien manufacturado en otra región. Estos costos no surgen si el bien manufacturado se vende en la región en la que se produce. Como resultado de los costos de transporte, las empresas exportadoras cobrarán un precio más alto en la región extranjera que en la región de origen. Los trabajadores manufactureros obtienen sus ingresos (la tasa salarial manufacturera) al suministrar mano de obra a las empresas del sector manufacturero ubicadas en la región de origen.\\
+Los consumidores gastan sus ingresos tanto en alimentos como en manufacturas. Dado que los alimentos son un bien homogéneo, no les importa si se producen en la región 1 o en la región 2. Como los alimentos no tienen costos de transporte, tienen el mismo precio en ambas regiones (lo que implica que los agricultores ganan el mismo salario en ambas regiones). El gasto de los consumidores en manufacturas debe distribuirse entre las muchas variedades producidas en las regiones 1 y 2. En igualdad de condiciones, consumir variedades importadas es más costoso que consumir variedades nacionales, como resultado de los costos de transporte de los productos manufacturados. Sin embargo, dado que las variedades son productos diferenciados y los consumidores tienen gusto por la variedad, siempre consumirán algunas unidades de todas las variedades producidas, ya sea en el país o en el extranjero.\\
 
+\section{Demanda}
+\subsection{Gasto en alimentos y manufacturas (a)}
+La economía tiene dos sectores de bienes, manufacturas, $M$, y alimentos, $F$. Aunque las manufacturas consisten en muchas variedades diferentes, podemos definir un índice de precios exacto para representarlas como un grupo. A este índice de precios de manufacturas lo llamamos $I$. Si un consumidor obtiene un ingreso $Y$ (por trabajar en el sector alimentario o en el sector manufacturero), tiene que decidir cuánto de este ingreso se gasta en alimentos y cuánto en manufacturas. La solución a este problema depende de las preferencias del consumidor, que se suponen de la especificación Cobb-Douglas para todos los consumidores, en la que F representa el consumo de alimentos y M representa el consumo de manufacturas:
+$$U=F^{1-\delta}M^\delta; 0\delta<1$$
+de donde el consumidor debe satisfacer la restricción presupuestaria en la ecuación.\\\\
+$$F+I\cdot M = Y$$
+Nótese la ausencia del precio de los alimentos en esta ecuación. Esto es el resultado de elegir los alimentos como numerario, lo que implica que el ingreso $Y$ se mide en términos de alimentos. Por lo tanto, solo el índice de precios de las manufacturas $I$ aparece en la ecuación. Para decidir sobre la asignación óptima de ingresos sobre la compra de alimentos y manufacturas, el consumidor ahora tiene que resolver un problema de optimización simple, a saber, maximizar la utilidad como se indica en la ecuación $U=F^{1-\delta}M^\delta; 0\delta<1$, sujeto a la restricción presupuestaria de la ecuación $F+I\cdot M = Y$. La solución a este problema se da en la siguiente ecuación y se derivada como:
+$$F(1-\delta)Y;\quad IM=\delta Y$$
+De ahora en adelante nos referiremos al parámetro $\delta$ dado en la ecuación $U=F^{1-\delta}M^\delta; 0\delta<1$ como la fracción del ingreso gastado en manufacturas.\\\\
 
+Para maximizar la ecuación $U=F^{1-\delta}M^\delta; 0\delta<1$ sujeta a la restricción presupuestaria 
+$F+I\cdot M = Y$, definimos el Lagrangiano $\Gamma$, usando el multiplicador $k$:
+$$\Gamma = F_{1-\delta M^{\delta}}+k[Y-IM]$$
+La diferenciación de $\Gamma$ con respecto a $F$ y $M$ da las condiciones de primer orden
+$$(1-\delta)F^{-\delta}M^{\delta};\quad \delta F^{1-\delta}M^{\delta-1} = kI$$
+Tomando la relación de las condiciones de primer orden se obtiene
+$$\dfrac{\delta F^{1-\delta} M^{\delta-1}}{(1-\delta)F^{-\delta} M^{\delta}}; \quad o \quad IM\dfrac{\delta}{1-\delta}F$$
+Sustituyendo este último en la ecuación presupuestaria se obtiene
+$$Y=F+IM=F+\dfrac{\delta}{1-\delta}F;\quad F=(1-\delta)Y$$
+
+\subsection{Gasto en la fabricación de variedades (b)}

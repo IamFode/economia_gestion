@@ -59,7 +59,7 @@ colnames(efw_final) <- c("code","efw_final")
 head(efw_final)
 
 ## iii)  
-" El valor del Ìndice de libertad econÛmica (y sus diferentes componentes)
+" El valor del Ìndice de libertad economica (y sus diferentes componentes)
 Economic Freedom of the World (EFW) elaborado por el Fraser Institute
 para cada paÌs en el aÒo inicial ETt0+T (1990, por ejemplo)"
 efw_inicio <- subset(efw, efw$data_efw.Year==año_inicio) 

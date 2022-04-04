@@ -1,0 +1,99 @@
+\chapter{Representación de ARCH($\infty$)}
+
+Un proceso $(\epsilon_t)$ es llamado un proceso $ARCH(\infty)$ si existe una secuencia de variables $iid$ $(eta_t)$ tal que $E(\eta_t)=0$ y $E(\eta_t^2)=1$, y una secuencia de constantes $\phi\geq 0, \; i=1,\ldots,n$ y $\phi_0>0$ tal que 
+\begin{equation}
+    \epsilon_t = \sigma_t \eta_t,\quad \sigma_t^2 = \phi_0 + \sum_{i=1}^\infty \phi_i \epsilon_{t-i}^2.
+\end{equation}
+
+Esta clase obviamente contiene el proceso $ARCH(q)$, y veremos que, de manera más general, contiene el proceso $GARCH(p, q)$.
+
+\section{Condiciones de existencia}
+
+La existencia de un proceso $ARCH(\infty)$ estacionario requiere suposiciones sobre las sucesiones $(\phi_i)$ y $(\eta_t)$. El siguiente resultado da una condición de existencia.\\
+
+\begin{teo}[Existencia de una solución ARCH($\infty$) estacionaria]
+    Para cualquier $s\in (0,1]$, sea 
+    $$A_s = \sum_{i=1}^\infty\quad y \quad \mu_{2s}=E|\eta_t|^{2s}.$$
+    Entonces, si existe $s\in (0,1]$ tal que 
+    \begin{equation}
+	A_s \mu_{2s}<1,
+    \end{equation}
+    entonces existe una solución estrictamente estacionaria y no anticipativa al modelo (1.1), dada por
+    \begin{equation}
+	\epsilon_t = \sigma_t \eta_t,\quad \sigma_t^2 = \phi_0 + \phi_0 \sum_{k=1}^\infty \sum_{i_{1,\ldots,i_k}\geq 1} \phi_{i_1} \ldots \phi_{i_k} \eta_{t-i_t}^2 \eta_{t-i_1 - i_2}^2 \ldots \eta_{t-i_i - \ldots - i_k}^2.
+    \end{equation}
+    El proceso $(\epsilon_t)$ definido por (1.3) es la única solución estrictamente estacionaria y no anticipativa del modelo (1.1) tal que $E|\epsilon_t|^{2s} < \infty$.\\\\
+	\textbf{Demostración.-}\; Consideremos la variable aleatoria
+	\begin{equation}
+	    S_t = \phi_0 + \phi_0 \sum_{k=1}^\infty \sum_{i_{1,\ldots,i_k}\geq 1} \phi_{i_1} \ldots \phi_{i_k} \eta_{t-i_t}^2 \ldots \eta_{t-i_i - \ldots - i_k}^2,
+	\end{equation}
+	tomando valores en $[0,+\infty]$. Ya que $s\in (0,1]$, aplicamos la desigualdad $(a+b)^s\leq a^s + b^s$ para $a,b\geq 0$ se tiene 
+	$$S_t^s \leq \phi_0^s + \phi_0^s \sum_{k=1}^\infty \sum_{i_{1,\ldots,i_k}\geq 1} \phi^s_{i_1} \ldots \phi^s_{i_k} \eta_{t-i_t}^{2s} \ldots \eta_{t-i_i - \ldots - i_k}^{2s}.$$
+	Usando la independencia de $\eta_t$, se sigue que 
+	$$ES_t^s \leq \phi_0^s + \phi_0^s \sum_{k=1}^\infty \sum_{i_{1,\ldots,i_k}\geq 1} \phi_{i_k}^s \ldots \phi_{i_k}^s E(\eta_{t-i_t}^{2s} \ldots \eta_{t-i_i - \ldots - i_k}^{2s})$$
+	\begin{equation}
+	    = \phi_0^s \left[1 + \sum_{k=1}^\infty (A_s \mu_{2s})^k\right] = \dfrac{\phi_0^s}{1-A_s\mu_{2s}}.
+	\end{equation}
+	Esto muestra que $S_t$ es casi seguro finito. Siendo todos los sumandos positivos, tenemos
+	$$\begin{array}{rcl}
+	    \sum\limits_{i=1}^\infty \phi_i S_{t-i} \eta_{t-i}^2 & = & \phi_0 \sum\limits_{i_0=1}^\infty \phi_{i_0} \eta_{t-i_0}^2 + \phi_0 \sum\limits_{k=1}^\infty \sum\limits_{i_i \ldots i_k \geq 1} \phi_{i_1}\ldots \phi_{i_k} \eta^2_{t-i_0-i_1}\ldots \eta_{t-i_0  - i_1 - \ldots - i_k}\\\\
+								 &=&\phi_0 \sum\limits_{k=0}^\infty \sum\limits_{i_0 \ldots i_k \geq 1} \phi_{i_0}\ldots \phi_{i_k} \eta^2_{t-i_0}\ldots \eta_{t-i_0 - \ldots - i_k}.\\\\
+	\end{array}$$
+	\textbf{Por lo tanto, se cumple la siguiente ecuación recursiva:}
+	$$S_t = \phi_0 + \sum_{i=1}^\infty \phi_t S_{t-i} \eta_{t-i}^2.$$
+	Entonces se obtiene una solución estrictamente estacionaria y no anticipativa del modelo (1.1) estableciendo $\epsilon_t = S_t^{1/2} \eta_t.$ Es más, $E|\epsilon_t|^{2s}\leq \mu_{2s} \phi_0^2 / (1-A_s \mu_{2s})$ en vista de (1.5). Ahora denotamos por $(\epsilon_t)$ cualquier estrictamente estacionario y solución no anticipativa del modelo (1.1), tal que $E|\epsilon_t|^{2s}< \infty$. Para todo $q\geq 1$, por $q$ sustituciones sucesivas de $\epsilon^2_{t-i}$ obtenemos
+
+	$$\begin{array}{rcl}
+	    \sigma_2^t & = & \sigma_0 + \sigma_0 \sum\limits_{k=1}^\infty \sum\limits_{i_{1,\ldots,i_k}\geq 1} \sigma_{i_1} \ldots \sigma_{i_k} \eta_{t-i_t}^2 \ldots \eta_{t-i_i - \ldots - i_k}^2 + \sum\limits_{i_1 \ldots i_{q+1}\geq 1} \phi_i^t \ldots \phi_{i_{q+1}} \eta_{t-i_t - \ldots - i_q}^2 \epsilon_{t-i_1 - \ldots - i_{q+1}}^2\\\\
+		       &:=&S_{t,q} + T_{t,q}.
+	\end{array}$$
+	Note que $S_{t,q} \rightarrow S_t$ cuando $q \rightarrow \infty$, donde $S_t$ es definido por (1.4). Además, como la solución no es anticipativa, $\epsilon_t$ es independiente de $\eta_{t^{'}}$ para todo $t^{'}>t$. Por eso,
+	$$ER_{t,q}^s \leq \sum_{i_1 \ldots i_{q+1}\geq 1} \phi_{i_1}^s \ldots \phi_{i_{q+1}}^s E\left(|\eta_{t-i_1}|^{2s} \ldots |\eta_{t-i_1 - \ldots - i_q}|^{2s} |\epsilon_{t-i_1-\ldots - i_{q+1}}|^{2s}\right) = (A_s \mu_{2s}^q) A_s E|\epsilon_t|^{2s}.$$
+	Por lo tanto $\sum_{q\geq 1}ER_{t,q}^s < \infty$ ya que $A_s \mu_{2s}<1$. Finalmente, $R_{t,q} \rightarrow 0$ cuando $q\rightarrow \infty$, lo que implica que $\sigma_t^2 = S_t$.\\\\
+
+\end{teo}
+
+\section{ARCH($\infty$) representación de un GARCH}
+A veces es útil considerar la representación $ARCH(\infty)$ de un proceso $GARCH(p, q)$. Por ejemplo, esta representación permite que la varianza condicional $\sigma_t^2$  de $\epsilon_t$ se escriba explícitamente como una función de su pasado infinito. También permite debilitar la condición de positividad $w>0,\; \alpha_i\geq 0 \; (i=1,\ldots,q),\; \beta_j \geq 0\; (j=1,\ldots , p)$ sobre los coeficientes. Consideremos primero el modelo GARCH(1, 1). Si $\beta<1$, tenemos
+
+\begin{equation}
+    \sigma_t^2 = \dfrac{\varpi}{1-\beta}  + \alpha \sum_{i=1}^\infty \beta^{i-1} \epsilon_{t-i-1}^2.
+\end{equation}
+
+En este caso tenemos,
+$$A_s = \alpha^s \sum_{i=1}^\infty \beta^{(i-1)s}=\dfrac{\alpha^s}{1-\beta}.$$
+
+La condición $A_s \mu_{2s}<1$ por lo tanto toma la forma 
+
+\begin{center}
+    $\alpha^s\mu_{2s} + \beta^s < 1$, para algún $s\in (0,1]$.
+\end{center}
+
+Por ejemplo, si $\alpha +\beta <1$ esta condición se cumple para $s = 1$. Sin embargo, la estacionariedad de segundo orden no es necesaria para la validez de (1.6). De hecho, si $(\epsilon_t )$ denota la solución estrictamente estacionaria y no anticipativa del modelo $GARCH(1, 1)$, entonces, para cualquier $q\geq1$,
+
+\begin{equation}
+    \sigma_t^2 = \varpi \sum_{i=1}^q \beta^{i-1} \alpha \sum_{i=1}^q \beta^{i-1} \epsilon_{t-1}^2 + \beta^q \sigma^2_{t-q}.
+\end{equation}
+
+por lo que existe $s\in (0,1[$ tal que $E(\sigma_t^{2s}) = c< \infty$. Se sigue que $\sum_{q\geq 1} E(\beta^q \sigma^2_{t-q})^s = \beta c / (1-\beta)<\infty$. Así $\beta^q \sigma^2_{t-q}$ converge para $0$ y dejando que $q$ vaya al infinito en (1.7), obtenemos (1.6). Más generalmente, tenemos la siguiente propiedad.\\
+
+\begin{teo}[ARCH($\infty$) representación de un GARCH(p, q]
+    Si $(\epsilon_t)$ es la solución estrictamente estacionaria y no anticipativa del modelo proceso fuerte de $GARCH(p,q)$ admite una representación $ARCH(\infty)$ de la forma (1.5). Las constantes $\phi_i$ están dadas por
+    \begin{equation}
+	\phi_0 = \dfrac{\varpi}{B(1)}, \quad \sum_{i=1}^infty \phi_i z^i = \dfrac{A(z)}{B(z)}, \; z \in \mathbb{C}, |z| \leq 1.
+    \end{equation}
+    donde $A(z) = \alpha z + \ldots  + \alpha_q z^q$ y $B(z)=1 - \beta_1 z - \ldots - \beta_p z^p$.\\\\
+	\textbf{Demostración.-\;} Reescriba el modelo en forma vectorial como
+	$$\sigma_{-t}^2 = B\sigma_{-t-1}+c_{-t},$$
+	donde $\sigma_{-t}^2 = (\sigma_t^2, \ldots , \sigma^2_{t-p+1})^{'}$, $c_{-t} = \left(\sum_{i=1}^q\right)^{'}$ y $B$ es la matriz de consecuencias de la estacionariedad estricta muestra que, bajo la condición de estacionariedad estricta, tenemos $\rho(B)<1$. Además, $E\|ct\|^s < \infty$. En consecuencia, las componentes del vector $\sum_{i=0}^\infty B^i c_{-t-i}$ reales. Así tenemos
+	$$\sigma_t^2 = \epsilon^{'}\sum_{i=0}^\infty B^i c_{-t-i},\quad e = (1,0,\ldots,0)^{'}.$$
+	Solo resta señalar que los coeficientes obtenidos en esta representación $ARCH(\infty)$ coinciden con los de (1.8).\\\\
+\end{teo}
+
+Por lo tanto queda demostrado que se puede considerar la representación $ARCH(\infty)$ de un proceso $GARCH(p,q)$ y lo que más importa la representación de manera contraria.\\\\
+
+\subsection*{Referencias}
+\begin{itemize}
+    \item (1986) GENERALIZED AUTOREGRESSIVE CONDITIONAL HETEROSKEDASTICITY (Tim BOLLERSLEV).
+    \item (2019) GARCH Models (Christian Francq).
+\end{itemize}

@@ -23,6 +23,11 @@
 \usepackage{rotating}
 \usepackage{eurosym} 
 \spanishdecimal{.}
+\usepackage{palatino} % tipo de letra
+
+%--------------------GRÀFICOS--------------------------
+\usepackage{tkz-fct}
+\usepackage{tikz}
 
 %------------------------------------------
 
@@ -38,14 +43,11 @@
 \newtheorem{prob}{\textbf{problema}}[chapter]
 \newtheorem{nota}{\textbf{Nota}}[chapter]
 
-%--------------------GRÀFICOS--------------------------
-
-\usepackage{tkz-fct}
-
 %---------------------------------
 
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+
 %------------------------------------------
 
 \renewcommand{\labelenumi}{\Roman{enumi}.}%primer piso II) enumerate
@@ -55,7 +57,6 @@
 
 %----------Formato título de capítulos-------------
 
-\usepackage{titlesec}
 \renewcommand{\thechapter}{\arabic{chapter}}
 \titleformat{\chapter}[display]
 {\titlerule[2pt]
@@ -64,4 +65,3 @@
 {2ex}
 {\filleft}
 
-\usepackage[htt]{hyphenat}

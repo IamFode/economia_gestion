@@ -68,5 +68,37 @@ Se imponen algunas observaciones finales sobre la figura. Primero, la figura men
 
 \section{Demanda}
 
+\subsection{Gasto en alimentos y manufacturas (a)}
+\textbf{Como se explicó en la sección 3.3, la economía tiene dos sectores de bienes, manufacturas, $M$, y alimentos, $F$. Aunque las manufacturas consisten en muchas variedades diferentes, podemos definir un índice de precios exacto para representarlas como un grupo. A este índice de precios de manufacturas lo llamamos I.} Si un consumidor obtiene un ingreso Y (por trabajar en el sector alimentario o en el sector manufacturero), tiene que decidir cuánto de este ingreso se gasta en alimentos y cuánto en manufacturas. La solución a este problema depende de las preferencias del consumidor, que se suponen de la especificación Cobb-Douglas dada en la ecuación (3.1) para todos los consumidores, en la que $F$ representa el consumo de alimentos y $M$ representa el consumo de manufacturas:
+\begin{equation}
+    U=F^{1-\delta} M^\delta;\qquad 0<\delta<1
+\end{equation}
+
+Obviamente, cualquier ingreso gastado en alimentos no puede gastarse simultáneamente en manufacturas, es decir, el consumidor debe satisfacer la restricción presupuestaria en la ecuación (3.2):
+
+\begin{equation}
+    F+I \cdot M=Y
+\end{equation}
+
+\textbf{Nótese la ausencia del precio de los alimentos en esta ecuación. Esto es el resultado de elegir los alimentos como numerario, lo que implica que el ingreso $Y$ se mide en términos de alimentos.} Por lo tanto, solo el índice de precios de las manufacturas $I$ aparece en la ecuación (3.2). Para decidir sobre la asignación óptima de ingresos sobre la compra de alimentos y manufacturas, el consumidor ahora tiene que resolver un problema de optimización simple, a saber, maximizar la utilidad como se indica en la ecuación (3.1), sujeto a la restricción presupuestaria de la ecuación (3.2). La solución a este problema se da en la ecuación (3.3), y se deriva de la nota de más abajo.
+
+\begin{equation}
+    F=(1-\delta)Y;\qquad IM=\delta Y
+\end{equation}
+
+Como muestra la ecuación (3.3), es óptimo que el consumidor gaste una fracción $(1 -\delta)$ de su ingreso en alimentos y una fracción, $\delta$, de su ingreso en manufacturas. Esto explica la leyenda a en la figura de arriba. De ahora en adelante nos referiremos al parámetro d dado en la ecuación (3.1) como la fracción del ingreso gastado en manufacturas.
+
+\begin{nota}[Derivación de la ecuación]
+    Para maximizar la ecuación (3.1) sujeta a la restricción presupuestaria (3.2), definimos el Lagrangiano C, usando el multiplicador j:
+    $$\Gamma F^{1-\delta}M^\delta + k[Y-(F+IM)]$$
+    La diferenciación de C con respecto a F y M da las condiciones de primer orden
+    $$(1-\delta)F^{-\delta}M^\delta = k\; \qquad \delta F^{1-\delta}M^{\delta-1}=kI$$
+    Tomando la relación de las condiciones de primer orden se obtiene
+    $$\dfrac{\delta F^{1-\delta} M^{\delta - 1}}{(1-\delta)F^{-\delta}M^\delta};\qquad IM = \dfrac{\delta}{1-\delta}F$$
+    Sustituyendo este último en la ecuación presupuestaria (3.2) se obtiene
+    $$Y=F+IM = F+\dfrac{\delta}{1-\delta}F;\qquad F=(1-\delta)Y$$
+\end{nota}
+
+\subsection{Gasto en la fabricación de variedades (b)}
 
 

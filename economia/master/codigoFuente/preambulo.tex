@@ -1,18 +1,17 @@
 \documentclass[10pt]{book}
-\usepackage[text=17cm,left=2.5cm,right=2cm, headsep=20pt, top=2cm, bottom = 2.5cm,letterpaper,showframe = false]{geometry} %configuración página
-\usepackage{latexsym,amsmath,amssymb,amsfonts} %(símbolos de la AMS).7
+
+% ------------------- Paquetes ----------------------
+\usepackage[text=17cm,left=2.8cm,right=2.4cm, headsep=20pt, top=2.5cm, bottom = 2cm,letterpaper,showframe = false]{geometry} %configuración página
+\usepackage{latexsym,amsmath,amssymb,amsfonts,amsthm} %(símbolos de la AMS)
 \parindent = 0cm  %sangria
 \usepackage[T1]{fontenc} %acentos en español
 \usepackage[spanish]{babel} %español capitulos y secciones
 \usepackage{graphicx} %gráficos y figuras.
-
-%---------------FORMATO de letra--------------------%
-
-\usepackage{lmodern} % tipos de letras
+\usepackage{mathpazo} % tipo de letra
 \usepackage{titlesec} %formato de títulos
 \usepackage[backref=page]{hyperref} %hipervinculos
 \usepackage{multicol} %columnas
-\usepackage{tcolorbox, empheq} %cajas
+\usepackage{tcolorbox} %cajas
 \usepackage{enumerate} %indice enumerado
 \usepackage{marginnote}%notas en el margen
 \tcbuselibrary{skins,breakable,listings,theorems}
@@ -20,48 +19,53 @@
 \usepackage[all]{xy}%flechas
 \counterwithout{footnote}{chapter}
 \usepackage{xcolor}
-\usepackage{rotating}
-\usepackage{eurosym} 
 \spanishdecimal{.}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepackage{tkz-fct}
+\usepackage{mathrsfs}
+\usepackage[htt]{hyphenat}
+\usepackage[fit]{truncate}
+\usepackage{titling,lipsum}
+\usepackage{rotating}
+\usepackage{lscape}
+
+%--------- encabezado y pie de paginas -----------------
+\usepackage{fancyhdr}
+
+%--------- configuración tcolorbox -----------------
+\tcbset{colback=black!2,colframe=white}
+
+%---------- configuración de separación de sección ------------ 
+\titlespacing*{\section}{0pt}{1.7cm}{.3cm}
 
 %------------------------------------------
 
-\newtheorem{axioma}{\large\textbf{Axioma}}[part]
-\newtheorem{teo}{\textbf{TEOREMA}}[chapter]%entorno para teoremas
-\newtheorem{ejem}{{\textbf{EJEMPLO}}}[chapter]%entorno para ejemplos
-\newtheorem{def.}{\textbf{Definición}}[chapter]%entorno para definiciones
-\newtheorem{post}{\large\textbf{Postulado}}[chapter]%entorno de postulados
-\newtheorem{col.}{\textbf{Corolario}}[chapter]
-\newtheorem{ej}{\textbf{Ejercicio}}[chapter]
-\newtheorem{prop}{\large\textbf{Propiedad}}[part]
-\newtheorem{lema}{\textbf{LEMA}}[chapter]
-\newtheorem{prob}{\textbf{problema}}[chapter]
-\newtheorem{nota}{\textbf{Nota}}[chapter]
-
-%--------------------GRÀFICOS--------------------------
-
-\usepackage{tkz-fct}
+\theoremstyle{definition}
+\newtheorem{axioma}{Axioma}[part]
+\newtheorem{teo}{Teorema}[chapter]%entorno para teoremas
+\newtheorem{def.}{Definición}[chapter]%entorno para definiciones
+\newtheorem{ejem}{Ejemplo}[chapter]%entorno para ejemplos
+\newtheorem{post}{Postulado}[chapter]%entorno de postulados
+\newtheorem{col.}{Corolario}[chapter]
+\newtheorem{ej}{Ejercicio}[chapter]
+\newtheorem{prop}{Propiedad}[part]
+\newtheorem{lema}{Lema}[chapter]
+\newtheorem{prob}{Problema}[chapter]
+\newtheorem{nota}{Nota}[chapter]
 
 %---------------------------------
-
-\renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-%------------------------------------------
-
-\renewcommand{\labelenumi}{\Roman{enumi}.}%primer piso II) enumerate
-\renewcommand{\labelenumii}{\arabic{enumii}$)$}%segundo piso 2)
-\renewcommand{\labelenumiii}{\alph{enumiii}$)$}%tercer piso a)
-\renewcommand{\labelenumiv}{$\bullet$}%cuarto piso (punto)
+\titleformat*{\section}{\bfseries\large}
+\titleformat*{\subsection}{\bfseries}
+\titleformat*{\subsubsection}{\bfseries}
+\titleformat*{\paragraph}{\bfseries}
+\titleformat*{\subparagraph}{\bfseries}
 
 %----------Formato título de capítulos-------------
 
-\usepackage{titlesec}
-\renewcommand{\thechapter}{\arabic{chapter}}
 \titleformat{\chapter}[display]
-{\titlerule[2pt]
-\vspace{4ex}\bfseries\sffamily\huge}
+{\vspace{4ex}\bfseries\huge}
 {\filleft\Huge\thechapter}
 {2ex}
 {\filleft}
 
-\usepackage[htt]{hyphenat}

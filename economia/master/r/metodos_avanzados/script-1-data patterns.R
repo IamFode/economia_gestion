@@ -49,7 +49,8 @@ boxplot(fertility.rate~income.level,xlab="income level",ylab="fertility rate")
 # Note that the variables "income.level" and "income.level.code" are 
 # not correctly ordered. We'd better put them in the correct order so 
 # the graphs, tables, etc. are correct.
-income.level <- factor(income.level,levels=c("Low","Lower middle","Upper middle","High"))
+income.level <- factor(income.level,levels=c("Low","Lower middle","Upper middle"
+                                             ,"High"))
 income.level.code <- factor(income.level.code,levels=c("L","LM","UM","H"))
 
 boxplot(fertility.rate~income.level,xlab="income level",ylab="fertility rate")
@@ -72,6 +73,9 @@ var(world2016[,9:20])
 
 # Correlation matrix
 cor(world2016[,9:20])
+
+# De nueve a 11 
+cor(world2016[,9:11])
 
 
 
@@ -98,6 +102,7 @@ sqrt(mahalanobis(data.for.mahalanobis[which(country=="Spain"),],center=M,cov=S))
 
 # Mahalanobis distance of Argentina
 sqrt(mahalanobis(data.for.mahalanobis[which(country=="Argentina"),],center=M,cov=S))
+sqrt(mahalanobis(data.for.mahalanobis[which(country=="Bolivia"),],center=M,cov=S))
 
 
 # Mahalanobis distances for all countries

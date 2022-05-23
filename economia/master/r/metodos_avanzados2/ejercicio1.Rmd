@@ -1,0 +1,87 @@
+---
+title: "Ejercicio 1"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r }
+#library
+library(mlbench)
+library(moments) 
+library(nortest)
+```
+
+```{r}
+# functions
+breaks <- function(x,x0,h){
+  b <- floor((min(x)-x0)/h) : ceiling((max(x)-x0)/h)
+  b <- b*h+x0
+  return(b)
+}
+```
+
+# Ejercicio 1. 
+
+Considérese la base de datos Boston Housing Data con información diversa sobre la vivienda en 506 barrios del área metropolitana de Boston en 1978 y que está disponible en el archivo BostonHousing de la R-librería mlbench. Se pide:
+
+```{r, dpi=10} 
+data(BostonHousing)
+attach(BostonHousing)
+s = BostonHousing$lstat
+max(s)-min(s)
+max(s)
+```
+
+1. Construir histogramas con diferentes anchos de clase para explicar la distribución de la variable lstat (porcentaje de población con estatus social en la categoría inferior). Obtener la curva del mejor ajuste normal y chequear analíticamente la normalidad de lstat.
+
+```{r,fig.height=6, fig.width=10, fig.align='center'}
+histo = function(s,x0,h){ 
+  hist(s,freq=FALSE,breaks=breaks(s,x0,h),
+       main="",
+       xlab="",
+       ylab="Densidad",
+       col = "lightblue", 
+       border = "pink",cex.lab=1.2)
+  curve(dnorm(x,mean=mean(s),sd=sd(s)), col="magenta", add=TRUE, lty=1, lwd=2)
+  lines(density(s),col=3, lwd=2)
+  summary(s)
+}
+histo(s,0,0.2)
+histo(s,0,0.5)
+histo(s,0,1)
+histo(s,0,2)
+histo(s,0,3)
+lillie.test(s)  
+```
+
+
+2. Realizar ajustes no paramétricos de tipo kernel de la densidad de lstat con tres diferentes selectores de ventana, a saber, selectores por la regla del dedo, plug-in y por validacióncruzada. Comentar los resultados. Proporcionar un gráfico de la función de validación cruzada para un rango equiespaciado de valores del parámetro de suavizado.
+
+ 3. Proporcionar estimaciones puntuales de la densidad de probabilidad de lstat en los cuartiles muestrales usando el estimador de Rosenblat-Parzen con kernel de Epanechnikov y parámetro de suavizado h = 2.
+ 
+4. Valorar si el denominado “efecto frontera” está presente en los estimadores kernel generados en los epígrafes previos. Obtener el valor estimado de la densidad en lstat= 1.75 basado en
+
+(i) un estimador kernel y 
+(ii) la estimación kernel de los datos log-transformados y posterior
+
+transformación inversa. Explicar el segundo de los caminos y discutir los resultados.
+
+5. Segmentar el archivo en dos grupos C1 y C2 caracterizados porque rm sea menor o mayor que su mediana muestral, respectivamente. Chequear analítica y gráficamente la hipótesis nula de que la densidad de la variable lstat es idéntica en ambos grupos.
+
+6. Estimar la densidad conjunta de (rm,lstat) y obtener su representación tridimensional y de líneas de contorno. Explicar brevemente cómo se ha construido este estimador.
+
+7. Explorar el comportamiento de ajustes polinómicos de hasta orden dos para explicar el comportamiento de la variable rm (número medio de habitaciones por vivienda) como función de la variable lstat. Comparar su comportamiento con ajustes no paramétricos de tipo kernel: Nadaraya-Watson, Gasser-Müller, local lineal y local cúbico.
+
+8. Estimar la función de regresión rm = m(lstat) mediante un ajuste local lineal basado en el kernel Gaussiano y ventanas seleccionadas por: (i) validación cruzada y (ii) un método plug-in. Calcular el error cuadrático medio cometido en cada caso.
+
+9. Sobre la base de un ajuste local lineal, identificar valores aproximados de la variable lstat donde rm alcanza extremos locales.
+
+10. Emplear el algoritmo loess para predecir los valores de rm cuando lstat=10, 20 y 30.
+
+11. Construir dos estimadores de la regresión rm = m(lstat) basados en diferentes bases de splines. Detallar las principales características de ambos (bases, número y localización de nodos, control del grado de suavización, grados de libertad,. . . ).
+
+12. Para modelizar el comportamiento de la variable rm en función de las variables lstat y age (porcentaje de viviendas construidas antes de 1940 en cada barrio de Boston) ajustar: (i) un modelo de regresión lineal y (ii) un modelo aditivo. Obtener y comparar ambos ajustes en base a alguna prueba estadística y a diferentes estadísticos de bondad del ajuste.
+
+13. Usar mgcv o SemiPar para ajustar la regresión del epígrafe anterior mediante un modelo
+de regresión no paramétrico bivariante.

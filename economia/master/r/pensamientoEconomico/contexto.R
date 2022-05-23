@@ -1,6 +1,7 @@
 #librerias
 library(ggplot2)
 library(tibble)
+library("readxl")
 
 ################################# DATA #########################################
 data_efw <- read_excel("data/economic-freedom-of-the-world-2021.xlsx",

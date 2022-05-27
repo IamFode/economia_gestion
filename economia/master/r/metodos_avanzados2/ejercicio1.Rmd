@@ -10,6 +10,12 @@ output:
 library(mlbench)
 library(moments) 
 library(nortest)
+library(ggplot2)
+library(KernSmooth)
+library(sm)
+library(KernSmooth)
+library(locfit)     
+library(lokern)
 ```
 
 ```{r}
@@ -19,69 +25,195 @@ breaks <- function(x,x0,h){
   b <- b*h+x0
   return(b)
 }
+
+histo = function(s,x0,h){ 
+  hist(s,freq=FALSE,breaks=breaks(s,x0,h), main="",xlab="",ylab="Densidad", 
+       col = "lightblue", border = "pink",cex.lab=1.2)
+  curve(dnorm(x,mean=mean(s),sd=sd(s)), col="magenta", add=TRUE, lty=1, lwd=2)
+  lines(density(s),col=3, lwd=2)
+}
 ```
 
 # Ejercicio 1. 
 
 Considérese la base de datos Boston Housing Data con información diversa sobre la vivienda en 506 barrios del área metropolitana de Boston en 1978 y que está disponible en el archivo BostonHousing de la R-librería mlbench. Se pide:
 
-```{r, dpi=10} 
+```{r} 
 data(BostonHousing)
-attach(BostonHousing)
 s = BostonHousing$lstat
-max(s)-min(s)
-max(s)
 ```
 
 1. Construir histogramas con diferentes anchos de clase para explicar la distribución de la variable lstat (porcentaje de población con estatus social en la categoría inferior). Obtener la curva del mejor ajuste normal y chequear analíticamente la normalidad de lstat.
 
-```{r,fig.height=6, fig.width=10, fig.align='center'}
-histo = function(s,x0,h){ 
-  hist(s,freq=FALSE,breaks=breaks(s,x0,h),
-       main="",
-       xlab="",
-       ylab="Densidad",
-       col = "lightblue", 
-       border = "pink",cex.lab=1.2)
-  curve(dnorm(x,mean=mean(s),sd=sd(s)), col="magenta", add=TRUE, lty=1, lwd=2)
-  lines(density(s),col=3, lwd=2)
-  summary(s)
-}
-histo(s,0,0.2)
+- Respuesta.-  Analíticamente, según el test de lillie los datos no siguen una distribución normal.
+
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+histo(s,0,0.1)
+histo(s,0,0.3)
 histo(s,0,0.5)
+histo(s,0,0.8)
 histo(s,0,1)
-histo(s,0,2)
-histo(s,0,3)
-lillie.test(s)  
 ```
 
 
-2. Realizar ajustes no paramétricos de tipo kernel de la densidad de lstat con tres diferentes selectores de ventana, a saber, selectores por la regla del dedo, plug-in y por validacióncruzada. Comentar los resultados. Proporcionar un gráfico de la función de validación cruzada para un rango equiespaciado de valores del parámetro de suavizado.
+```{r}
+lillie.test(s) 
+```
+
+
+2. Realizar ajustes no paramétricos de tipo kernel de la densidad de lstat con tres diferentes selectores de ventana, a saber, selectores por la regla del dedo, plug-in y por validación cruzada. Comentar los resultados. Proporcionar un gráfico de la función de validación cruzada para un rango equiespaciado de valores del parámetro de suavizado.
+
+- Respuesta.- Los selectores de validación cruzada y plug-in son similares pero no así para el selector de tipo regla del dedo que es más elevada que las anteriores, este último resultado podría deberse a que se asume de que $f$ es una $N(\mu,\sigma)$.  
+
+```{r}
+bw.nrd(s); bw.ucv(s); bw.SJ(s)   
+```
+
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+contraejemplo <- s 
+bw.ucv(contraejemplo)
+args(bw.ucv)
+bw.ucv(contraejemplo, lower = 0.01, upper = 1)
+bw.ucv.mod <- function(x, nb = 1000L,
+                       h.grid = diff(range(x)) * (seq(0.1, 1, l = 200))^2,
+                       plot.cv = FALSE) {
+  if ((n <- length(x)) < 2L)
+    stop("need at least 2 data points")
+  n <- as.integer(n)
+  if (is.na(n))
+    stop("invalid length(x)")
+  if (!is.numeric(x))
+    stop("invalid 'x'")
+  nb <- as.integer(nb)
+  if (is.na(nb) || nb <= 0L)
+    stop("invalid 'nb'")
+  storage.mode(x) <- "double"
+  hmax <- 1.144 * sqrt(var(x)) * n^(-1/5)
+  Z <- .Call(stats:::C_bw_den, nb, x)
+  d <- Z[[1L]]
+  cnt <- Z[[2L]]
+  fucv <- function(h) .Call(stats:::C_bw_ucv, n, d, cnt, h)
+  obj <- sapply(h.grid, function(h) fucv(h))
+  h <- h.grid[which.min(obj)]
+  if (plot.cv) {
+    plot(h.grid, obj, type = "o")
+    rug(h.grid)
+    abline(v = h, col = 2, lwd = 2)
+  }
+  h
+}
+bw.ucv.mod(contraejemplo, plot.cv = TRUE)
+abline(v = bw.ucv(contraejemplo), col = 3)
+```
 
  3. Proporcionar estimaciones puntuales de la densidad de probabilidad de lstat en los cuartiles muestrales usando el estimador de Rosenblat-Parzen con kernel de Epanechnikov y parámetro de suavizado h = 2.
+ 
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+fh <- bkde(s, bandwidth=2, kernel="epanech")
+plot(fh, ylab="Estimador kernel con h=2",
+     xlab="% de población con estatus social en la categoría inferior")
+```
  
 4. Valorar si el denominado “efecto frontera” está presente en los estimadores kernel generados en los epígrafes previos. Obtener el valor estimado de la densidad en lstat= 1.75 basado en
 
 (i) un estimador kernel y 
-(ii) la estimación kernel de los datos log-transformados y posterior
+(ii) la estimación kernel de los datos log-transformados y posterior transformación inversa. Explicar el segundo de los caminos y discutir los resultados.
 
-transformación inversa. Explicar el segundo de los caminos y discutir los resultados.
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+ker <- density(s, window = "gaussian")   # Estimación de f_Y vía kernel
+# Plot de la densidad kernel para los datos transformados (t(X)=log(X))
+{hist(s,freq=FALSE,breaks=18,xlab="% de pob con estatus social baja", 
+     ylab=expression(paste("Estimador kernel  ", widehat(g[n]))),
+     main="",col = "lightblue", border = "pink",cex.lab=1.2)
+lines(ker, lwd = 2)
+rug(s)}
+```
+
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+s.new <- log(s)
+# Estimación nucleo datos transformados
+tde <- density(s.new, window = "gaussian")   # Estimación de f_Y vía kernel
+# Plot de la densidad kernel para los datos transformados (t(X)=log(X))
+{hist(s.new,freq=FALSE,breaks=18,xlab="% de pob con estatus social baja", 
+     ylab=expression(paste("Estimador kernel  ", widehat(g[n]))),
+     main="",col = "lightblue", border = "pink",cex.lab=1.2)
+lines(tde, lwd = 2)
+rug(s.new)}
+```
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+# Deshacemos la transformación
+# Obtenemos los x en cuyos logaritmos se evalúa la densidad
+# usando la transformación inversa (exponencial)
+tinvde.x <- exp(tde$x)   #  x=t^{-1}(y)
+# Obtenemos la densidad usando la regla de la cadena:
+# Densidad basada en log(X_i) evaluada en tde$x por la derivada del logaritmo
+tinvde.y <- tde$y * (1/tinvde.x)
+# Plot simultáneo de histograma y densidad
+{hist(s.new,freq=FALSE,breaks=15,xlab="% de pob con estatus social baja",
+     ylab=expression(paste("Estimador densidad  ", widehat(f[n]))),
+     main="",col = "lightblue", border = "pink",cex.lab=1.2, ylim=c(0,2))
+rug(s.new)}
+```
+
 
 5. Segmentar el archivo en dos grupos C1 y C2 caracterizados porque rm sea menor o mayor que su mediana muestral, respectivamente. Chequear analítica y gráficamente la hipótesis nula de que la densidad de la variable lstat es idéntica en ambos grupos.
 
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+c1=subset(BostonHousing$rm,BostonHousing$rm<median(BostonHousing$rm))
+c2=subset(BostonHousing$rm,BostonHousing$rm>median(BostonHousing$rm))
+sm.density.compare(c(c1,c2),g=rep(1:2, each=253),model="equal")
+```
+
 6. Estimar la densidad conjunta de (rm,lstat) y obtener su representación tridimensional y de líneas de contorno. Explicar brevemente cómo se ha construido este estimador.
+
+```{r,fig.height=3, fig.width=5, fig.align='center'}
+#Agrupamos falsos y reales en dos variables
+b2 = cbind(BostonHousing$lstat,BostonHousing$rm)
+colnames(b2) = c("lstat","rm")
+
+# Ahora usamos la función bkde2D()
+# El primer argumento es una matriz con dos columnas donde se ubican los datos 
+# Se considera el kernel bivariante Gaussiano reescalado por las dos ventanas 
+# que se introducen en el argumento "bandwidth" (usemos el plug-in directo SJ)
+h1 <- dpik(b2[,1])
+h2 <- dpik(b2[,2])
+est <- bkde2D(b2, bandwidth = c(h1,h2))
+# Gráfico de contorno de la densidad bivariante estimada:
+contour(x = est$x1, y = est$x2, z = est$fhat,
+        xlab = "Ancho margen inferior", ylab = "Longitud diagonal",
+        cex.lab=1.2)
+```
+```{r,fig.align='center'}
+# Densidad estimada:
+persp(x = est$x1, y = est$x2, z = est$fhat,
+      xlab = "Ancho margen inferior", ylab = "Longitud diagonal",zlab="Densidad",
+      cex.lab=.6, theta = -35, axes = TRUE, box = TRUE)
+```
 
 7. Explorar el comportamiento de ajustes polinómicos de hasta orden dos para explicar el comportamiento de la variable rm (número medio de habitaciones por vivienda) como función de la variable lstat. Comparar su comportamiento con ajustes no paramétricos de tipo kernel: Nadaraya-Watson, Gasser-Müller, local lineal y local cúbico.
 
-8. Estimar la función de regresión rm = m(lstat) mediante un ajuste local lineal basado en el kernel Gaussiano y ventanas seleccionadas por: (i) validación cruzada y (ii) un método plug-in. Calcular el error cuadrático medio cometido en cada caso.
+```{r}
+rm = BostonHousing$rm
+lstat = BostonHousing$lstat
+#ajuste polinomico de orden 2
+m2b <- lm(lstat ~ poly(rm, degree = 2, raw=TRUE))  
+# ajuste nadaraya-Watson
+NW.h20 <- ksmooth(x=rm, y=lstat, kernel="normal", bandwidth=20)
+# Ajuste Gasser-Muller
+out<-glkerns(lstat~rm,is.rand=FALSE,band=0.07)   
+# Usa Gasser-Muller al poner is.rand=FALSE
+# local lineal
+m1=lm(lstat~rm)
+# local cúbico
+m2 <- lm(lstat ~ rm +  I(rm^3))
 
-9. Sobre la base de un ajuste local lineal, identificar valores aproximados de la variable lstat donde rm alcanza extremos locales.
+```
 
-10. Emplear el algoritmo loess para predecir los valores de rm cuando lstat=10, 20 y 30.
+```{r}
+{plot(rm,lstat,pch=20,cex=.2)
+lines(rm, m1$fitted.values, col = "blue", lwd = 2, lty = 1)
+lines(rm, m2$fitted.values, col = "orange", lwd = 2, lty = 1)
+lines(NW.h20, lwd=2, col="magenta")
+lines(out,col="blue",lwd=2)}
+```
 
-11. Construir dos estimadores de la regresión rm = m(lstat) basados en diferentes bases de splines. Detallar las principales características de ambos (bases, número y localización de nodos, control del grado de suavización, grados de libertad,. . . ).
-
-12. Para modelizar el comportamiento de la variable rm en función de las variables lstat y age (porcentaje de viviendas construidas antes de 1940 en cada barrio de Boston) ajustar: (i) un modelo de regresión lineal y (ii) un modelo aditivo. Obtener y comparar ambos ajustes en base a alguna prueba estadística y a diferentes estadísticos de bondad del ajuste.
-
-13. Usar mgcv o SemiPar para ajustar la regresión del epígrafe anterior mediante un modelo
-de regresión no paramétrico bivariante.

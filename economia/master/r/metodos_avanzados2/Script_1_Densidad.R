@@ -7,7 +7,7 @@
 library(ks)     
 library(sm)
 library(KernSmooth)
-library(TDA)  # para kNN
+#library(TDA)  # para kNN
 
 
 #################################################
@@ -17,7 +17,7 @@ library(TDA)  # para kNN
 #################################################
 # Datos de rentabilidad de acciones
 #################################################
-
+load("stockres.rda")
 #Información sobre el fichero
 str(stockres)
 
@@ -28,11 +28,12 @@ s <- unlist(stockres, use.names = FALSE)
 
 # Una función simple para crear una partición equiespaciada del rango 
 # de una variable X con origen en X0 y ancho de clase h
-breaks <- function(x,x0,h){
+breaks = function(x,x0,h){
   b <- floor((min(x)-x0)/h) : ceiling((max(x)-x0)/h)
   b <- b*h+x0
   return(b)
 }
+
 # Por ejemplo:
 ( b <- breaks(seq(-1,1,0.1), 0.2,0.3)  )  
 rm(b) 
@@ -80,7 +81,7 @@ boxplot(GDP2, col=("gold"), main="", horizontal=T, cex.lab=1.2,
 x0 <- 1
 h  <- 0.45
 hist(GDP2,freq=FALSE,breaks=breaks(GDP2,x0,h), 
-     xlab="PIB per c?pita promedio, 2010",ylab="Histograma",main="",
+     xlab="PIB ppr c?pita promedio, 2010",ylab="Histograma",main="",
      col = "lightblue", border = "pink", cex.lab=1.2)
 # Estadísticos descriptivos
 summary(GDP2)
@@ -110,6 +111,7 @@ hist(s,freq=FALSE,breaks=breaks(s,x0,h[i]),
      main="",xlab="Rentabilidad acciones",ylab="Histograma",
      col = "lightblue", border = "pink",cex.lab=1.2, ylim=c(0,15), xlim=c(-0.2,0.2) )
 legend("topleft",legend=paste("h =",h[i]),inset=0.025,cex=1.2,bty="n")
+
 }   
 
 #################################################
@@ -379,7 +381,7 @@ bw.ucv(n) ; bw.ucv(t)
 # Además, las fluctuaciones de CV(h) pueden variar considerablemente 
 # segn el tamaño muestral y la forma real de la densidad.
 # Por todo ello, la optimización podría generar soluciones espurias.
-# Para estar seguros, es recomendable chequear la solución gráficamente, 
+# Para estar segu ros, es recomendable chequear la solución gráficamente, 
 # obteniendo la gráfica de CV(h) para un rango de valores de h.
 # Veamos un ejemplo:
 set.seed(123456)

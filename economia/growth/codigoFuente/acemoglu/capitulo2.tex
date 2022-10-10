@@ -1,0 +1,44 @@
+\setcounter{chapter}{1}
+\chapter{El modelo de crecimiento de Solow}
+
+\section{El contexto económico del modelo básico de Solow}
+
+\subsection{Hogares y producción}
+
+Sea una economía cerrada con un único bien final. La economía está en un tiempo $t$ discreto yendo hacia un horizonte infinito. Esta economía esta compuesta por un número grande de hogares, pero podríamos suponer que todos estos hogares son idénticos, por lo que tenemos sólo un hogar representativo. Lo que significa que el lado de la demanda y la oferta laboral de la economía se puede representar como si fuera el resultado del comportamiento de un solo hogar. Aún no  hemos dotado de una función de utilidad, por lo que los hogares ahorraran una fracción exógena constane $s\in (0,1)$ de su ingreso disponible.\\
+
+Otros agentes principales en la economía son las empresas. Al igual que los consumidores, las empresas son muy heterogéneas. Supondremos que todas las empresas en esta economía tiene acceso a la misma función de producción para el bien final o la economía dada admite una sola empresa representativa, con una función de producción representativa.\\
+
+La función de producción agregada por un único bien final esta dada por:
+
+\begin{equation}
+    Y(t)=F\left[K(t),L(t),A(t)\right]
+\end{equation}
+
+Donde $Y(t)$ es el total sobre la producción de bien final en el tiempo $t$. $K(t)$ es el stock de capital, $L(t)$ son los empleados totales y $A(t)$ es la tecnología en el tiempo $t$. \\
+$L(t)$ podrá ser medido de diferetes formas, por ejemplo, será medido en horas de trabajo o número de trabajadores. El stock de capital $K(t)$ corresponde a la cantidad de maquinas, equipamiento o infraestructura usados en la producción y es típicamente medida en valor de las maquinas. Hay multiples formas de pensar en capital o de especificar como surge. Pero acá supondremos de que el capital se utiliza en el proceso de producción de más bienes. Por ejemplo el capital corresponderá a la cantidad de maíz utilizada como semilla para una mayor producción.\\
+La tecnología, no tiene una unidad natural. $A(t)$ es un simple desplazador de la función de producción. Pero lo representaremos con un número ya que es un concepto más abstracto. Como se dijo en el capitulo 1, a menudo podemos querer pensar en una noción amplia de tecnología, que incorpore los efectos de la organización de la producción y de los mercados sobre la eficiencia con la que se utilizan los factores de producción. En el modelo actual $A(t)$ representa todos esos factores. Una suposición importante del modelo de crecimiento de Solow (y del modelo de crecimiento neoclásico es que la tecnología es gratuita: está disponible públicamente como un bien no excluyente ni rival. Recuerde que un bien no es rival si su consumo o uso por parte de otros no excluye el consumo o uso de un individuo. Es no excluible, si es imposible impedir que otra persona lo use o consuma. Una vez que la sociedad tiene algún conocimiento útil para aumentar la eficiencia de la producción, este conocimiento puede ser utilizado por cualquier empresa sin interferir con el uso de los demás. La implicación de que la tecnología no es rival ni excluible es que $A(t)$ está disponible gratuitamente para todas las empresas potenciales en la economía y las empresas no tienen que pagar por hacer uso de esta tecnología; partir de acá es un paso importante hacia la compresión del progreso tecnológico.
+
+\begin{supuesto}[Continuidad, diferenciabilidad, productos marginales positivos y crecientes y retornos constantes a escala] La función de producción $F:\mathbb{R}_+^3\to \mathbb{R}_+$ es dos veces diferenciable en $K$ y $L$ y satisface
+    $$F_K(K,L,A) = \dfrac{\partial F(K,L,A)}{\partial K}>0,\qquad F_L(K,L,A) = \dfrac{\partial F(K,L,A)}{\partial L}>0,$$
+    $$F_{KK}(K,L,A) = \dfrac{\partial^2 F(K,L,A)}{\partial^2 K}>0,\qquad F_{LL}(K,L,A) = \dfrac{\partial^2 F(K,L,A)}{\partial^2 L}>0.$$
+    Es más, $F$ exhibe retornos constantes a escala en $K$ y $L$.
+\end{supuesto}
+Como $A$ no tiene unidades naturales, podría haber sido negativo. Pero no hay pérdida de generalidad en restringirlo para que sea positivo. Luego $F$ es continuo por lo que es diferenciable. El supuesto 1 también especifica que los productos marginales son positivos por lo que el nivel de producción aumenta con la cantidad de insumos. Más aún este supuesto requiere que los productos marginales tanto del capital como del trabajo estén disminuyendo, es decir $F_{KK}<0$ y $F_{LL}<0$. De modo que más capital aumenta la producción cada vez menos, lo mismo se aplica al trabajo. La presencia de rendimientos decrecientes el capital distingue el modelo de crecimiento de Solow con el modelo antecesor d Harrod-Domar. $F$ tiene rendimientos constantes a escala en $K$ y $L$ si es linealmente homogéneo de grado $1$.
+
+\begin{teo}[Teorema de Euler]
+    Supóngase que $g:\mathbb{R}^{K+2}\to \mathbb{R}$ es diferenciable en $x\in \mathbb{R}$ e $y\in \mathbb{R}$ con derivadas parciales denotadas por $g_x$ y $g_y$ y es homogéneo de grado $m$ en $x$ e $y$. Entonces 
+    $$mg(x,y,z)=g_x(x,y,z)x+g_y(x,y,z)y\mbox{ para todo } x\in \mathbb{R},y\in \mathbb{R} \mbox{ y }z\in \mathbb{R}^K.$$
+    Es más, $g_x(x,y,z)$ y $g_y(x,y,z)$ son homogéneos de grado $m-1$ en $x$ e $y$.\\\\
+	Demostración.-\; Tenemos que $g$ es diferenciable y
+	\begin{equation}
+	\lambda^mg(x,y,z)=g(\lambda x,\lambda y, z).
+	\end{equation}
+	Diferenciando ambos lado con respecto de $\lambda$, se tiene
+	$$m\lambda^{m-1}g(x,y,z)=g_x(\lambda x,\lambda y,z)x+g_y(\lambda x , \lambda y , z)y$$
+	para cualquier $\lambda$. Establecer $\lambda=1$ produce el primer resultado. Para obtener el segundo resultado, diferenciar ambos lados de (2.2) respecto a $x$:
+	$$\lambda g_x(\lambda x , \lambda y,z)=\lambda^m g_x(x,y,z).$$
+	Dividiendo ambos lados por $\lambda$ establecemos el resultado deseado.
+\end{teo}
+
+\subsection{Dotaciones, estructura del mercado y compensación del mercado}

@@ -1,0 +1,39 @@
+\documentclass[10pt]{book}
+
+%%%%%%%%%% CONFIGURACIÓN DE PÁGINAS %%%%%%%%%%%%%%%
+\usepackage[text=17cm,
+	    left=3cm,
+	    right=2.5cm, 
+	    headsep=20pt, 
+	    top=2.5cm, 
+	    bottom = 2cm,
+	    onecolumn,
+	    twoside,
+	    letterpaper,
+	    asymmetric,
+	    showframe = false]{geometry} 
+\parindent = 0cm  %mostrar cómo controlar la indentación (sangría) que LaTeX realiza automáticamente sobre la primera línea de cada párrafo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% PAQUETES %%%%%%%%%%%%%%%%%%%%%%%
+\input{codigoFuente/preambulo/paquetes.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% CONFIGURACIÓN DE PAQUETES %%%%%%%%%%%%%%
+\input{codigoFuente/preambulo/configPaquetes.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%% DEFINICIÓN DE SECCIÓN Y NUEVOS COMANDOS %%%%%
+\input{codigoFuente/preambulo/definicion.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Formato título de capítulos %%%%%%%%%%%%
+\titleformat{\chapter}[display]
+{\vspace{4ex}\bfseries\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

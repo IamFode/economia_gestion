@@ -45,17 +45,21 @@
 \newtheorem{def.}{Definición}[chapter]%entorno para definiciones
 \newtheorem{ejem}{Ejemplo}[chapter]%entorno para ejemplos
 \newtheorem{post}{Postulado}[chapter]%entorno de postulados
-\newtheorem{col.}{Corolario}[chapter]
+\newtheorem{cor}{Corolario}[chapter]
 \newtheorem{ej}{Ejercicio}[chapter]
 \newtheorem{prop}{Propiedad}[part]
 \newtheorem{lema}{Lema}[chapter]
 \newtheorem{prob}{Problema}[chapter]
-\newtheorem{nota}{Nota}[chapter]
+\newtheorem{obs}{Obs:}[chapter]
 
 \makeatletter\renewcommand\theenumi{\@roman\c@enumi}\makeatother
 
 \renewcommand\labelenumi{\theenumi)}
 \def\sen{\mathop{\mbox{\normalfont sen}}\nolimits}
+\def\cotan{\mathop{\mbox{\normalfont cotan}}\nolimits}
+\def\cosec{\mathop{\mbox{\normalfont cosec}}\nolimits}
+\def\arcsen{\mathop{\mbox{\normalfont arcsen}}\nolimits}
+\def\arctan{\mathop{\mbox{\normalfont arctan}}\nolimits}
 
 %---------------------------------
 \titleformat*{\section}{\bfseries}
@@ -71,4 +75,5 @@
 {\filleft\Huge\thechapter}
 {2ex}
 {\filleft}
+
 

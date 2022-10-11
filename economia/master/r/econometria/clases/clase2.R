@@ -62,11 +62,70 @@ ggplot(data,aes(X,Y))+
   geom_point() +
   geom_smooth(method = "lm", formula = y~log(x),color="red")
 
+################################################################################
+################################################################################
 
 # El R2 ajustado no es un buen indicador para comparar los modelos anteriores.
 # Suma cuadrada de residuos tampoco es buen indicador de comparación.
-
 # Entonces construiremos un R2 en términos equivalentes.
 
 
+################# Modelo 3 con respecto a los modelos 1,2,5 ####################
 
+# 3. Modelo de elasticidad constante o modelo logarítmico.
+model = lm(log(Y)~log(X),data=data)
+# Variable dependiente o regresando o variable endogena
+y = data$Y
+# Variables independiente o regresor o variable exogena
+X = data$X
+x = log(X)
+#cantidad de variables explicativas o independientes
+k=1
+# Suma de cuadrados totales en términos equivalentes
+scteq=0
+for(i in 1:length(y)){
+  scteq = scteq + (y[i]-mean(y))^2
+}
+scteq
+#Suma de cuadrados en términos equivalentes de Y
+sceeq = 0
+for(i in 1:length(y)){
+  equivY = exp(model$coefficients[1]+model$coefficients[2]*x)[i]
+  sceeq = sceeq + ( y[i] - equivY )^2
+}
+sceeq
+#t-k-1 k= números de variables independientes 
+tk1 = length(y)-k-1
+# t-1 
+t1 = length(y)-1
+# R2 ajustado en términos equivalentes
+r2aeq = 1-(sceeq/tk1)/(scteq/t1)
+r2aeq
+
+################# Modelo 4 con respecto a los modelos 1,2,5 ####################
+model = lm(log(Y)~X,data=data)
+y = data$Y
+X = data$X
+x = X
+k=1
+scteq=0
+for(i in 1:length(y)){
+  scteq = scteq + (y[i]-mean(y))^2
+}
+scteq
+sceeq4 = 0
+for(i in 1:length(y)){
+  equivY = exp(model$coefficients[1]+model$coefficients[2]*x)[i]
+  sceeq4 = sceeq4 + ( y[i] - equivY )^2
+}
+tk1 = length(y)-k-1
+t1 = length(y)-1
+r2aeq4 = 1-(sceeq/tk1)/(scteq/t1)
+r2aeq4
+
+########################## COMPARANDO MODELOS ##################################
+summary(lineal)$adj.r.squared
+summary(square)$adj.r.squared
+r2aeq
+r2aeq4
+summary(nlog)$adj.r.squared

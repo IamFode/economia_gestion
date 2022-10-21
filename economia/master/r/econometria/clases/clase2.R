@@ -25,7 +25,7 @@ ggplot(data,aes(X,Y))+
   geom_smooth(method = "lm", formula = y~x,color="red")
 
 
-# 2. Modelo Cuadratico 
+# 2. Modelo Cuadrático 
 square = lm(Y~X+I(X^2),data = data)
 summary(square)
 ggplot(data,aes(X,Y))+
@@ -115,12 +115,13 @@ for(i in 1:length(y)){
 scteq
 sceeq4 = 0
 for(i in 1:length(y)){
-  equivY = exp(model$coefficients[1]+model$coefficients[2]*x)[i]
+  equivY = exp(model$coefficients[1]+model$coefficients[2]*x[i])
+  print(equivY)
   sceeq4 = sceeq4 + ( y[i] - equivY )^2
 }
 tk1 = length(y)-k-1
 t1 = length(y)-1
-r2aeq4 = 1-(sceeq/tk1)/(scteq/t1)
+r2aeq4 = 1-(sceeq4/tk1)/(scteq/t1)
 r2aeq4
 
 ########################## COMPARANDO MODELOS ##################################

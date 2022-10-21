@@ -1,0 +1,136 @@
+---
+title: "Clase 4"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-10-18"
+output: pdf_document
+---
+
+# 7.1 Polinomiales
+
+## 7.1.1 Función de coste
+
+La función de coste total, está dada por,
+
+$$TC=\alpha_1+\alpha_2Q+\alpha_3 Q^2 + \alpha_4 Q^3 + e \qquad \qquad (7.2)$$
+
+El coste $TC$ depende de la producción $Q$, $Q^2$ y $Q^3$
+
+Si $7.2$ lo dividimos por la producción, nos da el costo medio. Es decir,
+
+$$AC=\beta_1+\beta_2 Q + \beta_3 Q^2 + e\qquad \qquad (7.1)$$
+
+Si realizamos la derivada de la producción en relación del costo medio, se tiene
+
+$$\dfrac{\partial AC}{\partial Q}=\beta_2+2\beta_3 Q \qquad \qquad (7.3)$$
+
+Que significa los cambios de costos medios cuando aumentamos en una unidad la producción.
+
+Y el coste marginal está dado por
+
+$$\dfrac{\partial TC}{\partial Q}=\alpha_2+2\alpha_3Q+3\alpha_4Q^2\qquad \qquad (7.4)$$
+
+Que significa, como varia el coste total cuando varía en una unidad la pruducción.
+
+
+La teoría de dualidad nos dice que toda producción tiene su coste. Es decir, podemos deducir el comportamiento de la producción a partir del comportamiento del coste.
+
+
+## 7.1.2. Ecuación de los salarios
+
+El salario esta dado por:
+
+$$Wage = \beta_1 + \beta_2 EDUC + \beta_3 EXPER + \beta_4 EXPER^2 + e \qquad \qquad (7.5)$$
+
+Si calculamos el efecto marginal de un año más de experiencia, tenemos
+
+$$\dfrac{\partial WAGE}{\partial EXPER}=\beta_3 + 2\beta_4 EXPER \qquad \qquad (7.6)$$
+
+
+### Regresión de salarios
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+library(hexView)
+salario = readEViews("../data/Suposto 1.3 Modelos salarios.3Edition.wf1")
+salarios = lm(WAGE~EDUC+EXPER+I(EXPER^2),data=salario)
+summary(salarios)
+```
+
+# 7.2 Variables Dummy
+
+Se utiliza para variables cualitativas.
+
+Queremos ver los precios de cada departamento. Donde SQFT es la superficie de la vivienda el cual explica los precios de un departamento.
+
+$$PRICE = \beta_1 + \beta_2 SQFT + e\qquad \qquad (7.7)$$
+
+Pero este modelo no explica del todo bien. Por lo que colocamos una variable dummy para el modelo (7.7)
+
+$$D=\left\{\begin{array}{cl}
+    1& \mbox{Si la vecindad es deseable}\\
+    0& \mbox{Si la vecindad no es deseable}
+\end{array}\right.$$
+
+De donde,
+
+$$PRICE = \beta_1+\delta D + \beta_2 SQFT + e\qquad \qquad (7.9)$$
+
+Por lo que,
+
+$$E(PRICE)=\left\{\begin{array}{ll}
+  (\beta_1+\delta) + \beta_2 SQFT & \mbox{cuando } D=1\\
+  \beta_1 + \beta_2 SQFT & \mbox{cuando } D=0
+\end{array}\right.\qquad \qquad (7.10)$$
+
+Debemos cuidar de las trampas ficticias. Por ejemplo
+
+$$PRICE = \beta_1+\gamma LD + \beta_2 SQFT + e$$
+$$PRICE = \beta_1+\delta D + \gamma LD + \beta_2 SQFT + e$$
+
+El modelo sólo estimara si metemos $\beta_1$ con una variable dummy o dos variables dammy sin $\beta_1$.
+
+## 7.2.2. Dammy multiplicativa
+
+$$PRICE = \beta_1+ \beta_2SQFT + \gamma(SQFT\cdot D) + e\qquad \qquad (7.11)$$
+
+Efecto indirecto vía superficie.
+
+$$E(PRICE) =\beta_1+\beta_2 SQFT+\gamma(SQFT\cdot D) 
+=\left\{\begin{array}{rr}
+  \beta_1+(\beta_2+\gamma)SQFT & D=1\\
+  \beta_1+\beta_2SQFT & D=0
+\end{array}\right.
+$$
+
+$$\dfrac{\partial E(PRICE)}{\partial SQFT}=
+\left\{\begin{array}{rr}
+  \beta_2-\gamma & D=1\\
+  \beta_2 & D=0
+\end{array}\right.
+$$
+
+
+Las Dummys aditivas cambian la ordenada del origen y las dummys multiplicativas cambian la pendiente.
+
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+```
+
+Podemos tomar el efecto aditivo y multiplicativo
+
+$$PRICE=\beta_1 + \delta D+\beta_2SQFT + \gamma(SQFT\cdot D)+e\qquad \qquad (7.12).$$
+
+$$E(PRICE) = \left\{\begin{array}{rr}
+  (\beta_1+\delta)+(\beta_2+\gamma)SQFT & D=1\\
+  \beta_1+\beta_2SQFT & D=0
+\end{array}\right.$$
+
+
+## 7.2.3 Un Ejemplo: El fecto de la universidad en precios de casas
+
+$$PRICE = \beta_1 + \delta UTOWN + \beta_2 SQFT + \gamma(SQFT\cdot UTOWN)+\beta_3 AGE + \delta_2 POOL + \delta_3FPLACE+e\qquad \qquad (7.13)$$
+
+UTOWN => Ubicación
+
+POOL => tiene piscina
+
+FPLACE => tiene chimenea

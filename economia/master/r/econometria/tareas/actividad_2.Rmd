@@ -1,0 +1,20 @@
+---
+title: "Actividad 2"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-10-18"
+output: pdf_document
+---
+
+Teniendo en cuenta los modelos estudiados en el  documento "Tipos de relaciones no lineales (Chapter 7)", en concreto los modelos que  se ofrecen en el apartado "7.5.2 Interaction and Quadratic Terms", y utilizando los datos del "Supuesto 1.3", estimar el siguiente modelo:
+
+$$\ln(WAGE)=\beta_1+\beta_2EDUC+\beta_3EXPER+\beta_4EXPER^2+\beta_5(EDUC\cdot EXPER)$$
+
+A continuación estimar el efecto marginal de un año adicional de experiencia para un trabajador/una trabajadora que tenga 15 años de experiencia y un nivel de educación de 18 años.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+library(hexView)
+salario = readEViews("../data/Suposto 1.3 Modelos salarios.3Edition.wf1")
+logWage = lm(log(WAGE)~EDUC+EXPER+I(EXPER^2)+EDUC*EXPER,data=salario)
+names(logWage$coefficients) = c("ln(WAGE)","EDUC","EXPER","EXPER^2","EDUC*EXPER")
+summary(logWage)
+```

@@ -1,19 +1,30 @@
 var c k h y i yh zeta; //variables endogenas 
+/*
+c -> Consumo
+k -> Capital
+h -> Horas trabajadas
+y -> Output (Producción)
+i -> Inversión
+yh -> Productividad
+zeta -> Variables estocástica, choque de productividad.
+*/
+
 varexo e ; //variables exogenas 
+// e -> Epsilon del autoregresivo.
 
 parameters gam beta delta alfa n sg rho sge ZETA; // parametros
 
-gam=0.0139;
-beta=0.9575;
-delta=0.0262;
-alfa=0.3;
-n=0.0173;
-sg=2.5213;
-rho=0.95;
-sge=0.0079;
-VLzeta=(sge^2)/(1-(rho^2));
-zetaee=1.9174;
-ZETA=log(zetaee)-(VLzeta/2);
+gam=0.0139; //Tasa de crecimiento de la productividad per-cápita.
+beta=0.9575; //Factor de descuento
+delta=0.0262; //Factor de depreciación o tasa de depreciación del capital
+alfa=0.3; //Parámetro de función de producción
+n=0.0173; //Tasa de crecimiento de la población
+sg=2.5213; //Parametro de las preferencias que mide el peso del ocio en el bienestar de nuestros agentes.
+rho=0.95; //Parametro autoregresivo del proceso autoregresivo.
+sge=0.0079; //Desviación típica de la variable exogena
+VLzeta=(sge^2)/(1-(rho^2)); //Varianza de z, la varianza de ruido sobre 1 menos 
+zetaee=1.9174; //Constante del autoregresivo.
+ZETA=log(zetaee)-(VLzeta/2); 
 //ZETA=1.0916;
 
 model;

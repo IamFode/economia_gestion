@@ -1,0 +1,193 @@
+---
+title: "Actividad 1"
+author: "Christian Limbert Paredes Aguilera"
+output: pdf_document
+---
+
+```{r echo=FALSE}
+# librerias
+library("readxl")
+library("ggplot2")
+```
+
+```{r echo=FALSE}
+# data
+url="~/git/ciencias_sociales/economia/master/r/econometria/data/Datos_actividad_1.xlsx"
+data = read_excel(url)
+Y=data$Costes
+X=data$Producción
+```
+
+
+Teniendo en cuenta los distintos modelos que se han estudiado en el $"$Supuesto 1.2$"$ (en pdf) y utilizando los datos que se adjuntan en el fichero de excel $"$Datos actividad 1$"$,  datos de los costes de $10$ empresas (en millones de euros)  y del  su volumen  de producción (en millones de unidades), se pide:
+
+# a)
+Modelizár los costes de las empresas ($Y$) en función de  su volumen de producción ($X$). Realizar un análisis gráfico y analítico para seleccionar el mejor modelo (seguir el esquema de trabajo que se expone en el mencionado $"$Supuesto 1.2$"$. Justificar de forma detallada la elección.
+
+$$\mbox{Variables: }\begin{array}{rcl}
+  Y &=& \mbox{Costes de la empresa (millones de euros).}\\
+  X &=& \mbox{Volumen de producción (millones de unidades).}\\
+\end{array}$$
+
+### 1. Modelo Lineal.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE}
+lineal = lm(Y~X)
+cat("R2 Ajustado: ",summary(lineal)$adj.r.squared)
+ggplot(data,aes(X,Y))+
+  geom_point() +
+  geom_smooth(method = "lm", formula = y~x,color="red") +
+  labs(x="Volumen de producción", y="Costes de empresa")
+```
+
+### 2. Modelo Cuadrático.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE}
+square = lm(Y~X+I(X^2))
+cat("R2 Ajustado: ",summary(square)$adj.r.squared)
+ggplot(data,aes(X,Y))+
+  geom_point() +
+  geom_smooth(method = "lm", formula =  y~x+I(x^2),color="red") +
+  labs(x="Volumen de producción", y="Costes de empresa.")
+```
+
+### 3. Modelo de elasticidad constante o Modelo logarítmico.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+log = lm(log(Y)~log(X))
+cat("R2 Ajustado: ",summary(log)$adj.r.squared)
+ggplot(data,aes(X,Y))+
+  geom_point() +
+  geom_smooth(method = "lm", 
+              formula = y~x,
+              method.args=list(family=gaussian((link='log'))),
+              color="red")+
+              labs(x="Volumen de producción", y="Costes de empresa.")
+```
+
+### 4. El modelo log-nivel o modelo semilogarítmico.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE}
+slog = lm(log(Y)~X)
+cat("R2 Ajustado: ",summary(slog)$adj.r.squared)
+ggplot(data,aes(X,Y))+
+  geom_point() +
+   geom_smooth(method = "glm", 
+              formula = y~x,
+              method.args=list(family=gaussian((link='log'))),
+              color="red")+
+  labs(x="Volumen de producción", y="Costes de empresa.")
+```
+
+### 5. El modelo nivel-log.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE}
+nlog = lm(Y~log(X))
+cat("R2 Ajustado: ",summary(nlog)$adj.r.squared)
+ggplot(data,aes(X,Y))+
+  geom_point() +
+   geom_smooth(method = "glm", 
+              formula = y~x,
+              method.args=list(family=gaussian((link='log'))),
+              color="red")+
+  labs(x="Volumen de producción", y="Costes de empresa.")
+```
+
+
+\vspace{3cm}
+Para poder comparar los modelos 3 y 4  con los modelos 1,2 y 5 pondremos los R's cuadrados de los modelos 3 y 4 en términos equivalentes. Para ello debemos aplicar la siguiente fórmula.
+
+\vspace{.3cm}
+
+$$R2AEQ=1-\dfrac{\dfrac{\sum \left[\ln(Y)-\hat{\ln(Y)}\right]}{T-k-1}}{\dfrac{\sum\left(Y-\overline{Y}\right)^2}{T-1}}$$
+Donde:
+
+\begin{center}
+\begin{tabular}{rcl}
+  T &=& Tamaño muestral.\\
+  k &=& Número de Variables independientes.\\\\
+\end{tabular}
+\end{center}
+
+\vspace{.5cm}
+
+A continuación vemos el código general para cualquier transformación de cualquier modelo en $R$:
+
+\vspace{.5cm}
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=TRUE}
+R2AEQ = function(aY,aX,ax,ay,ak){
+  modelo = lm(aY~aX)
+  teq = 0 # Suma de cuadrados del Error en Términos Equivalentes
+  eeq = 0 # Suma de cuadrados Totales en Términos equivalentes
+  for(i in 1:length(ay)){
+    teq = teq + (ay[i]-mean(ay))^2
+    eqY = exp(modelo$coefficients[1]+modelo$coefficients[2]*ax[i])
+    eeq = eeq + (ay[i] - eqY)^2
+  }
+  Tk1 = length(ay)-ak-1
+  T1 = length(ay)-1
+  r2aeq = 1-(eeq/Tk1)/(teq/T1)
+  cat("Suma de cuadrados del error en términos equivalentes: ",teq)
+  cat("\nSuma de cuadrados Totales en términos equivalentes: ",eeq)
+  cat("\nR2 Equivalente: ",as.numeric(r2aeq))
+}
+```
+
+\vspace{.8cm}
+
+Así,
+
+\vspace{.5cm}
+
+- El R2 ajustado equivalente del modelo logarítmico es:
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE}
+R2AEQ(log(Y),log(X),log(X),Y,1)
+```
+
+\vspace{.4cm}
+
+- El R2 ajustado equivalente del modelo semilogarítmico es:
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE}
+R2AEQ(log(Y),X,X,Y,1)
+```
+
+\vspace{1.5cm}
+
+Luego de los anteriores cálculos podemos resumir los R2 de los 5 modelos dados como sigue:
+
+
+\vspace{.3cm}
+
+\begin{center}
+  \begin{tabular}{rcc}
+    Modelos && R2.\\\\
+    \hline\\
+    Modelo Lineal &:& $0.6090465$\\\\
+    Modelo Cuadrático &:& 0.5683389\\\\
+    Modelo Logaritmico &:& 0.6231227\\\\
+    Modelo Semilogaritmico &:& 0.6007766\\\\
+    Modelo Nivel-log &:& 0.6228041
+  \end{tabular}
+\end{center}
+
+\vspace{.7cm}
+
+# b)
+Una vez seleccionado el modelo definitivo, interpretar los resultados econométricos que se pueden deducir de este modelo.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+log = lm(log(Y)~log(X))
+summary(log)
+```
+
+\vspace{0.7cm}
+
+- En este caso particular escogeremos el modelo Logarítmico. 
+
+- R2 Nos permite explicar un $66.15\%$ de la variación Log Coste o un $62.31%$ si lo vemos simplemente como Costes.
+
+- Vemos que $\beta_1=0.18$ mide la variación relativa (porcentual) en los costes de la empresa (millones de euros) que se produce ante variaciones relativas (porcentuales) unitarias en Volumen de producción (millones de unidades). En otras palabras, Log Costes incrementa en un $0.18\%$, cuando Log Producción incremienta en en un $1%$.
+

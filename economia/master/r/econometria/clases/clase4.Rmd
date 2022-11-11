@@ -108,7 +108,6 @@ $$\dfrac{\partial E(PRICE)}{\partial SQFT}=
 \end{array}\right.
 $$
 
-
 Las Dummys aditivas cambian la ordenada del origen y las dummys multiplicativas cambian la pendiente.
 
 

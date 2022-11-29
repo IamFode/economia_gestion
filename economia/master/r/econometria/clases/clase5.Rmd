@@ -1,0 +1,146 @@
+---
+title: "Clase 5"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-11-25"
+output: pdf_document
+---
+
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+#library
+library(hexView)
+library(aod)
+```
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+# data
+salario = readEViews("../data/Suposto 1.3 Modelos salarios.3Edition.wf1")
+```
+
+
+
+# 7.3 Aplicando variables dummy
+
+## 7.3.1. Interacción sobre factores cualitativos
+
+Analizaremos dos factores, como lo es la raza y el sexo.
+
+$$wage = \beta_1+\beta_2 educ + \delta_1 BLACK + \delta_2 FEMALE + \gamma(BLACK\cdot FEMALE)+e\qquad (7.14)$$
+
+Por lo que
+
+$$
+E(WAGE) = 
+  \left\{
+    \begin{array}{rl}
+      \beta_1+\beta_2 EDUC & \mbox{Si el hombres es blanco}.\\
+      (\beta_1+\delta_1)+\beta_2 EDUC&\mbox{Si el hombre es negro.}\\
+      (\beta_1+\delta_2)+\beta_2 EDUC&\mbox{Si la mujer es blanca}.\\
+      (\beta_1+\delta_1+\delta_2+\gamma)+\beta_2\cdot EDUC&\mbox{Si la mujer es negra.}\\
+    \end{array}
+  \right.
+$$
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+salariosU = lm(WAGE~EDUC+BLACK+FEMALE+I(BLACK*FEMALE),data=salario)
+summary(salariosU)
+```
+
+Ahora, Realizaremos la hipótesis de conjunta de los parámetros que acompañan a raza y sexo. Para ello, observamos la ecuación dada:
+
+$$
+H_0=\delta_1=\delta_2=\gamma=0
+$$
+Se sigue que:
+
+$$WAGE=\beta_1+\beta_2EDUC+e$$
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+salariosR = lm(WAGE~EDUC,data=salario)
+summary(salariosR)
+```
+
+Este modelo lo llamamos restringido. Luego, comparamos (7.14). Si la diferencia de los R-cuadrado de los modelos es significativa, entonces los parametros raza y sexo aportan al modelo.
+
+#### Interpretación
+
+- Los hombres negros ganan 1.83 dolares por hora  menos que los hombres blancos.
+- Las mujeres blancas ganan 2.55 dolares menos que los hombres blancos.
+- La situación mas desfavorable será: $\beta_1+\delta_1+\beta_2=-1.83-2.55+0.58=3.8$ dolares que un hombre blanco.
+
+Ahora, este última interpretación es significativo?
+
+Para ello aplicamos el test de WALD con la hipótesis $H_0$ que nos planteamos
+
+$$F=\dfrac{\dfrac{SSE_R-SSE_U}{J}}{\dfrac{SSE_U}{(N-K)}} = \dfrac{\dfrac{31092.99-29307.71}{3}}{\dfrac{29307.71}{995}}= `r ((sum(salariosR$residuals^2)-sum(salariosU$residuals^2))/3)/(sum(salariosU$residuals^2)/salariosU$df.residual)`$$
+
+Donde
+$$
+  \begin{array}{rcl}
+    SSE_R &=& \mbox{Suma de cuadrado de los errores del modelo restringido.}\\
+    SSE_U &=& \mbox{Suma de cuadrado de los errores del modelo sin restricción.}\\
+    J &=& \mbox{El número de restricciones}\\
+    N &=& \mbox{Número de observaciones}\\
+    K &=& \mbox{Parámetros a estimar del modelo sin restricciones}
+  \end{array}
+$$
+
+Al valor critico de $1\%$ se tiene
+
+$$F(0.99,3,995)=`r qf(0.99,3,995)`$$
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+wald=wald.test(Sigma=vcov(salariosU),coef(salariosU),Terms = 3:5)
+wald
+```
+
+Si $F$ es mayor al valor crítico, entonces se rechaza la hipótesis nula. Lo que significa que el efecto conjunto de raza y sexo es significativa.
+
+
+Para Raza viene dada por
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+wald1=wald.test(Sigma=vcov(salariosU),coef(salariosU),Terms = 3)
+wald1
+```
+
+
+
+## 7.3.2 Factores cualitativos y varias categorias
+
+Sea,
+
+$$WAGE=\beta_1+\beta_2EDUC+\delta_1SOUTH+\delta_2MIDWEST+\delta_3WEST+e$$
+Donde la categoría noroeste es la categoría de referencia, es decir,
+
+$$
+E(WAGE)=
+  \left\{
+    \begin{array}{rl}
+      (\beta_1+\delta_3)+\beta_2EDUC & WEST\\
+      (\beta_1+\delta_2)+\beta_2EDUC & MIDWEST\\
+      (\beta_1+\delta_1)+\beta_2 EDUC & SOUTH\\
+      \beta_1+\beta_2EDUC & NORTHEAST
+    \end{array}
+  \right.
+$$
+
+A la tabla 7.14 añadimos el efecto regional
+
+$$wage = \beta_1+\beta_2 educ + \delta_1 BLACK + \delta_2 FEMALE + \gamma(BLACK\cdot FEMALE)+ \delta_3SOUTH+\delta_4MIDWEST+\delta_5WEST + e$$
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+wage = lm(WAGE~EDUC+BLACK+FEMALE+I(BLACK*FEMALE)+SOUTH+MIDWEST+WEST,data=salario)
+summary(wage)
+```
+
+Vemos que R2 mejoró pero muy poco.
+
+#### Test de Wald
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+wald2=wald.test(vcov(wage),coef(wage),Terms = 6:8)
+wald2
+```
+No es significativo al 1 ni al 5 por ciento pero si lo es al 10 por ciento.
+
+El término regional no es del todo representativo en el modelo.

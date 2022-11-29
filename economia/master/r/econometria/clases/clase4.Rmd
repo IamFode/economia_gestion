@@ -43,7 +43,7 @@ $$Wage = \beta_1 + \beta_2 EDUC + \beta_3 EXPER + \beta_4 EXPER^2 + e \qquad \qq
 
 Si calculamos el efecto marginal de un año más de experiencia, tenemos
 
-$$\dfrac{\partial WAGE}{\partial EXPER}=\beta_3 + 2\beta_4 EXPER \qquad \qquad (7.6)$$
+$$\dfrac{\partial E(WAGE)}{\partial EXPER}=\beta_3 + 2\beta_4 EXPER \qquad \qquad (7.6)$$
 
 
 ### Regresión de salarios
@@ -81,18 +81,32 @@ $$E(PRICE)=\left\{\begin{array}{ll}
   \beta_1 + \beta_2 SQFT & \mbox{cuando } D=0
 \end{array}\right.\qquad \qquad (7.10)$$
 
-Debemos cuidar de las trampas ficticias. Por ejemplo
+Debemos cuidar de las trampas ficticias. Por ejemplo, si incluimos una variable inversa a $D$:
+
+$$
+LD=
+\left\{
+  \begin{array}{cl}
+    1 & \mbox{Si el vecindario es no deseable.}\\
+    0 & \mbox{Si el vecindario es deseable.}
+  \end{array}
+\right.
+$$
+
+Por lo que,
 
 $$PRICE = \beta_1+\gamma LD + \beta_2 SQFT + e$$
 $$PRICE = \beta_1+\delta D + \gamma LD + \beta_2 SQFT + e$$
 
-El modelo sólo estimara si metemos $\beta_1$ con una variable dummy o dos variables dammy sin $\beta_1$.
+El modelo sólo estimara si metemos $\beta_1$ con una variable dummy o dos variables dummys sin $\beta_1$.
 
 ## 7.2.2. Dammy multiplicativa
 
+Sea $SQFT$ la superfice, entonces
+
 $$PRICE = \beta_1+ \beta_2SQFT + \gamma(SQFT\cdot D) + e\qquad \qquad (7.11)$$
 
-Efecto indirecto vía superficie.
+Donde se dice que tenemos un efecto indirecto vía superficie.
 
 $$E(PRICE) =\beta_1+\beta_2 SQFT+\gamma(SQFT\cdot D) 
 =\left\{\begin{array}{rr}
@@ -124,12 +138,53 @@ $$E(PRICE) = \left\{\begin{array}{rr}
 \end{array}\right.$$
 
 
-## 7.2.3 Un Ejemplo: El fecto de la universidad en precios de casas
+## 7.2.3 Un Ejemplo: El efecto de la universidad en precios de casas
 
 $$PRICE = \beta_1 + \delta UTOWN + \beta_2 SQFT + \gamma(SQFT\cdot UTOWN)+\beta_3 AGE + \delta_2 POOL + \delta_3FPLACE+e\qquad \qquad (7.13)$$
 
-UTOWN => Ubicación
+$$
+  \begin{array}{rcl}
+    UTOWN &\Rightarrow& \mbox{Ubicación}\\
+    POOL &\Rightarrow& \mbox{tiene piscina}\\
+    FPLACE &\Rightarrow& \mbox{tiene chimenea}
+  \end{array}
+$$
 
-POOL => tiene piscina
 
-FPLACE => tiene chimenea
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+library(hexView)
+precios = readEViews("../data/Supuesto 1.4 modelos precios. 3edition.wf1")
+salarios = lm(PRICE~UTOWN+SQFT+I(SQFT*UTOWN)+AGE+POOL+FPLACE,data=precios)
+names(salarios$coefficients)= c("Beta 1","UTOWN","SQFT","SQFT*UTOWN","AGE","POOL","FPLACE")
+summary(salarios)
+```
+
+Luego, sustituimos en el modelo igualando UTOWN a 1 para saber las viviendas que están próximas a la universidad:
+
+$$
+  \begin{array}{rcl}
+    PRICE &=& 24.5 + 27.453 \cdot 1 + 7.6122 \cdot SQFT + 1.2994(SQFT\cdot 1)-0.1901 \cdot AGE\\
+      &+& 4.3772 \cdot POOL + 1.6492 \cdot FPLACE\\
+      &=& 51.953 + 8.9116\cdot SQFT - 0.1901 \cdot AGE + 4.3772 \cdot POOL + 1.6492 \cdot FPLACE
+\end{array}
+$$
+
+Interpretaciones:
+
+- EL efecto directo de que una casa este cerca de la universidad será $27.453$
+- EL efecto indirecto de que una casa este cerca de la universidad será $89.116$
+- Efecto de la depreciación de los años $190\cdot 1000$ el cual se deprecia 190 dolares por año.
+- El efecto de tener piscina o no, incrementa el valor de las viviendas en $4.3772\cdot 1000 = 4377.2$ dolares.
+- El efecto de tener chimenea o no, incrementa le valor de las viviendas en $1.6492\cdot 1643.2$ dolares.
+
+La variable dependiente esta en miles por lo que multiplicamos por 1000.
+
+
+Y si sustituimos UTOWN por $0$, entonces las viviendas que estén lejanas a la universidad estarán dada por:
+
+$$PRICE = 24.5 +  7.6122 \cdot SQFT-0.1901 \cdot AGE + 4.3772 \cdot POOL + 1.6492 \cdot FPLACE$$
+
+Interpretaciones:
+
+- EL efecto indirecto de que una casa este lejos de la universidad será $76.122$
+

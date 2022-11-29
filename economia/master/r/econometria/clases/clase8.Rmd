@@ -1,0 +1,8 @@
+---
+title: "Clase 8"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-11-28"
+output: pdf_document
+---
+
+

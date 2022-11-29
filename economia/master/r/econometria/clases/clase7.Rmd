@@ -1,0 +1,181 @@
+---
+title: "Clase 7"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-11-28"
+output: pdf_document
+---
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+#library
+library(hexView)
+library(aod)
+library(broom)
+library("lmtest")
+```
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+# data
+renta = readEViews("../data/Suposto 2.1 Modelos de renda. Hill 2008.WF1")
+```
+
+# Sesgo de omisión de variables.
+
+- Se produce cuando omitimos una variable significativa para un modelo. Esto haría que un $\beta_i=0$.
+
+- Cuando se omite una variable significativa, entonces aumentamos la perturbación, lo que se tiene autocorrelación.
+
+- Podemos analizar la correlación de cada variable.
+
+### Que ocurre cuando agregas variables relevantes e irrelevantes.
+
+- Cuando agregamos una variable irrelevantes, las varianzas de los otros estimadores tienden a elevarse.
+
+### Precisión de los estimadores
+
+$$t_i=\left|\dfrac{b_i}{\sqrt{S^2 b_i}}\right|$$
+$$
+  \begin{array}{rcl}
+    b_i &=& \mbox{Valor del estimador}\\
+    \sqrt{S^2b_i} &=& \mbox{Varianza}
+  \end{array}
+$$
+
+- Cuando incluimos variables irrelevantes incrementamos la varianza $\sqrt{S^2b_i}$ y nos dará ratios $t_i$ más pequeños, es decir más imprecisos. 
+
+### Cuestiones que especificar
+
+1. Revisar la teoría económica y compararla.
+
+2. Es importante las significatitividad.
+
+3. Se debe tomar criterios de selección. Que nos permite cual es el mejor modelo.
+
+4. Test reset es menos importante que los R2 equivalentes. Teoricamente tienes buenas cualidades.
+
+#### Criterios de selección
+
+1. R2 ajustado
+
+2. AIC
+
+3. SC(BIC)
+
+- El R2 no nos vale si tiene distintos de variables explicativas, por lo que veremos el R2 cuadrado ajustado.
+
+- EL akiake information criterion (AIC), se relaciona con la suma de cuadrado de los errores, por lo que se elije el que tiene un modelo con el valor inferior.
+
+- Schwarz criterion, de igual forma es la que tiene el valor inferior.
+
+
+## El Criterio T RESET
+
+Teóriamente nos indicaría:
+
+- Si estamos omitiendo variables importantes.
+- Si estamos incluyendo variables irrelevantes.
+- Si la forma funcional es correcta o incorrecta.
+- Si se están cumpliendo los supuestos del modelo clásico.
+
+Sea,
+$$y=\beta_1+\beta_2x_2+\beta_3x_3+e$$
+de donde predecimos
+
+$$\hat{y}=b_i+b_2x^2+b_3x_3$$
+
+Luego, generamos dos modelos artificiales
+
+$$y=\beta_1+\beta_2x_2+\beta_3x_3+\gamma_1\hat{y}^2+e$$
+y
+
+$$y=\beta_1+\beta_2x_2+\beta_3x_3+\gamma_1 \hat{y}^2 + \gamma_2 \hat{y}^{3s}+e$$
+
+Después aplicando RESET, tenemos
+
+$H_0:\gamma_1=0\qquad F=5.984\quad p-value=0.015$  
+$$H_0:\gamma_1=\gamma_2=0\qquad F=3.123 \quad p-value=0.045$$
+
+Pero no nos dice cual es mejor.
+
+### Modelo 1
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+renta_fam = lm(FAMINC~HEDU+WEDU,data=renta)
+summary(renta_fam)
+AIC(renta_fam)
+BIC(renta_fam)
+```
+
+### Modelo 2
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+renta_fam1 = lm(FAMINC~HEDU,data=renta)
+summary(renta_fam1)
+AIC(renta_fam1)
+BIC(renta_fam1)
+```
+
+#### Correlación multiple modelo 3
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+cor(renta[,c("FAMINC","HEDU","WEDU","KL6","XTRA_X5","XTRA_X6")])
+```
+
+### Modelo 3
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+renta_fam2 = lm(FAMINC~HEDU+WEDU+KL6,data=renta)
+summary(renta_fam2)
+AIC(renta_fam2)
+BIC(renta_fam2)
+```
+
+### Modelo 4
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+renta_fam3 = lm(FAMINC~HEDU+WEDU+KL6+XTRA_X5+XTRA_X6,data=renta)
+summary(renta_fam3)
+AIC(renta_fam3)
+BIC(renta_fam3)
+```
+
+
+- El mejor modelo será el modelo 3, por lo que podemos tal vez utilizar el T RESET, que nos indircará si es mejor un modelo lineal o un modelo cuadrático.
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+resettest(renta_fam2 , power=2, type=c("fitted"))
+```
+
+Por lo tanto, rechazamos la hipótesis nula. Y por lo tanto la forma cuadrática es mejor que la forma lineal.
+
+#### Consideraremos un polinomio de grado 3
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+resettest(renta_fam2 , power=2:3, type=c("fitted"))
+```
+- Por lo que rechazamos la hipótesis $\gamma_1=\gamma_2=0$, de donde el modelo cúbico es superior al modelo lineal.
+- Lo que no nos da si el cuadrado o el cúbico es mejor.
+- En Conclusión a nivel práctico el Test RESET no tiene mucha utilidad.
+
+
+## Multicolinialidad 
+
+Correlación entre las distintas variables explicativas. Lo que afecta a la varianza de los estimadores.
+
+Sea,
+
+$$y=\beta_1+\beta_2x_2+\beta_3x_3+e$$
+
+La varianza de los estimadores de mínimos cuadrados para $\beta_2$ es:
+
+$$Var(b_2)=\dfrac{\sigma_2}{\left(1-r^2_{23}\right)\sum\limits_{i=1}^n \left(x_2-\overline{x}_2\right)^2}$$
+
+$r_{23}^2$ =  correlación entre variables 2 y 3
+
+- Si $r$ (correlación) es grande entonces la varianza del estimador es grande y por lo tanto no podemos realizar una buena regresión.
+
+- Si $x_2=2x_3$ entonces la relación no tiene multicolinialidad, de lo contrario $x_2=x_3$  la cual mantiene una relación.
+
+
+
+
+
+
+
+
+

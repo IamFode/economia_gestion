@@ -1,20 +1,36 @@
 ---
 title: "Actividad 2"
 author: "Christian Limbert Paredes Aguilera"
-date: "2022-10-18"
 output: pdf_document
 ---
-
-Teniendo en cuenta los modelos estudiados en el  documento "Tipos de relaciones no lineales (Chapter 7)", en concreto los modelos que  se ofrecen en el apartado "7.5.2 Interaction and Quadratic Terms", y utilizando los datos del "Supuesto 1.3", estimar el siguiente modelo:
-
-$$\ln(WAGE)=\beta_1+\beta_2EDUC+\beta_3EXPER+\beta_4EXPER^2+\beta_5(EDUC\cdot EXPER)$$
-
-A continuación estimar el efecto marginal de un año adicional de experiencia para un trabajador/una trabajadora que tenga 15 años de experiencia y un nivel de educación de 18 años.
 
 ```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
 library(hexView)
 salario = readEViews("../data/Suposto 1.3 Modelos salarios.3Edition.wf1")
+``` 
+
+### Teniendo en cuenta los modelos estudiados en el  documento "Tipos de relaciones no lineales (Chapter 7)", en concreto los modelos que  se ofrecen en el apartado "7.5.2 Interaction and Quadratic Terms", y utilizando los datos del "Supuesto 1.3", estimar el siguiente modelo:
+
+$$\ln(WAGE)=\beta_1+\beta_2EDUC+\beta_3EXPER+\beta_4EXPER^2+\gamma(EDUC\cdot EXPER)$$
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
 logWage = lm(log(WAGE)~EDUC+EXPER+I(EXPER^2)+EDUC*EXPER,data=salario)
-names(logWage$coefficients) = c("ln(WAGE)","EDUC","EXPER","EXPER^2","EDUC*EXPER")
+names(logWage$coefficients) = c("BETA 1","EDUC","EXPER","EXPER^2","EDUC*EXPER")
 summary(logWage)
 ```
+
+### A continuación estimar el efecto marginal de un año adicional de experiencia para un trabajador/una trabajadora que tenga 15 años de experiencia y un nivel de educación de 18 años.
+
+Para esto, incrementaremos el logaritmo de WAGE con respecto a EXPER. Luego, reemplazamos EXPER por 15 y EDUC por 18.
+
+$$\begin{array}{rcl}
+  \dfrac{\triangle \ln(WAGE)}{\triangle EXPER}\bigg|_{\left(\tiny \begin{array}{r} EXPER=15\\ EDUC= 18 \end{array}\right)} &=& \beta_3+2\beta_4 EXPER+\gamma EDUC\\\\
+  &=& `r logWage$coefficients[3]` + 2 \left(`r logWage$coefficients[4]`\right)15 + \left(`r logWage$coefficients[4]`\right) 18\\\\
+  &=& `r logWage$coefficients[3] + logWage$coefficients[4] * 2 * 15 + logWage$coefficients[4] * 18`
+\end{array}$$
+
+Después, multiplicamos el resultado por 100.
+
+$$\dfrac{\triangle \ln(WAGE)}{\triangle EXPER}\bigg|_{\tiny \left(\begin{array}{r} EXPER=15\\ EDUC= 18 \end{array}\right)} = `r 100*(logWage$coefficients[3] + logWage$coefficients[4] * 2 * 15 + logWage$coefficients[4] * 18)` \%  \eqsim `r round( 100*(logWage$coefficients[3] + logWage$coefficients[4] * 2 * 15 + logWage$coefficients[4] * 18),digits=2)`\%.$$
+Por lo tanto, el impacto o aumento del salario de un año adicional de experiencia en un/una trabajador/trabajadora con 18 años de educación y 15 años de experiencia es de 3.36 por ciento.
+

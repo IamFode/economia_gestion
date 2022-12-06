@@ -1,0 +1,139 @@
+---
+title: "Clase 5"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-03"
+output: pdf_document
+---
+
+### ¿Cómo comprobar si una serie es estacionaria?
+
+- CALCULO NUMÉRICO: Medias y varianzas de cada año, si varían significativamente a lo largo del tiempo, habría indicios de no estacionariedad.
+
+- VISUALMENTE:
+  
+  - Una serie estacionaria 
+    
+    - No se observa una tendencia (existe reversión  a la media)
+    - Es homoscedástica
+    - No hay efectos estacionales
+    
+  - Una serie no estacionaria
+  
+    - Puede presentar cambios en la varianza.
+    - Puede observarse tendencia.
+    - Puede haber efectos estacionales.
+    
+
+## Tratamiento de la no estacionariedad
+
+Hay dos tipos de estacionariedad, en media y varianza. No tiene porque presentarse las dos a la vez.
+
+### En caso de no estacionariedad en varianza
+
+- No presenta demasiados problemas.
+
+El objetivo es estabilizar la varianza de la serie, TRANSFORMACIóN BOX-COX:
+
+$$
+Y_t^{(\lambda)}
+  \left\{
+    \begin{array}{ll}
+      \dfrac{Y_t^\lambda - 1}{\lambda} & \lambda \neq 0\\\\
+      \ln(Y_t) & \lambda = 0
+    \end{array}
+  \right.
+$$
+
+- La más adecuada es transformación logarítmica. Pero no lo corrige del todo. No altera el comportamiento de la serie.
+
+
+### En caso de no estacionariedad en media
+
+- Tiene tendencia porque depende del pasado.
+
+- Cuando la evolución de la serie no tiene lugar alrededir de un nivel constante, presenta un comportamiento sistemático que se refleja en un TENDENCIA, una transformación que elimina la tendencia es la diferenciación.
+
+$$\triangle^d \equiv (1-L)^d \quad \Leftrightarrow \quad  \triangle Y_t \equiv Y_t-Y_{t-1}$$
+
+Variación absoluta.
+
+- Ese orden de diferencias está vinculado con el orden de raíces unitarias que existen en ese proceso. Es decir, tomaremos las diferencias en función a las raíces unitarias.
+
+- Cuantas raíces unitarias se esconde en el proceso. Es decir, tomaremos las diferencias en función a las raíces unitarias.
+
+- Cuantas raíces unitarias se esconde en el proceso.
+
+### Interpretación económica de las transformaciones:
+
+- $\triangle Y_t\neq Y_t-Y_{t-1}$ Indicador de crecimiento absoluto ($\times$ 100, en porcentaje)
+
+- $\ln y_t - \ln y_{t-1} = \dfrac{t_t-y_{t-1}}{y_{t-1}}$ Indicador de crecimiento relativo ($\times 100$, tasa crecimiento porcentual.)
+
+- Se presentará dos diferenciables cuando se tiene una hiperinflación o shock extremos.
+
+
+# Contraste de raíces unitarias
+
+Ante un proceso no estacionario no se cumplen las condiciones de regularidad necesarias para desarrollar inferencias estándar.
+
+## Contraste de Dickey Fuller (DF)
+
+Parte de un supuesto que la serie $Y_t$ se comporta siguiendo un proveso autorregresivo de orde $1$ o $AR(1)$:
+
+$$Y_t=\phi Y_{t-1}+\epsilon_t$$
+
+El contraste consistirá en $H_0: \phi < 1,$ el cual se puede llevar a cabo de varias formas. Siendo la más usual la siguiente:
+\begin{center}
+
+  Contraste $t$ de la estimación $MCO$ de $\phi\quad \Rightarrow \triangle Y_t=\alpha T_{y-1}+\epsilon_t\qquad [\alpha=\phi-1]\Rightarrow$ raíz unitaria.
+\end{center}
+
+Planteamiento del contraste: $H_0:\alpha=0$ $H_1: \alpha<0$.
+
+Estadistico de contraste: $t=\dfrac{(\hat{\alpha}-0)}{\hat{DT}(\alpha)}$
+
+- Hipótesis nula existe raíces unitarias, lo que significa que la serie es no estacionaria.
+
+- UTILIZAREMOS ADF que es el test mejorado.
+
+### Constraste Phillips-Perron
+
+
+### Metodología Box-Jenkins
+
+- Identificación (arma)
+  - Representación gráfica de la serie
+    - Gráfico temporal
+    - Correlograma
+    
+  - ¿Serie estacionaria?
+    - Si, identificar el posible ARMA
+    - No,
+      - Tomar log para estacionariedad de varianzas
+      - Diferencias para no estacionariedad en media
+      
+- Estimación 
+  - Por máxima verosimilitud
+  
+- Diagnostico
+  - Contrastes significatividad individual y conjunta de parámetros
+  - contrastes de residuos modelo (correlación, normalidad, etc) 
+  - Repetir etapas anteriores si es necesario
+  
+- Predicción
+  - A partir del modelo final perfectamente validado.
+
+
+## 3.5 Cointegración
+
+- Contexto multivariante
+- Un proceso está cointegrado si,
+  - Cada una de ellas es integrada de orde $d$ (todos el miso orden)
+  - Existe alguna combinación lineal entre ellas que es integrada de menor orden.
+  - El caso más habitual en la práctica es el de series I(1) cuya combinación lineal es $I(0)$
+  
+### ¿Cómo podemos interpretar la cointegración?
+
+- Los modelos que se vio son de corto plazo.
+
+- En conjuntos de cointegración serán a largo plazo, donde las series estarán en niveles.

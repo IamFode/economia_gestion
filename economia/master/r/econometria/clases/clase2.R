@@ -14,8 +14,6 @@ ruta="~/git/ciencias_sociales/economia/master/r/econometria/data/Datos Supuesto 
 data = read_excel(ruta)
 data = data[,1:3]
 
-
-
 # 1. Modelo Lineal 
 lineal = lm(Y~X,data=data)
 summary(lineal)

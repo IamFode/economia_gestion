@@ -1,8 +1,143 @@
 ---
 title: "Clase 8"
 author: "Christian Limbert Paredes Aguilera"
-date: "2022-11-28"
 output: pdf_document
 ---
+
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE,out.width="50%"}
+#library
+library(hexView)
+#data
+gas = readEViews("../data/Suposto 2.2. Modelos consumo gasolina. Hill 2008.WF1")
+``` 
+
+# Multicolinialidad
+
+Podemos hablar de dos tipos:
+
+#### 1. Perfecta
+Existe una relación exacta entre dos variables explicativas. En la práctica no ocurre , lo que es importante 
+
+#### 2. Elevada
+Si la varianza crece los ratios disminuyen y existe multicolinialidad.
+
+
+### Supuesto 2.2
+
+#### Tabla de correlaciones
+
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+cor(gas[,c("MPG","CYL","ENG","WGT")])
+```
+
+- la que más está relacionada en WGT. 
+
+### MODELO 1
+
+$$MPG=\beta_1 + \beta_2 CYL + e$$
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+model1 = lm(MPG~CYL,data=gas)
+summary(model1)
+```
+
+#### ¿Que ocurre si colocamos dos variables correlacionadas entre si?
+
+### MODELO 2
+
+$$MPG=\beta_1 + \beta_2 CYL + ENG + WGT + e$$
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+model2 = lm(MPG~CYL+ENG+WGT,data=gas)
+summary(model2)
+```
+El ratio de precisión es $t-value$. Debería ser alto para no tener una varianza controlada.
+
+#### ¿Cómo podemos detectar correlaciones?
+
+- La herramienta más útil son los coeficientes de correlaciones lineales. Si este coeficiente es alto, podemos decir que tiene alta correlación entre si.
+
+- El determinante del matríz de correlaciones. Es el que detecta mejor las relaciones. Cuanto mayor sea el coeficiente de correlaciones simples menor será el determinante.
+
+- Pero existe uno mejor aún, que es el determinante de la matríz de correlaciones entre los regresores.
+
+#### ¿Que hacemos para corregir?
+
+- Incrementamos la variable muestral. Pero es poco útil a nivel práctico.
+
+- Detectar la variable que tiene más correlación y eliminarla. Es la más útil a nivel práctico.
+
+- Incluir información en el modelo. Es poco útil a nivel práctico
+
+
+
+# TEMA 5.
+
+Partamos de un modelo 
+
+$$Y_t=f(X_1+X_{2t}+\ldots + X_{kt})+e_t$$
+
+donde, $Cov(X_{it},E_t) = 0$ es decir, las variables explicativas no están relacionadas con la perturbación. Ya que suponemos que no son estocásticas o no aleatorias.
+Dado que $E(X_{it})$ es constante, entonces 
+$$Cov(X_{it},E_t)=\left[X_{it}-E(X_{it})\right]\left[E_t-E(E_t)\right]=\left(X_{it}-X_{it}\right)\left[E_t-E(E_t)\right]=0\left[E_t-E(E_t)\right]=0.$$
+
+#### ¿Qué ocurriría si la Cov no es 0?
+
+$$Cov(X_{it},E_t)\neq 0.$$
+
+- Si realizamos con el método de mínimos ordinarios, nos dará que los coeficientes son inconsistentes. 
+
+- En el modelo clásico a las $X$ que no están asociadas con la perturbación se las llama variables exógenas.
+
+- Cuando $X$ está relacionada con la perturbación se la llama variable endógena. Puede ocurrir cuando son variables aleatorias o estocásticas por naturaleza.
+
+#### Ejemplo
+
+Modelo de turismo
+
+$$Y_t=f(X_{t-1},X_{1t},\ldots,X_{kt})+E_t$$
+
+Donde se incluye una variable retardada, que es una variable endógena. 
+
+$$Y_{t-1}=f(T_{t-2},X_{1t-1},\ldots,X_{kt-1})+E_{t-1}$$
+
+- Otro caso es cuando tenemos errores de medida en las variables $X$.
+
+-Omitimos variables relevantes, se puede generar endogeneidad.
+
+### Métodos de variables instrumentales.
+
+Como no podemos utilizar $Y_{t-1}$, entonces utilizamos una variables $Z_t$ donde, 
+$$Cov(Y_{t-1},Z_t)\neq 0 \qquad \mbox{y}\qquad Cov(Z_t, E_t)=0.$$
+
+- Que este relacionado con la variable que se sustituye.
+- Y no esté relacionada con la perturbación.
+
+Pero esto es difícil, por lo que debemos utilizar muchas veces más de una $Z_t$.
+
+#### Estimamos de la siguiente manera
+
+$$\hat{\beta}=\left(Z'X\right)^{-1}Z'Y$$
+
+- Se utiliza el mínimo cuadrado en dos etapas. 
+
+
+# Capítulo 10
+
+- Las variables son aleatorias.
+- Puede ocurrir que la cov es igual a 0 (exógena) o distintos de cero (endógenas).
+- Que ocurre cuando se trabaja con muestras pequeñas y grandes. Consistencia de los datos.
+- La condición de consistencia tiende al parámetro a medida que crece el tamaño muestral.
+$$\lim_{N\to 2}b_i \to \beta_i.$$
+
+Si tenemos relación entre las variables y la perturbación no podemos estimar por mínimos cuadrados ordinarios.
+
+- Los errores son los estimadores de la perturbación. 
+- Si graficamos los errores y la variable $x$ y se tiene correlación entonces no podemos usar los mínimos cuadrados ordinarios.
+
+
+
 
 

@@ -7,27 +7,26 @@ output: pdf_document
 ```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
 #library
 library(hexView)
-library(sandwich)
-library(gmm)
+library(ivreg)
 #data
-salario = readEViews("../data/datos suposto 5.2.wf1")
+Salario = readEViews("../data/datos suposto 5.2.wf1")
 ``` 
 
-## Utilizando los datos del supuesto 5.2, se pide lo siguiente:
+# Utilizando los datos del supuesto 5.2, se pide lo siguiente:
 
-### 1. Estimar por Mínimos Cuadrados Ordinarios el modelo:
+## 1. Estimar por Mínimos Cuadrados Ordinarios el modelo:
 
 $$\ln(INGRESOS)=\beta_1+ \beta_2 S+ \beta_3 EXPE+ \beta_4 SEXO + e$$
 
 ```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
-logI = lm(log(INGRESOS)~S+EXPE+SEXO,data=salario)
+logI = ivreg(log(INGRESOS)~S+EXPE+SEXO,data=Salario)
 summary(logI)
 ```
 
-#### Comentar los resultados.
+### Comentar los resultados.
 
 \begin{itemize}
-  \item El $R2$ ajustado, nos explica el $32\%$ de la variación del Log(INGRESOS) con el conjunto de variables explicativas.
+  \item El $R2$ ajustado, nos explica el $32\%$ de la variación del Log(INGRESOS) en función del conjunto de variables explicativas.
   \item Las estimaciones de todos los parámetros ($S$, $EXPE$, $SEXO$) son estadísticamente significativas.
   \item Cuando se incrementa un año de escolarización, los INGRESOS aumentan en un $11.95\%$
   \item Cuando se incrementa un año de experiencia, los INGRESOS aumenta en un $2.7\%$
@@ -38,4 +37,31 @@ summary(logI)
 
 
 
-### 2. Es posible que la variable S (años de escolarización del encuestado) esté relacionada con la perturbación (e). En consecuencia, estimar el modelo anterior utilizando en Método Generalizado de los Momentos, usando como instrumentos de "S" de manera conjunta a las variables PNT, NEGRO y HISP. Utilizar el test de Hausman para comprobar si efectivamente existe relación entre "S" y la perturbación, y el test de Hansen (J-statistic) para comprobar si PNT, NEGRO y HISP pueden considerarse instrumentos válidos de "S". Comentar todos los resultados.
+## 2. Es posible que la variable S (años de escolarización del encuestado) esté relacionada con la perturbación (e). En consecuencia, estimar el modelo anterior utilizando en Método Generalizado de los Momentos, usando como instrumentos de "S" de manera conjunta a las variables PNT, NEGRO y HISP. Utilizar el test de Hausman para comprobar si efectivamente existe relación entre "S" y la perturbación, y el test de Hansen (J-statistic) para comprobar si PNT, NEGRO y HISP pueden considerarse instrumentos válidos de "S". Comentar todos los resultados.
+
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+twoStep = ivreg(log(INGRESOS)~S+EXPE+SEXO|PNT+NEGRO+HISP+EXPE+SEXO,data=Salario)
+summary(twoStep,diagnostics=TRUE)
+```
+
+### Comentarios de los resultados
+
+\begin{itemize}
+  \item Ya que el test de Wu-Hausman nos da un p-value de $2\cdot 10^{-16}$, podemos rechazar la hipótesis nula al $1\%$. En otras palabras, afirmamos que los años de escolarización del encuestado (S) están correlacionadas con los residuos.
+  \item Al aceptar la hipótesis nula (p-value=0.645) del test de Sargan/Hansen, vemos que los instrumentos PNT, NEGRO y HISP son válidos.
+  \item Las variables S y EXPE estuvieron subestimados y $SEXO$ tuvo una leve sobreestimación. Esto al aplicar MCO.
+\end{itemize}
+
+Por lo tanto concluimos que:
+
+\begin{itemize}
+  \item El $R2$ ajustado, nos explica el $0.28\%$ de la variación del Log(INGRESOS) en función del conjunto de variables explicativas.
+  \item Las estimaciones de todos los parámetros ($S$, $EXPE$, $SEXO$) son estadísticamente significativas.
+  \item Cuando se incrementa un año de escolarización, los INGRESOS aumentan en un $17\%$
+  \item Cuando se incrementa un año de experiencia, los INGRESOS aumenta en un $3.4\%$
+  \item Para la variable dummy $SEXO$, tomemos el siguiente calculo:
+  $$100\cdot \left(e^{\beta_4}-1\right) = 100\cdot \left(e^{^{0.25 }}-1\right)=`r round(100*(exp(0.25)-1))`\%.$$
+  Por lo tanto, decimos que el hombre tiene un $28\%$ más ingresos que una mujer.
+\end{itemize}
+

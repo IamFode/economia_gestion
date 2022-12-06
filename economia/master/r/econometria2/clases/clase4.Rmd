@@ -1,0 +1,102 @@
+---
+title: "Clase 4"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-01"
+output: pdf_document
+---
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+#library
+library(readxl)
+library(forecast)
+#data
+export=read_excel("../data/exportaciones servicios_España.xlsx",sheet="Gretl",col_names = "export")
+export=ts(export,start=c(1995,1),frequency=4)
+```
+
+
+
+## 3.4 Estacionariedad, contrastes de raíces unitarias.
+
+- Si no realizamos el análisis de estacionariedad, todos los contrastes no se cumplen. Por lo que debemos realizar una transformación.
+
+- Debe ser estable en el tiempo
+
+Se debe cumplir:
+
+### Condiciones de estabilidad o estacionariedad.
+
+- La dependencia de dos instantes del tiempo, solo depende de la distancia entre ellos y no del momento en si. Es decir, Da lo mismo realizar el análisis de los años 2022 y 2021 o 1990 y 1989. 
+
+Algebráicamente hablando nos dice que la Covarianza es la misma siempre y cuando los retardos sean los mismo.
+
+$$Cov(t,t+j)=Cov(s,s+j),\qquad j=\pm 1, \pm 2, etc$$
+
+- Necesitamos que las características de nuestro proceso, como la media, varianza, etc deben ser estables a lo largo del tiempo. Ya que si no se realiza estos análisis nos será consistente.
+
+- La caracteristica tiene una oscilación constante.
+
+- Existe dos timpos de estacionariedad
+
+#### Sentido estricto
+Las funciones de distribución no cambian en el tiempo. 
+
+#### Sentido débil
+Se verifica que:
+
+- $E(Y_t)=\mu, \forall t$, tenemos que ver que la media es única.
+- $Var(Y_t)=\sigma^2, \forall t$ tenemos que ver que la varianza no cambia en el tiempo.
+- $Cov(t,t+j)=Cov(s,s+j),\quad j=0,\pm1,\pm2,etc.$
+
+Le media no depende del tiempo.
+
+Las primeras dos son las que se comprobarán.
+
+#### ¿Qué tienen en compun casí todas las series de tiempo?
+
+- Sus medias cambian a lo largo de $t$
+- La variabilidad no es la misma en todo el periodo.
+- Algunas presentan clara estacionalidad
+
+La mayoría de las series de tiempo no son estacionaria.
+
+### Forma de comprobar si una serie es estacionaria
+
+- Calculo numerico, de Medias, varianzas, etc a través del tiempo.
+
+- Visualmante no debería tener tendencia.
+
+- Función de autocorrelación. Si vemos una tendencia logairtmica negativa donde las barras siempre tomas protagonismo o no deparecen, entonces será no estacionaria.
+
+- La variación de la serie de tiempo no estacionaria será estacionaria.
+
+- Si la variabilidad es diferente en el tiempo se transforma primero en logaritmos y luego se realiza su diferencia.
+
+- Cuando utilizamos la diferencia de las exportaciones, se interpreta la tasa de exportaciones.
+
+
+# EJEMPLO
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+plot(export)
+boxplot(export)
+```
+
+ya que tiene tendencia, entonces no es estacionaria.
+
+Luego
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+acf(diff(log(export)))
+pacf(diff(log(export)))
+```
+
+Apriori vemos que es un modelo arima(3,3)
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+arima_=arima(diff(log(export)),c(3,0,3))
+arima_
+auto.arima(diff(log(export)),trace = TRUE)
+```   
+
+

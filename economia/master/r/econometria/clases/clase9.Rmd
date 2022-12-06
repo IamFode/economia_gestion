@@ -1,0 +1,296 @@
+---
+title: "Clase 9"
+author: "Christian Limbert Paredes Aguilera"
+output: pdf_document
+---
+
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+library(hexView)
+library(sandwich)
+library(gmm)
+educ = readEViews("../data/Suposto 1.3 Modelos salarios.3Edition.wf1")
+WAGE = readEViews("../data/datos suposto 5.2.wf1")
+``` 
+
+Sea,
+
+$$Y=\beta_1+\beta_1X_1+\beta_3X_2+e$$
+
+- Si $\beta_3X_2+e$ no se incluye en el modelo entonces es parte de $e$.
+
+- Si no añadimos $X_2$ en el modelo, habrá una correlación entre $X_1$ y $e$. Por lo tanto, no podremos estimar por lo mínimos cuadrados ordinarios.
+
+### Casos más usuales donde existe correlación entre las $X's$ y los errores.
+
+#### 1. 
+Tenemos un modelo de ecuaciones simultaneas: Una variable puede estar como variables explicativa y en otra puede ser una variable explicada. 
+
+Ejemplo: El precio y la producción.
+
+#### 2.
+Cuando se mide una variable con error.
+
+Por ejemplo, $x$ es la renta anual permanente y $y$ es el ahorro anual. Existe momentos que no se puede encontrar datos exactos de renta por lo que se utiliza datos aproximados, (ingresos corrientes). donde provoca un error de medida. Es decir, Si $x-u$ es un equivalente a los datos de renta anual permanente, entonces
+
+$$\begin{array}{rcl}
+  y &=& \beta_1 + \beta_2 x^* + v_i\\\\
+  &=& \beta_1+\beta_2(x-u)+v\\\\
+  &=& \beta_1+\beta_2x+(v-\beta_2u)\\\\
+  &=&\beta_1+\beta_2x+e
+\end{array}$$
+
+de donde,
+
+$$Cov(x,e)=E(xe)=E\left[(x^*+u)(v-\beta_2u)\right]=E\left(-\beta_2u^2\right)=-\beta_2\sigma^2_u\neq 0$$
+
+
+#### 3. 
+Cuando se emiten variables que están relacionadas entre ellas.
+
+Ejemplo:
+
+$$ln(WAGE)=\beta_1+\beta_2EDUC+\beta_3EXPER + \beta_4EXPER^2+e$$
+
+de donde,
+
+$$Cov(EDUC,e)\neq 0.$$
+La variable EDUC puede sestar sobre estimado, ya que parte de EDUC está en la perturbación.
+
+#### 4. 
+Incluimos valores retardados del regresando, $t-1$ y a perturbación.
+
+
+## 10.3 Estimadores basados en métodos de los momentos.
+
+- Si existe endogeneidad entre la variable y el error.
+
+Lo mismo que en estadística, trasladaremos el método de los moementos a la econométrica.
+
+- Para un modelo de regresión lineal el método de los momentos es:
+
+$$y=\beta_1+\beta_2x+e$$
+
+donde el primer momento sería,
+
+$$E(e_i)=0 \quad \Rightarrow \quad E(y_i-\beta_i-\beta_2x_i)=0.$$
+
+El segundo momentos es:
+
+$$E(xe)=0\quad \Rightarrow \quad E\left[x(y-\beta_1-\beta_2x)\right]=0.$$
+
+- Los $\beta$s no los conocemos por lo que
+
+$$\dfrac{1}{N}\sum (y_i-b_i-b_2x_i)=0$$
+
+$$\dfrac{1}{N}\sum x_i(y_i-b_i-b_2x_i)=0$$
+
+Por lo tanto,
+
+$$b_2=\dfrac{\sum (x_i-\overline{x})(y_i-\overline{y})}{\sum (x_i-\overline{x})^2}$$
+
+$$b_1=\overline{y}-b_2\overline{x}$$
+
+#### ¿Qué ocurre si la x está relacionado por la perturbación?
+
+- Debemos sustituir esa $x$ por un instrumento $z$ el cual debe cumplir:
+
+$$Cov(Y_{t-1},Z_t)\neq 0 \qquad \mbox{y}\qquad Cov(Z_t, E_t)=0.$$
+
+Que este relacionado con la variable que se sustituye. Y no esté relacionada con la perturbación.
+
+Lo que buscaremos este instrumento $Z$:
+
+$$E(ze)=0\quad \rightarrow E\left[z(y-\beta_1-\beta_2x)\right]=0$$
+
+de donde,
+
+$$\dfrac{1}{N}\sum (y_i-b_i-b_2x_i)=0$$
+
+$$\dfrac{1}{N}\sum z_i(y_i-b_i-b_2x_i)=0$$
+
+Así,
+
+$$\hat{\beta_2}=\dfrac{N\sum z_iy_i-\sum z_i\sum y_i}{N\sum z_i x_i - \sum z_i \sum x_i}=\dfrac{\sum (z_i-\overline{z})(y_i -\overline{y})}{\sum(z_i-\overline{z})(x_i-\overline{x})}$$
+
+$$\hat{\beta_i}=\overline{y}-\hat{\beta_2}\overline{x}.$$
+
+#### Estimamos la varianza de beta dos.
+
+- el estimador de la variable instrumental se aproxima a una distribución normal, siempre que la muestra sea grande.
+
+$$\hat{\beta_2}\sim N\left(\beta_2,\dfrac{\sigma^2}{r_{zx}^2 \sum (x_i-\overline{x})^2}\right)$$
+- El error de la varianza será
+
+$$\hat{\sigma}^2_{IV}=\dfrac{\sum\left(y_i-\hat{\beta}_1-\hat{\beta}_2x_i\right)^2}{N-2}.$$
+
+- Tenemos también la varianza de $\beta_2$ estimada
+
+$$Var(\hat{\beta}_2)=\dfrac{\sigma^2}{r_{zx}^2\sum (x_i-\overline{x})^2}=\dfrac{Var(b_2)}{r_{zx}^2}$$
+En la práctica tiene una varianza mayor y son consistentes.
+
+- Supongamos que $x_k$ esta relacionada con la perturbación.
+
+por lo que utilizaremos el mínimos cuadrados en dos etapas. Lo que es caso particular del método de los momentos.
+
+### Métodos de dos etapas
+
+- Estimamos la variable que este estimada con la perturbación con todas las variables explicativas mas el instrumento.
+
+Sea el modelo teórico,
+
+$$x_K=\gamma_1+\gamma_2x_2+\cdots + \gamma_{K-1}x_{K-1}+\theta_1z_1+\cdots + \theta_i z_i + v_K$$
+
+donde estimamos:
+
+$$\hat{x}_K = \hat{\gamma}_1 + \hat{\gamma}_2x_2+\cdots + \hat{\gamma}_{K-1}+\hat{\theta}_1z_1+\cdots + \hat{\theta}_iz_i.$$
+
+Y los valores estimados de $x_K$ los incluimos en la segunda etapa como instrumento,
+
+$$y=\beta_1+\beta_2x_2+\cdots +\beta_K\hat{x}_k + e^*$$
+
+- Estimaríamos también la varianza de la estimación
+
+$$\hat{\sigma}_{IV}^2 = \dfrac{\sum \left(y_i-\hat{\beta}_1 - \hat{\beta}_2 x_2 - \cdots - \hat{\beta}_K x_{Ki}\right)^2}{N-K}$$
+
+#### ¿Cómo aplicamos el método de mínimos cuadrados en dos etapas al modelo simple?
+
+- En la regresión simple. si $x$ es endogena y tenemos $L$ instrumentos:
+$$\hat{x}=\hat{\gamma}_1+\hat{\theta}_i z_1+\cdots + \hat{\theta}_iz_i.$$
+
+La condición de momoentos de dos muestras son
+
+$$\dfrac{1}{N}\sum \left(y_i-\hat{\beta}_1 - \hat{\beta}_2 x_i\right)=0$$
+$$\dfrac{1}{N}\sum \hat{x}_i\left(y_i-\hat{\beta}_1 - \hat{\beta}_2 x_i\right)=0$$
+
+- Luego, estimamos $\hat{\beta}_2$,
+
+$$\hat{\beta}_2=\dfrac{\sum (\hat{x}_i-\overline{\hat{x}})(y_i-\overline{y})}{\sum (\hat{x}_i - '\overline{\hat{x}})(x_i-\overline{x})}=\dfrac{\sum (\hat{x}_i-\overline{x})(y_i-\overline{y})}{\sum (\hat{x}_i-\overline{x})(x_i-\overline{x})}$$
+
+$$\hat{\beta}_1 = \overline{y}-\hat{\beta}_2 \overline{x}.$$
+
+- Supongamos que utilizamos un nuevo instrumento,
+
+$$E(z_2e)=E\left[z_2(y-\beta_1-\beta_2x)\right]=0$$
+- Como serían las ecuaciones de los momentos?
+
+$$\dfrac{1}{N}\sum \left(y_i-\hat{\beta}_1-\hat{\beta}_2 x_i\right)=\hat{m}_i=0$$
+
+$$\dfrac{1}{N}\sum z_{i1}\left(y_i-\hat{\beta}_1-\hat{\beta}_2 x_i\right)=\hat{m}_2=0$$
+$$\dfrac{1}{N}\sum z_{i2}\left(y_i-\hat{\beta}_1-\hat{\beta}_2 x_i\right)=\hat{m}_3=0$$
+
+#### ¿Cómo sabriamos que los isntrumentos son adecuados o no?
+
+Sea,
+
+$$x_K=\gamma_1+\gamma_2x_2+\cdots + \gamma_{K-1}x_{K-1}+\theta_1z_1+ v_K$$
+
+- Para ello debemos ver que $\theta_1\neq 0$, y $z_1$ es significativo, ya que explica bien el comportamiento de $x_K$
+
+- ¿Qué pasa si tenemos $L$ instrumentos, cómo sabemos que son adecuados?
+
+$$x_K=\gamma_1+\gamma_2x_2+\cdots + \gamma_{K-1}x_{K-1}+\theta_1z_1+ \cdots + \theta_iz_i + v_K$$
+
+donde realizariamos un contraste, $\theta_1=\theta_2 \ldots = 0.$
+
+- En la práctica si nos da un $F$ grande, entonces son instrumentos buenos y lo contrario.
+
+
+### Considerar el modelo con una variable instrumental MOTHEREDUC:
+
+Sea,
+$$EDUC=9.775 + 0.0489EXPER-0.0013EXPER^2+0.2677 MOTHEREDUC$$
+- Si dividimos $0.26/0.0311)$ que es su desviación típica, entonces nos da ratio t $8.6$ que es un ratio grande lo que es significativa, luego $t$ lo elevamos al cuadrado lo que vemos que $F>10$, así el isntrumento es fuerte.
+
+- Luego,
+
+$$\ln(WAGE)=0.1982+0.0493\hat{EDUC}+0.0449EXPER-0.0009EXPER^2$$
+
+- Lo podemos ver que el salario estaba sobre estimado. Ya que el salario solo incrementará un  $4.9\%$ pro un año de eduacación.
+
+- Pero si calculamos el ratio T $0.0493/0.0374$ que es su Desviación típica, lo que no es significativa. Por lo que tenemos que seguir mejorando metiendo un instrumento más
+
+#### Usamos FATHEREDUC
+
+$$EDUC=\gamma_i+\gamma_2EXPER+\gamma_3EXPER^2 + \theta_1MOTHEREDUC+\theta_2FATHEREDUC+v$$
+
+$$EDUC=0.0452EXPER-0.0010XPER^2 + 0.1576MOTHEREDUC+0.1895FATHEREDUC+v$$
+
+- Los dos instrumentos son muy significativos
+
+LUEGO,
+
+$$\ln(WAGE)=0.0481+0.0614\hat{EDUC}+0.442EXPER-0.0009EXPER^2$$
+
+- Si dividimos $0.0614/0.0314$ entonces nos da ratio t $2$ lo que es significativa.
+
+## TEST DE ESPECIFICACIÓN
+
+#### 1. ¿Cómo analizamos que la covarianza de xe es distintos de cero?
+Resolvemos con el test de Hausman
+
+$$Cov(xe)\neq0$$
+si es distintos de cero entonces,
+
+#### 2. ¿Cómo analizamos si la covarianza entre z y el error es igual a cero?
+
+Resolvemos con el test de SARGAN/HANSEN
+
+$$Cov(ze)=0$$
+
+Lo que se tiene que ver es si la $x$ es endógena o no.
+
+
+### EL test de Hausman
+
+- La hipótesis nula es $H_0:Cov(x,e)=0$ y $H_1:Cov(x,e)\neq 0$.
+
+- Es un test por etapas:
+
+Sean,
+
+$$y=\beta_1+\beta_2x+e$$
+
+y sea $z_1$ y $z_2$ variables instrumentales de $x$.
+
+De donde, estimamos el modelo $x=\gamma_1+\theta z_1 + \theta_2 x_2 + v$ por mínimos cuadrados y obtenemos los residuos
+
+$$\hat{v}=x-\hat{\gamma}_1 - \hat{\theta}_1 z_1 - \hat{\theta}_2 z_2.$$
+
+- Estos errores los llevo a la ecuación inicial, por lo tanto
+
+$$y=\beta_1+\beta_2x+\delta \hat{v}+e$$
+
+Luego, contrastamos si $H_0:\delta=0$ $H_1:\delta\neq 0$. Es decir, no existe o si existe correlación entre $x$ y $e$. 
+
+
+### Test de Hansen
+¿Cómo contrastamos si Cov(z,e)=0 ?
+
+- En una primera etapa, vamos a estimar $y$ en función de todas las variables explicativas y de todos los instrumentos.
+
+- En la segunda etapa calculamos todos los residuos.
+
+- Calculamos el R2
+
+
+## Ejemplo
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+logIngresos = lm(log(INGRESOS)~S+EXPE+PNT+SEXO+NEGRO+HISP,data=WAGE)
+summary(logIngresos)
+```
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+twoStep=gmm(log(INGRESOS)~S+EXPE+PNT+SEXO+NEGRO+HISP,~S+EXPE+SPAD+SEXO+NEGRO+HISP,type = "twoStep",data=WAGE)
+summary(twoStep)
+```
+
+```{r, fig.align="center", fig.height=2, fig.width=3, echo=FALSE, warning=FALSE}
+twoStep2=gmm(log(INGRESOS)~S+EXPE+PNT+SEXO+NEGRO+HISP,~S+EXPE+SPAD+SMAD+NHERMANOS+BIBLIOT+SEXO+NEGRO+HISP,type = "twoStep",data=WAGE)
+summary(twoStep2)
+```
+
+$H_0: $ los instrumentos son válidos
+
+$H:1:$ los instrumentos no son válidos.

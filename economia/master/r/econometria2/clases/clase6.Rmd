@@ -1,0 +1,90 @@
+---
+title: "Clase 6"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-03"
+output: pdf_document
+---
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+#library
+library(readxl)
+library(forecast)
+library(zoo)
+library(lmtest)
+library(ggplot2)
+library(tseries)
+#data
+export=read_excel("../data/exportaciones servicios_España.xlsx",sheet="Gretl",col_names = "export")
+export=ts(export,start=c(1995,1),frequency=4)
+ipc = read_excel("../data/IPC_España.xlsx",sheet = "Hoja1",col_names = "ipc")
+ipc = ts(ipc,start = c(2002,1),frequency = 12)
+okun = read_excel("../data/datos_Ley Okun.xlsx", sheet = "Hoja3")
+okun = okun[,2:3]
+okun=ts(okun,start = c(1980,1),frequency = 1)
+```
+
+- Los datos atípicos podrían destruir el modelo.
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+d.l.expor = ts(diff(log(export)))
+fac=acf(d.l.expor,lag.max=30)
+fac$acf
+facp = pacf(d.l.expor,lag.max = 30)
+facp$acf
+arima202=arima(d.l.expor,c(2,0,2))
+coeftest(arima202)
+```
+
+## SERIES IPC
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+plot(ipc)
+```
+Donde vemos que no es estacionaria. Por lo que transformamos la serie mediante logaritmos y su diferencia
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+d.l.ipc = ts(diff(log(ipc)))
+plot(d.l.ipc)
+```
+
+Luego, diseñamos un correlograma
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+fac=acf(d.l.ipc,lag.max=30)
+fac$acf
+```
+
+Donde vemos estacionareidad, debemos uir de este tipo de series.
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+facp = pacf(d.l.ipc,lag.max = 30)
+facp$acf
+```
+
+## Ley de Okun
+
+#### ¿Estacionaria?
+
+Primero converitmos los datos a log
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+u = ts(log(okun[,1]))
+```
+
+Luego, utilizamos el contraste de Dickey-Fuller
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+adf.test(u,k=5)
+pp.test(u)
+```
+
+
+## 3.5 Cointegración
+
+- Cada una es no estacionaria
+- Existe al menos una combinación lineal entre las variables.- lo que significa que entre esas series existe una relación de largo plazo.
+- PPA es una relación de largo plazo.
+
+##### ¿Cómo puedo saber si existe un equilibro ?
+
+### Contraste de Johansen

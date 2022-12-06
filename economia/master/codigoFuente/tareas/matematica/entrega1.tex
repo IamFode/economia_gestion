@@ -341,42 +341,312 @@
 		     & x^2-2x+y^2\leq 0&=&g_2.
 	\end{array}\right\}$$
 	Veamos que el dominio esta en $\mathbb{R}^2$. Luego, escribimos el conjunto de las soluciones factibles:
-	$$C=\left\{(x,y)\in \mathbb{R}^2:x+y-2\leq 0, x^2-2x+y^2\leq 0\right\}$$
+	\begin{tcolorbox}
+	$$C=\left\{(x,y)\in \mathbb{R}^2:x+y-2\leq 0, \; x^2-2x+y^2\leq 0\right\}$$
+	\end{tcolorbox}
 
+	Ya que, 
+	$$0+1\leq 2 \quad \land (1-1)^2+0^2\leq 1,$$
+	la región factible es:
+	\begin{center}
+	    \begin{tikzpicture}
+		\begin{axis}[scale=.5,draw opacity =.5,samples=100,smooth, 
+		  axis x line=center, 
+		  axis y line=center,
+		  ylabel = {$f(x)$},
+		  xlabel = {$x$},
+		  xlabel style={below right},
+		  ylabel style={above left},
+		  label style={font=\tiny},
+		  tick label style={font=\tiny},
+		  enlargelimits=upper] 
+		  \addplot[name path=f,domain=0:3.2,blue] {-x+2};
+                  \path[name path=axis] (axis cs:0,-1.5) -- (axis cs:-1.5,0);
+		    \addplot [
+			thick,
+			color=blue,
+			fill=blue, 
+			fill opacity=0.05
+		    ]
+		    fill between[
+			of=f and axis,
+			split
+			every segment no 0/.style={
+			    %fill=none,
+			    yellow,
+			},
+		    ];
+		  \addplot[name path=f,domain=0:2,red] {(-(x-1)^2+1)^(1/2)};
+                  \path[name path=axis] (axis cs:0,0) -- (axis cs:0,0);
+		    \addplot [
+			thick,
+			color=red,
+			fill=red, 
+			fill opacity=0.04
+		    ]
+		    fill between[
+			of=f and axis,
+			split
+			every segment no 0/.style={
+			    %fill=none,
+			    yellow,
+			},
+		    ];
+		  \addplot[name path=f,domain=0:2,red] {-(-(x-1)^2+1)^(1/2)};
+                  \path[name path=axis] (axis cs:0,0) -- (axis cs:0,0);
+		    \addplot [
+			thick,
+			color=red,
+			fill=red, 
+			fill opacity=0.04
+		    ]
+		    fill between[
+			of=f and axis,
+			split
+			every segment no 0/.style={
+			    %fill=none,
+			    yellow,
+			},
+		    ];
 
+		\end{axis}
+	    \end{tikzpicture}
+	\end{center}
 
-	Sabemos que es compacto y convexo. 
+	Donde, se ve claramente que es compacto y convexo.\\
 
-	$$\mathcal{L}(x,y,\gamma,\mu)=x^2+y^2-\gamma(x+y-2)-\mu(x^2-2x+y^2).$$
+	Ahora construimos la Lagrangiana, como sigue
+
+	\begin{tcolorbox}
+	    $$\mathcal{L}(x,y,\gamma,\mu)=x^2+y^2-\gamma(x+y-2)-\mu(x^2-2x+y^2).$$
+	\end{tcolorbox}
 
 	Los puntos de Kun Tuker deben cumplir que las derivadas parciales de la Lagranjeana respecto de las variables de función origintal se anulen. Es decir,
 
 	\begin{enumerate}[i)]
 	    \item
-		$$\begin{array}{rcl}
-		    2x-\gamma - 2\mu x+2\mu&=&0\\
+		$$\left\{\begin{array}{rcl}
+		    2x-\gamma - 2\mu x+2\mu&=&0\\\\
 		    2y-\gamma -2\mu y&=&0
-		\end{array}$$
+		\end{array}\right.$$
 
-	    \item $$\gamma(x+y-2)\geq 0,\; \; \mu(x^2-2x+y^2)\geq 0.$$ 
-	    \item $$\gamma\geq 0,\; \; \mu\geq 0, \; \; \gamma\leq 0,\; \; \mu\leq 0.$$
-	    \item $$x+y\leq 2,\; (x-1)^2+y^2\leq 1$$
+	    \item $$
+		    \left\{
+			\begin{array}{rcl}
+			    \gamma(x+y-2)& = &0\\\\
+			    \mu(x^2-2x+y^2)& = &0.
+			\end{array}
+		    \right.
+		  $$ 
+
+	    \item
+		$$
+		    \left\{
+			\begin{array}{ll}
+			     \max & \gamma\geq 0,\; \; \mu\geq 0\\\\
+			     \min & \gamma\leq 0,\; \; \mu\leq 0
+			\end{array}
+		    \right.
+		$$
+	    \item $$
+		    \left\{
+			\begin{array}{rcl}
+			    x+y&\leq& 2\\\\
+			    (x-1)^2+y^2&\leq &1
+			\end{array}
+		    \right.
+		    $$
 	\end{enumerate}
+	\vspace{.5cm}
 
-	Resolviendo tenemos,
+	Después, resolviendo para ver quienes son puntos de Kuhn Tucker:\\
 
 	\begin{itemize}
-	    \item Si $\gamma =\mu =0$. Entonces,
+	    \item Si $\gamma = \mu = 0$. Entonces,
+		$$\left\{\begin{array}{rcl}
+		    2x=0&\Rightarrow &x=0\\\\
+		    2y=0&\Rightarrow &y=0.
+		\end{array}\right.$$
+
+		Así, los puntos de Kuhn Tucker serán: 
+		\begin{tcolorbox}
+		    $$x=0,\quad  y=0.$$
+		\end{tcolorbox}
+
+	    \item Si $\lambda=0$ y $\mu\neq 0$. Entonces,
+		$$\left\{\begin{array}{rcl}
+		    2x -2\mu x + 2\mu=0&\Rightarrow &\mu=\dfrac{x}{x+1}\\\\
+		    2y-2\mu y=0&\Rightarrow &y=0.
+		\end{array}\right.$$
+
+		Luego, si $\mu\neq 0$, obligatoriamente, se tiene que
+		$$\mu(x^2-2x+y^2)=0\quad \Rightarrow \quad x^2-2x+y^2=0.$$
+		Pero como $y=0$. Entonces,
+		$$x(x-2)=0 \quad \Rightarrow \quad x=0,\qquad  x=2.$$
+		Después vemos que no será válido para $x=0$, ya que  $\mu=0$, pero por hipótesis $\mu\neq 0$. Así que los puntos de Kuhn Tucker estarán dados por:
+		\begin{tcolorbox}
+		    $$y=0,\quad,\quad x=2,\quad \quad \mu=\dfrac{2}{3}.$$
+		\end{tcolorbox}
+
+	    \item Si $\lambda \neq 0$ y $\mu=0$. entonces,
 		$$\begin{array}{rcl}
-		    2x-0 - 2\cdot 0 x+2\cdot 0&=&0\\
-		    2y-0 -2\cdot 0 y&=&0
+		    2x-\lambda = 0 &\Rightarrow & \lambda = -2x\\\\
+		    2y-2\mu y = 0 &\Rightarrow& y=0.
 		\end{array}$$
+
+		Luego, si $\lambda \neq 0$, obligatoriamente, tenemos
+		$$x+y-2=0.$$
+		Dado que, $y=0$. Entonces,
+		$$x-2=0\quad \Rightarrow \quad x=2.$$
+		Por lo tanto, los puntos de Kuhn Tucker estarán dados por:
+		\begin{tcolorbox}
+		    $$y=0,\quad x=2,\quad \lambda = -4.$$
+		\end{tcolorbox}
+
+	    \item Si $\lambda \neq 0$ y $\mu \neq 0$, entonces
+		$$\left\{\begin{array}{rcl}
+		    x+y-2=0 &\Rightarrow & x=2-y\\\\
+		    x^2-2x+y^2=0&&
+		\end{array}\right.$$
+
+		Reemplazando $x$ en la segunda ecuación, tenemos
+		$$\begin{array}{rcl}
+		    (2-y)^2-2(2-y)+y^2=0 &\Rightarrow & 2y^2-2y=0\\\\
+					 &\Rightarrow & y_1=0 \; \land \; y_2=1.
+		\end{array}$$
+		De donde,
+		$$x_1=2 \quad \land \quad x_2=1.$$
+		Luego \\
+		\begin{itemize}
+		    \item Para $x_1=2$ e $y_1=0$
+		    $$\begin{array}{rcl}
+			4-\lambda-4\mu_1+2\mu_1 = 0 &\Rightarrow & \mu_1 = \dfrac{4-\lambda}{2}\\\\
+			2\cdot 0-\lambda_1 - 2\mu_1 \cdot 0 = 0 &\Rightarrow & \lambda_1 = 0
+		    \end{array}$$
+		    Por lo tanto,
+		    \begin{tcolorbox}
+			$$x_1=2,\quad y_1=0, \quad \lambda_1 = 0, \quad \mu_1=2$$
+		    \end{tcolorbox}
+		    \item Para $x_2=1$ e $y_2=1$
+		    $$\begin{array}{rcl}
+			2-\lambda_2 -2\mu_2 + 2\mu_2 = 0 &\Rightarrow&\lambda_2 = 2\\\\
+			2-2 -2\mu_2  = 0 &\Rightarrow&\mu_2 = 0
+		    \end{array}$$
+		    Por lo tanto,
+		    \begin{tcolorbox}
+			$$x_2=1,\quad y_2=1, \quad \lambda_2 = 2, \quad \mu_2=0$$
+		    \end{tcolorbox}
+
+		\end{itemize}
+
 	\end{itemize}
+
+	Puntos de Kuhn Tucker:
+
+	$$
+	\begin{array}{*{5}{crrcc}}
+	    (x,y) & \lambda & \mu & fact & candidato\\
+	    \hline\\
+	    (0,0)&0&0&si&\min\\\\
+	    (2,0)&0&\dfrac{2}{3}&si&\max\\\\
+	    (2,0)&-4&0&si&\min\\\\
+	    (2,0)&0&2&si&\max\\\\
+	    (1,1)&2&0&si&\max\\\\
+
+	\end{array}
+	$$
+
+	Las curvas de nivel estaran dadas por el conjunto:
+	$$C_\alpha (f) = \left\{ (x,y) \in \mathbb{R} \; | \; x^2+y^2=\alpha \right\}$$
+	De donde,
+	$$y=\pm\sqrt{\alpha -x^2}$$
+
+	\begin{center}
+	    \begin{tikzpicture}
+		\begin{axis}[scale=.5,draw opacity =.5,samples=100,smooth, 
+		  axis x line=center, 
+		  axis y line=center,
+		  ylabel = {$f(x)$},
+		  xlabel = {$x$},
+		  xlabel style={below right},
+		  ylabel style={above left},
+		  label style={font=\tiny},
+		  tick label style={font=\tiny},
+		  enlargelimits=upper] 
+		  \addplot[name path=f,domain=0:3.2,blue] {-x+2};
+                  \path[name path=axis] (axis cs:0,-1.5) -- (axis cs:-1.5,0);
+		    \addplot [
+			thick,
+			color=blue,
+			fill=blue, 
+			fill opacity=0.05
+		    ]
+		    fill between[
+			of=f and axis,
+			split
+			every segment no 0/.style={
+			    %fill=none,
+			    yellow,
+			},
+		    ];
+		  \addplot[name path=f,domain=0:2,red] {(-(x-1)^2+1)^(1/2)};
+                  \path[name path=axis] (axis cs:0,0) -- (axis cs:0,0);
+		    \addplot [
+			thick,
+			color=red,
+			fill=red, 
+			fill opacity=0.04
+		    ]
+		    fill between[
+			of=f and axis,
+			split
+			every segment no 0/.style={
+			    %fill=none,
+			    yellow,
+			},
+		    ];
+		  \addplot[name path=f,domain=0:2,red] {-(-(x-1)^2+1)^(1/2)};
+                  \path[name path=axis] (axis cs:0,0) -- (axis cs:0,0);
+		    \addplot [
+			thick,
+			color=red,
+			fill=red, 
+			fill opacity=0.04
+		    ]
+		    fill between[
+			of=f and axis,
+			split
+			every segment no 0/.style={
+			    %fill=none,
+			    yellow,
+			},
+		    ];
+		  \addplot[domain=0:.5,black,opacity=.15]{(.1-x^2)^(1/2)};
+		  \addplot[domain=0:.5,black,opacity=.15]{-(.1-x^2)^(1/2)};
+		  \addplot[domain=0:.5,black,opacity=.15]{(.25-x^2)^(1/2)};
+		  \addplot[domain=0:.5,black,opacity=.15]{-(.25-x^2)^(1/2)};
+		  \addplot[domain=0:1,black,opacity=.15]{(.5-x^2)^(1/2)};
+		  \addplot[domain=0:1,black,opacity=.15]{-(.5-x^2)^(1/2)};
+		  \addplot[domain=0:1,black,opacity=.15]{(1-x^2)^(1/2)};
+		  \addplot[domain=0:1,black,opacity=.15]{-(1-x^2)^(1/2)};
+		  \addplot[domain=0:1.3,black,opacity=.15]{(1.5-x^2)^(1/2)};
+		  \addplot[domain=0:1.3,black,opacity=.15]{-(1.5-x^2)^(1/2)};
+		  \addplot[domain=0:1.7,black,opacity=.15]{(2.2-x^2)^(1/2)};
+		  \addplot[domain=0:1.7,black,opacity=.15]{-(2.2-x^2)^(1/2)};
+		  \addplot[domain=0:1.8,black,opacity=.15]{(3-x^2)^(1/2)};
+		  \addplot[domain=0:1.8,black,opacity=.15]{-(3-x^2)^(1/2)};
+		  \addplot[domain=0:2.2,black,opacity=.15]{(4-x^2)^(1/2)};
+		  \addplot[domain=0:2.2,black,opacity=.15]{-(4-x^2)^(1/2)};
+
+		\end{axis}
+	    \end{tikzpicture}
+	\end{center}
+
 
 	\textbf{Solución gráfica:}
 	Dado que el problema a optimizar está en $\mathbb{R}^2$. Podemos representarla gráficamente. Para ello,
 	\begin{enumerate}
-	    \item Representamos en $\$
+	    \item Representamos en 
 	\end{enumerate}
 	
 

@@ -1,0 +1,66 @@
+---
+title: "clase2"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-01"
+output: pdf_document
+---
+
+# Procesos Estocásticos
+
+- Es una secuencia o familia de variables aleatorias correspondientes a momentos sucesivos del tiempo.
+
+- Estos procesos cambian en el tiempo.
+
+- Por otro lado, una serie de tiempo es de todas las realizaciones estocásticas se toma una en concreto. 
+
+- Cada estadística puede cambiar todo el tiempo.
+
+## Funciones de autocorrelación
+
+- Se utiliza el método de los momentos. orden 1, orden 2
+
+
+
+\begin{itemize}
+  \item Función de medias
+  $$\mu_t=E(Y_t)$$
+  \item Función de las varianzas
+  $$Var(Y_t)=\sigma_t^2$$
+  
+  \item Funciones de autocovarianza
+  $$Y_{t,s}=Cov(Y_t,Y_s)=E(Y_t-\mu_t)(Y_s-\mu_s)$$
+  \textbf{Es la covarianza que existe entre los valores de una misma variable en disferentesmomentos del tiempo.}\\
+  
+  \item Función de autocorrelación
+  $$\rho_{t.s}=\dfrac{Cov(Y_t,Y_s)}{\sqrt{Var(Y_t)Var(Y_s)}}$$
+  \textbf{Se ve la relación que existe entre dos momentos del tiempo distintos de una misma variable.} Cuanto más cerca del 1 más correlación y cuanto mas cerca del 0 menos correlación.
+  
+\end{itemize}
+
+### Funciones de autocorrelación simple y parcial
+
+$$\rho_k=corr[Y_t,Y_{t-k}]=\phi^k,\quad \forall k\geq 1.$$
+
+Pueden tomar datos anuales, trimentrales, semanales, diarias, etc.
+
+#### Autocrrelación simple
+No se elimina los efectos que puede tener un dato intermedio entre dos lapsos de tiempo.
+
+- Cada valor de las autocorrelaciones se podrán reflejar con un gráfico.
+
+- Cada barra del gráfico se leerá de la siguiente manera: El valor actual y el inmediatamente anterior tiene una autocorrelación $x$.
+
+- Si estas barras superan un valor, se dirá que son significativas.
+
+
+#### Autocrrelación parcial
+Es la sucesión de esos valores de autocorrelación que se eliminan todos los momentos de tiempos intermedios que hay que calcular. Es decir, eliminamos lo que ocurre entre el dato de septiembre cuando se está midiendo los datos de agosto y octubre.
+
+$$\pi_j = Corr[Y_j,Y_{j-k}|Y_{j-1},\ldots,Y_{j-k+1}]$$
+
+La comparación de la autoccorelación simple y parcial será la pista de como se comportará el modelo.
+
+
+
+
+

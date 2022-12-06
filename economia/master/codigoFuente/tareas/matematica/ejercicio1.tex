@@ -267,8 +267,6 @@
 
 
 
-
-
     \item [\bfseries Problema 2.] \textbf{Resuelva los siguientes problemas de optimización:}\\\\
 	Sea $f(x,y,z)=(x-z-1)^2+(y-x)^2 + z^2.$\\\\
 
@@ -304,7 +302,7 @@
 		       -2&0&4
 		\end{pmatrix}$$\\
 
-		Sabemos que la función será convaca si y sólo si la hessiana de $f$ definida negativa y será convexa si será positiva.\\
+		Sabemos que la función será convaca si y sólo si la hessiana de $f$ definida es negativa y será convexa si será positiva.\\
 
 		Calculando los autovalores de $Hf(x,y,z):$
 
@@ -344,7 +342,7 @@
 		 \end{pmatrix} = 2 \neq 0\; \Longrightarrow rango\; J(g,h)(x,y,z)=2\; \forall(x,y,z)\in \mathbb{R}^3 \Longrightarrow \forall(x,y,z)\in S.$$
 		  Lo que implica que todo punto factible es regular.\\\\
 
-		Sabemos que el dominio de definición de $f,g,h$ es $\mathbb{R}^3$, el cual es abierto.Estas funciones son del clase 1 en $\mathbb{R}^3$. Entonces la función lagrangiana es:\\
+		Sabemos que el dominio de definición de $f,g,h$ es $\mathbb{R}^3$, el cual es abierto. Estas funciones son del clase 1 en $\mathbb{R}^3$. Entonces la función lagrangiana es:\\
 		$$L(x,y,z,\lambda,\mu) = (x-z-1)^2+(y-x)^2 + z^2 + \lambda(x+y+z+4)+\mu(x+y-z-4)$$\\
 		
 		Ahora calculamos los puntos críticos derivando la función lagrangiana.\\
@@ -395,6 +393,7 @@
 		\end{array}$$
 
 		Ahora resolvemos el sistema por casos.\\
+
 
 		\begin{enumerate}[1.]
 
@@ -470,8 +469,6 @@
 			$$x=0,\qquad y=-1,\qquad z=-1,\qquad \lambda=1,\qquad \mu=-1$$
 
 			Luego, ya que $\mu$ no cumple con la condicion de Kuhn-Tucker, entonces no es candidato para mínimo ni máximo.
-
-
 
 		\end{enumerate}
 

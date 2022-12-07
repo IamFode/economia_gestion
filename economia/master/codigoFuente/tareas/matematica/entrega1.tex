@@ -1,4 +1,7 @@
 \section*{\center \large Primera entrega}
+\begin{center}
+    Christian Limbert Paredes Aguilera.
+\end{center}
 \vspace*{1cm}
 
 \begin{enumerate}
@@ -483,10 +486,7 @@
 		$$\mu(x^2-2x+y^2)=0\quad \Rightarrow \quad x^2-2x+y^2=0.$$
 		Pero como $y=0$. Entonces,
 		$$x(x-2)=0 \quad \Rightarrow \quad x=0,\qquad  x=2.$$
-		Después vemos que no será válido para $x=0$, ya que  $\mu=0$, pero por hipótesis $\mu\neq 0$. Así que los puntos de Kuhn Tucker estarán dados por:
-		\begin{tcolorbox}
-		    $$y=0,\quad,\quad x=2,\quad \quad \mu=\dfrac{2}{3}.$$
-		\end{tcolorbox}
+		Si $x=0$, entonces $\mu=\frac{0}{0+1}=0$. Lo que se contradice con la condición dada. Por lo que, para $\lambda=0$ y $\mu\neq 0$, no existe puntos de Kuhn Tucker.\\\\
 
 	    \item Si $\lambda \neq 0$ y $\mu=0$. entonces,
 		$$\begin{array}{rcl}
@@ -548,7 +548,6 @@
 	    (x,y) & \lambda & \mu & fact & candidato\\
 	    \hline\\
 	    (0,0)&0&0&si&\min\\\\
-	    (2,0)&0&\dfrac{2}{3}&si&\max\\\\
 	    (2,0)&-4&0&si&\min\\\\
 	    (2,0)&0&2&si&\max\\\\
 	    (1,1)&2&0&si&\max\\\\
@@ -563,7 +562,7 @@
 
 	\begin{center}
 	    \begin{tikzpicture}
-		\begin{axis}[scale=.5,draw opacity =.5,samples=100,smooth, 
+		\begin{axis}[scale=.7,draw opacity =.5,samples=100,smooth, 
 		  axis x line=center, 
 		  axis y line=center,
 		  ylabel = {$f(x)$},
@@ -621,35 +620,53 @@
 			    yellow,
 			},
 		    ];
-		  \addplot[domain=0:.5,black,opacity=.15]{(.1-x^2)^(1/2)};
-		  \addplot[domain=0:.5,black,opacity=.15]{-(.1-x^2)^(1/2)};
-		  \addplot[domain=0:.5,black,opacity=.15]{(.25-x^2)^(1/2)};
-		  \addplot[domain=0:.5,black,opacity=.15]{-(.25-x^2)^(1/2)};
-		  \addplot[domain=0:1,black,opacity=.15]{(.5-x^2)^(1/2)};
-		  \addplot[domain=0:1,black,opacity=.15]{-(.5-x^2)^(1/2)};
-		  \addplot[domain=0:1,black,opacity=.15]{(1-x^2)^(1/2)};
-		  \addplot[domain=0:1,black,opacity=.15]{-(1-x^2)^(1/2)};
-		  \addplot[domain=0:1.3,black,opacity=.15]{(1.5-x^2)^(1/2)};
-		  \addplot[domain=0:1.3,black,opacity=.15]{-(1.5-x^2)^(1/2)};
-		  \addplot[domain=0:1.7,black,opacity=.15]{(2.2-x^2)^(1/2)};
-		  \addplot[domain=0:1.7,black,opacity=.15]{-(2.2-x^2)^(1/2)};
-		  \addplot[domain=0:1.8,black,opacity=.15]{(3-x^2)^(1/2)};
-		  \addplot[domain=0:1.8,black,opacity=.15]{-(3-x^2)^(1/2)};
-		  \addplot[domain=0:2.2,black,opacity=.15]{(4-x^2)^(1/2)};
-		  \addplot[domain=0:2.2,black,opacity=.15]{-(4-x^2)^(1/2)};
+		  \addplot[domain=-.8:.8,black,opacity=.15]{sqrt(.1-x^2)};
+		  \addplot[domain=-.8:.8,black,opacity=.15]{-sqrt(.1-x^2)};
+		  \addplot[domain=-.5:.5,black,opacity=.15]{(.25-x^2)^(1/2)};
+		  \addplot[domain=-.5:.5,black,opacity=.15]{-(.25-x^2)^(1/2)};
+		  \addplot[domain=-1:1,black,opacity=.15]{sqrt(.5-x^2)};
+		  \addplot[domain=-1:1,black,opacity=.15]{-sqrt(.5-x^2)};
+		  \addplot[domain=-1:1,black,opacity=.15]{(1-x^2)^(1/2)};
+		  \addplot[domain=-1:1,black,opacity=.15]{-(1-x^2)^(1/2)};
+		  \addplot[domain=-1.3:1.3,black,opacity=.15]{(1.5-x^2)^(1/2)};
+		  \addplot[domain=-1.3:1.3,black,opacity=.15]{-(1.5-x^2)^(1/2)};
+		  \addplot[domain=-2:2,black,opacity=.15]{(2.2-x^2)^(1/2)};
+		  \addplot[domain=-2:2,black,opacity=.15]{-(2.2-x^2)^(1/2)};
+		  \addplot[domain=-1.8:1.8,black,opacity=.15]{(3-x^2)^(1/2)};
+		  \addplot[domain=-1.8:1.8,black,opacity=.15]{-(3-x^2)^(1/2)};
+		  \addplot[domain=-2:2.2,black,opacity=.15]{(4-x^2)^(1/2)};
+		  \addplot[domain=-2:2.2,black,opacity=.15]{-(4-x^2)^(1/2)};
 
 		\end{axis}
 	    \end{tikzpicture}
 	\end{center}
 
+	Sólo $\exists C_\alpha(f)$ si $\alpha\geq 0$. Luego, si $\alpha=0$, entonces $C_{\alpha}(f)=l\left\{ (0,0) \right\}$. Después, si $\alpha\geq 0$, entonces la curva de nivel tiene una circunferencia $\left[(0,0),\sqrt{\alpha}\right]$. Por lo tanto, el punto $(0,0)$ es un mínimo global estricto.\\
+	Ahora, el punto máximo será la última circunferencia que corte, a la reta y circunferencia dada. Para ello, primero encontramos los puntos en los que se intersecan $x+y-2=0$ y $x^2-2x+y^2=0$, de la siguiente manera:
+	$$y=2-x \quad\mbox{de donde}\quad x^2-2x+(2-x)^2=0\quad \Rightarrow \quad x^2-3x+2=0.$$
+	Así,
+	    $$x_1=2\quad \lor \quad x_2=1$$
+	Después, reemplazamos en $y=2-x$, para encontrar los puntos de intersección:
+	\begin{tcolorbox}
+	    $$(2,0)\quad \lor \quad (1,1)$$
+	\end{tcolorbox}
 
-	\textbf{Solución gráfica:}
-	Dado que el problema a optimizar está en $\mathbb{R}^2$. Podemos representarla gráficamente. Para ello,
-	\begin{enumerate}
-	    \item Representamos en 
-	\end{enumerate}
-	
-
+	Ya que $\alpha$ es el radio de la circunferencia a optimizar, entonces reemplazamos estos últimos resultados:
+	$$
+	\begin{array}{rcl}
+	    (2,0) & \Rightarrow & \alpha=2^2+0^2=4\\\\
+	    (1,1) & \Rightarrow & \alpha=1^2+1^2=2
+	\end{array}
+	$$
+	De donde, $\alpha=4$ será el radio máximo donde se intersecan la recta y la circunferencia dada. Así, el máximo local absoluto será $(2,0)$. Por lo tanto, 
+	\begin{tcolorbox}
+	    $$
+	    \begin{array}{rcl}
+		\min &=& (0,0)\\\\
+		\max &=& (2,0).
+	    \end{array}
+	    $$
+	\end{tcolorbox}
 
 \end{enumerate}
 

@@ -234,13 +234,212 @@
 	x(0)&=&a\\
 	y(0)&=&b.
     \end{array}
-    $$
+$$}
     \vspace{0.4cm}\\
-	Respuesta.-}\; 
+	\textbf{Respuesta.-}\; Sea la matriz,
+	$$
+	\left[
+	    \begin{array}{rr}
+		a&a\\
+		b&b
+	    \end{array}
+	\right]
+	$$
+    \begin{multicols}{2}
+	de donde, los autovalores serán:
+	$$
+	\begin{array}{rcl}
+	    \det(A-\lambda I) &=&
+	    \left|
+		\begin{array}{cc}
+		    a-\lambda & a\\
+		    b & b-\lambda
+		\end{array}
+	    \right|\\\\
+			      &=& (a-\lambda)(b-\lambda)-ab\\\\
+			      &=& \lambda^2-(a+b)\lambda\\\\
+			      &=& \lambda(\lambda-a-b)\\\\
+			      &=&0.
+	\end{array}
+	$$
+	Resolviendo, tenemos que la matriz es diagonizable con autovalores:
+	\begin{tcolorbox}
+	    $$\lambda_1=0,\qquad \lambda_2=a+b.$$
+	\end{tcolorbox}
+	Con autovectores,
+	\begin{itemize}
+	    \item $\lambda_1=0.$
+		$$
+		\left[
+		    \begin{array}{cc}
+			a& a\\
+			b& b 
+		    \end{array}
+		\right]
+		\left[
+		    \begin{array}{c}
+			V_1\\
+			V_2
+		    \end{array}
+		\right]
+		=
+		\left[
+		    \begin{array}{c}
+			0\\
+			0
+		    \end{array}
+		\right]
+		$$
+		de donde,
+		$$
+		\begin{array}{rcl}
+		    aV_1+aV_2&=&0\\
+		    bV_1+bV_2&=&0.
+		\end{array}
+		$$
+		Resolviendo, tenemos:
+		$$
+		\left\{
+		    \begin{array}{rcr}
+			V_1&=&-V_2\\
+			V_2&=&V_2
+		    \end{array}
+		\right.
+		$$
+		Y por lo tanto, el autovector asociado, con $V_2=1$ es:
+		\begin{tcolorbox}
+		    $$
+		    V=
+		    \left[
+			\begin{array}{r}
+			    -1\\
+			    1
+			\end{array}
+		    \right]
+		    $$
+		\end{tcolorbox}
+
+	    \item $\lambda=a+b$
+
+		$$
+		\left[
+		    \begin{array}{cc}
+			-b& a\\
+			b& a 
+		    \end{array}
+		\right]
+		\left[
+		    \begin{array}{c}
+			V_1\\
+			V_2
+		    \end{array}
+		\right]
+		=
+		\left[
+		    \begin{array}{c}
+			0\\
+			0
+		    \end{array}
+		\right]
+		$$
+		de donde,
+		$$
+		\begin{array}{rcl}
+		    -bV_1+aV_2&=&0\\
+		    bV_1-aV_2&=&0.
+		\end{array}
+		$$
+		Resolviendo, tenemos:
+		$$
+		\left\{
+		    \begin{array}{rcr}
+			V_1&=&\dfrac{a}{b}V_2\\\\
+			V_2&=&V_2
+		    \end{array}
+		\right.
+		$$
+		Y por lo tanto, el autovector asociado, con $V_2=1$ es:
+		\begin{tcolorbox}
+		    $$
+		    V=
+		    \left[
+			\begin{array}{r}
+			    \dfrac{a}{b}\\\\
+			    1
+			\end{array}
+		    \right]
+		    $$
+		\end{tcolorbox}
+	\end{itemize}
+
+	Luego, sustituyendo en la fórmula general, tenemos que:
+	\begin{tcolorbox}
+	$$x_g(t)=\left\{\begin{array}{rcl}
+		x&=&\dfrac{c_2ae^{(a+b)t}}{b}-c_1\\\\
+		y&=&c_2e^{(a+b)t}+c_1.
+		\end{array}\right.$$
+	\end{tcolorbox}
+	$\hfill\blacksquare$
+
+
+    \end{multicols}
 
     %-------------------- 4.
     \item \textbf{\boldmath Dibuja el diagrama de fase y esboza la solución de las ecuaciones diferenciales:
     $$x'=x(x-3)(x+2).$$\\
-	Respuesta.-}\; 
+	Respuesta.-}\; Las funciones de equilibro estarán dada por:
+	\begin{tcolorbox}
+	    $$x_1=0,\quad x_2=3,\quad x_3=-2.$$
+	\end{tcolorbox}
+	$$
+	\begin{array}{rcr}
+	    \mbox{Si} &x>3,&\mbox{entonces la función es positiva.}\\
+	    \mbox{Si} &0<x<3,&\mbox{entonces la función es negativa.}\\
+	    \mbox{Si} &-2<x<0,&\mbox{entonces la función es positiva.}\\
+	    \mbox{Si} &x<-2,&\mbox{entonces la función es negativa.}\\
+	\end{array}
+	$$
+
+    Ahora, esbozamos la solución de las ecuaciones diferenciales con el diagrama de fase:
+
+	\begin{center}
+	    \begin{tikzpicture}[scale=0.7]
+	    \end{tikzpicture}
+    \end{center}
+
+
+	\begin{center}
+	    \begin{tikzpicture}
+		\draw[-] (-1,0) -- (-1,9);
+		% plot only arrow tip
+		\draw[->] (-1,4) -- (-1,8);
+		\draw[<-] (-1,5.5) -- (-1,7);
+		\draw[->] (-1,0) -- (-1,3);
+		\draw[<-] (-1,1) -- (-1,2.4);
+
+		\draw[fill=black] (-1,2)node[left]{\footnotesize$x_1=-2$} circle (2pt);
+		\draw[fill=black] (-1,4)node[left]{\footnotesize$x_2=0$} circle (2pt);
+		\draw[fill=black] (-1,7)node[left]{\footnotesize$x_3=3$} circle (2pt);
+
+		\begin{axis}[scale=1.6,draw opacity =.5,samples=100,smooth, 
+		  axis x line=center, 
+		  axis y line=center,
+		  ylabel = {$x$},
+		  xlabel = {$t$},
+		  xlabel style={below right},
+		  ylabel style={above left},
+		  label style={font=\tiny},
+		  tick label style={font=\tiny},
+		  enlargelimits=upper] 
+		  \addplot[name path=f,domain=-2:2,blue] {3};
+		  \addplot[name path=f,domain=-2:2,blue] {-2};
+		  \addplot[name path=f,domain=-2:2,blue] {0};
+		  \addplot[name path=f,domain=-2:2,black] {exp(x)+3.1};
+		  \addplot[name path=f,domain=-2:2,black] {-exp(x)-2.1};
+		  \addplot[name path=f,domain=-2:2,black] {1/(1+exp(-2*x))*3};
+		  \addplot[name path=f,domain=-2:2,black] {-1/(1+exp(-2*x))*2};
+	      \end{axis}
+	    \end{tikzpicture}
+	\end{center}
 
 \end{enumerate}

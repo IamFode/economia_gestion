@@ -1,0 +1,8 @@
+---
+title: "Clase 3"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-11"
+output: pdf_document
+---
+
+# 4. Sistemas de ecuaciones diferenciales lineales

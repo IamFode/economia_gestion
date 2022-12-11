@@ -1,0 +1,22 @@
+---
+title: "clase 7"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-07"
+output: pdf_document
+---
+
+## Cointegración
+
+- Son relaciones de equilibro en varias variables.
+
+- La relación de cointegración se expresa las variables en niveles, nunca diferenciadas a largo plazo.
+
+- El largo plazo se mide en niveles, ya que si la medimos en diferenciación estaríamos midiendo la variación cuando se tiene una unidad más de tiempo, es decir a corto plazo.
+
+- Se quiere saber si entre mis variables habrá relaciones de equilibrio. Esto con el contraste de Engle-Granger. Pero estos constraste son antiguas y existen mejores técnicas con mejores propiedades.
+
+- El contraste de Johansen, es una alternativa mejor a Engle-Granger. Consiste en conocer cuanta relaciones de coinregrantes existen entre mis variables.
+
+- En caso de que existan, cuantas hay?
+
+- 

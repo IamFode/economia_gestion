@@ -1,0 +1,238 @@
+---
+title: "clase 1"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-07"
+output: pdf_document
+---
+
+# 1. Concepto de ecuación diferencial
+
+- Las variables son funciones
+
+- Si tenemos $x'(t)=2$, las soluciones erán todas las rectas de pendiente $2$. Donde dos soluciones no se cortan.
+
+- Analíticamente, la ecuación diferencial $x'(t)=2$. tiene como solución: 
+
+$$x'=2\quad \Rightarrow \quad x(t)=\int 2 \; dt = 2t+C$$
+
+Entonces las soluciones generales serán:
+
+$$gral\; x(t)=2t+C,\quad C\in \mathbb{R}.$$
+
+- En resumen. la solución de una ecuación diferencial es su integral.
+
+- El problema está cuando en la ecuación diferencial aparece $x'$ como función de $x$.
+
+- Por ejemplo, Supongamos que la tasa de cambio es igual al valor de la variable $x'(t)=x(t).$ Donde las funciones $x(t)=e^t, x(t)=2e^t, x(t)=-\frac{1}{2}e^t$, verifican esta ecuación. Sólo esta familia cumple la condición.
+
+
+# 2. Ecuaciones diferenciales de orden 1
+
+## Ecuaciones de primer orden
+
+#### Definición
+Una ecuación diferencial (e.d.) de primer orden tiene una expresión general de la forma $x'=f(t,x)$, donde $f:\mathbb{R}^2\to \mathbb{R}$
+
+#### Definición
+Una función $u:I \subset \mathbb{R}\to \mathbb{R}$ es una solución de la ecuación $x'=f(t,x)$, si $u$ es derivable en $I$ y verifica $u'(t)=f\left[t,u(t)\right]$ para todo $t\in I$. Si además, para $t_o\in I$, $u(t_o)=x_o$, entonces decimos que $u$ es la solución que verifica el dato inicial $(t_o,x_o)$.
+
+##### Teorema (existencia y unicidad de soluciones)
+Consideremos la ecuación diferencial $x'=f(t,x)$ y supongamos que $f$ y $\dfrac{\partial f}{\partial x}$ son funciones continuas en un dominio abierto $A\subset \mathbb{R}^2$. Para cada $(t_o,x_o)\in A$, existe una única solución de la ecuación diferencial, definida en un entorno de $t_o$, que verifica el dato inicial $(t_o,x_o)$.
+
+## Ecuaciones de variables separadas
+
+#### Expresión general 
+$x'=h(t)g(t)$, donde $h$ y $g$ son funciones continuas.
+
+##### Solución
+Lo que tenemos que hacer es pasar un lado las $x$ y del otro lado las $t$. Es decir,
+$$x'=h(t)g(x)\quad \Rightarrow \quad \dfrac{x'}{g(x)}=h(t)$$
+Si $g(x)\neq 0$ para todo $x$, podemos escribir
+$$\dfrac{dx}{dt}=h(t)g(x)\quad \Leftrightarrow \quad \dfrac{dx}{d(x)}=h(t)\; dt \quad \Leftrightarrow \quad \int \dfrac{dx}{g(x)}=\int h(t)\; dt + C$$
+
+
+- Para este tipo de solución $x$ se resuelve como variable.
+Resolviendo las integrales, obtenemos la solución general definida de forma implícita.
+
+
+### ejemplos
+
+#### 1
+Para resolver la ecuación $x'=ax$, resolvemos
+
+$$
+\begin{array}{rcl}
+  \displaystyle\int \dfrac{dx}{x}&=&\displaystyle\int a\;dt+k\\\\
+  ln|x|&=&at+k\\\\
+  |x|&=&e^{at+k}\\\\
+  |x|&=& e^k\cdot e^{at}\\\\
+  x&=&ce^{at},\quad c\in \mathbb{R}.
+\end{array}
+$$
+
+
+
+y obtenemos la solución general, $\ln|x|=at+k$, es decir. relacionamos $x$ con $t$, 
+$$x=t^k e^{at}=ce^{at}.$$
+
+#### 2 
+Para resolver $x'=\dfrac{3t^2+2}{5x^4+3x^2+1}$, resolvemos
+$$
+\begin{array}{rcl}
+  \dfrac{dx \left(5x^4+3x^2+1\right)}{dt} &=& 3t^2+2\\\\ 
+   \left(5x^4+3x^2+1\right) dx &=& (3t^2+2)\; dt\\\\ 
+  \displaystyle\int \left(5x^4+3x^+1\right)\; dx &=& \displaystyle\int \left(3t^2+2\right)\; dt + c\\\\
+  x^5+x^3+x&=&t^3+2t+c
+\end{array}
+$$
+
+Que es la solución implícita general de la ecuación.
+
+#### 4.
+Sea $X=X(t)$ el producto nacional, $K=K(t)$ el stock de capital y $N=N(t)$ la población de un país en el instante $t$. Supongamos además que para todo $t\geq 0$,
+$$i)\; X=AN^{\alpha}K^{1-\alpha},\quad ii) K'=\sigma X, \quad iii)N=N_oe^{\gamma t}$$
+donde $A, \alpha,\sigma,N_o$ y $\gamma$ son constantes positivas y $\alpha\in (0,1)$. Para estas ecuaciones deduce una e.d. en $K=K(t)$ y encuentre una solución cuando $K(0)=K_o>0.$
+
+Respuesta.- Si sustituimos iii) en i) y luego i) en ii) obtenemos la ecuación en variables separadas
+$$K'=\sigma AN_o^{\alpha \gamma t}K^{1-\alpha}$$
+y procediendo como en los ejemplos anterior. resolvemos integrando respecto de cada variable.
+
+$$
+\begin{array}{rcl}
+  \dfrac{dK}{dt}K^{\alpha-1}&=&\sigma AN_o^{\alpha \gamma t}\\\\
+  K^{\alpha-1}\; dK&=&\sigma AN_o^{\alpha \gamma t}\; dt\\\\
+  \displaystyle\int K^{\alpha-1}dK &=& \displaystyle\int \sigma A N_o^{\alpha \gamma t}\; dt + c\\\\
+  \dfrac{K^\alpha}{\alpha}&=&\sigma A N_o^\alpha \dfrac{e^{\alpha\gamma t}}{\alpha \gamma} + c\\\\
+  K^\alpha&=& \dfrac{1}{\gamma}\sigma AN_o^\alpha e^{\alpha \gamma t}+c.
+\end{array}
+$$
+
+Donde se tiene la solución general.
+
+Luego calculamos la $c$, sustituyendo en la ecuación $t=0$ y $k=k_o$. de donde 
+
+$$c=K_o^\alpha - \left(\dfrac{\alpha}{\gamma}\right)AN_o^\alpha$$ 
+de lo que resulta que la solución que verifica el dato inicial $K(0)=K_o$ es:
+
+$$K(t)=\left[K_o^\alpha + \dfrac{1}{\gamma}\sigma AN_o^\alpha \left(e^{\alpha\gamma t}-1\right)\right]^{\frac{1}{\alpha}}$$
+
+## Ecuaciones diferenciales lineales de primer orden
+
+#### Definición
+Una ecuación diferencial lineal de primer orden tiene la forma general
+$$x'+a(t)x=b(t)$$
+donde $a$ y $b$ son funciones continuas en algún intervalo
+
+- Son lineales en $x'$ y $x$. 
+
+En el caso de coeficientes constantes $x'+ax=b$ con $a,b\in \mathbb{R}$, si multiplicamos la ecuación por $e^{at}$, resulta $x'e^{at}+ae^{at}x = be^{at}$, por lo que podemos escribir $\dfrac{d}{dt}\left(xe^{at}\right)=ba^{at}$. Integrando, tenemos que $xe^{at}=\dfrac{b}{a}e^{at}+c$, de aquí,
+$$x_g(t)=ce^{-at}+\dfrac{b}{a}.$$
+
+
+- Al multiplicar $e^{at}$ nos da una pista para resolver casos generales
+- Multiplicamos $e^{at}$ para que nos quede la derivada de un producto. Es decir.
+$$e^{at}x'+axe^{at}=xe^{at}=be^{at}\quad \Rightarrow \quad xe^{at}=\int be^{at}\; dt.$$
+
+- El método es multiplicar $e^{at}$.
+
+#### Teorema 
+La solución general de la ecuación diferencial $x'+ax=b$ es de la forma
+$$x_g(t)=ce^{-at}+\dfrac{b}{a}.$$
+
+##### Ejemplo
+Si $x'+2x=5$ entonces la solución general es $x_g(t)=c^{2t}+\dfrac{5}{2}.$
+
+Si $x'+2x=0$ entonces la solución general $x_g(t)=ce^{-2t}$.
+
+#### Observaciones
+
+- La función $x(t9=\dfrac{b}{a}$ también es una solución de esta ecuación, para el caso $c=0$.
+
+- $x(t)=\dfrac{b}{a}$ se denomina solución de equilibro, o solución estacionaria.
+
+- Si $a>0$, $\lim\limits_{t\to \infty} x(t)=\dfrac{b}{a}$. En este caso decimos que la ecuación diferencial es estable.
+
+### Ejemplo
+Sean $D(p)=a-bp$ y $S(p)=-c+dp$ las funciones de demanda y oferta, respectivamente de una mercancía cuando el precio de la misma es $p$. Supongamos que $a,b,c,d>0$ y que el precio $p=p(t)$ varía con el tiempo de modo que $p'$ es proporcional al exceso de demanda, es decir, $p'=\lambda\left[D(p)-S(p)\right]$. Calcula el precio de la mercancía a lo largo del tiempo.
+
+Escribimos la e.d.
+$$p'=\lambda\left[a+c-(b+d)p\right]$$
+
+o 
+
+$$p'\lambda(b+d)p=\lambda(a+c), \lambda > 0.$$
+
+Esta es una ecuación lineal con coeficientes constantes cuya solución es
+$$p(t)=ke^{-\lambda(b-d)t}+\dfrac{a+c}{b+d}$$
+
+como $\lambda(b+d)>0,$ $\lim\limits_{t\to \infty}p(t)=\dfrac{a+c}{b+d}=P_e$ por lo que la ecuación es estable.
+
+# Ecuaciones lineales. Caso general.
+
+#### 1.
+De igual modo, para el caso general, si multiplicamos la ecuación $x'+a(t)x=b(t)$ por un término de la forma $e^{A(t)}$, resulta
+$$x'e^{A(t)}+a(t)xe^{A(t)}=b(t)e^{A(t)}.$$
+
+donde $a(t)$ y $b(t)$ son funciones que depende de $t$.  
+
+
+
+#### 2.
+Si elegimos $A(t)$ de forma que $A'(t)=a(t)$, por ejemplo $A(t)=\int a(t)\; dt$. Es decir, si $a'(t)=a(t)$, entonces $x'e^{a(t)}+a(t)xe^{a(t)}$ que es la derivada del primero por la segunda sin derivar más la primera sin derivar por la derivada de la segunda nos queda
+
+$$\dfrac{d}{dt}(xe^{A(t)})=b(t)e^{A(t)},$$
+
+#### 3.
+Integrando tenemos
+$$xe^{A(t)}=\int b(t)e^{A(t)}\; dt + c,$$
+
+#### 4.
+de aquí,
+
+$$x(t)=ce^{-A(t)}+e^{-A(t)}\int b(t)e^{A(t)}\; dt,$$
+donde
+$$A(t)=\int a(t)\; dt.$$
+
+
+### Teorema
+La solución general de la ecuación $x'+a(t)x=b(t)$ es de la forma 
+$$x_g(t)=ce^{-\int a(t)\; dt}+e^{-\int a(t)\; dt}\int b(t)e^{\int a(t)\; dt}\; dt$$
+
+### Ejemplo
+Resuelve la ecuación lineal $x'-\dfrac{1}{t}x=t$
+
+Elegimos $A(t)=\int - \dfrac{1}{t}\; dt = -\ln t$, así $e^{-\ln t}=e^{-\ln t}=e^{\ln t^{-1}}=t^{-1}=\dfrac{1}{t}$. Multiplicamos la ecuación por $\dfrac{1}{t}$ y resulta $\dfrac{1}{t}x'-\dfrac{1}{t^2}x=1$, lo que equivale a $\dfrac{d}{dt}\left(\dfrac{1}{t}x\right)$. Multiplicamos $\dfrac{1}{t}$ para que la derivada de $\dfrac{1}{t}$ sea $-\dfrac{1}{t^2}$. 
+
+Finalmente, integrando y despejando tenemos,
+\begin{center}
+$\dfrac{1}{t} x=t+c$, por lo tanto $x(t)=ct+t^2$.
+\end{center}
+
+Si queremos que pase por $(1,1)$, entonces 
+
+$$1=c+1\quad \Rightarrow \quad c=0.$$
+Así, la solución particular es
+$$x_p=t^2.$$
+
+### Ejemplo
+Resuelva la ecuación que aparece en un modelo estudiado por Hansen
+$$e'(t)=a\left[\alpha \cos t +\beta -\lambda -(1+\mu)e^{t}\right].$$
+
+donde $a,\alpha,\beta,\lambda$ y $\mu$ son constantes, $a\neq 0$, $\alpha\geq 0$, $\mu>0$.
+
+Reordenando se tiene,
+
+$$e'(t)=a(1+\mu)e(t)=\alpha a \cos t + a(\beta-\lambda).$$
+
+después,  $A(t)=\int a(1+\mu)\, dt=a(1+\mu)t$, luego multiplicando por $e^{a(1-\mu)t}$, 
+$$e'(t)e^{a(1-\mu)t}+a(1+\mu)e^{a(1-\mu)t}e(t)=\alpha e^{a(1+\mu)t}\cos t a(\beta-\lambda)e^{a(1-\mu)t}.$$
+
+Así,
+
+$$\dfrac{d}{dt}\left[e(t)e^{a(1+\mu)t}\right]=\alpha a e^{a(1+\mu)t}\cos t + a(\beta-\lambda)e^{a(1+\mu)t}.$$
+
+Si resolvemos la integral del segundo miembro en dos partes, tenemos
+$$\int \cos te^{a(1+\mu)t}\; dt = \dfrac{a^{a(1+\mu)t}}{a^2(1+\mu)^2+1}\left[\sin t + a(1+\mu)\cos t\right]+c_1$$
+
+
+

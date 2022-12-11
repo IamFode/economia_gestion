@@ -1,0 +1,107 @@
+---
+title: "clase 2"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-09"
+output: pdf_document
+---
+
+# Ecuaciones diferenciales de segundo orden
+
+## Introducción
+¿Cómo resolvemos las ecuaciones de segundo orden?, integrando la ecuación dos veces. Por ejemplo:
+
+$$x''=2 \quad \Rightarrow \quad \int 2\; dt = 2t+c_1 \quad \Rightarrow \quad \int (2t+c_1)\; dt = t^2+c_1t+c_2.$$
+
+- Las funciones $x_1(t)=\sin t$ e $x_2(t)=\cos t$ verifican la ecuación diferencial de segundo orden $x''+x=0.$
+
+- Cada una de las funciones que verifican las ecuaciones se llaman solución particular de la ecuación $x''+x=0$. Por ejemplo:
+$$x_{p_1}=2\sin t - 5\cos t, \qquad x_{p_2}-\dfrac{7}{2}\sin t.$$
+- Con mayor generalidad, la función
+
+$$x_g(t)=c_1\sin t + c_2\cos t, \mbox{ para todo } c_1,c_2\in \mathbb{R}.$$
+verifica esta ecuación. Este conjunto de funciones se denomina solución general de la ecuación $x''+x=0$, porque contiene todas las soluciones de la ecuación.
+
+- Dado un punto $(t_o,x_o,x_o')\in \mathbb{R}^3$, existe una, y solo una, solución en $x_g$ que pasa por el punto $(t_o,x_o)$ y tiene pendiente $m=x_o'$ en este punto (es decir, $x(t_o)=x_o$ y $x'(t_o)=x_o'$).
+
+## Definiciones
+#### Definición
+Una ecuación diferencial de orden 2 en forma normal es una ecuación del tipo 
+$$x''=f(t,x,x'),$$
+donde $f:\mathbb{R}^3\to \mathbb{R}$ y $x=x(t)$ es una función cualquiera de una variable real.
+
+#### Definición
+Una función $u:I\subset \mathbb{R}\to \mathbb{R}$ es una solución, o solución particular, de la ecuación $x''=f(t,x,x')$, si $u$ es derivable hasta el orden 2 en $I$, y verifica
+$$u''(t)=f\left[t,u(t),u'(t)\right] \mbox{ para todo } t\in I.$$
+Si además $u$ verifica $u(t_o)=x_o, u'(t_o)=x_o^1$, decimos que $u$ es la solución de la ecuación diferencial que verifica el dato inicial $(t_o,x_o,x_o^1)$
+
+## Ecuaciones diferenciales lineales de orden 2
+#### Defunición
+Una ecuación diferencial lineal de orden 2 es de la forma
+$$x''+a(t)x'+b(t)x=g(t).$$
+donde $a(t),b(t),g(t)$ son funciones continuas. La ecuación, 
+$$x''+a(t)x'+b(t)x=0$$
+se denomina ecuación homogénea asociada a la ecuación original o completa.
+
+#### Teorema
+Si $x_1(t),\ldots, x_k(t)$ son soluciones de la ecuación diferencial homogénea, la función $x(t)=\sum\limits_{j=1}^k x_jx_j(t)=c_1x_1(t)+\cdots + c_kx_k(t)$ también es una solución de la ecuación diferencial homogénea, para todo $c_1,\ldots,c_k\in \mathbb{C}.$
+
+#### Definición
+Las funciones $x_1(t),x_2(t)$, definidas en $I=(a,b)$ son linealmente independientes si, $x_1x_1(t)+c_2x_2(t)=0$ para todo $t\in I$, entonces $c_1=c_2=0.$
+
+Intuitivamente, dos funciones son independientes  si una no es un múltiplo constante de la otra. Es decir, si no puedo poner la ecuación $x_1x_1(t)+c_2x_2(t)=0$ de la siguiente manera,
+
+$$x_1(t)=\dfrac{c_2}{c_1}x_2(t).$$
+
+#### Definición
+Un conjunto de 2 soluciones de la ecuación homogénea de orden 2, $x_1(t),x_2(t)$. linealmente independientes en un intervalo $I$, se denomina sistema fundamental de soluciones de la ecuación homogenea.
+
+#### Teorema
+Si $x_1(t),x_2(t)$ son 2 soluciones linealmente independientes de la ecuación diferencial homogénea, $x''+a(t)x'+b(t)x=0$, entonces la solución general de esta ecuación es,
+$$x_h(t)=c_1x_1(t)+c_2x_2(t),$$
+para todo $c_1,c_2\in \mathbb{R}.$
+
+#### Teorema
+Si $x_1(t),x_2(t),$ son 2 soluciones linealmente independientes de la ecuación diferencial lineal homogénea, $x''+a(t)x'+b(t)x=0$, y $x_p(t)$ es una solución particular de la ecuación completa, entonces la solución general de esta ecuación es de la forma 
+$$x_g(t)=c_1x_1(t)+c_2x_2(t)+x_p(t).$$
+
+## Segundo orden con coeficientes constantes.
+
+- Consideremos la ecuación homogénea $x''+ax'+bx=0, a,b\in \mathbb{R}$, y probamos con $x(t)=e^{\lambda t},\lambda \in \mathbb{R}$, como posible solución.
+
+$$x'(t)=\lambda e^{\lambda t},\quad x''(t)=\lambda^2 e^{\lambda t},$$
+$$\lambda^2e^{\lambda t}+a\lambda e^{\lambda t}+be^{\lambda t}=e^{\lambda t}\left(\lambda^2+a\lambda+b\right)=0$$
+
+- Tenemos que, $e^{\lambda t}$ es solución de la ecuación $x''+ax'+bx=0$, si y sólo si, $\lambda$ es raíz de la ecuación
+$$\lambda^2+a\lambda + b = 0.$$
+- Esta ecuación se denomina ecuación característica de la ecuación diferencial $x''+ax'+bx=0$, y la función polinómica $p(\lambda)=\lambda^2+a\lambda + b,$ polinomio característico asociado a la ecuación diferencial.
+
+- Tres posibles casos para un polinomio.
+  - Que tenga dos raíces distintas, aplicando la fórmula.
+  
+#### Ejemplo
+
+### I. Raíces características reales y distintas 
+$$a^2-4b>0.$$
+
+Dada la ecuación $x''-4x=0$, la ecuación caracteristica es $\lambda^2-4=0$ que tiene dos raíces reales $\lambda_1=2$ e $\lambda_2=-2$, la solución general es
+$$x_g(t)=c_1e^{2t}+c_2e^{-2t}.$$
+
+### II Dos raíces reales e iguales 
+$$a^2-4b=0$$
+
+#### Ejemplo
+Calcula la solución general de la ecuación $x''-4x'+4x=0$
+La ecuación característica, $\lambda^2-4\lambda +4=0$ tiene raíz doble en $\lambda=2$, por lo que la solución general es de la forma,
+$$x_g(t)=c_1e^{2t}+c_2te^{2t}.$$
+
+### III. Dos raíces complejas
+$$a^2-4b<0.$$
+
+### Métodos de los coeficientes indeterminados
+
+#### Ejemplo
+Resuelve la ecuación $x''-4x'+4x=t^2+2$
+
+La solución particular deberia ser de la forma $x_p(t)$
+
+

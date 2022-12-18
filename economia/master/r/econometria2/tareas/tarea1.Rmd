@@ -1,0 +1,34 @@
+---
+title: "tarea 1"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-16"
+output: pdf_document
+---
+
+```{r}
+library(WDI)
+library(forecast)
+library(stargazer)
+```
+
+```{r}
+bo = WDI(country = "CO", indicator = c("SL.UEM.TOTL.ZS","TM.VAL.ICTG.ZS.UN","BX.KLT.DINV.WD.GD.ZS","NV.IND.TOTL.CD","NE.GDI.TOTL.CD"), start = 2000, end = 2020,extra=FALSE,language = "es")
+bo[,c("country","iso2c","iso3c","year")] = list(NULL)
+colnames(bo) = c("Y","TIC","I","IN","FBC")
+write.csv(bo,file="../data/bolivia.csv")
+bo["lnIN"] = log(bo["IN"])
+bo["lnFBC"] = log(bo["FBC"])
+```
+
+```{r}
+desempleo_ts=ts(bo$desempleo)
+auto.arima(desempleo_ts,trace = TRUE)
+```
+
+```{r}
+summary(bo)
+stargazer(bo[c("Y","TIC","I","lnIN","lnFBC")],type="latex",title="Estadísticos descriptivos básicos",summary = TRUE,median = TRUE)
+```
+
+```{r}
+```{r}

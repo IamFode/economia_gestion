@@ -13,10 +13,39 @@ output: pdf_document
 
 - El largo plazo se mide en niveles, ya que si la medimos en diferenciación estaríamos midiendo la variación cuando se tiene una unidad más de tiempo, es decir a corto plazo.
 
-- Se quiere saber si entre mis variables habrá relaciones de equilibrio. Esto con el contraste de Engle-Granger. Pero estos constraste son antiguas y existen mejores técnicas con mejores propiedades.
+- Se quiere saber si entre mis variables habrá relaciones de equilibrio. Esto con el contraste de Engle-Granger. Pero estos contraste son antiguas y existen mejores técnicas con mejores propiedades.
 
-- El contraste de Johansen, es una alternativa mejor a Engle-Granger. Consiste en conocer cuanta relaciones de coinregrantes existen entre mis variables.
+### Contraste de Johansen
+- El contraste de Johansen, es una alternativa mejor a Engle-Granger. 
+-Consiste en conocer cuanta relaciones de cointregrantes existen entre mis variables. En caso de que existan, cuantas hay?
 
-- En caso de que existan, cuantas hay?
+$$\triangle X_t=\Pi X_{t-1}+\epsilon_t$$
 
-- 
+$H_0$ si tengo igual o menos $r$ que se determine número de vectores de cointegración.
+
+#### Cuestión importante
+
+- Me interesa saber que pasará en el largo plazo si existe una variación en el corto plazo. Para ello se utiliza los MECANISMOS DE CORRECCIÓN DE ERROR (MCE/ECM)
+
+- El MCE nos indicará ese comportamiento a corto plazo, que pasa si me desvio en el corto plazo.
+
+- Si $Y_t$ y $X_t$ están cointegradas, se puede reflejar el ECM (Cómo vuelvo al equilibro cuando se a producido un desequilibro) del siguiente modo:
+
+$$\triangle Y_t = \alpha_1\triangle X_t + \alpha_2 \hat{u}_{i-1}+u_i.$$
+
+$\hat{u}_t$ es el error de la ecuación de cointegración entre $X_t$ e $Y_t$, $\alpha_1$ refleja la relación de corto plazo entre las variables  
+- $\alpha_2$ el el término más importante llamado TÉRMINO DE CORRECCIÓN DEL ERROR, y el valor nos dice cómo se ajustará las variables ante desviación de largo plazo y por tanto como volverán al equilibro que han sufrido algún tipo de desequilibro transitorio. QUE PASA SI ME DESVIO
+
+El residuo estimado $\hat{u}_t$ estará dado por:
+
+$$y_{t-1}=\beta_0+\beta_1 x_{t-1}\quad \Rightarrow \quad \hat{u}_{t-1}=t_{t-1}-\beta_0-\beta_1x_{t-1}$$
+
+- Lo que a sucedido frente a lo que debería suceder. 
+
+- $\alpha_2$ debe ser negativo, es decir contraresta a lo que a sucedido. Se puede interpretar directamente como: Qué porcentaje del desequilibrio que se a producido en un momento del tiempo se corregirá en el momento siguiente. Al final del cabo es la diferencia entre dos momentos del tiempo. Cuanto podre corregir, mucho, poco, nada. Es decir, el $71\%$ del momento $t$ se va a corregir en el momento $t+1$
+
+### Resumen
+
+- Con series estacionarias: se emplean los procedimiento habituales (MCO,etc)
+-
+ 

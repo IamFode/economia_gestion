@@ -1,0 +1,15 @@
+---
+title: "clase 9"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-13"
+output: pdf_document
+---
+
+## Regresiones espurias
+
+- Parece que hay relación pero en realidad no existen.
+- No existe causalidad
+- Se tiene bondad de ajuste muy alta. R2 muy alto, algo está mal.
+- Si el estadístico Durbin-Watson ofrece un valor bajo que el esperado. Valor 2 está bien.
+
+## Funciones de respuesta a un impulso: Breve introducción.

@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,pdftex]{geometry}
+\usepackage{longtable}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+
+Modelo 7: ARIMA, usando las observaciones 2002--2020 ($T$ = 19)\\
+Variable dependiente: $(1-L)^2$Y\\
+Desviaciones típicas basadas en el Hessiano
+
+\vspace{1em}
+
+\begin{tabular}{lr@{.}lr@{.}lr@{.}lr@{.}l}
+  &
+ \multicolumn{2}{c}{Coeficiente} &
+  \multicolumn{2}{c}{Desv.\ Típica} &
+   \multicolumn{2}{c}{$z$} &
+    \multicolumn{2}{c}{valor p} \\[1ex]
+const &
+  0&487815 &
+    0&295962 &
+      1&648 &
+        0&0993 \\
+$\phi_{1}$ &
+  $-$0&947063 &
+    0&111223 &
+      $-$8&515 &
+        0&0000 \\
+$\theta_{1}$ &
+  0&711938 &
+    0&338656 &
+      2&102 &
+        0&0355 \\
+\end{tabular}
+
+\vspace{1ex}
+\begin{tabular}{lrlr}
+Media de la vble. dep. &  0.555789 & D.T. de la vble. dep. &  1.646937 \\
+Media de innovaciones &  0.037723 & D.T. innovaciones &  1.437607 \\
+$R^2$ &  0.443565 & $R^2$ corregido &  0.410834 \\
+Log-verosimilitud & $-$34.22447 & Criterio de Akaike &  76.44895 \\
+Criterio de Schwarz &  80.22670 & Hannan--Quinn &  77.08829 \\
+\end{tabular}
+
+
+\vspace{1em}
+
+\begin{tabular}{llrrrrr}
+& & & Real & Imaginaria & Módulo & Frecuencia \\ \hline
+AR \\ 
+& Raíz & 1 & $-1.0559$ & $0.0000$ & $1.0559$ & $0.5000$ \\ 
+MA \\ 
+& Raíz & 1 & $-1.4046$ & $0.0000$ & $1.4046$ & $0.5000$ \\ \hline
+\end{tabular}
+
+\end{center}
+
+\end{document}

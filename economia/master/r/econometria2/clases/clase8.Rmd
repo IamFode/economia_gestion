@@ -1,0 +1,100 @@
+---
+title: "Clase 8"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-13"
+output: pdf_document
+---
+
+# 3. Modelos Var
+## 3.7 Introducción a modelos VAR
+
+- Si la variable de interés no sólo depende de su pasada, sino de, al menos, una variable exógena, la definición del modelo correspondiente sería:
+
+$$y_t=\mu + \sum_{i=1}^p \alpha_iy_{t-i}+\sum_{j=0}^r \beta_j x_{i-j}+a_t.$$
+
+- Este modelo dinámico, se denomina autorregresiva con retardos distribuidos o ARDL(p,r)
+
+- Sin embargo, necesitamos dos modelos donde una variable dependientes luego podría ser una variable dependiente.
+
+
+### Definición
+
+- Es una extensión natural del modelo $AR$ univariante al contexto multivariante de series de tiempo.
+
+- Se utiliza para ver el comportamiento dinámico entre varias variables.
+
+#### Características
+
+- Habrá tantas variables como ecuaciones.
+- Los valores contemporáneos de las variables no fifuraran como explicativas en el modelo.
+- El cnjunto de variables explicativas de cada ecuación lo forma un bloque de retardos de cada variables del modelo.
+
+- Cersión estructural
+
+$$y_t=\beta_{10}-\beta_{11}z_t+\gamma_{11}y_{t-1}+\gamma_{12} z_{t-1} +\epsilon_{yt}$$
+
+$$z_t=\beta_{20}-\beta_{21}z_t+\gamma_{21}y_{t-1}+\gamma_{22} z_{t-1} +\epsilon_{yt}$$
+
+- Un VAR 1 estará dada por:
+
+$$y_t=a_{10}+a_{11}y_{t-1}+a_{12}z_{t-1}+\epsilon_{it}$$
+$$a_{20}+a_{21}y_{t-1}+a_{22}z_{t-1}+e_{2t}$$
+
+- Que es un modelo reducido, que significa que la variable $y_t$ depende de su pasado y de la otra variable $z_t$ y $z_t$ depende del pasado de $y_t$ y su propio pasado.
+
+- No $y_t$ ni $z_t$ dependeran estre si.
+
+- Estos modelos sirven cuando una variable afecto a otra y viseversa. Todo está relacionada con todo.
+
+
+### Estimación e identificación
+
+- si las variables son predeterminadas y no así exógenas, y además mis términos de error no están serialmente correlacionados.
+
+
+### Que sucede de la estacionariedad de las variables?
+
+- Si diferencio ya pierdo valores. Lo mejor es dejar las variables en niveles
+
+### ¿Cuantas variables y retardos se pueden incluir en un modelo Var?
+
+- Las que se quiera y las que convengan, según la teoría económica.
+
+- Por simetría podemos ver 2 retardos.
+
+
+## Exogeneidad
+
+- Las variables explicativas pueden ser de dos tipos:
+  - Predeterminadas.
+  - Exógenas. Pero no toda variable dependiente es exógena.
+
+- La variable endogena es determinada por el modelo que nosotros proponemos.
+
+- ¿Qué es una variables exógena? R. Es la variable que viene de afuera del modelo. Es decir, podemos modelizar expresamente sin ese modelo exógeno. Si es exógena no es necesaria modelizarla, me viene dada. El dado me viene dada.
+
+- Existe exógeneidad:
+  - Débil -> $y_t$ depende de $x_t$ y $x_t$ depende de $y_{t-1}$. Es decir mi variable $y_t$ no está explicando la evolución de $x_t$, sólo el pasado $y_{t-1}$.
+  
+  - Fuerte -> Se verifica cuando la variables es exógena débil y además cumple la ausencia de causalidad. $y_t$ depende de $x_t$ y $x_t$ depende sólo de su pasado. Ni la variable $y_t$ ni siquiera su pasado explica $x_t$.
+  
+  - Superexogeneidad 
+  
+## Contraste de exogeneidad
+
+- Contraste de Wu
+- Causalidad de Granger
+
+### Causalidad en sentido de Granger
+
+- Se dice que existe causalidad en sentido de Granger entre dos variables si los cambios que se producen en una de ella antecede a cambios en la otra.  Es decir, una precede a los cambios de la otra. Un comporatmiento antecede o precede al otro.
+
+- Axioma de la causalidad -> El futuro no causa en pasado. Es decir, el futuro no puede causar al pasado.
+
+- $x_t$ no contribuye para nada a $y_t$.
+
+
+  
+
+
+

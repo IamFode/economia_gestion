@@ -5,7 +5,6 @@
 \usepackage{latexsym,amsmath,amssymb,amsfonts,amsthm} %(símbolos de la AMS)
 \parindent = 0cm  %sangria
 \usepackage[T1]{fontenc} %acentos en español
-\usepackage{graphicx} %gráficos y figuras.
 \usepackage[spanish,english]{babel}
 \usepackage{mathpazo} % tipo de letra
 \usepackage{titlesec} %formato de títulos
@@ -27,6 +26,7 @@
 \usepackage[htt]{hyphenat}
 \usepackage[fit]{truncate}
 \usepackage{titling,lipsum}
+\usepackage{graphicx} %gráficos y figuras.
 
 \pgfplotsset{compat=1.10}
 \usepgfplotslibrary{fillbetween}
@@ -65,7 +65,7 @@
 \def\arctan{\mathop{\mbox{\normalfont arctan}}\nolimits}
 
 %---------------------------------
-\titleformat*{\section}{\bfseries}
+\titleformat*{\section}{\big\bfseries}
 \titleformat*{\subsection}{\bfseries}
 \titleformat*{\subsubsection}{\bfseries}
 \titleformat*{\paragraph}{\bfseries}

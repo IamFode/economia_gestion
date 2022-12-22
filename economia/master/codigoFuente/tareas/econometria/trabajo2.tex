@@ -1,0 +1,92 @@
+\begin{center}
+\textbf{Ejercicio individual – Tema 4}
+\end{center}
+
+\begin{center}
+\textbf{Modelado de la volatilidad asimétrica del mercado con modelos GARCH univariados: Evidencia de Nasdaq-100.}
+\end{center}
+\vspace{0.3cm}
+
+\begin{center}
+    \textbf{Christian Limbert Paredes Aguilera.}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{itemize}
+
+    \item \textbf{Cita bibliográfica elegido y URL donde se puede encontrar.}\\
+
+	Fuzuli Aliyev, Richard Ajayi and Nijat Gasim. Modelling asymmetric market volatility with univariate GARCH models: Evidence from Nasdaq-100. The journal of Economic Asymmetries, 2020.
+
+	url = \url{https://www.sciencedirect.com/science/article/pii/S1703494920300141}\\
+
+    \item \textbf{Resumir el objetivo que persiguen los autores del artículo.}\\
+
+	El objetivo en este artículo es investigar la volatilidad del índice Nasdaq-100. Donde se modela esta, el cual es un índice bursátil no financiero, de innovación y de alta tecnología mediante el empleo de varios modelos univariados de heteroscedasticidad condicional. 
+	 Al hacerlo, estamos abordando el vacío en la literatura sobre el análisis de volatilidad del Nasdaq-100 índice con modelos asimétricos a través de un período de tiempo extendido que cubre la recesión de 2001 y la crisis financiera de 2008 y sus consecuencias. \\
+
+    \item \textbf{Indicar cuáles son las variables bajo estudio.}\\
+
+	Datos diarios de NASDAQ-100 durante el periodo comprendido entre el 4 de enero de 2000 y el 19 de marzo de 2019.
+	Nasdaq-100 es un índice centrado en alta tecnología que cubre empresas desde telecomunicaciones hasta biotecnología y es el índice mundial de crecimiento de gran capitalización.\\
+
+    \item \textbf{Indicar qué modelos de la familia ARCH emplean.}\\ 
+
+	Se emplea los modelos:
+	\begin{itemize}
+	    \item \textbf{GARCH.-} En este trabajo seguimos la sugerencia de Brooks y Burke y utilizamos GARCH (1,1) con las siguientes ecuaciones.
+
+	    \begin{center}
+	    Ecuación de media: $r_t=\mu+\epsilon_t.\quad $
+	    Ecuación de varianza: $\sigma_t^2=\alpha_0+\alpha_1\epsilon_{t-1}^2+\beta_1\sigma^2_{t-1}.$\\
+	    \end{center}
+
+	\item \textbf{EGARCH.-} El modelo que permite el efecto asimétrico es el modelo GARCH exponencial (EGARCH) propuesto por Nelson (1991). Este modelo permite reacción asimétrica de la varianza condicional a las perturbaciones, y el EGARCH (1,1) puede escribirse como:\\
+	    Ecua. media:
+	    $r_t=\mu+\epsilon_t.$
+	    Ecua. varianza:
+	    $\ln(\sigma_t^2)=\alpha_0+\beta_t\left(\sigma_{t-1}^2\right)+\left(\left|\dfrac{\epsilon_{t-1}}{\sigma_{t-1}}\right|-\sqrt{\dfrac{2}{\pi}}\right)-\gamma\dfrac{\epsilon_{t-1}}{\sigma_{t-1}}.$
+
+	    Donde $\gamma$ denota los efectos de apalancamiento que explican la asimetría del modelo.\\
+
+	\item \textbf{GJR-GARCH.-} Otro modelo que explica la asimetría es el modelo GJR-GARCH propuesto por Glosten, Jagananthan y Runkle (1993). El modelo es una extensión simple del GARCH estándar, que permite que la varianza condicional tenga una respuesta diferente al pasado positivo y choques negativos. La varianza condicional del modelo se puede escribir como:
+	    $$\mu_t^2=\alpha_0+a_t \mu_{t-1}^2+\beta\sigma_{t-1}^2+\gamma \mu_{t-1}^2 I_{t-1}.$$
+	    Donde $I_{t-1}$ es una variable dummy:
+	    $
+	    I_{t-1}=
+	    \left\{
+		\begin{array}{ccrl}
+		    1&\mbox{si}&\mu_{t-1}<0, & \mbox{Shock positivo}\\
+		    0&\mbox{si}&\mu_{t-1}\geq 0, & \mbox{Shock negativo}.
+		\end{array}
+	    \right.
+	    $
+
+	\end{itemize}
+
+    \item \textbf{Resumir los resultados de los modelos estimados, y en consecuencia, el grado de consecución del objetivo del estudio y su consonancia (o no) con lo que indique la literatura existente al respecto.}\\
+
+	  Para modelar la dinámica asimétrica del índice Nasdaq-100 empleamos los modelos EGARCH y GJR-GARCH; y esto requiere del modelo GARCH(1,1).
+	  Primero, vemos que los resultados  ARCH-LM muestra que se rechaza $H_0$ mostrando que la serie tiene un efecto ARCH en los residuos, lo que implica que la varianza de los rendimientos de la serie Nasdaq-100 no son constantes. Dado que los residuos tienen efectos ARCH, empleamos el proceso GARCH para modelar esta heteroscedasticidad condicional. Realizando los respectivos cálculos vemos que para nuestra serie, Nasdaq-100, $\alpha_1$ es $0.090591$ que muestra la presencia de agrupamiento de volatilidad en la serie. La estimación del coeficiente $\beta_1$ es $0.906023$, que nos indica que los cambios en la la volatilidad actual afectará las volatilidades futuras durante un período prolongado. Como se menciona en Caporale y GilAlana (2012) que examinan la volatilidad propiedad de persistencia y memoria larga del índice Nasdaq-100 con datos diarios del 2 de enero de 2001 al 20 de febrero de 2004. Es decir el impacto de las noticias antiguas sobre la volatilidad es duradero. Por lo tanto, la suma de ARCH y  GARCH ($\alpha_1+\beta_1$) es $0.996614$, indicandonos que los choques de volatilidad son bastante persistentes. Como lo indica (Erginbay et al., 2014) al examinar la volatilidad de los índices bursátiles de cinco mercados emergentes Europeos: Turquía, Bulgaria, República Checa, Polonia y Hungría.\\
+	  La implicación financiera de estos coeficientes para inversionistas es que la volatilidad de los rendimientos del índice Nasdaq-100 muestra agrupamiento, y esto permite a los inversionistas establecer posiciones futuras en expectativa de esta característica. \\
+	    
+	  Luego, se aplica la prueba de Engle y Ng (1993) para determinar si las series requieren un modelo asimétrico. De donde, efectivamente se tiene choques positivos y negativos que impactan asimétricamente en la varianza condicional. Además, los resultados de la prueba de sesgo de choque negativo muestran que la asimetría proviene de choques negativos. Después, los resultados muestran que el choque negativo reduce la varianza condicional en $0.019$ veces, mientras que el choque positivo solo aumenta. Como lo demuestran Koy y Ekim (2016) al ilustrar la volatilidad de cuatro subíndices de Borsa Istanbul para el período 2011–2014.\\
+
+	  Para capturar el impacto asimétrico, similar a Altún (2018) que aplica la distribución Lomax bilateral a los modelos GJR-GARCH para pronosticar el valor en riesgo. Empleamos modelos EGARCH y GJR-GARCH. Un La ventaja del modelo EGARCH en comparación con el modelo GARCH básico es que la varianza condicional. 
+	  Como se muestra EGARCH (1,1), todas las estimaciones son Estadísticamente significante. Y el coeficiente de apalancamiento, es negativo $(0.119352)$ y significativo, indicando la presencia de una asimetría comportamiento. Esto significa que, dentro del período de estudio, los choques negativos (malas noticias) tienen un mayor impacto en la volatilidad del próximo período que los shocks positivos (buenas noticias) de la misma magnitud. En el mundo real, los inversores son más sensibles a las noticias negativas en comparación con noticias positivas e implica que el mecanismo de contagio de la volatilidad es asimétrico. \\
+
+	  Los resultados del modelo GJR-GARCH nos indican que el término de asimetría  es positivo y estadísticamente significativo. Significa que el impacto de los shocks es asimétrico y los shocks negativos aumentan la volatilidad. \\
+	  Las estadísticas de la prueba ARCH-LM para ambos los modelos indican que no queda ningún efecto ARCH en los residuos de los modelos.
+
+
+    \item \textbf{De ser el caso, resumir las implicaciones (por ejemplo, de política económica) de los resultados, es decir, el alcance de los resultados.}
+
+	  Los resultados muestran que los rendimientos del índice Nasdaq-100 se desvían de la normalidad y exhiben un agrupamiento de volatilidad con una variación variable en el derechos residuales de autor. Estos hallazgos muestran una estructura no lineal en la varianza condicional de los rendimientos y esta dinámica se puede simular con el Modelo GARCH (1, 1). 
+	  Las estimaciones del parámetro del modelo, ($\alpha_1+\beta_1$), muestran que la varianza de la serie tiene memoria larga y choques en la volatilidad es bastante persistente, pero no unitaria, y esto respalda el proceso de reversión a la media. 
+	  Los hallazgos de los modelos EGARCH y GJR-GARCH nos muestran que las series tienen efecto de apalancamiento, y el impacto de los choques es asimétrico, y eso significa que el impacto de los choques es negativo. Los choques sobre la volatilidad son mayores que los choques positivos del mismo tamaño. Este hallazgo es consistente con la literatura. \\
+	  Los resultados empíricos de este estudio tienen implicaciones para los inversores, los gestores de cartera activos y muchos participantes del mercado. 
+	  Él estudio propone que, aunque los inversores y gestores de carteras pueden considerar los movimientos de precios de las acciones constituyentes de las acciones de alta tecnología índice, deben tener en cuenta que la volatilidad de la rentabilidad del índice es asimétrica.\\
+	  La investigación futura debería explorar una comparación de la volatilidad de los principales rendimientos de los índices bursátiles, como el Nasdaq-100, con el índice de materias primas vuelve a determinar si este último puede ser utilizado en el contexto de la gestión de riesgos.
+
+\end{itemize}

@@ -1,0 +1,56 @@
+---
+title: "clase 10"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-20"
+output: pdf_document
+---
+
+- Existe dos modelos para reflejar el modelo de la volatilidad
+
+## 1. Modelos de heterocedasticidad condicional (ARCH)
+
+- El proceso debe ser estacionario
+- La expresión del proceso ARCH(q) es:
+$$y_t=\mu + \sigma_t e_t$$
+
+La $y$ depende de su media más la volatilidad
+- En este primero se modeliza la media
+
+$$\sigma_t^2 = \alpha_0 + \sum_{t=1}^q \alpha_i t^{2}_{t-i}$$
+
+La volatilidad $\sigma_t^2$ Depende del pasado de la serie 
+-En este segundo se modeliza la varianza.
+
+- La volatilidad de hoy dependerá de lo que paso en el pasado.
+
+- Se utiliza el contraste LM-ARCH que constrasta la $H_0$, no hay una presencia de heterocedasticidad
+  - Los los residuos que dependen de su pasado
+  - $H_0$= no presencia de estructura ARCH
+
+- EGARCH = también refleja la asimetría, los shocks impactan al modelo de manera distinta los shocks negativos y positivos no impactan igual.
+
+- 
+
+#### Ventajas
+
+- Se puede estimar  por  máxima similitud
+
+#### Desventajas
+
+- Se utiliza el ARCH generalizado.
+
+- Hipótesis nula, no existe correlación
+
+
+## 2. Modelos GARCH
+
+- La varianza depende de su propio pasado.
+
+- La volatilidad de hoy depende del de ayer.
+
+
+### Interpretación
+
+- Se suma los valores asociados al alpha y beta y cuando más proximo está a uno mayor persistencia. Si existe un shock permanecerá mucho tiempo.
+
+- Lo primero es comprobar si hay autocorrelación, luego si existe heterocedasticidad, y luego si elimine ese arch no me quedo estructura arch.

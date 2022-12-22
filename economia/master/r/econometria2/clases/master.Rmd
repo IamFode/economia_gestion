@@ -1,0 +1,829 @@
+---
+title: "master"
+author: "Christian Limbert Paredes Aguilera"
+date: "2022-12-21"
+output: pdf_document
+---
+
+# Procesos Estocásticos
+
+- Es una secuencia o familia de variables aleatorias correspondientes a momentos sucesivos del tiempo.
+
+- Estos procesos cambian en el tiempo.
+
+- Por otro lado, una serie de tiempo es de todas las realizaciones estocásticas se toma una en concreto. 
+
+- Cada estadística puede cambiar todo el tiempo.
+
+## Funciones de autocorrelación
+
+- Se utiliza el método de los momentos. orden 1, orden 2
+
+
+
+\begin{itemize}
+  \item Función de medias
+  $$\mu_t=E(Y_t)$$
+  \item Función de las varianzas
+  $$Var(Y_t)=\sigma_t^2$$
+  
+  \item Funciones de autocovarianza
+  $$Y_{t,s}=Cov(Y_t,Y_s)=E(Y_t-\mu_t)(Y_s-\mu_s)$$
+  \textbf{Es la covarianza que existe entre los valores de una misma variable en disferentesmomentos del tiempo.}\\
+  
+  \item Función de autocorrelación
+  $$\rho_{t.s}=\dfrac{Cov(Y_t,Y_s)}{\sqrt{Var(Y_t)Var(Y_s)}}$$
+  \textbf{Se ve la relación que existe entre dos momentos del tiempo distintos de una misma variable.} Cuanto más cerca del 1 más correlación y cuanto mas cerca del 0 menos correlación.
+  
+\end{itemize}
+
+### Funciones de autocorrelación simple y parcial
+
+$$\rho_k=corr[Y_t,Y_{t-k}]=\phi^k,\quad \forall k\geq 1.$$
+
+Pueden tomar datos anuales, trimentrales, semanales, diarias, etc.
+
+#### Autocrrelación simple
+No se elimina los efectos que puede tener un dato intermedio entre dos lapsos de tiempo.
+
+- Cada valor de las autocorrelaciones se podrán reflejar con un gráfico.
+
+- Cada barra del gráfico se leerá de la siguiente manera: El valor actual y el inmediatamente anterior tiene una autocorrelación $x$.
+
+- Si estas barras superan un valor, se dirá que son significativas.
+
+
+#### Autocrrelación parcial
+Es la sucesión de esos valores de autocorrelación que se eliminan todos los momentos de tiempos intermedios que hay que calcular. Es decir, eliminamos lo que ocurre entre el dato de septiembre cuando se está midiendo los datos de agosto y octubre.
+
+$$\pi_j = Corr[Y_j,Y_{j-k}|Y_{j-1},\ldots,Y_{j-k+1}]$$
+
+La comparación de la autoccorelación simple y parcial será la pista de como se comportará el modelo.
+
+
+
+## 3.3 Modelización lineal univariante
+
+- Querremos encontrar un patrón.
+
+La estructura básica será:
+
+\begin{center}
+Serie de tiempo = parte sistemática + parte aleatoria
+\end{center}
+
+Parte sistemática = Recoge el patrón de regularidad.
+
+- La forma más habitual de representar la fórmula sera:
+
+$$Y_t=\pi_1T_{t-1}+\pi_2 Y_{t-2}+\ldots + a_t, \quad \forall t, t=1,2,\ldots\qquad (A)$$
+
+$a_t$ = ruido blanco.
+$\pi_1T_{t-1}+\pi_2 Y_{t-2}$ = pasado.
+Siempre que se tenga una ecuación como la de arriba se esconderá un polinomio. 
+
+- Las condiciones generales serán:
+
+  - Que el proceso sea no anticipante (el presente no viene determinado por el futuro.)
+  - Que el proceso sea invertible (el proceso depende de manera convergente de su pasado; la influencia del pasado es menor conforme nos alejamos en el tiempo)
+
+- El modelo anterior se puede escribir como la combinación nieal:
+
+$$Y_t=a_t+\varphi_1 Y_{t-1}+\varphi_2T_{t-2}+\cdots, \qquad \forall t, \; t=1,2,\ldots. \qquad (B)$$
+
+- El modelo lineal general se puede representar de 3 formas:
+
+  - Representación puramente autorregresiva (A) o (AR) con parámetro p, que es la máxima dependencia. 
+  - Representación puramente de medias móvibles (B) o (MA) con parámetro q, que representa la máxima dependencia.
+    - (p,q) significa el retardo máximo de mi especificación.
+  - Representación finita (C) - formato general
+  
+  
+## Procesos autorregresivos AR(p)
+
+Sigue un preceso AR cuando lo puede expresar de esta forma:
+
+$$Y_t = \phi_1 T_{t-1}+\phi_2 Y_{t-2}+\ldots + \phi_p Y_{t-p}+ a_t$$
+
+Depende de su pasado hasta un cierto de tiempo más su perturbación
+
+Podemos expresarlo en formato polinomio:
+
+$$(1-\phi_1 L - \phi2 L^2-\cdots - \phi L^P)Y_t=a_t$$
+
+  - $L = Retardando$ y $L^P=Periodos\; terdados.$
+
+  - $a_t$ ruido blanco $N(0,\sigma^2)$
+  
+
+#### Parseo aleatorio
+
+o $AR(1)$
+
+$$Y_t=T_{t-1}=a_t \quad \Rightarrow \quad \triangle T_t=a_t,\qquad a_t\sim N(0,\sigma^2)$$
+
+Donde $a_t$ es aleatoria. 
+  
+### Identificación de AR(p)
+
+Identificamos AR por la función de autocorrelación. 
+
+  - La forma de una autocorrelación simple sera de manera exponencial negativa. Es decir, que decaiga con el tiempo.
+
+  - La forma de una autocorrelación parcial sera, con una barra o dos dependiendo el parámetro.
+
+Se los llama también procesos de memoria larga.
+
+
+### Proceso de medias móviles MA(q)
+
+- Son modelos donde las variables dependa de la perturbación.
+
+$$Y_t = a_t-\theta_1a_{t-1}-\theta_2a_t-\cdots - \theta_q a_{t-q}.$$
+
+con $a_t$ preceso de ruido blanco y $\theta$ parámetros del modelo.
+
+Polinomialmente es:
+
+$$Y_t=(1-\theta_1L-\theta_2 L^2 - \cdot -\theta_q L^q)a_t$$
+
+- Se puede ver cuando tienen series erraticas.
+
+- Parece menos intuiditivo que AR, pero a través del operador de retardos se comprueba que:
+
+$$Y_t=(1-\theta L)a_t \quad \Rightarrow \quad Y_t=a_t+\theta T_{t-1}-\theta^2 Y_{t-2}+\theta^3 Y_{t-3}+\ldots$$
+
+- Carece de memoria. Por lo identificamos a MA contrariamente a AR
+
+  - La forma de una autocorrelación simple sera, con una barra o dos dependiendo el parámetro.
+
+  - La forma de una autocorrelación parcial sera de manera exponencial negativa. Es decir, que decaiga con el tiempo.
+  
+- Absorve cualquier shock de manera rápida. Es decir, se desvanece rápidamente a través del tiempo.
+
+### Ejemplso
+- Si vemos todos los valores temporales de AC tienden a $1$ y PAC el primer dato igual a $1$  es no estacionaria. Donde tendremos que hacer una transformación a proceso estacionario.
+- No podremos modelizar una seria de tiempo si el modelo  es no estacionaria. Debe ser estacionaria.
+- Si $AC$ y $PAC$ tiende a cero entonces es ruido blanco.
+
+
+## Procesos autorregresivos de medias móviles ARMA(p,q)
+
+Es un proceso con la forma 
+
+$$Y_t=\phi_1 Y_{t-1}+\cdots + \phi_p Y_{t-p}+\theta_1a_{t-1}+\cdots + \theta_q a_{t-q}+a_t$$
+
+### Cómo se identifica ARMA
+
+Ejemplo ARMA(1,1)
+- Autocorrelación Simple: Solo una barra
+
+- Autocorrelación Parcial: barras asimetricas.
+
+## Proceso autorregresivo integrado y de media móviles ARIMA(p,d,q)
+
+- d = significa que hemos convertido una serie no estacionaria en estacionaria. o integramos la función de orden 1.
+
+$$Y_t^d=\phi_1 Y_{t-1}^d +\cdots + \phi_p Y_{t-p}^d+\theta_1a_{t-1}^d+\cdots + \theta_q a_{t-q}^d+a_t^d$$
+
+##### Ejemplo
+- $ARIMA(0,1,2)$ = no existe AR con dos MA y  la transformamos de orden 1
+
+## Pruebas de Box-Pierce y Ljung-Box
+
+- Q-stats $H_0: \rho_1 = rho_2 = \ldots = \rho_s = 0.$ y $H_1: p_k\neq 0$
+
+- Sirve para validar un modelo. Un valor bajo es indicio de que los residuos no son ruido blanco. Comprobamos que la media es cero y la varianza es constante. Por lo tanto tenemos un problema de ruido blanco. Podemos tambien decir que los residuos están correlacionados con su pasado. 
+
+## Metodoloǵia de Box-Jenkins:
+Nos ayuda a:
+
+- Generar una clase de modelos que describan series de tiempo reales.
+- Determinar el procedimiento para hallar el mejor modelo de esa clase para una serie dada.
+
+### Etapas de la metodología.
+
+- Identificación.
+- Estimación.
+- Diagnóstico/validación.
+-Predicción.
+
+
+
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+#library
+library(readxl)
+library(forecast)
+#data
+export=read_excel("../data/exportaciones servicios_España.xlsx",sheet="Gretl",col_names = "export")
+export=ts(export,start=c(1995,1),frequency=4)
+```
+
+
+
+## 3.4 Estacionariedad, contrastes de raíces unitarias.
+
+- Si no realizamos el análisis de estacionariedad, todos los contrastes no se cumplen. Por lo que debemos realizar una transformación.
+
+- Debe ser estable en el tiempo
+
+Se debe cumplir:
+
+### Condiciones de estabilidad o estacionariedad.
+
+- La dependencia de dos instantes del tiempo, solo depende de la distancia entre ellos y no del momento en si. Es decir, Da lo mismo realizar el análisis de los años 2022 y 2021 o 1990 y 1989. 
+
+Algebráicamente hablando nos dice que la Covarianza es la misma siempre y cuando los retardos sean los mismo.
+
+$$Cov(t,t+j)=Cov(s,s+j),\qquad j=\pm 1, \pm 2, etc$$
+
+- Necesitamos que las características de nuestro proceso, como la media, varianza, etc deben ser estables a lo largo del tiempo. Ya que si no se realiza estos análisis nos será consistente.
+
+- La caracteristica tiene una oscilación constante.
+
+- Existe dos timpos de estacionariedad
+
+#### Sentido estricto
+Las funciones de distribución no cambian en el tiempo. 
+
+#### Sentido débil
+Se verifica que:
+
+- $E(Y_t)=\mu, \forall t$, tenemos que ver que la media es única.
+- $Var(Y_t)=\sigma^2, \forall t$ tenemos que ver que la varianza no cambia en el tiempo.
+- $Cov(t,t+j)=Cov(s,s+j),\quad j=0,\pm1,\pm2,etc.$
+
+Le media no depende del tiempo.
+
+Las primeras dos son las que se comprobarán.
+
+#### ¿Qué tienen en compun casí todas las series de tiempo?
+
+- Sus medias cambian a lo largo de $t$
+- La variabilidad no es la misma en todo el periodo.
+- Algunas presentan clara estacionalidad
+
+La mayoría de las series de tiempo no son estacionaria.
+
+### Forma de comprobar si una serie es estacionaria
+
+- Calculo numerico, de Medias, varianzas, etc a través del tiempo.
+
+- Visualmante no debería tener tendencia.
+
+- Función de autocorrelación. Si vemos una tendencia logairtmica negativa donde las barras siempre tomas protagonismo o no deparecen, entonces será no estacionaria.
+
+- La variación de la serie de tiempo no estacionaria será estacionaria.
+
+- Si la variabilidad es diferente en el tiempo se transforma primero en logaritmos y luego se realiza su diferencia.
+
+- Cuando utilizamos la diferencia de las exportaciones, se interpreta la tasa de exportaciones.
+
+
+# EJEMPLO
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+plot(export)
+boxplot(export)
+```
+
+ya que tiene tendencia, entonces no es estacionaria.
+
+Luego
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+acf(diff(log(export)))
+pacf(diff(log(export)))
+```
+
+Apriori vemos que es un modelo arima(3,3)
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+arima_=arima(diff(log(export)),c(3,0,3))
+arima_
+auto.arima(diff(log(export)),trace = TRUE)
+```   
+
+
+
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+#library
+library(readxl)
+library(forecast)
+#data
+export=read_excel("../data/exportaciones servicios_España.xlsx",sheet="Gretl",col_names = "export")
+export=ts(export,start=c(1995,1),frequency=4)
+```
+
+
+
+## 3.4 Estacionariedad, contrastes de raíces unitarias.
+
+- Si no realizamos el análisis de estacionariedad, todos los contrastes no se cumplen. Por lo que debemos realizar una transformación.
+
+- Debe ser estable en el tiempo
+
+Se debe cumplir:
+
+### Condiciones de estabilidad o estacionariedad.
+
+- La dependencia de dos instantes del tiempo, solo depende de la distancia entre ellos y no del momento en si. Es decir, Da lo mismo realizar el análisis de los años 2022 y 2021 o 1990 y 1989. 
+
+Algebráicamente hablando nos dice que la Covarianza es la misma siempre y cuando los retardos sean los mismo.
+
+$$Cov(t,t+j)=Cov(s,s+j),\qquad j=\pm 1, \pm 2, etc$$
+
+- Necesitamos que las características de nuestro proceso, como la media, varianza, etc deben ser estables a lo largo del tiempo. Ya que si no se realiza estos análisis nos será consistente.
+
+- La caracteristica tiene una oscilación constante.
+
+- Existe dos timpos de estacionariedad
+
+#### Sentido estricto
+Las funciones de distribución no cambian en el tiempo. 
+
+#### Sentido débil
+Se verifica que:
+
+- $E(Y_t)=\mu, \forall t$, tenemos que ver que la media es única.
+- $Var(Y_t)=\sigma^2, \forall t$ tenemos que ver que la varianza no cambia en el tiempo.
+- $Cov(t,t+j)=Cov(s,s+j),\quad j=0,\pm1,\pm2,etc.$
+
+Le media no depende del tiempo.
+
+Las primeras dos son las que se comprobarán.
+
+#### ¿Qué tienen en compun casí todas las series de tiempo?
+
+- Sus medias cambian a lo largo de $t$
+- La variabilidad no es la misma en todo el periodo.
+- Algunas presentan clara estacionalidad
+
+La mayoría de las series de tiempo no son estacionaria.
+
+### Forma de comprobar si una serie es estacionaria
+
+- Calculo numerico, de Medias, varianzas, etc a través del tiempo.
+
+- Visualmante no debería tener tendencia.
+
+- Función de autocorrelación. Si vemos una tendencia logairtmica negativa donde las barras siempre tomas protagonismo o no deparecen, entonces será no estacionaria.
+
+- La variación de la serie de tiempo no estacionaria será estacionaria.
+
+- Si la variabilidad es diferente en el tiempo se transforma primero en logaritmos y luego se realiza su diferencia.
+
+- Cuando utilizamos la diferencia de las exportaciones, se interpreta la tasa de exportaciones.
+
+
+# EJEMPLO
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+plot(export)
+boxplot(export)
+```
+
+ya que tiene tendencia, entonces no es estacionaria.
+
+Luego
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+acf(diff(log(export)))
+pacf(diff(log(export)))
+```
+
+Apriori vemos que es un modelo arima(3,3)
+
+```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
+arima_=arima(diff(log(export)),c(3,0,3))
+arima_
+auto.arima(diff(log(export)),trace = TRUE)
+```   
+
+
+
+### ¿Cómo comprobar si una serie es estacionaria?
+
+- CALCULO NUMÉRICO: Medias y varianzas de cada año, si varían significativamente a lo largo del tiempo, habría indicios de no estacionariedad.
+
+- VISUALMENTE:
+  
+  - Una serie estacionaria 
+    
+    - No se observa una tendencia (existe reversión  a la media)
+    - Es homoscedástica
+    - No hay efectos estacionales
+    
+  - Una serie no estacionaria
+  
+    - Puede presentar cambios en la varianza.
+    - Puede observarse tendencia.
+    - Puede haber efectos estacionales.
+    
+
+## Tratamiento de la no estacionariedad
+
+Hay dos tipos de estacionariedad, en media y varianza. No tiene porque presentarse las dos a la vez.
+
+### En caso de no estacionariedad en varianza
+
+- No presenta demasiados problemas.
+
+El objetivo es estabilizar la varianza de la serie, TRANSFORMACIóN BOX-COX:
+
+$$
+Y_t^{(\lambda)}
+  \left\{
+    \begin{array}{ll}
+      \dfrac{Y_t^\lambda - 1}{\lambda} & \lambda \neq 0\\\\
+      \ln(Y_t) & \lambda = 0
+    \end{array}
+  \right.
+$$
+
+- La más adecuada es transformación logarítmica. Pero no lo corrige del todo. No altera el comportamiento de la serie.
+
+
+### En caso de no estacionariedad en media
+
+- Tiene tendencia porque depende del pasado.
+
+- Cuando la evolución de la serie no tiene lugar alrededir de un nivel constante, presenta un comportamiento sistemático que se refleja en un TENDENCIA, una transformación que elimina la tendencia es la diferenciación.
+
+$$\triangle^d \equiv (1-L)^d \quad \Leftrightarrow \quad  \triangle Y_t \equiv Y_t-Y_{t-1}$$
+
+Variación absoluta.
+
+- Ese orden de diferencias está vinculado con el orden de raíces unitarias que existen en ese proceso. Es decir, tomaremos las diferencias en función a las raíces unitarias.
+
+- Cuantas raíces unitarias se esconde en el proceso. Es decir, tomaremos las diferencias en función a las raíces unitarias.
+
+- Cuantas raíces unitarias se esconde en el proceso.
+
+### Interpretación económica de las transformaciones:
+
+- $\triangle Y_t\neq Y_t-Y_{t-1}$ Indicador de crecimiento absoluto ($\times$ 100, en porcentaje)
+
+- $\ln y_t - \ln y_{t-1} = \dfrac{t_t-y_{t-1}}{y_{t-1}}$ Indicador de crecimiento relativo ($\times 100$, tasa crecimiento porcentual.)
+
+- Se presentará dos diferenciables cuando se tiene una hiperinflación o shock extremos.
+
+
+# Contraste de raíces unitarias
+
+Ante un proceso no estacionario no se cumplen las condiciones de regularidad necesarias para desarrollar inferencias estándar.
+
+## Contraste de Dickey Fuller (DF)
+
+Parte de un supuesto que la serie $Y_t$ se comporta siguiendo un proveso autorregresivo de orde $1$ o $AR(1)$:
+
+$$Y_t=\phi Y_{t-1}+\epsilon_t$$
+
+El contraste consistirá en $H_0: \phi < 1,$ el cual se puede llevar a cabo de varias formas. Siendo la más usual la siguiente:
+\begin{center}
+
+  Contraste $t$ de la estimación $MCO$ de $\phi\quad \Rightarrow \triangle Y_t=\alpha T_{y-1}+\epsilon_t\qquad [\alpha=\phi-1]\Rightarrow$ raíz unitaria.
+\end{center}
+
+Planteamiento del contraste: $H_0:\alpha=0$ $H_1: \alpha<0$.
+
+Estadistico de contraste: $t=\dfrac{(\hat{\alpha}-0)}{\hat{DT}(\alpha)}$
+
+- Hipótesis nula existe raíces unitarias, lo que significa que la serie es no estacionaria.
+
+- UTILIZAREMOS ADF que es el test mejorado.
+
+### Constraste Phillips-Perron
+
+
+### Metodología Box-Jenkins
+
+- Identificación (arma)
+  - Representación gráfica de la serie
+    - Gráfico temporal
+    - Correlograma
+    
+  - ¿Serie estacionaria?
+    - Si, identificar el posible ARMA
+    - No,
+      - Tomar log para estacionariedad de varianzas
+      - Diferencias para no estacionariedad en media
+      
+- Estimación 
+  - Por máxima verosimilitud
+  
+- Diagnostico
+  - Contrastes significatividad individual y conjunta de parámetros
+  - contrastes de residuos modelo (correlación, normalidad, etc) 
+  - Repetir etapas anteriores si es necesario
+  
+- Predicción
+  - A partir del modelo final perfectamente validado.
+
+
+## 3.5 Cointegración
+
+- Contexto multivariante
+- Un proceso está cointegrado si,
+  - Cada una de ellas es integrada de orde $d$ (todos el miso orden)
+  - Existe alguna combinación lineal entre ellas que es integrada de menor orden.
+  - El caso más habitual en la práctica es el de series I(1) cuya combinación lineal es $I(0)$
+  
+### ¿Cómo podemos interpretar la cointegración?
+
+- Los modelos que se vio son de corto plazo.
+
+- En conjuntos de cointegración serán a largo plazo, donde las series estarán en niveles.
+
+
+
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+#library
+library(readxl)
+library(forecast)
+library(zoo)
+library(lmtest)
+library(ggplot2)
+library(tseries)
+#data
+export=read_excel("../data/exportaciones servicios_España.xlsx",sheet="Gretl",col_names = "export")
+export=ts(export,start=c(1995,1),frequency=4)
+ipc = read_excel("../data/IPC_España.xlsx",sheet = "Hoja1",col_names = "ipc")
+ipc = ts(ipc,start = c(2002,1),frequency = 12)
+okun = read_excel("../data/datos_Ley Okun.xlsx", sheet = "Hoja3")
+okun = okun[,2:3]
+okun=ts(okun,start = c(1980,1),frequency = 1)
+```
+
+- Los datos atípicos podrían destruir el modelo.
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+d.l.expor = ts(diff(log(export)))
+fac=acf(d.l.expor,lag.max=30)
+fac$acf
+facp = pacf(d.l.expor,lag.max = 30)
+facp$acf
+arima202=arima(d.l.expor,c(2,0,2))
+coeftest(arima202)
+```
+
+## SERIES IPC
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+plot(ipc)
+```
+Donde vemos que no es estacionaria. Por lo que transformamos la serie mediante logaritmos y su diferencia
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+d.l.ipc = ts(diff(log(ipc)))
+plot(d.l.ipc)
+```
+
+Luego, diseñamos un correlograma
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+fac=acf(d.l.ipc,lag.max=30)
+fac$acf
+```
+
+Donde vemos estacionareidad, debemos uir de este tipo de series.
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+facp = pacf(d.l.ipc,lag.max = 30)
+facp$acf
+```
+
+## Ley de Okun
+
+#### ¿Estacionaria?
+
+Primero converitmos los datos a log
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+u = ts(log(okun[,1]))
+```
+
+Luego, utilizamos el contraste de Dickey-Fuller
+
+```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
+adf.test(u,k=5)
+pp.test(u)
+```
+
+
+## 3.5 Cointegración
+
+- Cada una es no estacionaria
+- Existe al menos una combinación lineal entre las variables.- lo que significa que entre esas series existe una relación de largo plazo.
+- PPA es una relación de largo plazo.
+
+##### ¿Cómo puedo saber si existe un equilibro ?
+
+### Contraste de Johansen
+
+
+
+
+## Cointegración
+
+- Son relaciones de equilibro en varias variables.
+
+- La relación de cointegración se expresa las variables en niveles, nunca diferenciadas a largo plazo.
+
+- El largo plazo se mide en niveles, ya que si la medimos en diferenciación estaríamos midiendo la variación cuando se tiene una unidad más de tiempo, es decir a corto plazo.
+
+- Se quiere saber si entre mis variables habrá relaciones de equilibrio. Esto con el contraste de Engle-Granger. Pero estos contraste son antiguas y existen mejores técnicas con mejores propiedades.
+
+### Contraste de Johansen
+- El contraste de Johansen, es una alternativa mejor a Engle-Granger. 
+-Consiste en conocer cuanta relaciones de cointregrantes existen entre mis variables. En caso de que existan, cuantas hay?
+
+$$\triangle X_t=\Pi X_{t-1}+\epsilon_t$$
+
+$H_0$ si tengo igual o menos $r$ que se determine número de vectores de cointegración.
+
+#### Cuestión importante
+
+- Me interesa saber que pasará en el largo plazo si existe una variación en el corto plazo. Para ello se utiliza los MECANISMOS DE CORRECCIÓN DE ERROR (MCE/ECM)
+
+- El MCE nos indicará ese comportamiento a corto plazo, que pasa si me desvio en el corto plazo.
+
+- Si $Y_t$ y $X_t$ están cointegradas, se puede reflejar el ECM (Cómo vuelvo al equilibro cuando se a producido un desequilibro) del siguiente modo:
+
+$$\triangle Y_t = \alpha_1\triangle X_t + \alpha_2 \hat{u}_{i-1}+u_i.$$
+
+$\hat{u}_t$ es el error de la ecuación de cointegración entre $X_t$ e $Y_t$, $\alpha_1$ refleja la relación de corto plazo entre las variables  
+- $\alpha_2$ el el término más importante llamado TÉRMINO DE CORRECCIÓN DEL ERROR, y el valor nos dice cómo se ajustará las variables ante desviación de largo plazo y por tanto como volverán al equilibro que han sufrido algún tipo de desequilibro transitorio. QUE PASA SI ME DESVIO
+
+El residuo estimado $\hat{u}_t$ estará dado por:
+
+$$y_{t-1}=\beta_0+\beta_1 x_{t-1}\quad \Rightarrow \quad \hat{u}_{t-1}=t_{t-1}-\beta_0-\beta_1x_{t-1}$$
+
+- Lo que a sucedido frente a lo que debería suceder. 
+
+- $\alpha_2$ debe ser negativo, es decir contraresta a lo que a sucedido. Se puede interpretar directamente como: Qué porcentaje del desequilibrio que se a producido en un momento del tiempo se corregirá en el momento siguiente. Al final del cabo es la diferencia entre dos momentos del tiempo. Cuanto podre corregir, mucho, poco, nada. Es decir, el $71\%$ del momento $t$ se va a corregir en el momento $t+1$
+
+### Resumen
+
+- Con series estacionarias: se emplean los procedimiento habituales (MCO,etc)
+-
+ 
+ 
+
+# 3. Modelos Var
+## 3.7 Introducción a modelos VAR
+
+- Si la variable de interés no sólo depende de su pasada, sino de, al menos, una variable exógena, la definición del modelo correspondiente sería:
+
+$$y_t=\mu + \sum_{i=1}^p \alpha_iy_{t-i}+\sum_{j=0}^r \beta_j x_{i-j}+a_t.$$
+
+- Este modelo dinámico, se denomina autorregresiva con retardos distribuidos o ARDL(p,r)
+
+- Sin embargo, necesitamos dos modelos donde una variable dependientes luego podría ser una variable dependiente.
+
+
+### Definición
+
+- Es una extensión natural del modelo $AR$ univariante al contexto multivariante de series de tiempo.
+
+- Se utiliza para ver el comportamiento dinámico entre varias variables.
+
+#### Características
+
+- Habrá tantas variables como ecuaciones.
+- Los valores contemporáneos de las variables no fifuraran como explicativas en el modelo.
+- El cnjunto de variables explicativas de cada ecuación lo forma un bloque de retardos de cada variables del modelo.
+
+- Cersión estructural
+
+$$y_t=\beta_{10}-\beta_{11}z_t+\gamma_{11}y_{t-1}+\gamma_{12} z_{t-1} +\epsilon_{yt}$$
+
+$$z_t=\beta_{20}-\beta_{21}z_t+\gamma_{21}y_{t-1}+\gamma_{22} z_{t-1} +\epsilon_{yt}$$
+
+- Un VAR 1 estará dada por:
+
+$$y_t=a_{10}+a_{11}y_{t-1}+a_{12}z_{t-1}+\epsilon_{it}$$
+$$a_{20}+a_{21}y_{t-1}+a_{22}z_{t-1}+e_{2t}$$
+
+- Que es un modelo reducido, que significa que la variable $y_t$ depende de su pasado y de la otra variable $z_t$ y $z_t$ depende del pasado de $y_t$ y su propio pasado.
+
+- No $y_t$ ni $z_t$ dependeran estre si.
+
+- Estos modelos sirven cuando una variable afecto a otra y viseversa. Todo está relacionada con todo.
+
+
+### Estimación e identificación
+
+- si las variables son predeterminadas y no así exógenas, y además mis términos de error no están serialmente correlacionados.
+
+
+### Que sucede de la estacionariedad de las variables?
+
+- Si diferencio ya pierdo valores. Lo mejor es dejar las variables en niveles
+
+### ¿Cuantas variables y retardos se pueden incluir en un modelo Var?
+
+- Las que se quiera y las que convengan, según la teoría económica.
+
+- Por simetría podemos ver 2 retardos.
+
+
+## Exogeneidad
+
+- Las variables explicativas pueden ser de dos tipos:
+  - Predeterminadas.
+  - Exógenas. Pero no toda variable dependiente es exógena.
+
+- La variable endogena es determinada por el modelo que nosotros proponemos.
+
+- ¿Qué es una variables exógena? R. Es la variable que viene de afuera del modelo. Es decir, podemos modelizar expresamente sin ese modelo exógeno. Si es exógena no es necesaria modelizarla, me viene dada. El dado me viene dada.
+
+- Existe exógeneidad:
+  - Débil -> $y_t$ depende de $x_t$ y $x_t$ depende de $y_{t-1}$. Es decir mi variable $y_t$ no está explicando la evolución de $x_t$, sólo el pasado $y_{t-1}$.
+  
+  - Fuerte -> Se verifica cuando la variables es exógena débil y además cumple la ausencia de causalidad. $y_t$ depende de $x_t$ y $x_t$ depende sólo de su pasado. Ni la variable $y_t$ ni siquiera su pasado explica $x_t$.
+  
+  - Superexogeneidad 
+  
+## Contraste de exogeneidad
+
+- Contraste de Wu
+- Causalidad de Granger
+
+### Causalidad en sentido de Granger
+
+- Se dice que existe causalidad en sentido de Granger entre dos variables si los cambios que se producen en una de ella antecede a cambios en la otra.  Es decir, una precede a los cambios de la otra. Un comporatmiento antecede o precede al otro.
+
+- Axioma de la causalidad -> El futuro no causa en pasado. Es decir, el futuro no puede causar al pasado.
+
+- $x_t$ no contribuye para nada a $y_t$.
+
+
+  
+  
+
+## Regresiones espurias
+
+- Parece que hay relación pero en realidad no existen.
+- No existe causalidad
+- Se tiene bondad de ajuste muy alta. R2 muy alto, algo está mal.
+- Si el estadístico Durbin-Watson ofrece un valor bajo que el esperado. Valor 2 está bien.
+
+## Funciones de respuesta a un impulso: Breve introducción.
+
+
+
+
+
+- Existe dos modelos para reflejar el modelo de la volatilidad
+
+## 1. Modelos de heterocedasticidad condicional (ARCH)
+
+- El proceso debe ser estacionario
+- La expresión del proceso ARCH(q) es:
+$$y_t=\mu + \sigma_t e_t$$
+
+La $y$ depende de su media más la volatilidad
+- En este primero se modeliza la media
+
+$$\sigma_t^2 = \alpha_0 + \sum_{t=1}^q \alpha_i t^{2}_{t-i}$$
+
+La volatilidad $\sigma_t^2$ Depende del pasado de la serie 
+-En este segundo se modeliza la varianza.
+
+- La volatilidad de hoy dependerá de lo que paso en el pasado.
+
+- Se utiliza el contraste LM-ARCH que constrasta la $H_0$, no hay una presencia de heterocedasticidad
+  - Los los residuos que dependen de su pasado
+  - $H_0$= no presencia de estructura ARCH
+
+- EGARCH = también refleja la asimetría, los shocks impactan al modelo de manera distinta los shocks negativos y positivos no impactan igual.
+
+- 
+
+#### Ventajas
+
+- Se puede estimar  por  máxima similitud
+
+#### Desventajas
+
+- Se utiliza el ARCH generalizado.
+
+- Hipótesis nula, no existe correlación
+
+
+## 2. Modelos GARCH
+
+- La varianza depende de su propio pasado.
+
+- La volatilidad de hoy depende del de ayer.
+
+
+### Interpretación
+
+- Se suma los valores asociados al alpha y beta y cuando más proximo está a uno mayor persistencia. Si existe un shock permanecerá mucho tiempo.
+
+- Lo primero es comprobar si hay autocorrelación, luego si existe heterocedasticidad, y luego si elimine ese arch no me quedo estructura arch.

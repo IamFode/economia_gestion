@@ -1,0 +1,79 @@
+---
+title: "Clase 1"
+author: "Christian Paredes Aguilera"
+date: "2023-01-17"
+output: pdf_document
+---
+
+# El problema del consumidor
+
+## ¿Cual es el problema del consumidor?
+
+- \textbf{S1} -> Que cestas existe 
+- \textbf{S2} -> Qué cestas puede adquirir el consumidor
+- \textbf{S3} -> Cuales son los gustos del consumidor.
+
+Lo que querrá el consumidor resolverá el problema con una elección óptima.
+
+La solución del consumidor es una función de demanda.
+
+## Supuestos
+
+1.- Cada consumidor resuelve el problema independientemente a otros.
+
+2.- Los precios vienen dados. Es decir:
+
+- Los precios vienen de forma exógena. 
+- Y los consumidores aceptan el precio.
+
+## Definición
+
+### Bienes
+
+Es una mercancía definida por:
+
+- Característica físicas.
+- Localización.
+- Tiempo.
+
+### Conjunto de consumo
+
+Lo representamos con $X^i$.
+
+### Plan de consumo
+Es un vector que tiene $L$ componentes. Representado por $i:$
+$$i: x^i = (x_1^i, \ldots , x_L^i)\in \mathcal{X}$$
+
+donde $\mathcal{X}_l^i$ es la cantidad de bien $l$ consumida por el consumidor $i$.
+
+#### Propiedades del conjunto de consumo
+
+1.- Es no vacío $\mathcal{X}^i\neq 0$.
+2.- Son positivos.
+3.- Acotado inferiormente.
+4.- "No consumir dada" está definda por $0\in \mathcal{X}^i$.
+5.- Es un conjunto cerrado. $\mathcal{X}^i\subset \mathbb{R}^L_+$
+6.- Es convexto. 
+
+
+## Conjunto presupuestario
+
+¿Cuales son nuestros recursos?
+
+- Dotaciones iniciales del consumidor $i$
+
+Es un vector $\overline{w}=(\overline{w}_1^i,\ldots,\overline{w}_L^i)\in R_+^L,$ donde $\overline{w}_l^i$ es la dotación del bien $l$ 
+
+- Riqueza 
+$$M^i (\overline{p})=\overline{p}\overline{w}^i=\sum_{l=1}^o
+-l \overline{p}_l \overline{w}_l^i$$
+
+- Gasto de plan de consumo
+
+$$\overline{p}x^i = \sum_{l=1}^L \overline{p}_l x_l^i.$$
+
+- Conjunto presupuestario.
+
+$$\beta_i(\overline{p})=\hat{\beta}^i(\overline{p},M^i\left[\overline{p})\right]=\left\{x^i\in \mathcal{X}^i : \overline{p}x^i \leq M^i(\overline{p})\left[=\overline{o}\overline{w}^i\right]\right\}$$
+
+

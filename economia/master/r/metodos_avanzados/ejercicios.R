@@ -240,9 +240,21 @@ k_data = data.frame(life.expectancy,
                       GDP.growth)
 
 km3 <- kmeans(k_data,3)
-c=as.character(country)[km3$cluster==1]
-as.character(country)[km3$cluster==2]
-as.character(country)[km3$cluster==3]
+cluster1 = as.character(country)[km3$cluster==1]
+cluster2 = as.character(country)[km3$cluster==2]
+cluster3 = as.character(country)[km3$cluster==3]
+
+OECD_Group = subset(country,OECD=="yes")
+
+cluster = cluster1
+
+for (i in 1:length(OECD_Group)){
+  for (j in 1:length(cluster)){
+    if (OECD_Group[i] == cluster[j]){
+      print(OECD_Group[i])
+    }
+  }
+}
 
 ################################################################################
 

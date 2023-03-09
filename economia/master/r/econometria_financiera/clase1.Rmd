@@ -1,0 +1,14 @@
+---
+title: "clase 1"
+author: "Iglesias Casal Ana"
+date: "2023-03-06"
+output: pdf_document
+---
+
+# Procesos estocásticos estacionario
+
+## Implicación de estacionariedad
+### En sentido estricto
+### en sentido amplio o débil
+- Si su media es constante
+  

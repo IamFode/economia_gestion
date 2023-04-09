@@ -1,0 +1,7 @@
+---
+title: "Clase 2"
+author: "Christian Paredes"
+date: "2023-04-05"
+output: pdf_document
+---
+

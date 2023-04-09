@@ -1,0 +1,229 @@
+---
+title: "Ejercicio 2"
+author: "Christian Paredes"
+date: "2023-04-06"
+output: pdf_document
+---
+
+```{r echo=FALSE}
+#LIBRERIAS
+```
+
+```{r echo=FALSE}
+
+# FORMULAS DE LIMPIEZA DE DATOS
+limpiar <- function(df) {
+  df[,1] <- as.Date(df[,1], format = "%d.%m.%Y")
+  df[,2:ncol(df)] <- lapply(df[,2:ncol(df)], function(x) gsub("\\.", "", x))
+  df[,2:ncol(df)] <- lapply(df[,2:ncol(df)], function(x) gsub(",", ".", x))
+  df[,2:ncol(df)] <- lapply(df[,2:ncol(df)], as.numeric)
+  return(df)
+}
+
+```
+
+```{r echo=FALSE}
+{
+# DATA
+# ibex 35
+ibex35 = read.csv("./data/dataHistIBEX35.csv")
+# santander
+santander = read.csv("./data/dataHistSANTANDER.csv")
+#cartera
+cartera = merge(ibex35[,c(1,2)],santander[,c(1,2)],by="Fecha")
+colnames(cartera)= c("fecha","ibex","santander")
+cartera = limpiar(cartera)
+rm(ibex35)
+rm(santander)
+cartera = cartera[order(cartera$fecha, decreasing = FALSE),]
+}
+```
+
+```{r echo=FALSE}
+# RENTABILIDAD DE UN ACTIVO
+rentabActivo <- function(x) {
+  log_x <- log(x)
+  res <- diff(log_x, lag = 1)
+  return(res)
+}
+
+# RENTABILIDAD DE UNA CARTERA
+rentabCartera <- function(peso, ...) {
+  vec <- list(...)
+  result <- lapply(seq_along(vec), function(i) rentabActivo(vec[[i]]) * peso[i])
+  result <- do.call(cbind, result)
+  rowSums(result)
+}
+
+# VaR para un activo con N(mu,var^2)
+VaR = function(df, quantil){
+  return(mean(df, na.rm = TRUE)+sd(df,na.rm = TRUE)*qnorm(quantil))
+}
+
+# VaR DE UNA CARTERA (VAR empirico)
+matrixCorr <- function(prob, ...) {
+  rentabilidadActivos <- do.call(cbind, lapply(list(...), rentabActivo))
+  matrizCorr <- cor(rentabilidadActivos, method = "pearson")
+  quantil <- apply(rentabilidadActivos, 2, quantile, probs = prob, type = 6)
+  VaR <- sqrt(t(quantil) %*% matrizCorr %*% quantil)
+  return(as.numeric(VaR))
+}
+
+# VaR DE UNA CARTERA (VAR normal)
+matrixCorrN <- function(prob, ...) {
+  rentabilidadActivos <- do.call(cbind, lapply(list(...), rentabActivo))
+  matrizCorr <- cor(rentabilidadActivos, method = "pearson")
+  quantil <- apply(rentabilidadActivos, 2, VaR, prob)
+  VaR <- sqrt(t(quantil) %*% matrizCorr %*% quantil)
+  return(as.numeric(VaR))
+}
+
+# EXPECTED SHORTFAIL (ES)
+ES = function(x,prob){
+  rentabilidad = rentabActivo(x)
+  VarEmpirico=quantile(rentabilidad,probs = prob,type=6)
+  suma = sum(rentabilidad[rentabilidad<=VarEmpirico])
+  contar = length(rentabilidad[rentabilidad<=VarEmpirico])
+  return(suma/contar)
+}
+
+ES(cartera$ibex,0.05)
+
+# SIMULACIÓN HISTORICA (una variable)
+simHistorica = function(x,prob){
+  res = diff(x, lag = 1)
+  last = tail(x,n=1)
+  Var = c()
+  for(i in res){
+    Var = c(Var,last+i)
+  }
+  rent = c()
+  for(i in Var){
+    rent = c(rent,log(i/last))
+  }
+  VaR = unname(quantile(rent,probs=prob))
+  ES = sum(rent[rent<=VaR])/length(rent[rent<=VaR])
+  result = cbind(VaR,ES)
+  return(result)
+}
+
+
+# SIMULACIÓN MONTE CARLO (una variable)
+simMonteCarlo = function(x,dias,prob){
+  rentabilidad = rentabActivo(x)
+  deanual = sqrt(dias)*sd(rentabilidad)
+  mediaanual = 252*mean(rentabilidad)
+  delta = 1/dias
+  last = tail(x,n=1)
+  set.seed(1000)
+  aleatorion = rnorm(length(x),0,1)
+  precio = last+last*(mediaanual*delta+deanual*sqrt(delta)*aleatorion)
+  rent = log(precio/last)
+  Var = quantile(rent,prob)
+  ES = sum(rent[rent<=Var])/length(rent[rent<=Var])
+  result = cbind(Var,ES)
+  return(result)
+}
+
+```
+
+```{r echo=FALSE}
+# rentabilidad de activos para ibex y santander
+rentI = rentabActivo(cartera$ibex)
+rentS = rentabActivo(cartera$santander)
+```
+
+## VaR de IBEX35 y Var empírico
+```{r echo=FALSE}
+VaR(rentI,0.05)
+VarEmpiricoI=quantile(rentI,probs = 0.05,type=6) # Var empirco type=6 excluye los valores extremos
+VarEmpiricoI
+```
+
+## VaR de SANTANDER
+```{r echo=FALSE}
+VaR(rentS,0.05)
+VarEmpiricoS = quantile(rentS,probs = 0.05,type=6)
+VarEmpiricoS
+```
+
+## Rentabilidad de la cartera IBEX35 y SANTANDER
+```{r echo=FALSE}
+rentcar = rentabCartera(c(.5,.5),cartera$ibex,cartera$santander)
+head(rentcar)
+```
+
+## VaR de la cartera IBEX35 y SANTANDER
+```{r echo=FALSE}
+VaR(rentcar,0.05)
+quantile(rentcar,probs = 0.05,type=6)
+```
+
+
+## VaR (empírico) de una cartera (IBEX35 y SANTANDER)
+```{r echo=FALSE}
+matrixCorr(0.05,cartera$ibex,cartera$santander)
+```
+
+
+## VaR (Normal) de una cartera (IBEX35 y SANTANDER)
+```{r echo=FALSE}
+matrixCorrN(0.05,cartera$ibex,cartera$santander)
+```
+
+# Propiedades del VaR
+
+#### Monotocidad 
+- Cuando más pequeño el VaR, Mayor es el nivel de riego.
+- Cuando mayor es el VaR menor es el nivel de riesgo.
+
+Siempre que sea a la baja.
+
+#### Homogeneidad
+Es escalable
+$$riesgo(\lambda r)=\lambda riesgo(r)$$
+
+#### Invarianza por traslación
+$$riesgo(r+\lambda)=riesgo(r)-\lambda.$$
+
+#### Subaditividad
+$$riesgo(a+b)\leq riesgo(a)+riesgo(b)$$
+pero no cumple para VaR
+
+
+# Limitaciones de VaR
+- No es subaditivo
+- No reporta información de las cuantías de las pérdidas
+
+
+## Expected shortfail (ES) de IBAX35
+```{r echo=FALSE}
+ES(cartera$ibex,0.05)
+```
+
+
+## Expected shortfail (ES) de SANTANDER
+```{r echo=FALSE}
+ES(cartera$santander,0.05)
+```
+
+
+# Regret
+miede la pérdida media condicionada a que haya pérdidas.
+
+
+# Simulación histórica
+```{r echo=FALSE}
+simHistorica(cartera$ibex,0.05)
+```
+
+# Simulación de Monte Carlo
+Con un aleatoria N(0,1)
+$$S_{t+j}=S_{t+j-1}+S_{t+j-1}\left(\mu \triangle t + \sigma \sqrt{\triangle t} \epsilon_{t+j}\right),\quad j=1,2,\ldots,T$$
+
+```{r echo=FALSE}
+simMonteCarlo(cartera$ibex,252,0.05)
+```
+
+
+# Varios activos

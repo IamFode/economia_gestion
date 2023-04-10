@@ -112,10 +112,10 @@ simHistorica = function(x,prob){
 simMonteCarlo = function(x,dias,prob){
   rentabilidad = rentabActivo(x)
   deanual = sqrt(dias)*sd(rentabilidad)
-  mediaanual = 252*mean(rentabilidad)
+  mediaanual = dias*mean(rentabilidad)
   delta = 1/dias
   last = tail(x,n=1)
-  set.seed(1000)
+  set.seed(2000)
   aleatorion = rnorm(length(x),0,1)
   precio = last+last*(mediaanual*delta+deanual*sqrt(delta)*aleatorion)
   rent = log(precio/last)
@@ -125,6 +125,60 @@ simMonteCarlo = function(x,dias,prob){
   return(result)
 }
 
+# SIMULACIÓN MONTE CARLO (dos variables)
+simMonteCarlo2 = function(x,y,dias){
+  rentabilidadx = rentabActivo(x)
+  rentabilidady = rentabActivo(y)
+  deanualx = sqrt(dias)*sd(rentabilidadx)
+  deanualy = sqrt(dias)*sd(rentabilidady)
+  mediaanualx = dias*mean(rentabilidadx)
+  mediaanualy = dias*mean(rentabilidady)
+  delta = 1/dias
+  lastx = tail(x,n=1)
+  lasty = tail(y,n=1)
+  set.seed(2000)
+  epsilon1 = rnorm(length(x),0,1)
+  aleatorioy = rnorm(length(y),0,1)
+  #preciox = lastx+lastx*(mediaanualx*delta+deanualx*sqrt(delta)*epsilon1)
+  #precioy = lasty+lasty*(mediaanualy*delta+deanualy*sqrt(delta)*aleatorioy)
+  corr = cor(rentabilidadx,rentabilidady)
+  epsilon2=corr*epsilon1+sqrt(1-corr*corr)*aleatorioy
+  activox = lastx+(lastx*(mediaanualx*delta+deanualx*sqrt(delta)*epsilon1))
+  
+  activoy = lasty+(lasty*(mediaanualy*delta+deanualy*sqrt(delta)*epsilon2))
+  
+  resx = rentabActivo(activox)
+  resy = rentabActivo(activoy)
+  corrxy = cor(resx,resy)
+  return(corrxy)
+}
+
+# MATRIZ DE CHOLESKI PARA MONTECARLO GENERALIZADO 
+choleski <- function(dias,...) {
+  set.seed(2000)
+  rentab <- as.matrix(data.frame(...))
+  rentabilidades = rentabActivo(rentab)
+  matriz_cor <- cor(rentabilidades)
+  cholesk <- chol(matriz_cor)
+  aleatorio <- matrix(rnorm(nrow(rentab) * ncol(rentab)), nrow = nrow(rentab))
+  epsilons = aleatorio %*% cholesk
+  last = tail(rentab,n=1)
+  mediasanuales = dias*colMeans(rentabilidades)
+  delta = 1/dias
+  deAnuales = sqrt(dias)*apply(rentabilidades,2,sd)
+  print(class(deAnuales))
+  
+  uno = sqrt(delta)*epsilons
+  dos = t(apply(uno, 1, function(x) x * deAnuales))
+  tres = mediasanuales*delta
+  cuatro = t(apply(dos, 1, function(x) x + tres))
+  cinco = t(apply(cuatro, 1, function(x) x * last))
+  seis = t(apply(cinco, 1, function(x) x + last))
+  correlacion = cor(seis)
+  return(correlacion)
+}
+
+choleski(cartera$ibex,cartera$santander,dias=252)
 ```
 
 ```{r echo=FALSE}
@@ -227,3 +281,7 @@ simMonteCarlo(cartera$ibex,252,0.05)
 
 
 # Varios activos
+```{r echo=FALSE}
+simMonteCarlo2(cartera$ibex,cartera$santander,252,0.05)
+choleski(cartera$ibex,cartera$santander,dias=252)
+```

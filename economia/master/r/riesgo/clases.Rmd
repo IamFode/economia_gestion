@@ -37,6 +37,7 @@ rm(ibex35)
 rm(santander)
 cartera = cartera[order(cartera$fecha, decreasing = FALSE),]
 }
+cartera
 ```
 
 ```{r echo=FALSE}
@@ -58,6 +59,10 @@ rentabCartera <- function(peso, ...) {
 # VaR para un activo con N(mu,var^2)
 VaR = function(df, quantil){
   return(mean(df, na.rm = TRUE)+sd(df,na.rm = TRUE)*qnorm(quantil))
+}
+
+VaRN = function(df,quantil){
+  return(colMeans(df, na.rm = TRUE)+apply(df,2,sd)*qnorm(quantil))
 }
 
 # VaR DE UNA CARTERA (VAR empirico)
@@ -101,7 +106,7 @@ simHistorica = function(x,prob){
   for(i in Var){
     rent = c(rent,log(i/last))
   }
-  VaR = unname(quantile(rent,probs=prob))
+  VaR = unname(quantile(rent,probs=prob,rm.na=FALSE))
   ES = sum(rent[rent<=VaR])/length(rent[rent<=VaR])
   result = cbind(VaR,ES)
   return(result)
@@ -154,19 +159,19 @@ simMonteCarlo2 = function(x,y,dias){
 }
 
 # MATRIZ DE CHOLESKI PARA MONTECARLO GENERALIZADO 
-choleski <- function(dias,...) {
+choleski <- function(quantil,dias,...) {
   set.seed(2000)
   rentab <- as.matrix(data.frame(...))
   rentabilidades = rentabActivo(rentab)
   matriz_cor <- cor(rentabilidades)
   cholesk <- chol(matriz_cor)
   aleatorio <- matrix(rnorm(nrow(rentab) * ncol(rentab)), nrow = nrow(rentab))
+  colnames(aleatorio) = colnames(rentab)
   epsilons = aleatorio %*% cholesk
   last = tail(rentab,n=1)
   mediasanuales = dias*colMeans(rentabilidades)
   delta = 1/dias
   deAnuales = sqrt(dias)*apply(rentabilidades,2,sd)
-  print(class(deAnuales))
   
   uno = sqrt(delta)*epsilons
   dos = t(apply(uno, 1, function(x) x * deAnuales))
@@ -175,10 +180,40 @@ choleski <- function(dias,...) {
   cinco = t(apply(cuatro, 1, function(x) x * last))
   seis = t(apply(cinco, 1, function(x) x + last))
   correlacion = cor(seis)
-  return(correlacion)
+  colnames(correlacion) = colnames(rentab)
+  rownames(correlacion) = colnames(rentab)
+  
+  rentabi = rentabActivo(seis)
+  colnames(rentabi) = colnames(rentab)
+  var = VaRN(rentabi,quantil)
+  
+  # Imprimir las variables que tienen menos de 5 filas
+  cat("\nMEDIAS:\n")
+  print(mediasanuales)
+  cat("\nDESVIACIONES ESTÁNDAR:\n")
+  print(deAnuales)
+  cat("\n")
+  cat("DELTA:",delta)
+  cat("\n")
+  
+  # Imprimir las primeras 5 filas de las variables que tienen más de 5 filas
+  cat("\nDESCOMPOSICIÓN DE CHOLESKI (5 primeros):\n")
+  cat("\n")
+  print(head(cholesk,5))
+  cat("\nNÚMEROS ALEATORIOS (5 primeros):\n")
+  print(head(aleatorio))
+  cat("\nEPSILON (5 primeros):\n")
+  print(head(epsilons))
+  cat("\nCORRELACIONES DE LAS RENTABILIDADES:\n")
+  print(correlacion)
+  cat("\nRENTABILIDADES:\n")
+  print(head(rentabi,5))
+  cat("\nVaR:\n")
+  print(var)
+  
 }
 
-choleski(cartera$ibex,cartera$santander,dias=252)
+choleski(ibex,santander,dias=252,quantil=0.05)
 ```
 
 ```{r echo=FALSE}
@@ -285,3 +320,19 @@ simMonteCarlo(cartera$ibex,252,0.05)
 simMonteCarlo2(cartera$ibex,cartera$santander,252,0.05)
 choleski(cartera$ibex,cartera$santander,dias=252)
 ```
+
+
+
+La razón por la que se multiplica el VaR y el ES por la raíz cuadrada del horizonte de inversión se debe a la propiedad de la varianza en procesos estocásticos.
+
+La varianza de una serie de retornos diarios es una medida de la dispersión de los retornos alrededor de su media. Si se asume que los retornos diarios son independientes e idénticamente distribuidos (iid) y que su varianza es constante a lo largo del tiempo, entonces se puede calcular la varianza de los retornos durante un horizonte de inversión de n días como:
+
+Var(retornos_n_días) = n * Var(retornos_diarios)
+
+De esta manera, la desviación estándar de los retornos durante n días será:
+
+SD(retornos_n_días) = sqrt(n * Var(retornos_diarios))
+
+Cuando se calcula el VaR y el ES para un horizonte de inversión de n días, se asume que la distribución de los retornos diarios es la misma para cada día del horizonte. Por lo tanto, la desviación estándar de los retornos diarios se escala por la raíz cuadrada del número de días en el horizonte de inversión.
+
+En este caso, el horizonte de inversión es de 10 días, por lo que se multiplica el VaR y el ES por la raíz cuadrada de 10 para obtener el VaR y el ES para un horizonte de inversión de 10 días.

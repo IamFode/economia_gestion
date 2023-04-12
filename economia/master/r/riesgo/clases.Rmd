@@ -37,7 +37,8 @@ rm(ibex35)
 rm(santander)
 cartera = cartera[order(cartera$fecha, decreasing = FALSE),]
 }
-cartera
+row.names(cartera) = cartera[,1]
+cartera[,1] = NULL
 ```
 
 ```{r echo=FALSE}
@@ -55,6 +56,7 @@ rentabCartera <- function(peso, ...) {
   result <- do.call(cbind, result)
   rowSums(result)
 }
+rentabCartera(c(.5,.5),activos$bbva,activos$itx)
 
 # VaR para un activo con N(mu,var^2)
 VaR = function(df, quantil){
@@ -157,6 +159,7 @@ simMonteCarlo2 = function(x,y,dias){
   corrxy = cor(resx,resy)
   return(corrxy)
 }
+simMonteCarlo2(cartera$ibex,cartera$santander,252)
 
 # MATRIZ DE CHOLESKI PARA MONTECARLO GENERALIZADO 
 choleski <- function(quantil,dias,...) {
@@ -212,8 +215,6 @@ choleski <- function(quantil,dias,...) {
   print(var)
   
 }
-
-choleski(ibex,santander,dias=252,quantil=0.05)
 ```
 
 ```{r echo=FALSE}
@@ -246,6 +247,7 @@ head(rentcar)
 ```{r echo=FALSE}
 VaR(rentcar,0.05)
 quantile(rentcar,probs = 0.05,type=6)
+VaR(cartera,0.05)
 ```
 
 

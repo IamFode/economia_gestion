@@ -16,14 +16,14 @@ bbva = read.csv("./data/BBVA.csv")
 # santander
 itx = read.csv("./data/ITX.csv")
 #cartera
-cartera = merge(bbva[,c(1,2)],itx[,c(1,2)],by="Fecha")
-colnames(cartera)= c("fecha","bbva","itx")
-cartera = limpiar(cartera)
+activos = merge(bbva[,c(1,2)],itx[,c(1,2)],by="Fecha")
+colnames(activos)= c("fecha","bbva","itx")
+activos = limpiar(activos)
 rm(bbva)
 rm(itx)
-cartera = cartera[order(cartera$fecha, decreasing = FALSE),]
-row.names(cartera) = cartera[,1]
-cartera[,1] = NULL
+activos = activos[order(activos$fecha, decreasing = FALSE),]
+row.names(activos) = activos[,1]
+activos[,1] = NULL
 ```
 
 # EJERCICIO 1
@@ -54,15 +54,40 @@ Calular el VaR y el ES para los activos BBVA e Inditex utilizando datos diarios 
 
 RESPUESTA.-
 
-# ACTIVOS BBVA e INDITEX
+# ACTIVOS BBVA e INDITEX (06-04-2022 - 05-04-2023)
 
 ## Simulación histórica 
 
-El VaR para BBVA es `r simHistorica(cartera$bbva,0.05,10)[1]` y el ES  viene dado por `r simHistorica(cartera$bbva,0.05,10)[2]`.  Lo mismo para ITX, donde el VaR es 
-`r simHistorica(cartera$itx,0.05,10)[1]` y el ES será `r simHistorica(cartera$itx,0.05,10)[1]`.
+Los resultados del Valor de Riesgo (VaR) y Expected Shortfall (ES) para BBVA y ITX son los siguientes:
+\begin{center}
+  \begin{tabular}{rll}
+    BBVA:& VaR = `r simHistorica(activos$bbva,0.05,10)[1]`; &ES = `r simHistorica(activos$bbva,0.05,10)[2]` \\\\
+    ITX:& VaR = `r simHistorica(activos$itx,0.05,10)[1]`; & ES  =`r simHistorica(activos$itx,0.05,10)[2]`.
+  \end{tabular}
+\end{center}
 
-Los resultados obtenidos indican que existe una probabilidad del 95% de que la pérdida máxima diaria que se podría esperar en un horizonte de 10 días para las acciones de BBVA no supere el 2.68% y en el caso de Inditex, el 2.09% del valor de la inversión inicial. El ES, por otro lado, indica que en caso de que ocurra un evento extremo en el mercado, el promedio de las pérdidas diarias sería de 4.70% en el caso de BBVA y de 2.09% para Inditex.
+Los resultados del VaR y ES para los activos BBVA e ITX proporcionan una medida del riesgo asociado con la inversión en estos activos. El VaR indica la pérdida máxima que se puede esperar con un nivel de confianza del 95% en un período de 10 días, y en este caso se expresa como un valor negativo, ya que se trata de una disminución porcentual en el valor de los activos.
 
-  
+Para BBVA, el VaR es de -0.1200272, lo que significa que existe un 95% de confianza de que la pérdida máxima en un período de 10 días no superará este valor. Es decir, con un nivel de confianza del 95%, se espera que las pérdidas diarias en el activo BBVA no superen el 12%. Además, el ES es de -0.157998, lo que sugiere que en el peor escenario, donde las pérdidas superan el VaR, la pérdida promedio sería de aproximadamente el 15.8% del valor de la inversión en BBVA.
 
+En el caso de ITX, el VaR es de -0.0599089, lo que indica que hay un 95% de confianza de que la pérdida máxima en un período de 10 días no superará este valor. Es decir, con un nivel de confianza del 95%, se espera que las pérdidas diarias en el activo ITX no superen el 5.99%. Además, el ES es de -0.0963052, lo que significa que en el peor escenario, la pérdida promedio sería de aproximadamente el 9.6% del valor de la inversión en ITX.
+
+
+## Simulación de Monte Carlo.
+
+```{r echo=FALSE}
+simMonteCarlo(activos$bbva,activos$itx,horizonte=10,quantil=0.05,dias=252)
+```
+
+
+El VaR para el activo BBVA es -0.1598579, lo que indica que, con un nivel de confianza determinado, se espera que las pérdidas en este activo no superen el 15.9% aproximadamente, durante los próximos 10 días. De manera similar, el VaR para el activo ITX es -1.328191%, lo que indica que se espera que las pérdidas en este activo no superen el 1.328191% durante los próximos 10 días.
+
+Por otro lado, la ES representa la pérdida promedio esperada en el caso de que se supere el VaR. En este caso, el valor de ES para el activo BBVA es -2.028042%, lo que significa que si se supera el VaR en los próximos 10 días, se espera que las pérdidas promedio en el activo BBVA sean de aproximadamente el 2.028042%. De manera similar, el valor de ES para el activo ITX es -1.577484%, lo que significa que si se supera el VaR en los próximos 10 días, se espera que las pérdidas promedio en el activo ITX sean de aproximadamente el 1.577484%.
+
+
+
+
+
+
+## Distribución normal.
 

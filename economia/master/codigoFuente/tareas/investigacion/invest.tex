@@ -1,0 +1,183 @@
+\begin{center}
+    \Large \textbf{Utilización del análisis topológico de datos en el ámbito económico.} 
+\end{center}
+
+\begin{center}
+    \normalsize Christian L. Paredes Aguilera.
+\end{center}
+
+\begin{center}
+    2 de mayo de 2023.
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    \textbf{Resumen}
+\end{center}
+
+\begin{tcolorbox}
+    El análisis topológico de datos (ADT) es una técnica innovadora que ha ganado renombre en los últimos años, especialmente en el campo de la ciencia de datos. TDA proporciona un conjunto robusto de herramientas para analizar información compleja y de varias dimensiones, lo que lo convierte en un método prometedor para los expertos en economía. En este artículo, ofrecemos una visión general de TDA y explicamos sus diferencias con los métodos tradicionales utilizados en la investigación económica. Asimismo, comentamos los diferentes enfoques que ofrece TDA y cómo se han utilizado en otras disciplinas. Por último, presentamos ejemplos de cómo se ha aplicado TDA en la investigación económica y discutimos el potencial que tiene para mejorar la calidad de futuras investigaciones. Este artículo contribuye al creciente cuerpo de literatura sobre la aplicación de TDA en economía y brinda un punto de partida para investigadores interesados en esta técnica.
+\end{tcolorbox}
+
+\vspace{1.5cm}
+
+\textbf{1. INTRODUCCIÓN}\\
+---------------------------\\\\
+El análisis de datos topológicos (ADT) se ha convertido en una herramienta cada vez más importante en el análisis de datos en diversas áreas aplicadas de la ciencia y la ingeniería en los últimos años. El ADT surgió en la década de 1990 cuando los geómetras computacionales se interesaron en el aspecto algorítmico de la topología algebraica clásica en matemáticas. Desde entonces, ha habido un crecimiento significativo en la metodología y aplicabilidad de ADT, que ha llevado al desarrollo de varios algoritmos que se han aplicado en el procesamiento de datos.
+
+A pesar de su potencial en la economía, el ADT sigue siendo un tema marginal en este campo. Por lo tanto, el objetivo de este documento es proporcionar una descripción general del ADT y cómo difiere de los enfoques tradicionales en la investigación económica. También se presentará una descripción general de los diferentes métodos disponibles en ADT y cómo se han aplicado en algunos campos. Finalmente, se describirán las aplicaciones económicas de ADT y se discutirán las direcciones futuras para la investigación.
+
+Este documento tiene como objetivo crear conciencia sobre el potencial del ADT entre la comunidad económica y proporcionar un recurso útil para los investigadores interesados en usar ADT en sus propios análisis. El ADT puede contribuir al desarrollo de nuevos hallazgos en la economía, y es importante que los investigadores tengan acceso a esta herramienta.\\\\
+
+\textbf{1.1. ¿Qué es el análisis de datos topológicos?}\\\\
+El análisis topológico de datos es una técnica que utiliza la topología algebraica para extraer información estructural de conjuntos de datos complejos y de alta dimensión. Según \cite{books/daglib/0025666}, esta técnica permite analizar datos con una estructura intrínseca, que puede ser representada por medio de un complejo simplicial. Por su parte, \cite{Carlsson2009TopologyAD} sostiene que el análisis topológico de datos ha demostrado ser útil en una amplia variedad de aplicaciones, incluyendo la biología molecular, la ingeniería de materiales, las ciencias sociales y la economía. Además, \cite{carlsson2008zigzag}  destacan que el análisis topológico de datos ha permitido el desarrollo de nuevas herramientas para el análisis y la visualización de conjuntos de datos complejos, lo que ha llevado a avances significativos en campos como la estadística, el aprendizaje automático y la inteligencia artificial.\\\\
+
+\textbf{1.2. Análisis de datos topológicos vs técnicas tradicionales de análisis de datos en la economía}\\\\
+En el ámbito de la economía, \cite{10.1257/jep.28.2.3}  hace referencia a que los métodos tradicionales de análisis de datos son frecuentemente diseñados para examinar las relaciones entre variables, tales como la oferta y la demanda o el impacto de las políticas gubernamentales. No obstante, según \cite{hastie2015statistical}, estos métodos suponen que los datos son lineales o describibles a través de un modelo paramétrico específico, como la regresión lineal, y pueden presentar dificultades al momento de capturar datos complejos de alta dimensión con relaciones no lineales.
+
+Por otro lado, el análisis topológico de datos, de acuerdo con \cite{wasserman2016topological}, ha sido diseñado para examinar datos complejos y de alta dimensión, tales como redes sociales, datos espaciales o series multidimensionales de correlación, y emplea técnicas matemáticas para identificar patrones y estructuras dentro de los datos, sin asumir un modelo paramétrico específico. Esto posibilita a los investigadores encontrar relaciones no lineales y ofrecer información relevante acerca de la estructura subyacente de los datos. Asimismo, \cite{carlsson2008zigzag} destaca que el análisis topológico de datos se enfoca en la representación visual de los datos, lo cual puede facilitar a los investigadores la identificación de patrones y relaciones que pueden no ser evidentes con las herramientas tradicionales.
+
+En general, el análisis topológico de datos ofrece un enfoque complementario a los métodos tradicionales y puede ser especialmente útil cuando se trabajan con datos complejos o de gran dimensión. Al identificar patrones y estructuras que pueden no ser evidentes con las herramientas tradicionales, el análisis topológico de datos tiene el potencial de aportar nuevos conocimientos y descubrimientos al campo de la economía.\\\\
+
+
+\textbf{2. MÉTODOS Y CONCEPTOS DEL ANÁLISIS DE DATOS TOPOLÓGICOS}\\
+---------------------------\\\\
+En este apartado del paper se describirán los métodos y conceptos utilizados en el análisis de datos topológicos, incluyendo espacios topológicos, complejos simpliciales, grupos de homología, homología persistente y diagramas de persistencia y entropía de persistencia; que serán de utilidad para nuestro fin.\\\\
+
+\textbf{2.1 Espacios topológicos}\\\\
+Según \cite{munkres2000topology}, un espacio topológico es un par ordenado $(X, \tau)$, donde $X$ es un conjunto y $\tau$ es una colección de subconjuntos de $X$, llamados abiertos, que satisfacen tres axiomas:
+\begin{enumerate}[1.]
+    \item  Tanto $X$ como el conjunto vacío $\varnothing$ están en $\tau$,  
+    \item cualquier unión de conjuntos abiertos es un conjunto abierto, 
+    \item cualquier intersección finita de conjuntos abiertos es un conjunto abierto. 
+\end{enumerate}
+	Esta definición permite estudiar propiedades de los conjuntos que son invariantes bajo transformaciones continuas. Se puede pensar en un espacio topológico como una generalización de la idea de una figura geométrica como un círculo o una esfera, pero sin tener que especificar una métrica precisa para medir las distancias entre puntos. 
+
+En resumen, los espacios topológicos son una herramienta fundamental en el análisis de datos topológicos, ya que permiten estudiar las propiedades de los conjuntos y figuras geométricas que son invariantes bajo transformaciones continuas.\\\\
+
+\textbf{2.2 Complejos simpliciales}\\\\
+En el análisis de datos topológicos, uno de los conceptos clave es el de complejos simpliciales. Los complejos simpliciales son estructuras matemáticas utilizadas para estudiar las propiedades topológicas de los conjuntos de datos.
+
+Formalmente, un complejo simplicial $K$ es una colección finita de subconjuntos no vacíos de un conjunto de vértices $V$, llamados símplices, que cumple las siguientes condiciones:
+
+\begin{enumerate}[1.]
+    \item Cada vértice de $V$ es un símplice en $K$.
+    \item Si $\sigma \in K$ y $\tau \subseteq \sigma$, entonces $\tau \in K$.
+    \item Cualquier intersección finita de símplices en $K$ es también un símplice en $K$.
+\end{enumerate}
+
+La importancia de los complejos simpliciales en el análisis de datos radica en su capacidad para capturar estructuras topológicas en los datos, como la conectividad y la presencia de agujeros. Además, los complejos simpliciales son la base para muchas técnicas de análisis topológico de datos, como la homología persistente.
+
+Para profundizar en este tema, se pueden consultar diversas referencias bibliográficas, como el libro "Topological Data Analysis" de \cite{Carlsson2009TopologyAD}, o el artículo "Computing Persistent Homology" de \cite{Zomorodian2005}, entre otros.\\\\
+
+
+\textbf{2.3 Grupos de homología}\\\\
+En álgebra homológica, el grupo de homología $H_n(X)$ de un espacio topológico $X$ es un invariante algebraico que mide "cuántas n-esferas son mapeadas a lazos en $X$" (\cite{munkres2000topology}, p. 358). Formalmente, se define como el cociente del grupo abeliano de los ciclos de dimensión $n$ en $X$ (i.e., las $n$-cadenas cerradas) respecto al subgrupo de los bordes de las $(n+1)$-cadenas (i.e., las $(n+1)$-cadenas que tienen borde en $X$):
+$$H_n(X)=\dfrac{Z_n(X)}{B_n(X)}.$$
+Donde $Z_n(X)$ es el grupo abeliano de los ciclos de dimensión $n$ en $X$ y $B_n(X)$ es el subgrupo de las $(n+1)$-cadenas que tienen borde en $X$. Los elementos de $H_n(X)$ se llaman \textit{n-homología clases} y su estructura algebraica permite hacer cálculos en álgebra homológica para estudiar las propiedades topológicas de $X$.\\\\
+
+
+\textbf{2.4 Homología persistente}\\\\
+La homología persistente es una herramienta importante en el análisis topológico de datos, que permite identificar y caracterizar patrones topológicos que persisten a través de diferentes escalas. Formalmente, se define como sigue: sea $X$ un espacio topológico y sea $F$ un campo sobre $X$. La homología persistente de $X$ con coeficientes en $F$ es una secuencia de grupos abelianos 
+$$H_0(X,F) \to H_1(X,F) \to H_2(X,F) \to \cdots$$ 
+junto con un conjunto de funciones inyectivas 
+$$i_j^k: H_j(X_k,F) \to H_j(X_{k+1},F)$$ 
+y un conjunto de funciones sobreyectivas 
+$$p_j^k: H_j(X_k,F) \to H_j(X_{k+1},F)$$ 
+que satisfacen ciertas condiciones. La homología persistente se puede visualizar como una representación gráfica llamada diagrama de persistencia, que muestra cómo los grupos de homología cambian a medida que se aumenta la escala de los datos.
+
+La homología persistente ha demostrado ser una herramienta útil para el análisis de datos topológicos en diferentes campos, incluyendo la economía. Por ejemplo, se ha utilizado para analizar la estructura de las redes financieras y de inversión, la dinámica de los mercados de valores y las propiedades topológicas de los sistemas de precios. Además, ha permitido identificar patrones importantes en los datos que no se pueden capturar mediante técnicas tradicionales de análisis de datos. Una referencia importante en este tema es el libro de \cite{books/daglib/0025666} "Computational Topology: An Introduction".\\\\
+
+
+
+\textbf{2.5 Diagramas de persistencia y entropía de persistencia}\\\\
+Los diagramas de persistencia permiten la representación visual de la evolución de los componentes conectados de una nube de puntos en función de una escala de distancia. Por otro lado, la entropía de persistencia es una medida cuantitativa que mide la complejidad de los diagramas de persistencia.
+
+Formalmente, sea $X$ un conjunto de puntos en $\mathbb{R}^n$, un diagrama de persistencia se define como una colección de pares ordenados $(p_i, q_i) \in \mathbb{R}^2$, donde $p_i$ y $q_i$ representan los valores de la escala en la que aparece y desaparece una característica topológica de $X$, respectivamente. La entropía de persistencia, por otro lado, se define como una medida de la complejidad de un diagrama de persistencia y se puede calcular utilizando la información de los valores $p_i$ y $q_i$.
+
+El uso de diagramas de persistencia y entropía de persistencia en el análisis topológico de datos se ha extendido ampliamente en diferentes campos, incluyendo la economía. En particular, estos métodos se han utilizado para analizar la estabilidad y la complejidad de los sistemas económicos y financieros, y para identificar patrones y relaciones entre variables económicas.
+
+Según \cite{Carlsson2009TopologyAD}, la teoría de la persistencia ha sido la base del éxito de las aplicaciones de topología algebraica en el análisis de datos. Además, la entropía de persistencia ha demostrado ser una herramienta valiosa para la extracción de información de diagramas de persistencia.\\\\
+
+
+\textbf{3. APLICACIONES DEL ANÁLISIS DE DATOS TOPOLÓGICOS}\\
+---------------------------\\\\
+En particular, se examinan los resultados prometedores que se han obtenido al aplicar el análisis topológico de datos (TDA, por sus siglas en inglés) en la exploración y descubrimiento de nuevos patrones y relaciones en conjuntos de datos complejos y de alta dimensión. Se discuten algunas de las áreas de aplicación clave donde ADT ha demostrado ser una herramienta poderosa, como la biología, la neurociencia y la informática. Además, se destaca el potencial de ADT en el campo de la economía, ya que permite explorar la complejidad y la heterogeneidad de los datos económicos, identificar patrones y relaciones no lineales y descubrir nuevas perspectivas en la investigación económica. Se señala que si bien la literatura sobre las aplicaciones de ADT es extensa, este artículo no pretende ser una revisión exhaustiva y rigurosa, sino un resumen de alto nivel de las áreas donde ADT ha sido aplicado con éxito y sus principales contribuciones en cada campo.\\\\
+
+\textbf{3.1 Aplicaciones del ADT en otros campos}\\\\
+
+En este apartado, se presentan algunas de las aplicaciones más destacadas del ADT en biología, neurociencia e informática.\\
+
+En biología, el ADT ha sido utilizado para estudiar la forma y estructura de moléculas biológicas como proteínas y ADN. La persistencia homológica se ha utilizado para identificar las características más importantes de las moléculas biológicas y cómo se relacionan entre sí (\cite{Ghrist2007BarcodesTP}). Además, el ADT se ha utilizado para analizar datos genómicos y para clasificar diferentes tipos de células (\cite{nicolau2011topology}).\\
+
+En neurociencia, el ADT se ha utilizado para estudiar la conectividad neuronal en el cerebro y para identificar patrones de activación cerebral en diferentes tareas cognitivas (\cite{petri2013topological}). También se ha utilizado para analizar datos de EEG y MEG y para identificar redes neuronales subyacentes en diferentes estados de sueño y vigilia (\cite{alexander-bloch2013anatomical}; \cite{df4c47df8d5d420496874d22ea7d4381}).\\
+
+En informática, el ADT se ha utilizado para analizar datos de redes y para identificar patrones de conectividad en diferentes tipos de redes, como las redes sociales y las redes de transporte (\cite{ghrist2014elementary}). También se ha utilizado para analizar datos de imágenes y para identificar objetos y características relevantes en las imágenes (\cite{Carlsson2009TopologyAD}).\\
+
+En resumen, el ADT ha demostrado ser una herramienta útil y versátil para analizar datos complejos en una amplia variedad de campos, incluyendo biología, neurociencia e informática. Las aplicaciones descritas anteriormente son solo una muestra de las muchas posibilidades que ofrece el ADT para explorar y comprender datos complejos en diferentes campos.\\\\
+
+\textbf{3.2 Aplicaciones del ADT en economía}\\\\
+
+\textbf{Aplicaciones del análisis de datos topológicos en finanzas}\\\\
+
+El Análisis Topológico de Datos se ha utilizado para explorar el comportamiento temporal de las características topológicas en datos financieros, proporcionando información sobre el estado del mercado y señales tempranas de una posible crisis. \cite{GIDEA2018820} utilizaron ADT para estudiar la persistencia de bucles en una nube de puntos formada por una sola ventana deslizante y cuatro series temporales de log-retornos diarios de los cuatro índices del mercado de valores. Encontraron que las series temporales de las normas $L^p$ muestran un fuerte crecimiento alrededor del pico principal que emerge durante una crisis. Este comportamiento refleja un aumento en la persistencia de bucles que aparecen en nubes de puntos a medida que el mercado pasa de un estado ordinario a un estado "caliente", por lo que \cite{GIDEA2018820} sugieren que ADT ofrece un nuevo método econométrico y está generando una nueva categoría de señales tempranas de una posible crisis del mercado.\\
+
+Luego, \cite{GOEL2020113222} investigaron el uso de ADT en las series temporales unidimensionales de retornos de activos para descubrir propiedades en los datos financieros. Propusieron una aplicación de dos pasos de ADT en finanzas para el mejoramiento de la indexación. Convirtieron las series temporales en una nube de puntos utilizando el embebido de Takens y emplearon la norma $L^p$ de los paisajes de persistencia como un cuantificador de la estabilidad de las características topológicas. Utilizaron el valor de la norma para minimizar el error de seguimiento en el modelo de optimización propuesto para el mejoramiento de la indexación, que superó a varios modelos existentes en términos de retorno promedio excesivo, relación VaR y relación Rachev. \cite{GOEL2020113222} observaron que la norma ADT lleva más información vital que la desviación estándar o la volatilidad y es crucial para explorar la relación entre la norma ADT y otras medidas de riesgo.\\
+
+Por último, \cite{GUO2020124956} analizaron los índices bursátiles de Estados Unidos, algunos países europeos y los mercados de valores de China con la ayuda de ADT para construir un sistema de alerta temprana que detecte fechas críticas a partir de series temporales financieras. Eligieron las series temporales financieras del 02/01/2003 al 31/12/2013 y utilizaron la norma $L^p$ para estudiar la persistencia de las características topológicas. Su análisis proporcionó información sobre la crisis financiera mundial de 2008 y la crisis de la deuda europea de 2010. Ellos sugieren que TDA tiene el potencial de proporcionar nuevas perspectivas sobre las crisis financieras y puede ser útil en problemas de finanzas y econometría.\\\\
+
+
+\textbf{Aplicaciones del análisis de datos topológicos en Macroeconomía}\\\\
+
+El análisis de datos topológicos ofrece un conjunto de herramientas para representar y analizar datos de alta dimensión, brindando información a los responsables de la formulación de políticas, investigadores y profesionales. \cite{dlotko2019topologically} introdujeron el algoritmo ADT Ball Mapper para explorar datos macroeconómicos, proporcionando una sólida base matemática para analizar la proximidad de la economía actual a la de la Gran Depresión. Al analizar los vínculos entre el crecimiento del crédito privado y el ciclo económico, \cite{dlotko2019topologically} mostró cómo la dinámica de los gráficos ADT Ball Mapper era valiosa para el análisis macroeconómico, demostrando su preservación de las relaciones relativas en el espacio. \\
+
+\cite{BECH20105223} utilizaron la topología de red para explorar la topología del mercado de fondos federales, que es importante para distribuir liquidez en todo el sistema financiero e implementar la política monetaria. Descubrieron que la red era escasa, exhibía el fenómeno del mundo pequeño y era desordenada. Los autores también concluyeron que las medidas de centralidad eran predictores útiles de la tasa de interés de un préstamo.\\
+
+ADT Ball Mapper es útil para analizar la gran cantidad de información dentro de los conjuntos de datos a través de la consideración de la nube de puntos. Puede detectar comportamientos y relaciones no monótonos en datos de alta dimensión, lo que puede identificar casos interesantes en lo que son ejes subyacentes monótonos de la nube de puntos. Al identificar la política que aborde todas las características simultáneamente, se puede lograr un aumento efectivo de los resultados agregados y el bienestar puede aumentar significativamente. A medida que los economistas desarrollan grandes conjuntos de datos, particularmente en macroeconomía, surge la necesidad de una mejor visualización y comprensión de la multidimensionalidad del mundo. ADT Ball Mapper es muy adecuado como primer paso en la exploración de datos macroeconómicos.\\\\
+
+
+\textbf{Aplicaciones del análisis de datos topológicos en Microeconomía}\\\\
+
+La topología de datos se ha desarrollado como una herramienta para explorar relaciones complejas en grandes conjuntos de datos, y su aplicación en microeconomía se ha explorado en varios estudios recientes. En el estudio de \cite{Lu_2020}, se explora la aplicación de ADT en la clasificación de la relación de los clientes y la gestión de la lealtad de los clientes. Se encuentra que los modelos de análisis de series temporales y ADT tienen alta visibilidad y han mejorado tangiblemente la precisión de la predicción. Lu sugiere que se pueden aplicar una amplia gama de modelos y teorías complejas en varios campos de investigación en estudios futuros, como utilizar ADT en el aprendizaje automático para ayudar a los sistemas de IA a desarrollar su propio camino de estudio y análisis.\\
+
+\cite{goldfarb2016detecting} también han explorado la aplicación de ADT en la segmentación de productos. Su estudio muestra que "segmentos en bucle" en ADT pueden conectar productos regionales separados a través de productos nacionales, mientras que los métodos de clustering estándar, como el clustering jerárquico, no pueden. Su estudio también sugiere que ADT puede detectar productos potencialmente co-comprados entre las categorías de aperitivos salados y cerveza.\\
+
+En otro estudio, \cite{9671276} utilizaron ADT para analizar patrones de impuestos a la propiedad en 210 mapas de impuestos a la propiedad de 21 ciudades. Utilizando la homología persistente de dimensión cero y uno, encontraron patrones de heterogeneidad en las propiedades de impuestos más bajos y más altos, respectivamente, y evaluaron su relación con el uso de la tierra y los indicadores de heterogeneidad demográfica regional.
+
+En general, estos estudios sugieren que ADT tiene una amplia gama de aplicaciones en microeconomía, incluida la clasificación de la relación de los clientes, la segmentación de productos y el análisis de patrones de impuestos a la propiedad. Aunque ADT es una herramienta nueva, tiene el potencial de complementar otros tipos de análisis en el campo de la microeconomía.\\\\
+
+\textbf{4. DESAFÍOS Y LIMITACIONES}\\\\
+
+El uso de Topological Data Analysis (ADT) en la investigación económica también puede presentar algunos desafíos y limitaciones. A continuación se presentan algunos de ellos:
+
+\begin{enumerate}[1.]
+    \item Interpretación: Aunque ADT puede ayudar a encontrar patrones en datos complejos, la interpretación de los resultados puede ser un desafío. Las visualizaciones generadas por ADT pueden ser difíciles de interpretar para personas sin experiencia en el campo, lo que podría dificultar la comunicación de los hallazgos a un público más amplio.
+
+    \item Requerimientos computacionales: La aplicación de ADT puede ser computacionalmente intensiva. Esto puede ser un desafío para los investigadores que no tienen acceso a recursos de computación de alta gama, lo que podría limitar su capacidad para utilizar la técnica en grandes conjuntos de datos.
+
+    \item Ruido en los datos: ADT puede ser sensible al ruido en los datos, lo que puede llevar a interpretaciones erróneas. Por lo tanto, los investigadores deben tener cuidado al aplicar ADT y considerar la calidad de los datos antes de realizar cualquier análisis.
+
+    \item Selección de parámetros: La selección de los parámetros en ADT puede ser un desafío. Los resultados obtenidos pueden variar según los parámetros seleccionados, lo que podría llevar a diferentes interpretaciones de los mismos datos.
+
+    \item Falta de generalización: ADT puede ser una técnica muy específica para un conjunto de datos y no necesariamente generalizable a otros conjuntos de datos. Por lo tanto, los hallazgos obtenidos mediante ADT deben ser interpretados con cuidado y validados mediante otras técnicas.
+\end{enumerate}
+
+En general, el uso de TDA en la investigación económica puede ser prometedor, pero es importante considerar y abordar estos desafíos para obtener resultados confiables e interpretables.\\\\
+
+\textbf{5. CONCLUSIONES}\\\\
+
+En resumen, la Topología de Análisis de Datos (TDA) es una herramienta prometedora para la investigación económica, ya que permite visualizar y analizar datos complejos en múltiples dimensiones y revelar patrones y relaciones no lineales. A través de la aplicación de técnicas de TDA, los investigadores pueden explorar datos en formas que no son posibles con los métodos tradicionales de análisis de datos. Sin embargo, también existen desafíos potenciales en el uso de TDA en la investigación económica, como la selección adecuada de parámetros, la interpretación de los resultados y la necesidad de conjuntos de datos grandes y de alta calidad.\\
+
+En este documento se ha presentado una descripción general del Análisis de Datos Topológicos (ADT) y su potencial en la economía. Se ha destacado que, aunque el ADT ha sido aplicado en diversas áreas de la ciencia y la ingeniería, su uso en la economía sigue siendo marginal. A través de la presentación de los diferentes métodos disponibles en ADT y su comparación con las técnicas tradicionales de análisis de datos en la economía, se ha resaltado que el ADT puede ser especialmente útil cuando se trabaja con datos complejos o de gran dimensión.\\
+
+Además, se ha destacado que el ADT se enfoca en la representación visual de los datos, lo cual puede facilitar la identificación de patrones y relaciones que pueden no ser evidentes con las herramientas tradicionales. El ADT permite analizar datos con una estructura intrínseca que puede ser representada por medio de un complejo simplicial, lo que ha llevado al desarrollo de nuevas herramientas para el análisis y la visualización de conjuntos de datos complejos.\\
+
+Por último, se han descrito algunas aplicaciones económicas de ADT y se han discutido las direcciones futuras para la investigación en esta área. En conclusión, este documento tiene como objetivo crear conciencia sobre el potencial del ADT entre la comunidad económica y proporcionar un recurso útil para los investigadores interesados en usar ADT en sus propios análisis. El ADT puede contribuir al desarrollo de nuevos hallazgos en la economía, y es importante que los investigadores tengan acceso a esta herramienta.\\
+
+\bibliographystyle{apalike}
+\bibliography{bibl.bib}
+
+
+
+

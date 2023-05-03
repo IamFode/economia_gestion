@@ -56,12 +56,20 @@ ej2=ej2 %>%
   remove_rownames() %>%
   column_to_rownames(var="X")
 
-ej2["crecimiento2021Q1"] = round((ej2[,5]/ej2[,1]-1)*100,1)
-ej2["crecimiento2021Q2"] = round((ej2[,6]/ej2[,2]-1)*100,1)
-ej2["crecimiento2021Q3"] = round((ej2[,7]/ej2[,3]-1)*100,1)
-ej2["crecimiento2021Q4"] = round((ej2[,8]/ej2[,4]-1)*100,1)
+ej2["crec2021Q1"] = round((ej2[,5]/ej2[,1]-1)*100,1)
+ej2["crec2021Q2"] = round((ej2[,6]/ej2[,2]-1)*100,1)
+ej2["crec2021Q3"] = round((ej2[,7]/ej2[,3]-1)*100,1)
+ej2["crec2021Q4"] = round((ej2[,8]/ej2[,4]-1)*100,1)
 
-ej2["crecimiento2022Q1"] = round((ej2[,9]/ej2[,5]-1)*100,1)
-ej2["crecimiento2022Q2"] = round((ej2[,10]/ej2[,6]-1)*100,1)
-ej2["crecimiento2022Q3"] = round((ej2[,11]/ej2[,7]-1)*100,1)
-ej2["crecimiento2022Q4"] = round((ej2[,12]/ej2[,8]-1)*100,1)
+ej2["crec2022Q1"] = round((ej2[,9]/ej2[,5]-1)*100,1)
+ej2["crec2022Q2"] = round((ej2[,10]/ej2[,6]-1)*100,1)
+ej2["crec2022Q3"] = round((ej2[,11]/ej2[,7]-1)*100,1)
+ej2["crec2022Q4"] = round((ej2[,12]/ej2[,8]-1)*100,1)
+
+# Demanda nacional, contribución al crecimiento del PIB.
+participacion = ej2[1,1:12]/ej2[12,1:12]
+round((ej2[1,13:20])*participacion[1:8],1)
+
+# Saldo exterior, contribución al crecimiento del PIB.
+participacion = ej2[9,1:12]/ej2[12,1:12]
+round((ej2[9,13:20])*participacion[1:8],1)

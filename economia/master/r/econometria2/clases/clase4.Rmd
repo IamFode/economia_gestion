@@ -15,7 +15,6 @@ export=ts(export,start=c(1995,1),frequency=4)
 ```
 
 
-
 ## 3.4 Estacionariedad, contrastes de raíces unitarias.
 
 - Si no realizamos el análisis de estacionariedad, todos los contrastes no se cumplen. Por lo que debemos realizar una transformación.
@@ -36,7 +35,7 @@ $$Cov(t,t+j)=Cov(s,s+j),\qquad j=\pm 1, \pm 2, etc$$
 
 - La caracteristica tiene una oscilación constante.
 
-- Existe dos timpos de estacionariedad
+- Existe dos tiempos de estacionariedad
 
 #### Sentido estricto
 Las funciones de distribución no cambian en el tiempo. 
@@ -91,12 +90,14 @@ acf(diff(log(export)))
 pacf(diff(log(export)))
 ```
 
-Apriori vemos que es un modelo arima(3,3)
+A priori vemos que es un modelo arima(3,3)
 
 ```{r, fig.align="center", fig.height=3.5, fig.width=4, echo=FALSE, warning=FALSE}
-arima_=arima(diff(log(export)),c(3,0,3))
+arima_=arima(diff(log(export)),c(3,0,0))
 arima_
 auto.arima(diff(log(export)),trace = TRUE)
+auto.arima(export,trace = TRUE)
 ```   
+
 
 

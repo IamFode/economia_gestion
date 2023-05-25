@@ -25,20 +25,52 @@ okun=ts(okun,start = c(1980,1),frequency = 1)
 
 - Los datos atípicos podrían destruir el modelo.
 
+```{r}
+summary(export)
+```
+
+```{r}
+plot(export)
+adf.test(log(export))
+```
+
+Dado que no se rechaza la hipótesis nula, entonces la serie es no estacionaria.
+
 ```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
 d.l.expor = ts(diff(log(export)))
 fac=acf(d.l.expor,lag.max=30)
 fac$acf
 facp = pacf(d.l.expor,lag.max = 30)
 facp$acf
+
 arima202=arima(d.l.expor,c(2,0,2))
-coeftest(arima202)
+AIC(arima202)
+BIC(arima202)
+
+arima003=arima(d.l.expor,c(0,0,3))
+AIC(arima003)
+BIC(arima003)
+
+arima103=arima(d.l.expor,c(1,0,3))
+AIC(arima103)
+BIC(arima103)
+
+coeftest(arima003)
+
+auto.arima(d.l.expor,trace = TRUE)
 ```
+
+Ljung-Box H_0: los residuos son iid,
+```{r}
+Box.test(arima202$residuals,lag=30,type="Ljung-Box")
+```
+
 
 ## SERIES IPC
 
 ```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
 plot(ipc)
+adf.test(ipc)
 ```
 Donde vemos que no es estacionaria. Por lo que transformamos la serie mediante logaritmos y su diferencia
 
@@ -50,41 +82,55 @@ plot(d.l.ipc)
 Luego, diseñamos un correlograma
 
 ```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
-fac=acf(d.l.ipc,lag.max=30)
-fac$acf
+acf(d.l.ipc,lag.max=30)
+pacf(d.l.ipc,lag.max=30)
 ```
 
-Donde vemos estacionareidad, debemos uir de este tipo de series.
+Donde vemos estacionalidad, debemos uir de este tipo de series. Porque tiene un patrón que se repite y repite en los mismo momentos.
 
-```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
-facp = pacf(d.l.ipc,lag.max = 30)
-facp$acf
-```
+Por lo que debemos corregir esta estacionalidad. Con modelos Sarima, con dummys estacionales.
+
 
 ## Ley de Okun
 
 #### ¿Estacionaria?
 
-Primero converitmos los datos a log
+Primero convertimos los datos a log
 
 ```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
-u = ts(log(okun[,1]))
+u = ts(okun[,1],start = c(1980),end = c(2012),frequency = 1)
+summary(u)
+plot(u)
+l.okun = log(u)
+plot(l.okun)
 ```
 
-Luego, utilizamos el contraste de Dickey-Fuller
+Luego, utilizamos el contraste de Dickey-Fuller y Phillips-Perron
 
 ```{r, fig.align="center", fig.height=3, fig.width=4, echo=FALSE, warning=FALSE}
-adf.test(u,k=5)
-pp.test(u)
+adf.test(l.okun,k=5)
+pp.test(l.okun)
 ```
 
+Podemos ver que no rechazamos la hipótesis nula, por lo que se tiene raíces unitarias, esto implica que la serie es no estacionaria. Así realizo la diferenciabilidad de la serie.
+
+```{r}
+d.l.okun = diff(l.okun)
+plot(d.l.okun)
+d.d.l.okun = diff(d.l.okun)
+plot(d.d.l.okun)
+```
 
 ## 3.5 Cointegración
 
-- Cada una es no estacionaria
+- Cada una es no estacionaria.
 - Existe al menos una combinación lineal entre las variables.- lo que significa que entre esas series existe una relación de largo plazo.
-- PPA es una relación de largo plazo.
+- La serie a largo plazo se calcula en niveles. 
+- PPA (paridad de poder adquisitvo) es una relación de largo plazo.
+- Dos variables están cointegradas si existe una relación de largo plazo o equilibro entre ambos.
 
 ##### ¿Cómo puedo saber si existe un equilibro ?
 
-### Contraste de Johansen
+- Contrastes de Engle-Granger. (Es intuitivo)
+- Contraste de Johansen. (No es intuitivo) pero es mejor en términos de propiedades estadísticas.
+

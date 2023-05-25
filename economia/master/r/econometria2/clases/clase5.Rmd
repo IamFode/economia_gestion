@@ -137,3 +137,10 @@ Estadistico de contraste: $t=\dfrac{(\hat{\alpha}-0)}{\hat{DT}(\alpha)}$
 - Los modelos que se vio son de corto plazo.
 
 - En conjuntos de cointegración serán a largo plazo, donde las series estarán en niveles.
+
+
+Si existe una relación de equilibro a largo plazo, a pesar de que se desvie, volverá a ese equilibro.
+
+- El modelo en diferencias es de corto plazo. 
+
+- El modelo a largo plazo no estará en diferencias.

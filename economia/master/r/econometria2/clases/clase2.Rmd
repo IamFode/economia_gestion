@@ -20,7 +20,6 @@ output: pdf_document
 - Se utiliza el método de los momentos. orden 1, orden 2
 
 
-
 \begin{itemize}
   \item Función de medias
   $$\mu_t=E(Y_t)$$
@@ -29,21 +28,26 @@ output: pdf_document
   
   \item Funciones de autocovarianza
   $$Y_{t,s}=Cov(Y_t,Y_s)=E(Y_t-\mu_t)(Y_s-\mu_s)$$
-  \textbf{Es la covarianza que existe entre los valores de una misma variable en disferentesmomentos del tiempo.}\\
+  
+  \textbf{Es la covarianza que existe entre los valores de una misma variable en diferentes momentos del tiempo.}\\
   
   \item Función de autocorrelación
   $$\rho_{t.s}=\dfrac{Cov(Y_t,Y_s)}{\sqrt{Var(Y_t)Var(Y_s)}}$$
-  \textbf{Se ve la relación que existe entre dos momentos del tiempo distintos de una misma variable.} Cuanto más cerca del 1 más correlación y cuanto mas cerca del 0 menos correlación.
+  
+  \textbf{Se ve la relación que existe entre dos momentos del tiempo distintos de una misma variable.} Cuanto más cerca del 1 más correlación y cuanto mas cerca del 0 menos correlación. Utlizamos la autoccorelación porque si utilizamos la autocovarianza los resultados podrán ser número grande o pequeños pero no nos mencionarán si existe mucha o poca relación entre dos momentos del tiempo. La autocorrelación está acotado entre -1 y 1.
   
 \end{itemize}
 
 ### Funciones de autocorrelación simple y parcial
+La relación del momento actual y un momento anterior.
 
 $$\rho_k=corr[Y_t,Y_{t-k}]=\phi^k,\quad \forall k\geq 1.$$
 
 Pueden tomar datos anuales, trimentrales, semanales, diarias, etc.
 
 #### Autocrrelación simple
+Es la correlación de una variable aleatoria actual 
+
 No se elimina los efectos que puede tener un dato intermedio entre dos lapsos de tiempo.
 
 - Cada valor de las autocorrelaciones se podrán reflejar con un gráfico.
@@ -52,15 +56,11 @@ No se elimina los efectos que puede tener un dato intermedio entre dos lapsos de
 
 - Si estas barras superan un valor, se dirá que son significativas.
 
+- Cada barra nos dice el nivel de correlación entre la variable actual y el momento anterior.
 
 #### Autocrrelación parcial
 Es la sucesión de esos valores de autocorrelación que se eliminan todos los momentos de tiempos intermedios que hay que calcular. Es decir, eliminamos lo que ocurre entre el dato de septiembre cuando se está midiendo los datos de agosto y octubre.
 
 $$\pi_j = Corr[Y_j,Y_{j-k}|Y_{j-1},\ldots,Y_{j-k+1}]$$
-
-La comparación de la autoccorelación simple y parcial será la pista de como se comportará el modelo.
-
-
-
 
 

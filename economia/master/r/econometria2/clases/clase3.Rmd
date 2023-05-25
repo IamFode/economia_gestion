@@ -15,11 +15,14 @@ La estructura básica será:
 Serie de tiempo = parte sistemática + parte aleatoria
 \end{center}
 
+
 Parte sistemática = Recoge el patrón de regularidad.
 
 - La forma más habitual de representar la fórmula sera:
 
 $$Y_t=\pi_1T_{t-1}+\pi_2 Y_{t-2}+\ldots + a_t, \quad \forall t, t=1,2,\ldots\qquad (A)$$
+
+En este caso depende de su pasado y alguna perturbación.
 
 $a_t$ = ruido blanco.
 $\pi_1T_{t-1}+\pi_2 Y_{t-2}$ = pasado.
@@ -44,20 +47,27 @@ $$Y_t=a_t+\varphi_1 Y_{t-1}+\varphi_2T_{t-2}+\cdots, \qquad \forall t, \; t=1,2,
   
 ## Procesos autorregresivos AR(p)
 
-Sigue un preceso AR cuando lo puede expresar de esta forma:
+Sigue un proceso AR cuando lo puede expresar de esta forma:
 
 $$Y_t = \phi_1 T_{t-1}+\phi_2 Y_{t-2}+\ldots + \phi_p Y_{t-p}+ a_t$$
 
-Depende de su pasado hasta un cierto de tiempo más su perturbación
+Depende de su pasado hasta un cierto de tiempo más su perturbación.
 
 Podemos expresarlo en formato polinomio:
 
-$$(1-\phi_1 L - \phi2 L^2-\cdots - \phi L^P)Y_t=a_t$$
+$$(1-\phi_1 L - \phi_2 L^2-\cdots - \phi L^P)Y_t=a_t$$
 
   - $L = Retardando$ y $L^P=Periodos\; terdados.$
 
   - $a_t$ ruido blanco $N(0,\sigma^2)$
   
+Se puede ver la siguiente forma simple
+
+$$LT_T=T_{t-1}$$
+
+Y si $L^2$, significa que estamos retardando dos periodos y así sucesivamente.
+
+Cuanto menos mejor.
 
 #### Parseo aleatorio
 
@@ -66,6 +76,12 @@ o $AR(1)$
 $$Y_t=T_{t-1}=a_t \quad \Rightarrow \quad \triangle T_t=a_t,\qquad a_t\sim N(0,\sigma^2)$$
 
 Donde $a_t$ es aleatoria. 
+
+El modelo de paseo aleatorio $AR(1)$ está definido por
+
+$$Y_t=Y_{t-1}+a_t \quad \Rightarrow \quad \triangle Y_t=a_t$$
+
+Es decir, el modelo es completamente aleatorio.
   
 ### Identificación de AR(p)
 
@@ -75,16 +91,18 @@ Identificamos AR por la función de autocorrelación.
 
   - La forma de una autocorrelación parcial sera, con una barra o dos dependiendo el parámetro.
 
-Se los llama también procesos de memoria larga.
+Se los llama también procesos de memoria larga. Porque dependen de su pasado.
 
 
 ### Proceso de medias móviles MA(q)
 
 - Son modelos donde las variables dependa de la perturbación.
 
+- Carece de memoria
+
 $$Y_t = a_t-\theta_1a_{t-1}-\theta_2a_t-\cdots - \theta_q a_{t-q}.$$
 
-con $a_t$ preceso de ruido blanco y $\theta$ parámetros del modelo.
+con $a_t$ proceso de ruido blanco y $\theta$ parámetros del modelo.
 
 Polinomialmente es:
 
@@ -103,6 +121,8 @@ $$Y_t=(1-\theta L)a_t \quad \Rightarrow \quad Y_t=a_t+\theta T_{t-1}-\theta^2 Y_
   - La forma de una autocorrelación parcial sera de manera exponencial negativa. Es decir, que decaiga con el tiempo.
   
 - Absorve cualquier shock de manera rápida. Es decir, se desvanece rápidamente a través del tiempo.
+
+- NO SE PODRÁ MODELAR NINGÚNA SERIE DE TIEMPO SI NO ES ESACIONARIA.
 
 ### Ejemplso
 - Si vemos todos los valores temporales de AC tienden a $1$ y PAC el primer dato igual a $1$  es no estacionaria. Donde tendremos que hacer una transformación a proceso estacionario.
@@ -134,11 +154,22 @@ $$Y_t^d=\phi_1 Y_{t-1}^d +\cdots + \phi_p Y_{t-p}^d+\theta_1a_{t-1}^d+\cdots + \
 
 ## Pruebas de Box-Pierce y Ljung-Box
 
-- Q-stats $H_0: \rho_1 = rho_2 = \ldots = \rho_s = 0.$ y $H_1: p_k\neq 0$
+Planteamiento del contrasate 
+$$
+\left\{
+\begin{array}{rl}
+  H_0: & \rho_1=\rho_2=\cdots = \rho_s = 0\\
+  H_1: & \mbox{algún} \; \rho_k \neq 0.
+\end{array}
+\right.
+$$
+
+Los residuos no pueden estar correlacionadas consigo misma.
 
 - Sirve para validar un modelo. Un valor bajo es indicio de que los residuos no son ruido blanco. Comprobamos que la media es cero y la varianza es constante. Por lo tanto tenemos un problema de ruido blanco. Podemos tambien decir que los residuos están correlacionados con su pasado. 
 
 ## Metodoloǵia de Box-Jenkins:
+
 Nos ayuda a:
 
 - Generar una clase de modelos que describan series de tiempo reales.

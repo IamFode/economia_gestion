@@ -1,0 +1,22 @@
+---
+title: "Tarea 1"
+author: "Christian Limbert Paredes Aguilera"
+date: "2023-05-26"
+output: pdf_document
+---
+
+𝑝𝑝
+$$\qquad w_{3t}^* = \dfrac{\mu_{3,t+1/t}/\sigma_{3,t+1/t}^2}{\dfrac{\mu_{1,t+1/t}^2}{\sigma_{1,t+1/t}}+\dfrac{\mu_{2,t+1/t}^2}{\sigma^2_{2,t+1/t}}+\dfrac{\mu_{3,t+1/t}^2}{\sigma^2_{3,t+1/t}}}\overline{\mu}_p,$$
+
+
+$$\qquad w_{2t}^* = \dfrac{\mu_{2,t+1/t}/\sigma_{2,t+1/t}^2}{\dfrac{\mu_{1,t+1/t}^2}{\sigma_{1,t+1/t}}+\dfrac{\mu_{2,t+1/t}^2}{\sigma^2_{2,t+1/t}}+\dfrac{\mu_{3,t+1/t}^2}{\sigma^2_{3,t+1/t}}}\overline{\mu}_p,\qquad w_{3t}^* = \dfrac{\mu_{3,t+1/t}/\sigma_{3,t+1/t}^2}{\dfrac{\mu_{1,t+1/t}^2}{\sigma_{1,t+1/t}}+\dfrac{\mu_{2,t+1/t}^2}{\sigma^2_{2,t+1/t}}+\dfrac{\mu_{3,t+1/t}^2}{\sigma^2_{3,t+1/t}}}\overline{\mu}_p,$$
+
+Elegimos 3 stock, Apple (AAPL) del sector tecnológico, NLY del sector financiero(FCX) y Exxon Mobil Corporation XOM del sector del petróleo para formar una cartera diversificada. La muestra consiste en precios diarios desde el 2 de enero de 2008 hasta el 31 de mayo de 2013, para un total de 1363 observaciones. Nos gustaría asignar el capital óptimamente de tal modo que minimicemos el riesgo y obtengamos un rendimiento diario medio de $\overline{\mu}_p=0.15$ por ciento. Asumiendo que los stocks en la cartera están incorrelacionados (sino a la varianza de la cartera debería incorporarse los términos de covarianza), obtener las ponderaciones óptimas siguiendo el problema de optimización planteado anteriormente.
+
+1. Para ello en primer lugar, encontrar el mejor modelo para las series temporales de rendimientos de los 3 stocks tanto para la media condicional como para su varianza condicional.
+
+2. Basándose en esos modelos obtener la media condicional y la varianza condicional y a partir de ellas calcular las ponderaciones óptimas variando en el tiempo.
+
+3. Hacer gráficos de evolución temporal de esas ponderaciones e interpretarlos.
+
+4. Realizar una tabla de los estadísticos descriptivos de las ponderaciones óptimas y comentarlos.

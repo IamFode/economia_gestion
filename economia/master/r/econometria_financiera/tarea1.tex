@@ -1,0 +1,111 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Tarea 1},
+  pdfauthor={Christian Limbert Paredes Aguilera},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Tarea 1}
+\author{Christian Limbert Paredes Aguilera}
+\date{2023-05-26}
+
+\begin{document}
+\maketitle
+
+𝑝𝑝
+\[\qquad w_{3t}^* = \dfrac{\mu_{3,t+1/t}/\sigma_{3,t+1/t}^2}{\dfrac{\mu_{1,t+1/t}^2}{\sigma_{1,t+1/t}}+\dfrac{\mu_{2,t+1/t}^2}{\sigma^2_{2,t+1/t}}+\dfrac{\mu_{3,t+1/t}^2}{\sigma^2_{3,t+1/t}}}\overline{\mu}_p,\]
+
+\[\qquad w_{2t}^* = \dfrac{\mu_{2,t+1/t}/\sigma_{2,t+1/t}^2}{\dfrac{\mu_{1,t+1/t}^2}{\sigma_{1,t+1/t}}+\dfrac{\mu_{2,t+1/t}^2}{\sigma^2_{2,t+1/t}}+\dfrac{\mu_{3,t+1/t}^2}{\sigma^2_{3,t+1/t}}}\overline{\mu}_p,\qquad w_{3t}^* = \dfrac{\mu_{3,t+1/t}/\sigma_{3,t+1/t}^2}{\dfrac{\mu_{1,t+1/t}^2}{\sigma_{1,t+1/t}}+\dfrac{\mu_{2,t+1/t}^2}{\sigma^2_{2,t+1/t}}+\dfrac{\mu_{3,t+1/t}^2}{\sigma^2_{3,t+1/t}}}\overline{\mu}_p,\]
+
+Elegimos 3 stock, Apple (AAPL) del sector tecnológico, NLY del sector
+financiero(FCX) y Exxon Mobil Corporation XOM del sector del petróleo
+para formar una cartera diversificada. La muestra consiste en precios
+diarios desde el 2 de enero de 2008 hasta el 31 de mayo de 2013, para un
+total de 1363 observaciones. Nos gustaría asignar el capital óptimamente
+de tal modo que minimicemos el riesgo y obtengamos un rendimiento diario
+medio de \(\overline{\mu}_p=0.15\) por ciento. Asumiendo que los stocks
+en la cartera están incorrelacionados (sino a la varianza de la cartera
+debería incorporarse los términos de covarianza), obtener las
+ponderaciones óptimas siguiendo el problema de optimización planteado
+anteriormente.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Para ello en primer lugar, encontrar el mejor modelo para las series
+  temporales de rendimientos de los 3 stocks tanto para la media
+  condicional como para su varianza condicional.
+\item
+  Basándose en esos modelos obtener la media condicional y la varianza
+  condicional y a partir de ellas calcular las ponderaciones óptimas
+  variando en el tiempo.
+\item
+  Hacer gráficos de evolución temporal de esas ponderaciones e
+  interpretarlos.
+\item
+  Realizar una tabla de los estadísticos descriptivos de las
+  ponderaciones óptimas y comentarlos.
+\end{enumerate}
+
+\end{document}

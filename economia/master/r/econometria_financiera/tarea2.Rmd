@@ -1,0 +1,73 @@
+---
+title: "Tarea 2. Econometría Financiera. Curso 2022-2023"
+author: "Christian Limbert Paredes Aguilera"
+date: "2023-05-26"
+output: pdf_document
+---
+Para computar las betas condicionales de AAPL, NLY; XOM, necesitamos obtener la correlación con el rendimiento del mercado, el cual está representado por los rendimientos de SP500 cuya especificación es un modelo MA(1)-GARCH(2,1). La correlación entre el mercado y los stocks vamos a considerarla constante.
+Por lo tanto, la beta condicional puede calcularse como
+
+$$\beta_{it}=\rho_{i,m}\dfrac{\sigma^2_{it/t-1}}{\sigma^2_{mt/t-1}}$$
+
+1. Representar gráficamente las betas e interpretarlas.
+2. Calcular la beta media para cada stock.
+3. ¿Cuál es la beta más volátil de los 3 stocks?
+
+RESPUESTA.-
+
+```{r}
+# Cargar paquetes necesarios
+library(hexView)
+library(rugarch)
+library(tseries)
+
+data=readEViews("data/Tarea2.wf1",time.stamp = FALSE)
+data$DATE = NULL
+
+# Extraer los rendimientos de los stocks
+aapl_returns <-diff(log(data$AAPL)) 
+nly_returns <- diff(log(data$NLY))
+xom_returns <- diff(log(data$XOM))
+
+# Extraer los rendimientos del índice SP500
+sp500_returns <- diff(log(data$SP500))
+
+# Estimar el modelo MA(1)-GARCH(2,1) para el índice SP500
+sp500_model <- ugarchspec(mean.model = list(armaOrder = c(0, 1)), 
+                          variance.model = list(garchOrder = c(2, 1)))
+sp500_fit <- ugarchfit(spec = sp500_model, data = sp500_returns)
+sp500_sigma <- sigma(sp500_fit)
+
+# Calcular la beta condicional para cada stock
+rho_aapl <- cor(sp500_returns, aapl_returns)  # Correlación entre AAPL y SP500
+sigma2_aapl <- aapl_returns^2  # Varianza condicional de AAPL
+beta_aapl <- rho_aapl * sigma2_aapl / sp500_sigma^2  # Beta condicional de AAPL
+
+rho_nly <- cor(sp500_returns, nly_returns)  # Correlación entre NLY y SP500
+sigma2_nly <- nly_returns^2  # Varianza condicional de NLY
+beta_nly <- rho_nly * sigma2_nly / sp500_sigma^2  # Beta condicional de NLY
+
+rho_xom <- cor(sp500_returns, xom_returns)  # Correlación entre XOM y SP500
+sigma2_xom <- xom_returns^2  # Varianza condicional de XOM
+beta_xom <- rho_xom * sigma2_xom / sp500_sigma^2  # Beta condicional de XOM
+
+# 1. Gráfica de las betas
+plot(beta_aapl, type = "l", ylim = c(-50, 50), ylab = "Beta", 
+     main = "Betas condicionales de AAPL, NLY, XOM")
+lines(beta_nly, col = "red")
+lines(beta_xom, col = "blue")
+legend("topleft", c("AAPL", "NLY", "XOM"), col = c("black", "red", "blue"), lty = 1)
+
+# 2. Cálculo de la beta media para cada stock
+mean_beta_aapl <- mean(beta_aapl)
+mean_beta_nly <- mean(beta_nly)
+mean_beta_xom <- mean(beta_xom)
+cat("Beta media de AAPL:", mean_beta_aapl, "\n")
+cat("Beta media de NLY:", mean_beta_nly, "\n")
+cat("Beta media de XOM:", mean_beta_xom, "\n")
+
+# 3. Beta más volátil
+beta_volatility <- c(sd(beta_aapl), sd(beta_nly), sd(beta_xom))
+most_volatile_stock <- c("AAPL", "NLY", "XOM")[which.max(beta_volatility)]
+cat("El stock más volátil es:", most_volatile_stock, "\n")
+```

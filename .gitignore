@@ -7,7 +7,6 @@
 *.blg
 *.pdf
 .Rproj.user
-.Rproj
 .RData
 .Rhistory
 .csv#

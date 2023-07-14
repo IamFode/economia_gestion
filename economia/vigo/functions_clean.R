@@ -10,9 +10,10 @@ grupos de codigos financieros y los une en un solo dataframe.
 clean = function(dataset, condition_list) {
   df = data.frame()
   filtrar_datos = function(dataset, condition) {
-    x = dataset[dataset$`Indicator Code` == condition, ]
+    x = dataset[dataset$`Indicator Code` == condition,]
     i = length(unique(x$`Country Name`))
-    xx = x[apply(x[, 6:ncol(x)], 1, function(x) any(!is.na(x))) & !duplicated(x$`Country Code`), ]
+    xx = x[apply(x[, 6:ncol(x)], 1, 
+                 function(x) any(!is.na(x))) & !duplicated(x$`Country Code`),]
     print(xx)
     f = length(xx$`Country Name`)
     if (i == f) {
@@ -30,8 +31,6 @@ clean2 = function(serie, condition) {
   x <- x[x$`Indicator Code` %in% condition, ]
   return(x)
 }
-
-
 
 
 '"
@@ -55,7 +54,6 @@ eliminar_filas_duplicadas <- function(df, categorias) {
   df <- df[-maxima_fila, ]
   return(df)
 }
-
 
 
 '"

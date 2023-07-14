@@ -1,9 +1,8 @@
 #..............................................................................#
-
-# FUNCTIONS
+# FUNCIONES
 source("functions_clean.R")
 
-#LIBRARIES 
+#LIBRERIAS
 library(dplyr)
 library(openxlsx)
 library(forcats)
@@ -42,7 +41,7 @@ serieQ[serieQ==""] = NA
 serieQ[, 6:length(serieQ)] = sapply(serieQ[, 6:length(serieQ)], 
                                     function(col) replace(col, is.character(col), NA))
 
-#Series trimestrales
+#Series mensuales
 columnasM = grep("M",names(series),value = TRUE)
 serieM = series[columnasM]
 serieM = cbind(series[1:5],serieM)
@@ -51,7 +50,6 @@ serieM[is.na(serieM)] = NA
 serieM[serieM==""] = NA
 serieM[, 6:length(serieM)] = sapply(serieM[, 6:length(serieM)], 
                                     function(col) replace(col, is.character(col), NA))
-
 
 #general
 serie = serieM
@@ -64,20 +62,17 @@ Verificamos que esten todos los años/trimestres/meses en el intervalo [1948,201
 colnames(serie)
 
 
-
 ######################## CLASIFICACIÓN DE DATOS ################################
 `" 
 Veamos todos los codigos que se encuentran 
 "`
 unique(serie$`Indicator Code`)
 
-########## CIRCULATION ##########
-
 ##### Currency-IFS #####
 currency.IFS = c("FASMBC_XDC",
                "FASMBC_USD",
                "FASMBC_EUR")
-x=clean(serie,currency.IFS)
+x=clean(serie,currency.IFS) # para datos anuales
 x=clean2(serie,currency.IFS) # para datos trimestrales y mensuales
 currency_IFS = left_join(pais, x, by = c("Country Name","Country Code"))
 
@@ -85,7 +80,7 @@ currency_IFS = left_join(pais, x, by = c("Country Name","Country Code"))
 ##### RM-Currency #####
 RM.currency = c("14A___XDC",
                "14A___USD")
-x=clean(serie,RM.currency)
+x=clean(serie,RM.currency) # para datos anuales
 x=clean2(serie,RM.currency) # trimetral y mensual
 RM_currency = left_join(pais,x,by = c("Country Name","Country Code"))
 
@@ -96,7 +91,7 @@ BM.IFS = c("FASMB_XDC",
           "FMA_USD", #Solo en el caso de que no haya datos para FASMB, o la serie sea idéntica a FASMB pero más larga.
           "FMA_XDC", #Solo en el caso de que no haya datos para FASMB, o la serie sea idéntica a FASMB pero más larga.
           "FM0_XDC") #Solo en el caso de que no haya datos para FASMB, o la serie sea idéntica a FASMB pero más larga.
-x=clean(serie,BM.IFS)
+x=clean(serie,BM.IFS) # para datos anuales
 x=clean2(serie,BM.IFS) # trimentral y mensual
 BM_IFS = left_join(pais,x,by = c("Country Name","Country Code"))
 BM_IFS = eliminar_fila_BM.IFS(BM_IFS,"FASMB_XDC")
@@ -106,8 +101,8 @@ BM_IFS = eliminar_fila_BM.IFS(BM_IFS,"FASMB_XDC")
 BM.Nac.IFS = c("FMA_USD",
                "FMA_XDC",
                "FM0_XDC")
-x=clean(serie,BM.Nac.IFS)
-x=clean2(serie,BM.Nac.IFS) #Trimestral y Mensual
+x=clean(serie,BM.Nac.IFS) # para datos anuales
+x=clean2(serie,BM.Nac.IFS) # Para datos Trimestral y Mensual
 BM_Nac_IFS = left_join(pais,x,by = c("Country Name","Country Code"))
 
 
@@ -121,8 +116,8 @@ M1. = c("FM1_XDC",
       "FM1_EUR",
       "FM1_USD",
       "FMM_XDC") 
-x=clean(serie,M1.)
-x=clean2(serie,M1.) #trimestral y mensual
+x=clean(serie,M1.) # para datos anuales
+x=clean2(serie,M1.) #Para datos trimestrales y mensuales
 M1 = left_join(pais,x,by = c("Country Name","Country Code"))
 M1 = eliminar_filas_duplicadas(M1,c("FM1_XDC", "FM1_A1_XDC", "FM1_A2_XDC", "FM1_A3_XDC"))
 
@@ -131,8 +126,8 @@ M1 = eliminar_filas_duplicadas(M1,c("FM1_XDC", "FM1_A1_XDC", "FM1_A2_XDC", "FM1_
 M2.BroadMoney.IFS = c("FDSB_XDC",
                       "FDSBC_EUR",
                       "FMB_USD")
-x=clean(serie,M2.BroadMoney.IFS)
-x=clean2(serie,M2.BroadMoney.IFS)#trimestral y mensual
+x=clean(serie,M2.BroadMoney.IFS) # para datos anuales
+x=clean2(serie,M2.BroadMoney.IFS)#Para datos trimestrales y mensuales
 M2_BroadMoney_IFS = left_join(pais,x,by = c("Country Name","Country Code"))
 
 
@@ -141,15 +136,15 @@ M2.Nac = c("FM2_XDC",
            "FM2_A1_XDC",
            "FM2_USD",
            "FM2_EUR")
-x=clean(serie,M2.Nac)
-x=clean2(serie,M2.Nac) # Trimestral y mensual
+x=clean(serie,M2.Nac) # para datos anuales
+x=clean2(serie,M2.Nac) #Para datos Trimestrales y mensuales
 M2_Nac = left_join(pais,x,by = c("Country Name","Country Code"))
 M2_Nac = eliminar_filas_duplicadas(M2_Nac,c("FM2_XDC", "FM2_A1_XDC"))
 
 ##### M3 #####
 M3. = c("FM3_XDC")
-x=clean(serie,M3.)
-x=clean2(serie,M3.)# trimestral y mensual
+x=clean(serie,M3.) # para datos anuales
+x=clean2(serie,M3.)#Para datos trimestrales y mensuales
 M3 = left_join(pais,x,by = c("Country Name","Country Code"))
 
 
@@ -158,8 +153,8 @@ M4. = c("FM4_XDC",
         "FM4_A1_XDC",
         "FM4_A2_XDC",
         "FM4_A3_XDC")
-x=clean(serie,M4.)
-x=clean2(serie,M4.) #trimenstral y mensual
+x=clean(serie,M4.) # para datos anuales
+x=clean2(serie,M4.) #Para datos trimestrales y mensuales
 M4 = left_join(pais,x,by = c("Country Name","Country Code"))
 M4 = eliminar_filas_duplicadas(M4,M4.)
 
@@ -167,8 +162,8 @@ M4 = eliminar_filas_duplicadas(M4,M4.)
 M5. = c("FMA_XDC",
         "FM5B_XDC",
         "FM5_XDC")
-x=clean(serie,M5.)
-x=clean2(serie,M5.)
+x=clean(serie,M5.) # para datos anuales
+x=clean2(serie,M5.) #Para datos trimestrales y mensuales
 M5 = left_join(pais,x,by = c("Country Name","Country Code"))
 M5 = eliminar_filas_duplicadas(M5,M5.)
 
@@ -176,10 +171,9 @@ M5 = eliminar_filas_duplicadas(M5,M5.)
 RR. = c("FOSAAR_XDC",
         "FOSAAR_EUR",
         "FOSAAR_USD")
-x=clean(serie,RR.)
-x=clean2(serie,RR.)
+x=clean(serie,RR.) # para datos anuales
+x=clean2(serie,RR.) #Para datos trimestrales y mensuales
 RR = left_join(pais,x,by = c("Country Name","Country Code"))
-
 
 ##### RR2 #####
 RR2=RR
@@ -214,7 +208,6 @@ for (i in 1:length(hojas_data)) {
     addStyle(wb, sheet = hoja, style = numericFormat, rows = NULL, cols = col)
   }
 }
-
 
 
 # Guardar el archivo de Excel

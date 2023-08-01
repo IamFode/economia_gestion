@@ -1,0 +1,37 @@
+---
+title: "metodología"
+author: "Christian Limbert Paredes Aguilera"
+output: pdf_document
+---
+
+### Ecuación cuantitativa de intercambio.
+$$P_tY_t=v_tM_t$$
+
+Donde:
+$$
+\begin{tabular}{rcl}
+     $P_t$ &=& ïndice de precios del deflactor.\\
+     $Y_t$ &=& PIB real.\\
+  $P_tY_t$ &=& PIB nominal.\\
+     $v_t$ &=& Velocidad del dinero. \\
+     $M_t$ &=& Un agregado monetario.
+\end{tabular}
+$$
+
+
+### Ecuación de Fisher
+$$1-i_t=\dfrac{P_{t+1}}{P_t}(1+r_t),$$
+
+donde
+$$
+\begin{tabular}{rcl}
+  $i_t$ &=& Tasa de interés nominal.\\
+  $r_t$ &=& Tasa de interes real.
+\end{tabular}
+$$
+
+
+La serie de la tasa de crecimiento geométrico de $T$ períodos de la variable $X$, denotada como $\eta_T^X$, calculando la tasa de crecimiento geométrico de la variable $X$ de cada período $t$ al período $t + T$ dentro del intervalo de datos, es decir, $\eta_{t+T}^X$ para $t = 1$ a $N - T$ con $N$ el número de datos disponibles para la variable $X$. Como esta tasa es la que satisface $X_{t+T} = X_t\left[1+\eta_{t+T}^X\right]^T$, transformando esta expresión en logaritmos, es fácil hallar cada elemento de la serie
+
+$$\eta_{t+T}^X = \dfrac{1}{T}\ln\left(\dfrac{X_{t+T}}{X_t}\right)$$
+para cada periodo $t=1,\ldots,N$. Observemos que, a medida que aumenta el intervalo de tiempo $T$, la serie de la tasa de crecimiento geométrico de cada variable degenera en un único valor, a saber, la tasa de crecimiento geométrico del intervalo global, $\eta_N^X=\eta_N^X$ con $T=N-1$.

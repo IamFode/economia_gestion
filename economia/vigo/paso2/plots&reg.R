@@ -1,6 +1,5 @@
 #LIBRERIAS
 library(tidyr)
-library(ggthemes)
 
 # coeficiente de correlación
 correlation = cor(P_M.Ymean$mediaM.Y,P_M.Ymean$mediaP,use = "pairwise.complete.obs")
@@ -24,7 +23,7 @@ reg <- lm(mediaP ~ mediaM.Y, data = na.omit(P_M.Ymean))
 reg <- lm(mediaP ~ mediaM.Y, data = na.omit(P_M.Ymean))
 
 # Calcular el coeficiente de correlación
-correlation <- round(cor(na.omit(P_M.Ymean$mediaM.Y), na.omit(P_M.Ymean$mediaP)), 2)
+correlation = round(cor(na.omit(P_M.Ymean$mediaM.Y), na.omit(P_M.Ymean$mediaP)), 2)
 
 # Crear un gráfico de dispersión con ggplot2
 ggplot(na.omit(P_M.Ymean), aes(x = mediaM.Y, y = mediaP)) +

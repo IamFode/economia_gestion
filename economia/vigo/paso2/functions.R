@@ -14,14 +14,14 @@ lDif = function(df) {
 # Tasa de crecimiento geométrica
 tasaCrecGeom <- function(df, T) {
   n <- ncol(df)
-  promedios <- data.frame(matrix(NA, nrow = nrow(df), ncol = n - T + 1))
+  promedios <- data.frame(matrix(NA, nrow = nrow(df), ncol = n-T))
   for (i in 1:nrow(df)) {
     for (s in T:n) {
-      group <- df[i, (s - T + 1):s]
+      group <- df[i, (s-T):s]
       if (all(is.na(group))) {
-        promedios[i, s - T + 1] <- NA
+        promedios[i, s-T] <- NA
       } else {
-        promedios[i, s - T + 1] <- (1/T) * log(df[i, s] / df[i, s-T+1])
+        promedios[i, s-T] <- (1/T) * log(df[i, s] / df[i, s-T])
       }
     }
   }

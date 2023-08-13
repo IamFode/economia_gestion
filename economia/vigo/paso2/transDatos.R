@@ -15,12 +15,11 @@ P_t = read_excel("paso2/data/Prices-WB-IFS.xlsx",
                             sheet = "GDPDefl(2010)WB+IMF")
 M1 = read_excel("paso2/data/SeriesAnuales.xlsx", 
                     sheet = "M1")
-
 ############################# VARIABLES ########################################
 `"
 P_tY_t=v_tM_t
 
-P_t = ïndice de precios del deflactor
+P_t = Indice de precios del deflactor
 Y_t = PIB real.
 P_tY_t = PIB nominal.
 v_t = Velocidad del dinero.
@@ -30,7 +29,6 @@ M_t = Un agregado monetario.
 ############################# LIMPIEZA #########################################
 Y_t = slice(GDPreal,1:223)
 M_t = slice(M1,1:223) 
-rm(GDPreal)
 rm(M1)
 
 `"
@@ -80,17 +78,10 @@ Ptrans = lDif(P_t)
 M.Y_t = M_t/Y_t
 M.Ytrans = lDif(M.Y_t)
 
-# Media de P y MY
-mediaP = rowMeans(Ptrans,na.rm = TRUE)
-mediaM.Y = rowMeans(M.Ytrans,na.rm = TRUE)
-
-# Construcción de un dataframe con nombres de países, MediaMY y mediaP
-GDPreal = read_excel("paso2/data/GDP-WB-IFS.xlsx", 
-                         sheet = "GDPreal-IMF+WB")
+# Construcción de un dataframe con nombres de países
 Y_tt = slice(GDPreal,1:223)
-P_M.Ymean = cbind(Y_tt[1],mediaM.Y,mediaP)
 
-# Transformar columnas (años) en filas
+# Transformar columnas (años) a fila
 Pcountry = cbind(Y_tt[1],Ptrans)
 Pcountry$indice = 1:nrow(Pcountry)
 nuevo = gather(Pcountry,key = "año",value = "P",-"Country Name",-indice)
@@ -102,20 +93,14 @@ nuevo = gather(MYcountry,key = "año",value = "M.Y",-"Country Name",-indice)
 M.Yvertical = arrange(nuevo,indice)
 
 # Unir Pvertical y MYvertical
-P_M.Yvertical = merge(M.Yvertical, Pvertical, 
+P_M.Y = merge(M.Yvertical, Pvertical, 
                      by = c("Country Name", "indice", "año"))
-P_M.Yvertical$indice = NULL
+P_M.Y$indice = NULL
+
+# Transformación al 100
 
 
 #################### TRANSFORMACIÓN DE VARIABLES II ############################
-# Promedio de P para 5 años
-Pmean5 = promediosT(Ptrans,5)
-# Promedio de P para 10 años
-Pmean10 = promediosT(Ptrans,10)
-# Promedio de P para 25 años
-Pmean25 = promediosT(Ptrans,25)
-# Promedio de P para 40 años
-Pmean40 = promediosT(Ptrans,40)
 
 # Tasa de crecimiento geométrico para 5 años
 M.TcrecGeom5 = tasaCrecGeom(M.Y_t,5)
@@ -139,6 +124,4 @@ rm(P_t)
 rm(Y_t)
 rm(Pvertical)
 rm(M.Yvertical)
-rm(MY)
-rm(P)
 rm(MYcountry)

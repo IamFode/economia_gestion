@@ -4,33 +4,30 @@ source("paso2/functions.R")
 
 ############################## LIBRERIAS #######################################
 library(readxl)
-library(dplyr)
-library(ggplot2)
-library(tidyr)
+
 
 ################################ DATA ##########################################
-GDPreal = read_excel("paso2/data/GDP-WB-IFS.xlsx", 
+{GDPreal = read_excel("paso2/data/GDP-WB-IFS.xlsx", 
                          sheet = "GDPreal-IMF+WB")
 P_t = read_excel("paso2/data/Prices-WB-IFS.xlsx", 
                             sheet = "GDPDefl(2010)WB+IMF")
 M1 = read_excel("paso2/data/SeriesAnuales.xlsx", 
-                    sheet = "M1")
+                    sheet = "M1")}
+
+
 ############################# VARIABLES ########################################
 `"
-P_tY_t=v_tM_t
-
-P_t = Indice de precios del deflactor
-Y_t = PIB real.
+P_tY_t = v_tM_t
+   P_t = Indice de precios del deflactor
+   Y_t = PIB real.
 P_tY_t = PIB nominal.
-v_t = Velocidad del dinero.
-M_t = Un agregado monetario.
+   v_t = Velocidad del dinero.
+   M_t = Un agregado monetario.
 "`
 
 ############################# LIMPIEZA #########################################
-Y_t = slice(GDPreal,1:223)
-M_t = slice(M1,1:223) 
-rm(M1)
-
+{Y_t = slice(GDPreal,1:223)
+M_t = slice(M1,1:223)}
 `"
 Al verificar P_t y Y_t, nos damos cuenta que se tiene datos desde el año 1948, 
 por lo que decidimos eliminar los años que no contiene datos.
@@ -50,14 +47,12 @@ las series. Esto ya que sólo contienen metadatos.
 P_t = subset(P_t,select = -(1:5))
 Y_t = subset(Y_t,select = -(1:5))
 M_t = subset(M_t,select = -(1:5))
-
 `"
 Cambiar todos los ceros por NA
 "`
-P_t[P_t==0] = NA
+{P_t[P_t==0] = NA
 Y_t[Y_t==0] = NA
-M_t[M_t==0] = NA
-
+M_t[M_t==0] = NA}
 `"
 M_t aún tenia datos (string), por lo que debemos tranformarlos a datos (numeric)
 "`
@@ -70,6 +65,9 @@ años 2019 y M_t tiene datos hasta 2017
 M_t[,"2018"] <- NA
 M_t[,"2019"] <- NA
 
+# Convertir P_t a dataframe
+P_t=as.data.frame(P_t)
+
 #################### TRANFORMACIÓN DE VARIABLES I ##############################
 #i. inflación (ln(P_{t+1}/(P_t)))
 Ptrans = lDif(P_t)
@@ -79,49 +77,67 @@ M.Y_t = M_t/Y_t
 M.Ytrans = lDif(M.Y_t)
 
 # Construcción de un dataframe con nombres de países
-Y_tt = slice(GDPreal,1:223)
+dfname = slice(GDPreal,1:223)
 
-# Transformar columnas (años) a fila
-Pcountry = cbind(Y_tt[1],Ptrans)
-Pcountry$indice = 1:nrow(Pcountry)
-nuevo = gather(Pcountry,key = "año",value = "P",-"Country Name",-indice)
-Pvertical = arrange(nuevo,indice)
+# De columnas a filas 
+P_M.Y=ColToRow(dfname,Ptrans,M.Ytrans)
 
-MYcountry = cbind(Y_tt[1],M.Ytrans)
-MYcountry$indice = 1:nrow(MYcountry)
-nuevo = gather(MYcountry,key = "año",value = "M.Y",-"Country Name",-indice)
-M.Yvertical = arrange(nuevo,indice)
+# Omisión de datos extremos según análisis.R
+P_M.Y100per = P_M.Y[-c(821,823,825,10207),]
 
-# Unir Pvertical y MYvertical
-P_M.Y = merge(M.Yvertical, Pvertical, 
-                     by = c("Country Name", "indice", "año"))
-P_M.Y$indice = NULL
+# Transformación en porcentajes (Dwyer and Fisher (2009, fig 3))  
+MY=(max(P_M.Y100per$M.Y,na.rm = TRUE)-min(P_M.Y100per$M.Y,na.rm = TRUE))/2
+P_M.Y50per = na.omit(P_M.Y100per) %>% filter(M.Y<MY)# Inferior al 50 %
 
-# Transformación al 100
+MY=(max(P_M.Y100per$M.Y,na.rm = TRUE)-min(P_M.Y100per$M.Y,na.rm = TRUE))/5
+P_M.Y20per = na.omit(P_M.Y100per) %>% filter(M.Y<MY)# Inferior al 20 %
+
+MY=(max(P_M.Y100per$M.Y,na.rm = TRUE)-min(P_M.Y100per$M.Y,na.rm = TRUE))/10
+P_M.Y10per = na.omit(P_M.Y100per) %>% filter(M.Y<MY)# Inferior al 10 %
 
 
 #################### TRANSFORMACIÓN DE VARIABLES II ############################
 
-# Tasa de crecimiento geométrico para 5 años
-M.TcrecGeom5 = tasaCrecGeom(M.Y_t,5)
-# Tasa de crecimiento geométrico para 10 años
-M.TcrecGeom10 = tasaCrecGeom(M.Y_t,10)
-# Tasa de crecimiento geométrico para 25 años
-M.TcrecGeom25 = tasaCrecGeom(M.Y_t,25)
-# Tasa de crecimiento geométrico para 40 años
-M.TcrecGeom40 = tasaCrecGeom(M.Y_t,40)
+M.YcrecGeom5 = tasaCrecGeom(M.Y_t,5)   # Tasa geométrica M/Y 5 años
+M.YcrecGeom10 = tasaCrecGeom(M.Y_t,10) # Tasa geométrica M/Y 10 años
+M.YcrecGeom25 = tasaCrecGeom(M.Y_t,25) # Tasa geométrica M/Y 25 años
+M.YcrecGeom40 = tasaCrecGeom(M.Y_t,40) # Tasa geométrica M/Y 40 años
 
+PcrecGeom5 = tasaCrecGeom(P_t,5)   # Tasa geométrica P  5 años
+PcrecGeom10 = tasaCrecGeom(P_t,10) # Tasa geométrica P 10 años
+PcrecGeom25 = tasaCrecGeom(P_t,25) # Tasa geométrica P 25 años
+PcrecGeom40 = tasaCrecGeom(P_t,40) # Tasa geométrica P 40 años
+
+P_M.Y5años=ColToRow(dfname,PcrecGeom5,M.YcrecGeom5)   # P|M/Y col to row 5 años
+P_M.Y10años=ColToRow(dfname,PcrecGeom10,M.YcrecGeom10)# P|M/Y col to row 10 años
+P_M.Y25años=ColToRow(dfname,PcrecGeom25,M.YcrecGeom25)# P|M/Y col to row 25 años
+P_M.Y40años=ColToRow(dfname,PcrecGeom40,M.YcrecGeom40)# P|M/Y col to row 40 años
+
+
+################### TRANSFORMACIÓN DE VARIABLES III ############################
+
+P_M.Y_FI = as.data.frame(data_frame("Country Name"=dfname$`Country Name`,
+                                    M.Y=lastFirst(M.Y_t),
+                                    P=lastFirst(P_t)))
 
 
 ###################### BORRAR VARIABLES SIN USO ################################
+rm(M1)
 rm(GDPreal)
-rm(Y_tt)
-rm(nuevo)
-rm(Pcountry)
 rm(M_t)
 rm(M.Y_t)
 rm(P_t)
 rm(Y_t)
-rm(Pvertical)
-rm(M.Yvertical)
-rm(MYcountry)
+rm(M.YcrecGeom5)
+rm(M.YcrecGeom10)
+rm(M.YcrecGeom25)
+rm(M.YcrecGeom40)
+rm(PcrecGeom5)
+rm(PcrecGeom10)
+rm(PcrecGeom25)
+rm(PcrecGeom40)
+rm(dfname)
+rm(MY)
+rm(M.Ytrans)
+rm(Ptrans)
+rm(P_M.Y)

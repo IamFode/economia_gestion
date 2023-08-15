@@ -4,6 +4,7 @@ source("paso2/functions.R")
 
 ############################## LIBRERIAS #######################################
 library(readxl)
+library(dplyr)
 
 
 ################################ DATA ##########################################
@@ -32,9 +33,9 @@ M_t = slice(M1,1:223)}
 Al verificar P_t y Y_t, nos damos cuenta que se tiene datos desde el año 1948, 
 por lo que decidimos eliminar los años que no contiene datos.
 "`
-P_t = subset(P_t,select = -(6:which(names(P_t)=="1947")))
+{P_t = subset(P_t,select = -(6:which(names(P_t)=="1947")))
 Y_t = subset(Y_t,select = -(6:which(names(Y_t)=="1947")))
-M_t = subset(M_t,select = -ncol(M_t))
+M_t = subset(M_t,select = -ncol(M_t))}
 `"
 procedemos a cambiar los nombres de países de M_t, con las de P_t ya que difieren 
 algunos países en su escritura. 
@@ -44,15 +45,15 @@ M_t = cbind(P_t[,1], M_t[, -1])
 Eliminar las primera 5 columnas de cada variables, para una mejor práctica de 
 las series. Esto ya que sólo contienen metadatos.
 "`
-P_t = subset(P_t,select = -(1:5))
+{P_t = subset(P_t,select = -(1:5))
 Y_t = subset(Y_t,select = -(1:5))
-M_t = subset(M_t,select = -(1:5))
+M_t = subset(M_t,select = -(1:5))}
 `"
 Cambiar todos los ceros por NA
 "`
-{P_t[P_t==0] = NA
+{{P_t[P_t==0] = NA
 Y_t[Y_t==0] = NA
-M_t[M_t==0] = NA}
+M_t[M_t==0] = NA}}
 `"
 M_t aún tenia datos (string), por lo que debemos tranformarlos a datos (numeric)
 "`
@@ -62,8 +63,8 @@ any(sapply(M_t, is.character))
 Agreguemos dos columnas a M_t ya que las otras variables tiene datos hasta los 
 años 2019 y M_t tiene datos hasta 2017
 "`
-M_t[,"2018"] <- NA
-M_t[,"2019"] <- NA
+{M_t[,"2018"] <- NA
+M_t[,"2019"] <- NA}
 
 # Convertir P_t a dataframe
 P_t=as.data.frame(P_t)
@@ -85,7 +86,8 @@ P_M.Y=ColToRow(dfname,Ptrans,M.Ytrans)
 # Omisión de datos extremos según análisis.R
 P_M.Y100per = P_M.Y[-c(821,823,825,10207),]
 
-# Transformación en porcentajes (Dwyer and Fisher (2009, fig 3))  
+# Transformación en porcentajes (Dwyer and Fisher (2009, fig 3)) con relación
+# a los países con una tasa de crecimiento del exceso de dinero.
 MY=(max(P_M.Y100per$M.Y,na.rm = TRUE)-min(P_M.Y100per$M.Y,na.rm = TRUE))/2
 P_M.Y50per = na.omit(P_M.Y100per) %>% filter(M.Y<MY)# Inferior al 50 %
 
@@ -122,7 +124,7 @@ P_M.Y_FI = as.data.frame(data_frame("Country Name"=dfname$`Country Name`,
 
 
 ###################### BORRAR VARIABLES SIN USO ################################
-rm(M1)
+{rm(M1)
 rm(GDPreal)
 rm(M_t)
 rm(M.Y_t)
@@ -140,4 +142,4 @@ rm(dfname)
 rm(MY)
 rm(M.Ytrans)
 rm(Ptrans)
-rm(P_M.Y)
+rm(P_M.Y)}

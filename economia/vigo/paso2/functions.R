@@ -1,30 +1,28 @@
 #LIBRERIAS
-{{library(tidyr)
-library(ggpubr)
-library(dplyr)
-library(MASS)}
-library(ggplot2)}
+{library(ggplot2)}
 
 #FUNCIONES
 
 # Definir una función que aplica la fórmula ln(P_{t+1}/(P_t)) a un data frame
 lDif = function(df) {
-  result <- data.frame(matrix(NA, nrow = nrow(df), ncol = ncol(df)))
+  result <- matrix(NA, nrow = nrow(df), ncol = ncol(df))
   colnames(result) = colnames(df)
   for (i in 2:ncol(df)) {
     result[,i] = log(df[,i] / df[,i-1])
   }
+  result <- data.frame(result)
   return(result)
 }
 
 # Tasa de crecimiento geométrica
 tasaCrecGeom <- function(df,T){
-  data = data.frame(matrix(nrow = nrow(df),ncol = ncol(df)-T))
+  data = matrix(nrow = nrow(df),ncol = ncol(df)-T)
   for(row in 1:nrow(df)){
     for(col in (T+1):ncol(df)) {
       data[row,(col-T)] <- (1/T)*log(df[row,col]/df[row,col-T])
     }
   }
+  data <- data.frame(data)
   colnames(data) <- colnames(df)[(T+1):ncol(df)]
   return(data)
 }

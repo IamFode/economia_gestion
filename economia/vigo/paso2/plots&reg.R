@@ -32,5 +32,6 @@ plotIII(P_M.Y_FI)
 
 
 ################################ REMOVE ########################################
-rm(data_list)
-rm(titulo)
+{rm(data_list)
+rm(titulo)}
+

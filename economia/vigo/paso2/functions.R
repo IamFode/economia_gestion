@@ -106,7 +106,7 @@ plotsIyII <- function(data_list, titulo) {
       theme_bw() +
       theme(plot.margin = unit(c(1, 1, 1, 3), "lines"),
             plot.background = element_rect(fill = "white"),
-            axis.text = element_text(size = 1),
+            axis.text = element_text(size = 8),
             legend.position = "none",
             plot.caption = element_text(size = 10, hjust = 0)) +
       labs(x = axis_labels[[i]]$x, y = axis_labels[[i]]$y)
@@ -140,7 +140,7 @@ plotIII <- function(df) {
     theme_bw() +
     theme(plot.margin = unit(c(1, 1, 1, 3), "lines"),
           plot.background = element_rect(fill = "white"),
-          axis.text = element_text(size = 1),
+          axis.text = element_text(size = 8),
           legend.position = "none",
           plot.caption = element_text(size = 10, hjust = 0))+
     labs( x = "Tasa de crecimiento del excedente de dinero", y = "Tasa de Inflación")

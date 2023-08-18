@@ -12,7 +12,7 @@ titulo = list("Todos los países",
               "Crecimiento del excedente de dinero \nmenor al 10 %"
               )
 
-plotsIyII(data_list,titulo)
+plotsII(data_list,titulo)
 
 ######## II Periodos amplios para todos los datos de todos los países ##########
 data_list = list(P_M.Y5años,P_M.Y10años,P_M.Y25años,P_M.Y40años)

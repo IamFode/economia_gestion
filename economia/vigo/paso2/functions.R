@@ -1,5 +1,8 @@
 #LIBRERIAS
-{library(ggplot2)}
+{library(ggplot2)
+library(tidyr)
+library(ggpubr)
+  }
 
 #FUNCIONES
 
@@ -10,9 +13,10 @@ lDif = function(df) {
   for (i in 2:ncol(df)) {
     result[,i] = log(df[,i] / df[,i-1])
   }
-  result <- data.frame(result)
+  result <- as.data.frame(result)
   return(result)
 }
+
 
 # Tasa de crecimiento geométrica
 tasaCrecGeom <- function(df,T){
@@ -72,7 +76,7 @@ lastFirst <- function(df) {
 }
     
 
-plotsIyII <- function(data_list, titulo) {
+plotsII <- function(data_list, titulo) {
   axis_labels <- list(# Crear una lista de etiquetas de eje
     list(x = "", y = "Tasa de inflación"),
     list(x = "", y = ""),
@@ -165,4 +169,6 @@ promediosT = function(df, T) {
   colnames(promedios) = colnames(df)[T:ncol(df)]
   return(promedios)
 }
+
+
 

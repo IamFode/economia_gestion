@@ -84,7 +84,8 @@ dfname = slice(GDPreal,1:223)
 P_M.Y=ColToRow(dfname,Ptrans,M.Ytrans)
 
 # Omisión de datos extremos según análisis.R
-P_M.Y100per = P_M.Y[-c(821,823,825,10207),]
+P_M.Y100per = P_M.Y[-c(821,823,825,6787,10207),]
+
 
 # Transformación en porcentajes (Dwyer and Fisher (2009, fig 3)) con relación
 # a los países con una tasa de crecimiento del exceso de dinero.
@@ -118,10 +119,9 @@ P_M.Y40años=ColToRow(dfname,PcrecGeom40,M.YcrecGeom40)# P|M/Y col to row 40 añ
 
 ################### TRANSFORMACIÓN DE VARIABLES III ############################
 
-P_M.Y_FI = as.data.frame(data_frame("Country Name"=dfname$`Country Name`,
-                                    M.Y=lastFirst(M.Y_t),
-                                    P=lastFirst(P_t)))
-
+P_M.Y_FI = data_frame("Country Name"=dfname$`Country Name`,
+                                    "M.Y"=lastFirst(M.Y_t),
+                                    "P"=lastFirst(P_t))
 
 ###################### BORRAR VARIABLES SIN USO ################################
 {rm(M1)

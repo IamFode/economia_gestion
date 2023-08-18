@@ -45,7 +45,13 @@ Namibia 2002; M.Y = 2.63
 subset(P_M.Y,M.Y<=-2)
 '"
 Australia 1978 M.Y = -2.19
+Indonesia 1966 P = -4.34575746
 "'
+subset(P_M.Y,P<=-4)
+'"
+Indonesia 1966 P = -4.34575746
+"'
+
 
 
 '"

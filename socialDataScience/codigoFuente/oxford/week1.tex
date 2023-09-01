@@ -1,0 +1,63 @@
+\chapter{Equidad y sesgo algorítmicos}
+
+\section{Preservación del sesgo en el aprendizaje automático: La legalidad de las métricas de imparcialidad según la Ley de no discriminación de la UE (Watchet, Mittlestadt y Russel. 2021)}
+Medimos una gran mayoría de algorítmicos en términos de producción de tendencias históricas. Este tipo de precisión suele ser la única medida del rendimiento. Pero ¿es justo este enfoque?. \\
+
+En los últimos años se trabajó mucho para abordar el sesgo en el aprendizaje automático y los sistemas de IA, donde muchos estudios instan mayor responsabilidad en su diseño y uso. Nos referiremos a dos categorías importantes de sesgos problemáticos a los que nos referiremos como:
+
+\begin{enumerate}[1.]
+    \item Sesgo técnico.
+    \item Sesgo social.
+\end{enumerate}
+
+Los sesgos técnicos reflejan un fallo de los algoritmos de aprendizaje a la hora de predecir con la misma precisión, en distintos escenarios. Ahora, el sesgo social es una cuestión de política, perspectivas y cambios de prejuicios e ideas preconcebidas que puede tardar décadas en cambiar. Cabe esperar resultados sesgados cuando los sistemas se entrenan con datos que reflejan fielmente la realidad social, es decir, que captan los sesgos y las desigualdades que caracterizan a las sociedades modernas. \\
+
+Las soluciones técnicas en el aprendizaje automático justo, son sólo una solución temporal para los síntomas, pero no para las causas de la desigualdad de la sociedad.\\
+
+Al final nos quedan tres soluciones para el sesgo algorítmicos y la desigualdad histórica social:
+
+\begin{enumerate}[1.]	
+    \item No hacer nada.
+    \item Rectificar los sesgos técnicos y mantener el statu quo.
+    \item Reconocer el hecho de que el statu quo a menudo no es neutral y, en su lugar, utilizar la IA y el análisis estadístico para arrojar luz sobre las desigualdades existentes.
+\end{enumerate}
+
+Hasta la fecha gran parte del trabajo se centró en la segunda opción, dado métricas que se ajustan a la igualdad formal que pretenden reproducir el rendimiento histórico. Lamentablemente, el uso de estas métricas corre el riesgo de desviar la atención de las causas subyacentes de las desigualdades históricas y, por tanto, puede desviar la atención de su solución. La tercera opción está relacionada con las métricas de imparcialidad (transformadoras de sesgo), donde se parte de puntos diferentes que no son iguales.\\
+
+Este documento realiza tres aportaciones. En primer lugar, distinguimos entre dos posibles objetivos fundamentales de la legislación en materia de no discriminación, la igualdad formal y la igualdad sustantiva, que imponen diferentes obligaciones a los desarrolladores, implantadores y usuarios de la IA, el aprendizaje automático y la toma de decisiones automatizada. En segundo lugar, proponemos un sistema de clasificación de las métricas de imparcialidad en el aprendizaje automático basado en la forma en que gestionan el sesgo preexistente (métricas de imparcialidad que "preservan el sesgo" y métricas de imparcialidad que "transforman el sesgo") y en qué medida se ajustan a los objetivos de la legislación en materia de no discriminación. Por último, reconocemos que la necesidad legal de justificación en casos de discriminación indirecta puede crear nuevas obligaciones para desarrolladores, implantadores y usuarios. Reconociendo esta necesidad de justificación, sostenemos que las métricas que exigen una elección explícita de los sesgos que debe heredar un clasificador deberían ser preferibles a efectos de una toma de decisiones justa en el marco de la igualdad sustantiva. Para concluir, ofrecemos recomendaciones concretas sobre cómo elegir la métrica de equidad más adecuada en virtud de la legislación de la UE en materia de no discriminación y una lista de comprobación para hacerlo.
+
+\section{Igualdad formal y sustantiva en el derecho antidiscriminatorio}
+
+La legislación de la UE en materia de no discriminación prohíbe dos tipos:
+
+\begin{enumerate}[1.]
+    \item Discriminación directa.
+    \item Discriminación indirecta.
+\end{enumerate}
+
+Discriminación directa significa que una persona recibe un trato menos favorable en función de un atributo protegido (por ejemplo, raza y etnia,  género, religión y creencias, edad, discapacidad u orientación sexual) que posee en asuntos de un sector protegido (por ejemplo, el lugar de trabajo, la provisión de bienes y servicios). Se basa en el postulado Aritotélico de tratar casos similares de forma similar y casos diferentes de forma diferente, también se denomina igualdad formal o principio del mérito.\\
+
+La igualdad formal no garantiza la igualdad de oportunidades. Para lograr esta igualdad primero es necesario reconocer que existe una desigualdad estructural generalizada, luego se debe fortalecer la capacidad de luchar por esas oportunidades. No solo se busca la igualdad jurídica, sino la capacidad humana, no sólo la igualdad como derecho y como teoría, sino la igualdad como hecho y resultado.\\
+
+Proporcionar a las personas igualdad de acceso a las oportunidades (es decir, igualdad formal) no equivale a proporcionar un acceso ajustado a las disparidades históricas y a sus efectos duraderos sobre los grupos protegidos. Esta última, denominada "igualdad sustantiva" de oportunidades (o "igualdad de facto "), no puede lograrse simplemente ignorando los atributos protegidos (por ejemplo, raza, sexo, discapacidad) y tratando a todos por igual en adelante. Se requiere una actitud más activa que tenga en cuenta las realidades sociales e históricas.\\
+
+La igualdad sustantiva se centra en medidas positivas que nivelan el terreno de juego para mejorar la competencia leal con el fin de cuestionar los criterios de acceso establecidos, esto a diferencia de la igualdad de oportunidades formal el cual se centra en los aspectos procedimentales de la igualdad en la asignación de recursos.
+
+
+\subsection{Discriminación indirecta e igualdad sustantiva}
+El concepto de discriminación indirecta se creó para lograr la igualdad sustantiva en la práctica. La discriminación indirecta ayuda a desmantelar las estructuras de poder subyacentes así como a identificar las áreas en las que es necesario adoptar medidas adicionales para lograr una verdadera igualdad. La discriminación indirecta pretende ayudar a redistribuir los recursos de los favorecidos a los desfavorecidos y promover la diversidad en la sociedad. \\
+
+La discriminación indirecta justificada se produce cuando el presunto infractor persigue un objetivo legítimo y los mecanismos utilizados superan la "prueba de proporcionalidad", lo que significa que son tanto legalmente necesarios como proporcionados. Por ejemplo, los requisitos físicos pueden justificarse como esenciales a la hora de contratar bomberos por motivos de seguridad, aunque impongan una desventaja particular.\\
+
+La discriminación indirecta difiere de la directa en que reconoce que deben tenerse en cuenta los obstáculos sociales, las luchas y las diferencias de hecho a las que se enfrentan los grupos protegidos.65 La discriminación indirecta reconoce las diferencias entre grupos y postula que deben recibir un trato diferente.
+
+\subsection{Acción positiva e igualdad sustantiva}
+La acción positiva, aunque también es una forma de igualdad sustantiva, se centra únicamente en la igualdad de resultados. Aquí es donde difiere la igualdad de oportunidades sustantiva: pretende crear procedimientos justos utilizando criterios de toma de decisiones que tengan en cuenta las desigualdades históricas. El objetivo no es simplemente dar una ventaja a determinados miembros de un grupo desfavorecido dándoles un mejor resultado. Más bien, la igualdad de oportunidades sustantiva pretende crear unas condiciones equitativas para todos los participantes definiendo los procedimientos y criterios de toma de decisiones teniendo en cuenta las desigualdades históricas (por ejemplo, no basarse en gran medida en las cartas de recomendación o el promedio de notas).
+
+
+\section{Preservación de sesgo en el aprendizaje automático justo}
+La adecuación de las capacidades técnicas para medir el sesgo y la desigualdad con el objetivo y los deberes asoaiados a la legislación en materia de no discriminación es de vital importancia para los desarrolladores y usuarios del aprendizaje automático y la IA.\\
+
+En esta sección proponemos un esquema de clasificación para las métricas de imparcialidad en el aprendizaje automático basado en la distinción jurídica fundamental entre igualdad formal y sustantiva. En concreto, consideramos que ciertos sesgos sociales en la toma de decisiones en el pasado son problemáticos debido a la desigualdad que han creado entre grupos protegidos de personas en la sociedad. A partir de esta observación, argumentamos que preservar estos sesgos en los modelos de aprendizaje automático puede ser problemático. Si se rechazara el argumento de que la desigualdad existente es de hecho un problema, entonces se podría rechazar igualmente el argumento de que preservar ese sesgo en el aprendizaje automático justo es problemático.
+
+\subsection{Métricas de equidad y derecho antidiscriminatorio}

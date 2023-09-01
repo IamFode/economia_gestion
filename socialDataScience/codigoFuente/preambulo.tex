@@ -1,0 +1,48 @@
+\documentclass[10pt]{book}
+
+% Configuración de página
+\usepackage[text=17cm,
+	    left=2.54cm,
+	    right=2.54cm, 
+	    headsep=20pt, 
+	    top=2.54cm, 
+	    bottom = 2.54cm,
+	    letterpaper,
+	    showframe = false]{geometry}
+%Paquetes
+\usepackage{titlesec} %formato de títulos
+\usepackage{titling}
+\usepackage[spanish,english]{babel}
+\usepackage{enumerate}
+\usepackage{marginnote}
+\usepackage[Bjornstrup]{fncychap}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[backref=page]{hyperref}
+\usepackage{bibentry}
+\usepackage{booktabs}
+\usepackage{lscape}
+\usepackage{forest}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{truncate}
+
+%configuración tcolorbox
+\tcbset{colback=black!2,colframe=white}
+
+%configuración de separación de sección
+\titlespacing*{\section}{0pt}{1.7cm}{.3cm}
+
+%configuración de separación de sección
+\titleformat*{\section}{\small\bfseries}
+\titleformat*{\subsection}{\bfseries}
+\titleformat*{\subsubsection}{\bfseries}
+\titleformat*{\paragraph}{\bfseries}
+\titleformat*{\subparagraph}{\bfseries}
+
+%Formato de título de capítulos
+\titleformat{\chapter}[display]
+{\vspace{4ex}\bfseries\huge}
+{\filleft\Huge\thechapter}
+{2ex}
+{\filleft}

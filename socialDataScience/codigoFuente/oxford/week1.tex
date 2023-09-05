@@ -1,6 +1,6 @@
-\chapter{Equidad y sesgo algorítmicos}
+\part{Equidad y sesgo algorítmicos}
 
-\section{Preservación del sesgo en el aprendizaje automático: La legalidad de las métricas de imparcialidad según la Ley de no discriminación de la UE (Watchet, Mittlestadt y Russel. 2021)}
+\chapter{Preservación del sesgo en el aprendizaje automático: La legalidad de las métricas de imparcialidad según la Ley de no discriminación de la UE (Watchet, Mittlestadt y Russel. 2021)}
 Medimos una gran mayoría de algorítmicos en términos de producción de tendencias históricas. Este tipo de precisión suele ser la única medida del rendimiento. Pero ¿es justo este enfoque?. \\
 
 En los últimos años se trabajó mucho para abordar el sesgo en el aprendizaje automático y los sistemas de IA, donde muchos estudios instan mayor responsabilidad en su diseño y uso. Nos referiremos a dos categorías importantes de sesgos problemáticos a los que nos referiremos como:
@@ -61,3 +61,162 @@ La adecuación de las capacidades técnicas para medir el sesgo y la desigualdad
 En esta sección proponemos un esquema de clasificación para las métricas de imparcialidad en el aprendizaje automático basado en la distinción jurídica fundamental entre igualdad formal y sustantiva. En concreto, consideramos que ciertos sesgos sociales en la toma de decisiones en el pasado son problemáticos debido a la desigualdad que han creado entre grupos protegidos de personas en la sociedad. A partir de esta observación, argumentamos que preservar estos sesgos en los modelos de aprendizaje automático puede ser problemático. Si se rechazara el argumento de que la desigualdad existente es de hecho un problema, entonces se podría rechazar igualmente el argumento de que preservar ese sesgo en el aprendizaje automático justo es problemático.
 
 \subsection{Métricas de equidad y derecho antidiscriminatorio}
+En particular, algunas de las pruebas utilizadas por el Tribunal de Justicia de las Comunidades Europeas y los tribunales de los Estados miembros para medir la discriminación indirecta coinciden con la métrica de la paridad demográfica de la equidad algorítmica.\\
+Formalmente, la definición de paridad demográfica afirma que cada grupo protegido, es decir, un grupo basado en un atributo protegido como la raza o el sexo, debería, si recibe el k\% de las decisiones positivas, recibir también el k\% de las decisiones negativas.\\
+
+Se dice que un sistema de toma de decisiones presenta independencia condicional con respecto a un atributo protegido concreto, como la raza o el sexo, y a un atributo condicionante, como el salario o la antigüedad en el empleo, si:
+
+\begin{enumerate}[1.]
+    \item Cualquier diferencia en la forma en que el sistema trata colectivamente a las personas de una determinada raza o sexo puede atribuirse enteramente a diferencias en el atributo condicionante; y 
+    \item tras condicionar esta variable, las decisiones tomadas son estadísticamente independientes del grupo protegido.
+\end{enumerate}
+
+Imaginamos un escenario hipotético en el que una determinada aplicación algorítmica de toma de decisiones es impugnada ante un tribunal por causar discriminación indirecta. En este contexto, hay que responder a dos preguntas clave: 
+
+\begin{enumerate}[1.]
+	\item ¿Existe una disparidad significativa? 
+	\item Aceptando que existe una disparidad significativa, ¿está justificada?
+\end{enumerate}
+
+Lo ideal sería que los desarrolladores y usuarios del aprendizaje automático respondieran proactivamente a estas preguntas en el momento de su implantación, con la vista puesta en futuras responsabilidades, pero también para demostrar un compromiso con la igualdad sustantiva y no meramente formal.\\
+La primera cuestión se refiere a cómo definimos los grupos pertinentes (es decir, los grupos desfavorecidos y de comparación) y cómo medimos la disparidad entre ellos. Por lo que respecta a la segunda, la primera pregunta puede reformularse como sigue: ¿qué métrica de equidad debemos utilizar para medir la disparidad? Y, más concretamente, ¿a qué variable o variables debe condicionarse la prueba? Se trata de una cuestión normativa clave, ya que la respuesta puede dar lugar a que se ignoren o se oculten desigualdades potencialmente problemáticas, sobre todo cuando son el resultado de prejuicios y desigualdades del pasado.
+
+\subsection{Métricas de equidad que preservan y transforman el sesgo}
+Para ayudar a responder a estas preguntas en el contexto de un marco jurídico diseñado para la igualdad sustantiva, definimos dos tipos de métricas de equidad. Las métricas de imparcialidad que "preservan el sesgo" tratan de reproducir el rendimiento histórico en los resultados del modelo objetivo con índices de error equivalentes para cada grupo, tal y como se refleja en los datos de entrenamiento (o statu quo). Por el contrario, las métricas que "transforman el sesgo" no aceptan ciegamente el sesgo social como un punto de partida dado o neutral que debe preservarse, sino que requieren que las personas tomen una decisión explícita sobre qué sesgos debe mostrar el sistema.\\
+
+Para formalizar nuestra noción de imparcialidad que preserva el sesgo, decimos que cualquier métrica de imparcialidad preserva el sesgo si siempre es satisfecha por un clasificador perfecto que predice exactamente sus etiquetas objetivo con error cero, replicando el sesgo presente en los datos. Las métricas de equidad que no son necesariamente satisfechas por un clasificador perfecto se denominan transformadoras del sesgo.\\
+
+La métrica de equidad en cuestión, las probabilidades igualadas se definen formalmente como: 
+
+"el predictor $\hat{Y}$ satisface las probabilidades iquiponderadas con respecto al atributo protegido $A$ y al resultado $Y$ si $\hat{Y}$ y $A$ son independientes, condicionado a $Y$,"  donde $\hat{Y}$ es la salida de un sistema, e $Y$, algunas etiquetas de entrada que el sistema está tratando de predecir.
+
+Basándose en esta definición, las probabilidades igualadas son una forma de independencia condicional o paridad demográfica condicional, condicionada a los datos históricos Y, y que refleja exactamente sus sesgos. Todas estas métricas tienen en común la idea de que el sesgo presente en los datos de las etiquetas objetivo tiene que estar ahí, y un clasificador perfecto que reproduzca exactamente las etiquetas dadas (es decir, Y = $\hat{Y}$) satisfaría todas esas métricas. Como tales, todas estas métricas deberían entenderse como un intento de evitar que los sistemas de aprendizaje automático inserten nuevos sesgos en un sistema preservando el sesgo presente en los datos. Nos referimos a tales métricas de imparcialidad como "preservadoras del sesgo". \\
+
+\subsection{Límites del sesgo que preserva y transforma las métricas}
+La diferencia clave entre las métricas de transformación de sesgos y las de preservación de sesgos es que la mayoría de las métricas de transformación de sesgos se satisfacen igualando las tasas de decisión entre grupos, mientras que las métricas de preservación de sesgos suelen requerir igualar las tasas de error entre grupos.\\
+
+Las métricas que preservan el sesgo suelen igualar la tasa de error entre grupos. Por ejemplo, las probabilidades equiponderadas requieren que la proporción de verdaderos positivos y falsos negativos sea la misma en todos los grupos, y que la proporción de verdaderos negativos y falsos positivos también sea la misma en todos los grupos.\\
+
+En el campo del aprendizaje automático, en la práctica es habitual entrenar un sistema con variables sustitutivas que son más fáciles de medir que las variables que queremos que el sistema prediga. Por ejemplo, un sistema puede entrenarse para predecir si una persona tiene una puntuación crediticia alta como variable sustitutiva de si devolverá un préstamo, o un sistema puede entrenarse para predecir si una persona será detenida como variable sustitutiva de si infringirá la ley. Este desajuste entre lo que queremos predecir y las variables sustitutivas que podemos observar es otra forma de que el sesgo sistemático se introduzca en los sistemas. Este tipo de sesgo social heredado no puede detectarse mediante el uso ingenuo de métricas de preservación del sesgo que simplemente miden si el sistema de aprendizaje automático recupera valores de las variables proxy con errores similares para cada grupo.\\
+
+
+\section{El status quo no es neutral}
+
+Teniendo esto en cuenta, las métricas de imparcialidad son potencialmente problemáticas por varios motivos. Muchas de sus limitaciones se deben a que consideran el statu quo como un punto de partida neutral para evaluar la equidad en el aprendizaje automático. Estas métricas no diferencian entre las razones de la desigualdad en el pasado, sino que sólo importa la reproducción del rendimiento histórico con tasas de error comparables para cada grupo. Se considera "justo" simplemente igualar estos porcentajes de error. Por consiguiente, ignoran los sesgos y desigualdades sociales subyacentes en un contexto de toma de decisiones determinado.138 En cambio, las métricas de transformación de sesgos requieren una elección normativa positiva con respecto a qué sesgos debería mostrar el sistema de toma de decisiones. Al hacer esta elección, cualquier caso reconocido de disparidad entre grupos puede considerarse potencialmente discriminatorio y necesitado de justificación jurídica.\\
+
+Ignorar las razones que subyacen a la desigualdad es problemático desde el punto de vista de la igualdad sustantiva, ya que comprender por qué se tomaron las decisiones históricamente es crucial para corregir las desigualdades que crearon.\\
+
+Tratar el statu quo como neutral no reconoce suficientemente esta realidad social. En otras palabras, al limitarse a tratar de preservar las tasas de error por grupo, los métodos de preservación del sesgo sobrevaloran implícitamente el papel de la meritocracia. Esto puede ser problemático; en las sociedades occidentales, factores como la herencia, la suerte, la desigualdad de oportunidades y la discriminación son tan importantes para el éxito como el mérito.168 Por ejemplo, el mejor indicador para predecir si una persona será pobre de adulta es si nació en la pobreza.\\
+
+Para evaluar y justificar potencialmente la discriminación prima facie en el aprendizaje automático justo, es esencial reconocer la diversa manifestación de desigualdades que se producen en todo el mundo. La discriminación racial y de género y otras cuestiones de intolerancia en los Estados Unidos y en los Estados miembros de la UE se manifestarán de forma diferente según los legados culturales e históricos de cada país. No se puede asumir fácilmente que un tipo concreto de desigualdad también se da en otros entornos. Lo que hemos acuñado como "igualdad contextual" debe tenerse en cuenta a la hora de elegir y justificar las métricas de equidad y los sesgos heredados en el aprendizaje automático y la IA.
+
+
+\section{Hacia la igualdad sustantiva en el aprendizaje automático}
+Como se ha demostrado anteriormente, el statu quo está marcado por importantes sesgos y desigualdades implícitos y explícitos. Utilizar decisiones pasadas como base para futuras decisiones automatizadas significa que los sesgos del pasado pueden ser heredados fácilmente por un modelo entrenado.\\
+
+Por definición, los modelos de alta precisión entrenados con datos históricos para satisfacer una métrica de preservación del sesgo a menudo replicarán el sesgo presente en sus datos de entrenamiento.\\
+
+Las métricas de transformación de sesgos pueden considerarse "medios menos lesivos" porque son más adecuadas para promover la igualdad sustantiva. En concreto, a diferencia de las métricas que preservan el sesgo, ofrecen al responsable de la toma de decisiones la posibilidad de elegir las propiedades que debe presentar un clasificador. Lo hacen mediante la elección de la variable o variables condicionantes para la independencia condicional, o la elección de la métrica para la imparcialidad a través de la concienciación. 176 Al hacerlo, permiten seleccionar una métrica menos intrusiva o sesgada como base para las decisiones. En consecuencia, los argumentos ofrecidos para justificar el uso de métricas que preservan el sesgo podrían fracasar, ya que podrían no considerarse "necesarias" en un sentido jurídico, a menos que pueda demostrarse que el condicionamiento de la variable objetivo es el medio menos intrusivo posible para lograr un interés legítimo. Con esto no se pretende sugerir que el uso de métricas de transformación de sesgos en la toma de decisiones automatizada eliminará los sesgos históricos o evitará por completo futuras disparidades.\\
+
+Las métricas de transformación de sesgos obligan a los diseñadores y responsables de la toma de decisiones a enfrentarse a la imparcialidad y a considerar los sesgos y desigualdades de sus datos que, de otro modo, serían ignorados, ocultados o tratados como justificados por las métricas de preservación de sesgos.\\
+
+Cuando se consideran como una herramienta para hacer frente a las disparidades del pasado, las métricas de transformación de sesgos tienen dos ventajas claras. En primer lugar, en el contexto de los litigios, las métricas de transformación de sesgos obligan a sacar a la luz desigualdades que, de otro modo, se pasarían por alto. En segundo lugar, debatir la disparidad y la relativa intrusividad de los posibles criterios de equidad ofrece a los responsables de la toma de decisiones o a los desarrolladores de sistemas automatizados la oportunidad de ajustar el proceso de toma de decisiones y los criterios para igualar las condiciones de los grupos desfavorecidos, a menos que pueda demostrarse una justificación legal de la disparidad. Cuando se utilizan correctamente, las métricas de transformación de sesgos ayudan a garantizar que la desigualdad en la toma de decisiones automatizada se reconozca explícitamente, se discuta y se justifique potencialmente de forma coherente y realista. Este tipo de autorreflexión crítica y previsión es esencial para que los usuarios de la IA, el aprendizaje automático y la toma de decisiones automatizada en los sectores público y privado desempeñen un papel más activo en el desmantelamiento de la desigualdad.\\
+
+\textbf{Para avanzar activamente hacia la igualdad sustantiva en el aprendizaje automático justo, recomendamos el uso de métricas que transformen el sesgo para la toma de decisiones.} Lo ideal sería que los usuarios probaran lo más ampliamente posible tanto las métricas de preservación de sesgos como las de transformación para investigar la imparcialidad de sus sistemas de toma de decisiones.
+
+\section{Conclusiones y recomendaciones}
+El aprendizaje automático justo se rige predominantemente por medidas estadísticas de justicia y correcciones que abordan el "sesgo técnico". Este enfoque ignora importantes decisiones normativas explícitas sobre cómo debe comportarse un sistema y corre el riesgo de dejar importantes decisiones jurídicas, éticas y políticas exclusivamente en manos de los desarrolladores, implantadores y usuarios. Estas decisiones determinan lo que es justo y discriminatorio, si una "desventaja particular" es lo suficientemente grave como para justificar un debate y, en última instancia, si la discriminación indirecta puede justificarse.\\
+
+Existe un nuevo esquema de clasificación de las métricas de equidad para aclarar las líneas de debate y dejar claras las dimensiones normativas y políticas del trabajo técnico sobre el aprendizaje automático equitativo. Los desarrolladores pueden elegir entre dos tipos de métricas: 
+\begin{enumerate}[1.]
+    \item Métricas de "preservación del sesgo" que toman la sociedad tal y como existe actualmente como un punto de partida neutral o un "campo de juego nivelado" desde el que podemos medir la desigualdad y el sesgo en el aprendizaje automático; y 
+    \item métricas de "transformación del sesgo" que reconocen las desigualdades históricas y parten del supuesto de que ciertos grupos tendrán un punto de partida peor que otros.
+\end{enumerate}
+
+\subsection{Una lista de verificación para elegir métricas de equidad apropiadas}
+El sesgo que preserva la métrica en la toma de decisiones puede dar lugar a una discriminación indirecta prima facie (a primera vista). El uso de criterios de equidad no es una elección neutral. 
+Para ayudar en este proceso de elección de métricas de equidad apropiadas tanto para fines de diagnóstico como de toma de decisiones en el aprendizaje automático, se presenta una lista de comprobación:
+
+\begin{enumerate}[P1]
+    \item ¿Utiliza los parámetros de equidad únicamente para diagnosticar la disparidad pero no se toman decisiones sustanciales sobre los individuos?\\\\
+	\begin{tabular}{rl}
+	    Sí:& se pueden utilizar tanto métricas que preserven el sesgo como métricas transformadoras.\\
+	    No:& pase a la pregunta 2.
+	\end{tabular}
+    \item ¿Está desplegando un sistema para tomar decisiones en un ámbito con una desigualdad social histórica inaceptable?\\\\
+	\begin{tabular}{rl}
+	    Sí:& pase a la pregunta 3.\\
+	    No:& Se recomienda investigar el posible sesgo en el caso de uso antes de elegir una métrica. En los \\
+	       & casos en los que desigualdad histórica no existe, o la disparidad conocida se ha legalmente \\
+	       & justificada, se pueden utilizar tanto métricas de pueden utilizarse tanto las métricas que \\
+	       & preservan el sesgo como las que lo transforman.
+	\end{tabular}
+    \item ¿Está desplegando el sistema y en una jurisdicción legal que promueve únicamente la igualdad formal?\\\\
+	\begin{tabular}{rl}
+	    Si: & Se pueden utilizar tanto métricas que preserven el sesgo como métricas transformadoras.\\
+	    No: & pase a la pregunta 4.
+	\end{tabular}
+	\item ¿Está desplegando el sistema y en una jurisdicción legal que promueve la igualdad sustantiva?\\\\
+	    \begin{tabular}{rl}
+		Sí: & se recomienda utilizar una métrica de transformación de sesgos.\\
+		No: & se pueden utilizar tanto métricas de preservación como de transformación del sesgo.
+	    \end{tabular}
+\end{enumerate}
+
+\subsection{Uso de métricas transformadoras de sesgos para apoyar la igualdad sustantiva}
+La Disparidad Demográfica Condicional (DDC), un tipo de métrica de transformación de la independencia condicional y el sesgo, es la métrica de equidad más compatible con los conceptos de igualdad y disparidad ilegal desarrollados por el Tribunal de Justicia de las Comunidades Europeas.187 Esta compatibilidad confiere una mayor legitimidad jurídica al uso de la métrica por parte de agentes públicos y privados para medir el sesgo y la equidad en la IA y los sistemas algorítmicos de toma de decisiones.\\
+
+La CDD trata a todas las personas (grupos) como iguales, lo que significa que deben recibir el mismo trato. La prueba señala cualquier disparidad entre grupos que persista una vez aplicada una variable condicionante adecuada. Esta noción de equidad sigue el postulado aristotélico de tratar "casos iguales" y permite la igualdad formal. Por supuesto, la DDC tiene limitaciones y no es una solución milagrosa para la equidad algorítmica.\\
+
+La DDC y otras métricas de transformación del sesgo permiten así a los agentes públicos y privados desempeñar un papel más activo en el establecimiento de la igualdad sustantiva. Cuando se detecta una disparidad injustificada, puede ser necesario adaptar los procesos, por ejemplo cambiando los criterios de decisión, añadiendo variables diferentes o dando un peso distinto a las ya existentes (por ejemplo, diciendo a un modelo que dé menos importancia al salario o a las interrupciones de carrera porque son indicadores del rendimiento laboral sesgados por el género).\\
+
+Las métricas de transformación de sesgos pueden ayudar a identificar a los candidatos con talento infravalorados por criterios de decisión sesgados que no reflejan de forma coherente y justa el mérito y la competencia de todos los candidatos.
+
+\subsection{Deberes sustantivos de igualdad en el aprendizaje automático equitativo}
+Especificar los requisitos de los deberes positivos de igualdad en el aprendizaje automático justo es un área importante para la investigación futura.\\
+
+El diálogo sobre qué sesgos debe adoptar un sistema, sobre qué variables debe condicionar (en el caso de la independencia condicional) y qué formas de desigualdad pueden justificarse es clave para promover la igualdad sustantiva en la práctica.\\
+
+Las métricas de transformación de sesgos y las estadísticas resumidas pueden considerarse una hoja de ruta para el cambio social en el lugar de trabajo, los préstamos, la educación, la justicia penal, la sanidad, los seguros y otros ámbitos.
+
+\subsection{Más datos por si solos no son la solución}
+Por último, el sesgo a menudo no se produce por razones técnicas, sino porque un conjunto de datos no es representativo de la población. La desigualdad tiene muchas y diversas caras. No se puede suponer que una forma de intolerancia (por ejemplo, en Estados Unidos) también exista o se manifieste de la misma manera en otro lugar (por ejemplo, Alemania). Se necesitan más datos para investigar la desigualdad multifacética a nivel mundial y promover lo que hemos acuñado en otro lugar como "igualdad contextual".\\
+
+Se podría caer en la tentación de pensar que los problemas de parcialidad e imparcialidad en el aprendizaje automático se resolverán de forma natural recopilando más datos (sensibles) y cerrando las brechas de representación. Sin embargo, es ingenuo suponer que la recopilación de más datos dará lugar necesariamente a resultados justos y equitativos.\\
+
+Para justificar una mayor recogida y uso de datos sensibles, es necesario demostrar primero un compromiso serio y la voluntad política de rectificar la desigualdad. 
+
+Un primer paso para demostrar este compromiso en la práctica es el cumplimiento proactivo de los deberes positivos en torno a la igualdad sustantiva. La elección de mantener el statu quo mediante el uso de métricas de imparcialidad que preserven el sesgo no puede considerarse una opción neutral a este respecto; más bien, debe entenderse como una opción jurídicamente significativa que requiere una consideración explícita por parte de los desarrolladores, usuarios y reguladores de IA en el futuro.
+
+
+\chapter{Matices de género: Disparidades de exactitud interseccional en clasificación comercial de género (Buolamwini, Gebru, 2018}
+
+\section{Introducción}
+La Inteligencia Artificial (IA) se está infiltrando rápidamente en todos los aspectos de la sociedad. Desde ayudar a determinar a quién se contrata, a quién se despide, a quién se le concede un préstamo o cuánto tiempo pasa una persona en prisión, las decisiones que tradicionalmente han sido tomadas por humanos son rápidamente tomadas por algoritmos. Recientemente se ha demostrado que los algoritmos entrenados con datos sesgados han dado lugar a discriminación algorítmica (Bolukbasi et al., 2016; Caliskan et al., 2017). De forma similar a los efectos perjudiciales bien documentados de los ensayos clínicos sesgados (Popejoy y Fullerton, 2016; Melloni et al., 2010), las muestras sesgadas en IA para la atención sanitaria pueden dar lugar a tratamientos que no funcionen bien para muchos segmentos de la población.\\
+Una investigación de un año de duración en 100 departamentos de policía reveló que las personas afroamericanas tienen más probabilidades de ser detenidas por las fuerzas del orden y de ser sometidas a registros de reconocimiento facial que las personas de otras etnias (Garvie et al., 2016). Los falsos positivos y los registros injustificados suponen una amenaza para las libertades civiles. Se ha demostrado que algunos sistemas de reconocimiento facial identifican erróneamente a personas de color, mujeres y jóvenes en porcentajes elevados (Klare et al., 2012). Es necesario supervisar la precisión fenotípica y demográfica de estos sistemas, así como su uso, para proteger los derechos de los ciudadanos.\\
+
+En lugar de evaluar la precisión únicamente por género o tipo de piel, también se examina la precisión en 4 subgrupos interseccionales: mujeres más morenas, hombres más morenos, mujeres más claras y hombres más claros. Los 3 clasificadores de género comerciales evaluados tienen la precisión más baja en las mujeres más morenas. Dado que la tecnología de visión por ordenador se utiliza en sectores de alto riesgo, como la sanidad y el orden público, es necesario seguir trabajando en la evaluación comparativa de algoritmos de visión para diversos grupos demográficos y fenotípicos.
+
+\section{Trabajos relacionados}
+\subsection{Análisis facial automatizado}
+El análisis facial automatizado se ha utilizado para la detección y clasificación de rostros.\\
+
+Affectiva e investigadores del mundo académico intentan identificar emociones a partir de imágenes de rostros de personas. (Dehghan et al., 2017; Srinivasan et al., 2016; Fabian Benitez-Quiroz et al., 2016). Algunos trabajos también han utilizado el análisis facial automatizado para comprender y ayudar a las personas con autismo (Leo et al., 2015; Palestra et al., 2016). Trabajos controvertidos como (Kosinski y Wang, 2017) afirman determinar la sexualidad de varones caucásicos cuyas fotos de perfil están en Facebook o en sitios de citas. Y otros como (Wu y Zhang, 2016) y la empresa con sede en Israel Faception (Faception) han desarrollado un software que pretende determinar las características de un individuo (por ejemplo, propensión a la delincuencia, coeficiente intelectual, terrorismo) únicamente a partir de sus rostros. \\
+
+El último informe sobre clasificación por género del Instituto Nacional de Normalización y Tecnología (NIST) también muestra que los algoritmos evaluados por el NIST obtienen peores resultados con rostros etiquetados como femeninos que con rostros etiquetados como masculinos (Ngan et al., 2015).
+
+\section{Parámetro intersectional}
+\subsection{Justificación del etiquetado fenotípico}
+Aunque las etiquetas raciales son adecuadas para evaluar la posible discriminación algorítmica en algunas formas de datos (por ejemplo, los utilizados para predecir las tasas de reincidencia criminal), se enfrentan a dos limitaciones clave cuando se utilizan en imágenes visuales. En primer lugar, las características fenotípicas de los sujetos pueden variar mucho dentro de una misma categoría racial o étnica. Por ejemplo, los tipos de piel de los individuos que se identifican como negros en Estados Unidos pueden presentar muchas tonalidades. Por tanto, los puntos de referencia del análisis facial formados por individuos negros de piel más clara no representarían adecuadamente a los de piel más oscura. En segundo lugar, las categorías raciales y étnicas no son homogéneas en toda la geografía: incluso dentro de un mismo país, estas categorías cambian con el tiempo.\\
+
+Al etiquetar los rostros con el tipo de piel, podemos comprender mejor el rendimiento de este importante atributo fenotípico.
+
+
+\subsection{Justificación de la selección del índice de referencia existente}
+
+Anotamos el conjunto de datos con el sistema Fitzpatrick de clasificación de la piel y probamos el rendimiento de la clasificación de género en 4 subgrupos: mujeres más oscuras, hombres más oscuros, mujeres más claras y hombres más claros. En general, todos los clasificadores obtuvieron mejores resultados con los individuos y los hombres más claros. Los peores resultados se obtuvieron con las mujeres más morenas. Es necesario seguir trabajando para comprobar si las diferencias sustanciales en la tasa de error en función del sexo, el tipo de piel y el subgrupo interseccional reveladas en este estudio de clasificación por sexo persisten en otras tareas de visión artificial basadas en humanos.\\
+
+Dado que la equidad algorítmica se basa en diferentes supuestos contextuales y optimizaciones de la precisión, este trabajo pretende demostrar por qué necesitamos informes rigurosos sobre las métricas de rendimiento en las que se centran los debates sobre equidad algorítmica.
+
+
+\chapter{La injusticia del aprendizaje automático imparcial: Nivelación a la baja e igualitarismo estricto por defecto}

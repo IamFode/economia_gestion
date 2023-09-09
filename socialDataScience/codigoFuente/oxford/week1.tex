@@ -189,7 +189,7 @@ Para justificar una mayor recogida y uso de datos sensibles, es necesario demost
 Un primer paso para demostrar este compromiso en la práctica es el cumplimiento proactivo de los deberes positivos en torno a la igualdad sustantiva. La elección de mantener el statu quo mediante el uso de métricas de imparcialidad que preserven el sesgo no puede considerarse una opción neutral a este respecto; más bien, debe entenderse como una opción jurídicamente significativa que requiere una consideración explícita por parte de los desarrolladores, usuarios y reguladores de IA en el futuro.
 
 
-\chapter{Matices de género: Disparidades de exactitud interseccional en clasificación comercial de género (Buolamwini, Gebru, 2018}
+\chapter{Matices de género: Disparidades de exactitud interseccional en clasificación comercial de género (Buolamwini, Gebru, 2018)}
 
 \section{Introducción}
 La Inteligencia Artificial (IA) se está infiltrando rápidamente en todos los aspectos de la sociedad. Desde ayudar a determinar a quién se contrata, a quién se despide, a quién se le concede un préstamo o cuánto tiempo pasa una persona en prisión, las decisiones que tradicionalmente han sido tomadas por humanos son rápidamente tomadas por algoritmos. Recientemente se ha demostrado que los algoritmos entrenados con datos sesgados han dado lugar a discriminación algorítmica (Bolukbasi et al., 2016; Caliskan et al., 2017). De forma similar a los efectos perjudiciales bien documentados de los ensayos clínicos sesgados (Popejoy y Fullerton, 2016; Melloni et al., 2010), las muestras sesgadas en IA para la atención sanitaria pueden dar lugar a tratamientos que no funcionen bien para muchos segmentos de la población.\\
@@ -219,4 +219,97 @@ Anotamos el conjunto de datos con el sistema Fitzpatrick de clasificación de la
 Dado que la equidad algorítmica se basa en diferentes supuestos contextuales y optimizaciones de la precisión, este trabajo pretende demostrar por qué necesitamos informes rigurosos sobre las métricas de rendimiento en las que se centran los debates sobre equidad algorítmica.
 
 
-\chapter{La injusticia del aprendizaje automático imparcial: Nivelación a la baja e igualitarismo estricto por defecto}
+\chapter{La injusticia del aprendizaje automático imparcial: Nivelación a la baja e igualitarismo estricto por defecto (Mittelstadt, Wachter, Rusell. 2023)}
+
+Este artículo examina críticamente estas observaciones iniciales para determinar cómo el MLJ puede ir más allá de la mera nivelación a la baja y del igualitarismo estricto por defecto. Examinamos las causas y la prevalencia de la nivelación a la baja en fairML, y exploramos posibles justificaciones y críticas basadas en teorías filosóficas y jurídicas de la igualdad y la justicia distributiva, así como en la jurisprudencia en materia de igualdad. 
+
+\section{Introducción}
+En los últimos años, la equidad en el aprendizaje automático, la inteligencia artificial y los sistemas algorítmicos de toma de decisiones se ha convertido en un área muy activa de investigación y desarrollo. Los usos previstos y reales de estas tecnologías para distribuir resultados y recursos en ámbitos de alto riesgo como la medicina, el derecho y las finanzas han suscitado un interés justificado por la equidad y la parcialidad de estas decisiones. El despliegue de estas tecnologías ha sido cuestionado por los responsables políticos y los investigadores 6 debido a la percepción de falta de fiabilidad y equidad. \\
+
+El campo del aprendizaje automático justo (fairML) ha sido impulsado principalmente por investigadores y profesionales que trabajan en ML e IA, informática, ingeniería de software y matemáticas. Estos grupos han desarrollado numerosas medidas y métodos para mitigar el sesgo y mejorar la equidad en los sistemas algorítmicos. Sin embargo, la mayoría de estas herramientas se han creado al margen de los contextos políticos y de la sociedad civil y carecen de un compromiso serio con las teorías filosóficas, políticas, jurídicas y económicas de la igualdad y la justicia distributiva.\\
+
+Se ha demostrado que muchas de las medidas de equidad actuales adolecen tanto de falta de equidad como de pérdida de rendimiento, o "nivelación a la baja", en la que la equidad se consigue empeorando la situación de todos los grupos o rebajando el rendimiento de los grupos con mejores resultados al nivel de los grupos con peores resultados.\\
+
+La nivelación a la baja es un síntoma de la decisión de medir la equidad únicamente en términos de igualdad, o disparidad entre grupos en cuanto a rendimiento y resultados, ignorando otras características relevantes de la justicia distributiva, como el bienestar absoluto o la prioridad, que son más difíciles de cuantificar y medir directamente en entornos de investigación y desarrollo.\\
+
+la nivelación a la baja en fairML sugiere que el campo está adoptando, intencionadamente o no, un estricto enfoque igualitario de las cuestiones de justicia distributiva en el que el único valor (medible) es la igualdad. Denominamos a estas tendencias en fairML "igualitarismo estricto por defecto". El igualitarismo estricto por defecto, es contrario tanto a los objetivos declarados de las medidas de equidad como al objetivo presunto del campo: mejorar los resultados de los grupos históricamente desfavorecidos o marginados.  Concibe la igualdad en términos comparativos simplistas, ignorando los absolutos de bienestar y justicia que son necesarios para lograr la igualdad sustantiva en lugar de la mera igualdad formalista, o la igualdad de trato.\\
+
+Cuando la equidad sólo se logra empeorando la situación de los demás grupos, parece que algo a fallado a la hora de trasladar a la práctica el vago concepto de "equidad". La igualdad debe aspirar a que las personas estén mejor, no simplemente a derucirla a un nivel común de prejuicio. plicar la equidad únicamente mediante la nivelación a la baja desperdicia esta oportunidad de lograr una igualdad sustantiva en lugar de meramente formalista. \\
+
+
+\section{Nivelación}
+Los métodos que aplican medidas de equidad basadas en la equidad de grupo son problemáticos desde el punto de vista moral y legal debido a
+
+\begin{enumerate}[(1)]
+    \item sus valores implícitos, que favorecen desproporcionadamente la igualdad frente a la reducción de daño, y
+    \item la forma en que logran la igualdad en la práctica mediante la nivelación a la baja, por  lo que ciertos grupos empeoran innecesariamente en aras de la conveniencia matemática.
+\end{enumerate}
+A grandes rasgos, podemos descomponer el aprendizaje automático (AM) justo en dos componentes: 
+\begin{itemize}
+    \item MEDIDAS.- Son cálculo sencillos, como la diferencia en la tasa de verdaderos positivos entre dos grupos.
+    \item MÉTODOS.- Son enfoques novedosos del ML que mejoran estas medidas, igualando las tasas de daño a expensas de criterios como la precisión general, que normalmente optimiza un sistema de ML sin tener en cuenta la imparcialidad.
+\end{itemize}
+
+Cuando construimos sistemas de ML para tomar decisiones sobre la vida de las personas, nuestras decisiones de diseño codifican juicios de valor implícitos sobre qué propiedades deben ser priorizadas por el comportamiento del sistema. La idea de que la precisión no siempre es la propiedad más relevante para evaluar el rendimiento de un modelo es comúnmente aceptada en la investigación del ML.\\
+
+
+\subsection{Nivelación a la baja mediante equidad de grupo}
+Una vez seleccionada una propiedad importante para la igualdad puede aplicarse de dos maneras:
+\begin{itemize}
+    \item Ajustar el rendimiento en la propiedad elegida para el grupo desfavorecido,
+    \item Degradar el rendimiento para los grupos favorecidos en la misma propiedad.
+\end{itemize}
+
+Imponer la igualdad reduciendo el rendimiento de los grupos favorecidos provoca el fenómeno que denominamos "nivelación a la baja". La nivelación a la baja se produce cuando la igualdad se impone no sólo aumentando la propiedad relevante para los grupos desfavorecidos, sino también empeorando arbitrariamente la situación de uno o más grupos con mejores resultados al reducir su rendimiento en la misma propiedad, cómo un sentido ineficiente de Pareto.\\
+
+La pérdida de rendimiento de los grupos favorecidos no es estrictamente necesaria para mejorar el rendimiento, la tasa de decisión o alguna otra propiedad valiosa para los grupos desfavorecidos, sino que se inflige únicamente para reducir la disparidad de rendimiento en la propiedad elegida, satisfaciendo así una definición matemática de justicia que dice que un modelo es justo cuando este número es igual entre los grupos. La nivelación a la baja no beneficia directamente a los grupos con peores resultados.\\
+
+
+\subsection{Ejemplo: Nivelación a la baja en el diagnóstico de cáncer}
+e ha demostrado que las tecnologías de detección del cáncer de pulmón y de piel son menos precisas para las personas de piel más oscura, lo que significa que con mayor frecuencia no detectan los cánceres en los pacientes, retrasando el acceso a la atención que salva vidas. Una forma de mejorar la situación de los pacientes negros es, por tanto, mejorar la capacidad de recuerdo del sistema. Como primer paso, podemos decidir pecar de precavidos y decirle al sistema que cambie sus predicciones para los casos en los que confía menos en que se trate de pacientes negros. En concreto, cambiaríamos algunos casos de "bajo riesgo" de baja confianza a "alto riesgo" para detectar más casos de cáncer en el futuro. Este cambio se produce a costa de la precisión: aumenta el número de personas clasificadas incorrectamente como de riesgo de cáncer y disminuye la precisión global del sistema. Sin embargo, esta compensación entre precisión y memoria es aceptable porque no predecir un futuro caso de cáncer puede perjudicar gravemente a los pacientes. De lo que hemos hecho todo lo posible para mejorar la situación de los pacientes negros y reducir la diferencia de rendimiento. Segundo, podemos seguir reduciendo el rendimiento de los pacientes blancos, disminuyendo tanto su recuerdo como su precisión en el proceso, de forma que nuestro sistema funcione igual de bien, o lo más parecido posible, para ambos grupos.\\
+
+Esto es lo que hacen en la práctica muchos métodos de equidad de grupo. Evidentemente, este tipo de cambio de etiquetas en aras de la igualdad puede ser extremadamente perjudicial para los pacientes a los que no se ofrecería atención de seguimiento y control. La precisión global disminuye y la frecuencia del tipo de error más perjudicial aumenta, todo por reducir la diferencia de rendimiento. Así pues, la nivelación a la baja no beneficia directamente a ninguno de los dos grupos. 
+
+\section{¿Es habitual reducir el nivel en fairML?}
+El uso de medidas de equidad basadas en la igualdad en el aprendizaje automático no es evidentemente problemático, sino que es la forma en que se aplican en la práctica, y la nivelación a la baja resultante, lo que causa problemas. La nivelación a la baja puede producirse como resultado directo del uso de medidas igualitarias en la selección de modelos. En muchos sentidos, este problema es otro ejemplo de la Ley de Goodhart, según la cual "cuando una medida se convierte en un objetivo, deja de ser una buena medida".\\
+
+Demostramos cómo se produce la nivelación a la baja para una serie de medidas de equidad, centrándonos en dos de las métricas más utilizadas en la literatura sobre fairML: la paridad demográfica y la igualdad de oportunidades.
+
+
+\subsection{Nivelar hacia abajo en la teoría}
+Las medidas de equidad se inspiran implícitamente, o se derivan explícitamente, de las teorías de la justicia distributiva. La justicia distributiva se refiere al "impacto relativo de las asignaciones en los diferentes grupos sociales o subgrupos de la población, dadas las desigualdades sociales existentes".\\
+
+Según el igualitarismo estricto, es aceptable empeorar la situación de un grupo sin beneficiar directamente a otros para eliminar la disparidad.  Las medidas que combinan la justicia con una noción estricta de igualdad y trato equitativo dominan actualmente la literatura sobre fairML.  Como era de esperar, se ha observado una tendencia a lograr la igualdad a través de la nivelación hacia abajo para las medidas de equidad de grupo independientemente de su fundamento teórico igualitario específico. \\
+
+Parece, por tanto, que la aplicación de la equidad de grupo respalda el igualitarismo estricto, aunque inadvertidamente debido a cómo se mide la paridad y no a una elección teórica intencionada. Desde la perspectiva de la justicia distributiva, esta tendencia es muy preocupante.
+
+\section{¿Es justificable la nivelación a la baja?}
+\subsection{El valor de la igualdad}
+Para los igualitaristas estrictos, la igualdad tiene un valor intrínseco, lo que significa que la igualdad es buena en sí misma. Del mismo modo, la desigualdad es mala en sí misma, aunque no tenga efectos negativos. Se puede decir que la igualdad tiene un valor instrumental derivado de los buenos efectos que produce. Es buena como medio para alcanzar algún otro objetivo valioso relacionado con la justicia, como la libertad universal, el desarrollo de las capacidades y la personalidad humanas, la mitigación del sufrimiento y la estigmatización, o evitar el conflicto o la envidia entre las personas creados por la desigualdad.\\
+
+La desigualdad puede ser instrumentalmente mala, por ejemplo, por la injusticia social que conlleva. Hay que considerar dos tipos de injusticia: 
+\begin{enumerate}[(1)]
+    \item Un sentido comparativo de la justicia, lo que significa que estamos preocupados por el mero hecho de que las personas son tratadas de forma diferente a los demás, o no reciben su parte justa de un recurso; o 
+    \item un sentido no comparativo de la justicia, donde la injusticia surge porque una persona no es tratada como se merece, independientemente de cualquier consideración sobre cómo son tratados los demás.
+\end{enumerate}
+En términos de nivelación a la baja, un sentido comparativo de la justicia por sí solo no rechazaría la eliminación de la disparidad al tratar a todos de forma neutral pero igual de injusta, mientras que un sentido no comparativo la rechazaría sobre la base de que las personas son tratadas injustamente en términos absolutos, por ejemplo al negárseles una parte de un recurso vital.
+
+\section{Conclusiones}
+La nivelación a la baja es un síntoma de la elección de medir la equidad únicamente en términos de disparidad entre grupos y asumir un valor uniforme para los beneficios y los perjuicios, ignorando el bienestar, la prioridad y otros bienes, así como la estigmatización, la preocupación desigual, la pérdida de solidaridad y otros perjuicios sustantivos que son fundamentales para las cuestiones de igualdad en el mundo real. Esta no es una solución satisfactoria para los problemas de justicia distributiva en la IA y el ML.\\
+
+Mejorar sustancialmente el rendimiento del clasificador, en comparación con la nivelación a la baja, puede ser difícil, consumir tiempo y recursos, puede requerir nuevos datos y no siempre es posible para los sistemas bien diseñados. No obstante, la nivelación a la baja no es el destino inevitable de la aplicación de la equidad, sino el resultado de tomar el camino más fácil por conveniencia matemática, y no por razones sociales, legales o éticas generales. La equidad no puede seguir tratándose como un simple problema matemático.\\
+
+De cara al futuro, vemos tres posibles caminos para fairML: 
+
+\begin{enumerate}[1.]
+    \item Podemos seguir desplegando sistemas sesgados que beneficien ostensiblemente sólo a un segmento privilegiado de la población mientras perjudican a otros.
+    \item Podemos seguir definiendo la equidad en términos matemáticos formalistas y desplegar sistemas de IA y ML que funcionen peor para todos los grupos y perjudiquen activamente a algunos grupos. 
+    \item Podemos tomar medidas y lograr la equidad mediante la "nivelación", es decir, diseñar sistemas que generen deliberadamente más falsos positivos para grupos (históricamente) desfavorecidos y dedicar los recursos adicionales necesarios para hacerles un seguimiento más frecuente (por ejemplo, aumentar la frecuencia de las pruebas de detección del cáncer).
+\end{enumerate}
+
+Este es el reto para el futuro de la equidad en la IA: crear sistemas que sean sustancialmente justos mediante la nivelación ascendente, y no sólo procedimentalmente justos mediante la nivelación descendente. Se trata de un reto mucho más complejo que simplemente ajustar un sistema para que dos números sean iguales entre grupos. Puede requerir no sólo una importante innovación tecnológica y metodológica, incluido el rediseño de los sistemas de IA desde cero, sino también cambios sociales sustanciales en ámbitos como el acceso a la atención sanitaria y el gasto sanitario.\\
+
+Hemos creado métodos matemáticamente justos, pero que no benefician a los más desfavorecidos. Lo que necesitamos son sistemas que sean justos a través de la nivelación, que ayuden a los grupos (históricamente) desfavorecidos sin perjudicar arbitrariamente a los demás. Este es el reto que fairML debe resolver ahora. Necesitamos una IA que sea sustancialmente justa, no sólo matemáticamente.
+
+
+\chapter{Equidad y abstracción en los sistemas sociotécnicos (Selbst, Boyd, Friedler, Venkatasubramanian, Vertesi. 2019)}

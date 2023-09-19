@@ -1,0 +1,29 @@
+\chapter*{Comentarios del articulo:\\ ¿Podemos medir las expectativas de inflación usando Twitter? \\\large(Cristina Angelico, Juri Marcucci, Marcello Miccoli and Filippo Quarta).}
+
+Mi interés por temas inherentes a Social Data Science, me ha llevado a adentrarme al estudio de las redes sociales mediante nuevas técnicas y/o herramientas. Con el fin de corroborar o en todo caso refutar las distintas teorías que son parte del amplio contexto ortodoxo de la economía.\\
+
+Los comentarios siguientes se basan en el articulo que es parte del Journal of Econometrics (Volume 228, Issue 2, June 2022, Pages 259-277) publicado en Science Direct con DOI: \url{https://doi.org/10.1016/j.jeconom.2021.12.008}, el cual tiene como objetivo principal, analizar la posibilidad de utilizar Twitter como una fuente de información de baja frecuencia para la construcción de indicadores de expectativas de inflación.\\
+
+La principal interrogante de investigación fue divido en tres preguntas específicas, las cuales se abordarán en los siguientes párrafos:
+
+\begin{enumerate}[1.]
+    \item ¿Los tweets dicen algo acerca de la inflación?
+    \item ¿Podemos utilizar los tweets para obtener un indicador diario de las expectativas de inflación?
+    \item ¿Transmitiría estos nuevos indicadores información oportuna y correcta?, 
+    \item ¿la observación de los indicadores basados en Twitter proporciona una ventaja informativa a las expectativas de los consumidores más allá de las medidas existentes?
+\end{enumerate}
+
+Para abordar estas cuestiones, lo primero que los autores realizaron es identificar los tweets desde junio de 2013 hasta el 31 de diciembre de 2019, que contenían información sobre los precios actuales y esperados de bienes y servicios para Italia. \\
+Para poder filtrarlos utilizaron un algoritmo de machine learning no supervisado llamado: \textit{Latent Dirichlet Allocation (LDA)}, el cual reduce la dimensión de grandes cantidades de datos textuales proporcionando una descripción "resumen".\\
+
+Lo segundo, fue aplicar un diccionario de bigramas y trigramas; es decir, la unión de dos y tres palabras consecutivas que incluya la palabra "clave", para luego almacenarlas. Por último, se realizó un reconteo diario de estos tweets; que intuitivamente nos dice que cuanto más la gente habla de algún tema, mayor es la probabilidad de que refleje su opinión influyendo la expectativa de las personas. Estos tweets sirvieron para crear 5 tipos de indicadores.  
+
+Ahora bien, para validar las señales extraídas de los mensajes de Twitter, se investigó hasta que punto se correlacionan con las fuentes disponibles de expectativas de inflación (encuesta de hogares y contratos swap de inflación). Para darle robustez se creo una submuestra de diccionarios de bigramas y trigramas, pero con usuarios que en sus biografías mencionen palabras inherentes a inflación, como "economía", "finanzas", etc. Los resultados fueron prometedores ya que se encontró una correlación alta y significativa.\\
+
+Para poder realizar pronósticos, se creo otra submuestra con bi y trigramas que contengan palabras futuras cómo por ejemplo "a largo plazo", "pronóstico" o "predecir". Así, una vez más crear indicadores correlacionadas significativamente de las expectativas de inflación.\\ 
+
+Responder la última pregunta planteada, supuso que las personas formen expectativas de inflación explotando señales de varias fuentes, incluido Twitter, y se probo si los indicadores de Twitter anticipan las expectativas de inflación de los consumidores condicionados a otras señales. Todos los coeficientes tienen el signo correcto y un aumento en el indicador basado en Twitter se asocia con una mayor inflación esperada. De esta manera Twitter proporciona información relevante, que no está incluida en las expectativas de mercado o de consenso.\\
+
+Finalmente, se estudió el poder predictivo de los indicadores de expectativas de inflación basados en Twitter y se realizó un pronóstico simple fuera de la muestra. Lanzando buenos resultados predictivos.\\
+
+La principal contribución fue proponer una nueva fuente de datos para obtener expectativas con ciertas ventajas respecto a las expectativas estándar. En primer lugar, se vio que involucra una amplia variedad y un gran número de muestras, en comparación con los datos basados en el mercado. En segundo lugar, la alta frecuencia de los datos nos permite construir indicadores diarios. Por último, esta fuente de datos no está vinculada específicamente a ningún país, por lo que puede utilizarse y replicarse en otros países. Estas ventajas hacen de Twitter una fuente potencialmente poderosa.

@@ -1,86 +1,49 @@
 \documentclass[10pt]{book}
 
-% ------------------- Paquetes ----------------------
-\usepackage[text=17cm,left=2.54cm,right=2.54cm, headsep=20pt, top=2.54cm, bottom = 2.54cm,letterpaper,showframe = false]{geometry} %configuración página
-\usepackage{latexsym,amsmath,amssymb,amsfonts,amsthm} %(símbolos de la AMS)
-\parindent = 0cm  %sangria
-\usepackage[T1]{fontenc} %acentos en español
-\usepackage[spanish,english]{babel}
-\usepackage{mathpazo} % tipo de letra
+% Configuración de página
+\usepackage[text=17cm,
+	    left=2.54cm,
+	    right=2.54cm, 
+	    headsep=20pt, 
+	    top=2.54cm, 
+	    bottom = 2.54cm,
+	    letterpaper,
+	    showframe = false]{geometry}
+%Paquetes
+\usepackage{multicol}
 \usepackage{titlesec} %formato de títulos
-\usepackage{multicol} %columnas
-\usepackage{tcolorbox} %cajas
-\usepackage{enumerate} %indice enumerado
-\usepackage{marginnote}%notas en el margen
-\tcbuselibrary{skins,breakable,listings,theorems}
-\usepackage[Bjornstrup]{fncychap}%diseño de portada de capitulos
-\usepackage[all]{xy}%flechas
-\counterwithout{footnote}{chapter}
-\usepackage{xcolor}
-\spanishdecimal{.}
-\usepackage{pgfplots}
-\usepgfplotslibrary{polar}
-\usepackage{tkz-fct}
-\usepackage{mathrsfs}
-\usepackage[htt]{hyphenat}
-\usepackage[fit]{truncate}
-\usepackage{titling,lipsum}
-\usepackage{graphicx} %gráficos y figuras.
+\usepackage{titling}
+\usepackage[spanish,english]{babel}
+\usepackage{enumerate}
+\usepackage{marginnote}
+\usepackage[Bjornstrup]{fncychap}
+\usepackage{graphicx}
 \usepackage{natbib}
-\usepackage[backref=page]{hyperref} %hipervinculos
+\usepackage[backref=page]{hyperref}
 \usepackage{bibentry}
 \usepackage{booktabs}
 \usepackage{lscape}
-\pgfplotsset{compat=1.10}
-\usepgfplotslibrary{fillbetween}
 \usepackage{forest}
-
-%--------- encabezado y pie de paginas -----------------
 \usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{truncate}
 
-%--------- configuración tcolorbox -----------------
+%configuración tcolorbox
 \tcbset{colback=black!2,colframe=white}
 
-%---------- configuración de separación de sección ------------ 
+%configuración de separación de sección
 \titlespacing*{\section}{0pt}{1.7cm}{.3cm}
 
-%------------------------------------------
-
-\theoremstyle{definition}
-\newtheorem{axioma}{Axioma}[part]
-\newtheorem{teo}{Teorema}[chapter]%entorno para teoremas
-\newtheorem{def.}{Definición}[chapter]%entorno para definiciones
-\newtheorem{ejem}{Ejemplo}[chapter]%entorno para ejemplos
-\newtheorem{post}{Postulado}[chapter]%entorno de postulados
-\newtheorem{cor}{Corolario}[chapter]
-\newtheorem{ej}{Ejercicio}[chapter]
-\newtheorem{prop}{Propiedad}[part]
-\newtheorem{lema}{Lema}[chapter]
-\newtheorem{prob}{Problema}[chapter]
-\newtheorem{obs}{Obs:}[chapter]
-
-\makeatletter\renewcommand\theenumi{\@roman\c@enumi}\makeatother
-
-\renewcommand\labelenumi{\theenumi)}
-\def\sen{\mathop{\mbox{\normalfont sen}}\nolimits}
-\def\cotan{\mathop{\mbox{\normalfont cotan}}\nolimits}
-\def\cosec{\mathop{\mbox{\normalfont cosec}}\nolimits}
-\def\arcsen{\mathop{\mbox{\normalfont arcsen}}\nolimits}
-\def\arctan{\mathop{\mbox{\normalfont arctan}}\nolimits}
-
-%---------------------------------
-\titleformat*{\section}{\big\bfseries}
+%configuración de separación de sección
+\titleformat*{\section}{\bfseries}
 \titleformat*{\subsection}{\bfseries}
 \titleformat*{\subsubsection}{\bfseries}
 \titleformat*{\paragraph}{\bfseries}
 \titleformat*{\subparagraph}{\bfseries}
 
-%----------Formato título de capítulos-------------
-
+%Formato de título de capítulos
 \titleformat{\chapter}[display]
 {\vspace{4ex}\bfseries\huge}
 {\filleft\Huge\thechapter}
 {2ex}
 {\filleft}
-
-

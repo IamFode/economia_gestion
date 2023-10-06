@@ -1,166 +1,24 @@
-\documentclass[1p,preprint]{elsarticle}
-
-
-\usepackage[figuresright]{rotating}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,    % Activa los enlaces en color
-    linkcolor=blue,     % Color de los enlaces internos (por ejemplo, índice)
-    citecolor=blue,     % Color de los enlaces de citas
-    urlcolor=blue       % Color de los enlaces URL
-}
-\usepackage[utf8]{inputenc}
-
-\biboptions{authoryear}
+% PREAMBULO
+\input{src/1preamble.tex}
 
 \begin{document}
 
-\begin{frontmatter}
+    % CARATULA
+    \input{src/2cover.tex}
 
-\title{Análisis del desempeño histórico de las carteras recomendadas por varios bancos de inversión en función del perfil de riesgo de los clientes\tnoteref{label1}}
-\tnotetext[label1]{Esta investigación es parte de la asignatura de técnicas de investigación del máster en economía de las universidad de Vigo, Santiago de Compostela y La Coruña.}
+    % RESUMEN
+    \input{src/3abstract.tex}
 
-\author{Juan Fidel Álvarez Escontrela \fnref{fn1}}
-\ead{fidel220492@gmail.com}
-\affiliation[1]{organization={Universidad de Santiago de Compostela},
-addressline={Campus Norte, Av. do Burgo das Nacións, s/n},
-postcode={15782},
-city={Santiago de Compostela},
-country={España}}
-\fntext[fn1]{Alumno del máster en economía de la universidad Santiago de Compostela}
-
-\author{Christian L. Paredes Aguilera.\fnref{fn1}}
-\ead{soyfode@gmail.com}
-\affiliation[2]{organization={Universidad de Vigo},
-addressline={Rúa as Pedreiras, 2},
-postcode={36310},
-city={Vigo},
-country={España}}
-
-
-
-\begin{abstract}
-    Este estudio se centra en analizar el desempeño histórico de las carteras recomendadas por los principales bancos de inversión a nivel internacional, considerando los perfiles de riesgo de sus clientes y la estrategia de inversión utilizada (activa o pasiva). El objetivo es determinar si las carteras recomendadas han sido congruentes con los perfiles de riesgo y si han logrado un rendimiento acorde. Para ello, se utilizarán datos de rendimiento y riesgo de índices de acciones y bonos, así como la composición de las carteras recomendadas por los bancos.
-
-El análisis se llevará a cabo a lo largo de períodos de 3, 5 y 10 años, evaluando si las carteras recomendadas se encuentran en la frontera eficiente y si el riesgo asumido se ajusta a los rendimientos obtenidos. Además, se compararán las carteras recomendadas con carteras de activos equivalentes, como fondos mutuales y ETFs, para determinar cuál estrategia resulta más beneficiosa según el perfil de riesgo y el horizonte de inversión de los clientes.
-
-Se anticipa que este estudio arrojará luz sobre la efectividad de las carteras recomendadas por los bancos de inversión y si las estrategias activas o pasivas han tenido un mejor desempeño histórico. Los resultados proporcionarán información valiosa para los inversores y las instituciones financieras en la toma de decisiones de inversión.
-\end{abstract}
-
-\begin{keyword}
-    Finanzas \sep Cartera \sep Bancos \sep Riesgo.
-\end{keyword}
-
-\newpageafter{abstract}
-
-\end{frontmatter}
-
-
-
-\section{Objetivo(s)}
-Hallar las proporciones representadas por diversos instrumentos financieros en las
-carteras recomendadas por los principales bancos de inversión a nivel internacional a sus clientes (en
-función de su perfil de riesgo), y determinar cuál ha sido el desempeño de esos portafolios en los
-últimos 3, 5 y 10 años. Además, se analizará si el desempeño de las carteras muestra divergencias
-considerando el tipo de estrategia seguida (activa o pasiva).
-
-\section{Problema o problema central} 
-¿Cuál ha sido el desempeño histórico de las carteras recomendadas
-por los principales bancos de inversión, ajustado por criterios de riesgo y tipo de estrategia (activa o
-pasiva)? ¿Ha sido este desempeño congruente con el estilo y riesgo asumidos?
-
-\section{Bases teóricas} 
-\cite{fama1970}, establece una teoría en la que describe que el precio actual de
-un activo refleja toda la información disponible que exista acerca del mismo, sea la información:
-histórica, pública y/o privada. En base a ello, y considerando la eficiencia de los mercados
-desarrollados, los instrumentos de inversión pasiva han mostrado un crecimiento en detrimento de
-otros instrumentos activamente gerenciados, tales como fondos mutuales, dado el mejor desempeño
-histórico que ha exhibido las estrategias pasivas.
-
-Así, por ejemplo, \cite{Chan1999} consiguen que solo una baja proporción de los
-fondos activamente gerenciados logra superar, de forma persistente, al desempeño de los índices de
-referencia pasivos del mercado. \cite{Pastor2020} hallan que durante la crisis de la COVID-19 el
-flujo de fondos hacia vehículos de inversión activa ha disminuido, aunado a un desempeño inferior en
-relación a los índices de referencia y fondos de inversión pasiva. Todo ello va de la mano con la teoría
-moderna de portafolios, desarrollada por \cite{Markowitz1952}, la cual establece un modelo que consiste
-en ubicar una cartera de inversión óptima, ajustada por el riesgo, mediante la elección de los activos
-adecuados que compongan dicha cartera.
-
-\section{Hipótesis} 
-La inversión ha sido una práctica que con los años se ha vuelto cada vez más popular. En
-sus comienzos era solo aplicada en países muy específicos, pero se ha globalizado y hoy en día es
-conocida y desarrollada en una gran variedad de países. 
-
-En el pasado existían muchas limitantes a la hora de invertir en el mercado de valores. Era necesario
-tener acceso a una cuenta de jubilación proporcionada por un empleador de una compañía, o poseer
-los fondos y el conocimiento suficiente para poder abrir una cuenta de inversión no patrocinada por
-un empleador.
-
-Con el pasar de los años estas limitantes se han ido mitigando y el tener acceso a una cuenta de
-inversión se ha vuelto cada vez más sencillo. Existen múltiples herramientas financieras que le
-permiten a los inversionistas adquirir participación en una empresa sin hacer uso de una gran cantidad
-de fondos. Además, existen muchas compañías que permiten abrir cuentas de inversión a nivel
-mundial desde plataformas virtuales, múltiples cursos de inversión e información de fácil acceso a
-través del Internet.
-
-Sin embargo, a pesar de la facilidad que existe para adquirir información hoy en día, muchos de los
-nuevos inversionistas no cuentan con los conocimientos necesarios para poder manejar sus
-inversiones de la forma más eficiente posible o guiarlas de acuerdo con sus necesidades. Lo anterior
-se debe a que, en su mayoría, estas personas desconocen cuáles son sus metas financieras y sus
-limitantes a la hora de invertir, por lo cual no utilizan estrategias de inversión que vayan de la mano
-con sus expectativas.
-
-Por esto último, la industria financiera, mediante bancos de inversión, ofrece asesorías de inversión
-hacia clientes, especialmente con ciertos requerimientos mínimos de patrimonio. De forma usual,
-ante la mayor demanda de este tipo de servicios, muchos bancos optan por ofrecer portafolios
-estandarizados bajo ciertos perfiles de riesgo.
-
-En base a lo anterior, las instituciones financieras recomiendan sus carteras a los inversores que
-encajen en cada perfil ofrecido. Si bien esta práctica responde a una necesidad, podría estar dejando
-de lado ciertas oportunidades de mejora. Esta investigación se enfoca en indagar sobre este tópico y
-poder así determinar si los portafolios ofrecidos a los inversionistas se ajustan a los perfiles de riesgo
-establecidos, y si éstos pueden ser considerados óptimos, o presentan un espacio de mejora en el
-desempeño. De igual forma, se busca establecer si la estrategia ofrecida resulta ser la más beneficiosa
-por perfil y horizonte de tiempo,
-
-\section{Método o plan de investigación} 
-Se utilizará la base de datos de Bloomberg para obtener el
-rendimiento y el riesgo de los índices de precios de acciones y bonos (por ejemplo, S\&P 500 e índices
-de bonos de Barclays), así como también las composiciones de los portafolios estandarizados ofrecidos
-por los principales bancos de inversión a nivel mundial (tales como Blackrock, Vanguard, Merril Lynch
-y Charles Schwab) a sus clientes en función del perfil de riesgo.
-
-Se hallará la frontera eficiente para cada período de tiempo considerado varios supuestos (ventas en
-corto no permitidas y existencia de una tasa de interés libre de riesgo), y utilizando activos
-tradicionales (acciones y bonos).
-
-A continuación, se examinará si los portafolios recomendados por los bancos de inversión se ubican
-en la frontera eficiente (se analizará si el rendimiento de la cartera de la frontera eficiente que tenga
-la misma desviación estándar que la cartera recomendada por el banco de inversión respectivo es 
-estadísticamente igual -usando varios niveles de significación estadística, - similar al análisis
-desarrollado por \cite{Garay2005}. Lo anterior se hará para períodos de referencia de 3,
-5, 10 años (2012-2022), evaluando si el riesgo evidenciado por las decisiones de inversión se ajustó a
-sus rendimientos, mediante el uso del ratio de Sharpe.
-
-Para establecer una comparación aproximada del rendimiento de un portafolio recomendado, por
-perfil de riesgo, compuesto por un solo tipo de activos con respecto a un mismo portafolio de un tipo
-de activo similar, se considerará identificar el activo equivalente al recomendado, utilizando el índice
-replicado como referencia. Esto es, si la recomendación incluye únicamente fondos mutuales, se
-determinará que fondos cotizados (ETFs) son equivalentes a esos fondos mutuales, y viceversa, a
-modo de determinar qué tipo de estrategias resulta más atractiva para cada inversor, de acuerdo con
-su perfil de riesgo y horizonte de inversión.
-
-\section{Conclusiones y resultados que pueden preverse} 
-Se espera hallar una congruencia entre el nivel de
-rendimiento exhibido por las carteras de los bancos de inversión y la correspondiente a las carteras
-ubicadas en la frontera eficiente obtenida (con el mismo riesgo). Además, se espera que las carteras
-de inversión activas recomendadas por los bancos exhiban un desempeño inferior al de las carteras
-pasivas, ajustadas a su riesgo.
-
-
-\bibliographystyle{elsarticle-num-names}
-\bibliography{bibliography}
-
+    % CUERPO DEL DOCUMENTO
+    \input{src/4body.tex}
 
 \end{document}
+                                      
+
+
+
+
+
+
+
 

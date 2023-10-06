@@ -1,0 +1,315 @@
+\documentclass[a4paper,fleqn]{cas-sc}
+
+%Packages
+\usepackage[authoryear,longnamesfirst]{natbib}
+
+%%%Author macros
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+%%%
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newdefinition{rmk}{Remark}
+\newproof{pf}{Proof}
+\newproof{pot}{Proof of Theorem \ref{thm}}
+
+
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+
+% Short title
+\shorttitle{}    
+
+% Short author
+\shortauthors{Juan Alvarez, Christian Paredes}  
+
+% Main title of the paper
+\title[mode = title]{Análisis del desempeño histórico de las carteras recomendadas por varios bancos de inversión en función del perfil de riesgo de los clientes}  
+
+% Title footnote mark
+\tnotemark[1]
+
+% Title footnote 1.
+\tnotetext[1]{Trabajo de técnicas de investigación}
+
+% First author
+%
+% Options: Use if required
+% eg: \author[1,3]{Author Name}[type=editor,
+%       style=chinese,
+%       auid=000,
+%       bioid=1,
+%       prefix=Sir,
+%       orcid=0000-0000-0000-0000,
+%       facebook=<facebook id>,
+%       twitter=<twitter id>,
+%       linkedin=<linkedin id>,
+%       gplus=<gplus id>]
+
+\author[1]{Juan Fidel Alvarez Escontrela}%[
+	%type=editor,
+	%style=Español,
+	%auid=001,
+	%bioid=1,
+	%prefix=Sir,
+	%orcid=0000-0000-0000-0001,
+	%twitter=www.twitter.com/juanfidelalvarez,
+	%linkedin=www.linkedin.com/in/juanfidelalvarez,
+	%gplus=001]
+%]
+
+% Corresponding author indication
+%\cormark[1]
+
+% Footnote of the first author
+%\fnmark[]
+
+% Email id of the first author
+\ead{fidel220492@gmail.com}
+
+% URL of the first author
+\ead[url]{www.juanalvarez.com}
+
+% Credit authorship
+%\credit{Conceptualization of this study, Methodology, Software}
+
+% Address/affiliation
+\affiliation[1]{organization={Universidad de Santiago de Compostela},
+            addressline={Campus Norte, Av. do Burgo das Nacións, s/n}, 
+            city={Santiago de Compostela},
+%          citysep={}, % Uncomment if no comma needed between city and postcode
+            postcode={15782}, 
+            %state={},
+            country={España}}
+
+% Second author
+\author[2]{Christian L. Paredes Aguilera}%[
+	%type=editor,
+	%style=Espanol,
+	%auid=002,
+	%bioid=2,
+	%prefix=Sir,
+	%orcid=0009-0004-1216-9556,
+	%twitter=www.twitter.com/christianparedes,
+	%linkedin=www.linkedin.com/in/christianparedes,
+	%gplus=002]
+%]
+
+\ead{soyfode@gmail.com}
+
+\ead[url]{www.christianparedes.com}
+
+\affiliation[2]{organization={Universidad de Vigo},
+            addressline={R\'ua as Pedreiras, 2}, 
+            city={Vigo},
+%          citysep={}, % Uncomment if no comma needed between city and postcode
+            postcode={36310}, 
+            %state={},
+            country={España}}
+
+%\credit{Data curation, Writing - Original draft preparation}
+
+% For a title note without a number/mark
+%\nonumnote{}
+
+% Here goes the abstract
+\begin{abstract}
+Este estudio se centra en analizar el desempeño histórico de las carteras recomendadas por los principales bancos de inversión a nivel internacional, considerando los perfiles de riesgo de sus clientes y la estrategia de inversión utilizada (activa o pasiva). El objetivo es determinar si las carteras recomendadas han sido congruentes con los perfiles de riesgo y si han logrado un rendimiento acorde. Para ello, se utilizarán datos de rendimiento y riesgo de índices de acciones y bonos, así como la composición de las carteras recomendadas por los bancos.
+
+El análisis se llevará a cabo a lo largo de períodos de 3, 5 y 10 años, evaluando si las carteras recomendadas se encuentran en la frontera eficiente y si el riesgo asumido se ajusta a los rendimientos obtenidos. Además, se compararán las carteras recomendadas con carteras de activos equivalentes, como fondos mutuales y ETFs, para determinar cuál estrategia resulta más beneficiosa según el perfil de riesgo y el horizonte de inversión de los clientes.
+
+Se anticipa que este estudio arrojará luz sobre la efectividad de las carteras recomendadas por los bancos de inversión y si las estrategias activas o pasivas han tenido un mejor desempeño histórico. Los resultados proporcionarán información valiosa para los inversores y las instituciones financieras en la toma de decisiones de inversión.
+\end{abstract}
+
+% Use if graphical abstract is present
+%\begin{graphicalabstract}
+%\includegraphics{}
+%\end{graphicalabstract}
+
+% Research highlights
+%\begin{highlights}
+%\item 
+%\item 
+%\item 
+%\end{highlights}
+
+% Keywords
+% Each keyword is seperated by \sep
+\begin{keywords}
+    Finanzas \sep Cartera \sep Bancos \sep Riesgo.
+\end{keywords}
+
+\maketitle
+
+% Main text
+
+% Numbered list
+% Use the style of numbering in square brackets.
+% If nothing is used, default style will be taken.
+%\begin{enumerate}[a)]
+%\item 
+%\item 
+%\item 
+%\end{enumerate}  
+
+% Unnumbered list
+%\begin{itemize}
+%\item 
+%\item 
+%\item 
+%\end{itemize}  
+
+% Description list
+%\begin{description}
+%\item[]
+%\item[] 
+%\item[] 
+%\end{description}  
+
+%\begin{table}
+%\caption{Todo}\label{tbl1}
+%\begin{tabular*}{\tblwidth}{@{}LL@{}}
+%\toprule
+%  q&3  \\ % Table header row
+%\midrule
+% ss&s \\
+% lasa&s \\
+% a&o \\
+% oas&sa \\
+%\bottomrule
+%\end{tabular*}
+%\end{table}
+
+% Uncomment and use as the case may be
+%\begin{theorem} 
+%\end{theorem}
+
+% Uncomment and use as the case may be
+%\begin{lemma} 
+%\end{lemma}
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+\section{Objetivo(s)}
+Hallar las proporciones representadas por diversos instrumentos financieros en las
+carteras recomendadas por los principales bancos de inversión a nivel internacional a sus clientes (en
+función de su perfil de riesgo), y determinar cuál ha sido el desempeño de esos portafolios en los
+últimos 3, 5 y 10 años. Además, se analizará si el desempeño de las carteras muestra divergencias
+considerando el tipo de estrategia seguida (activa o pasiva).
+
+\section{Problema o problema central} 
+¿Cuál ha sido el desempeño histórico de las carteras recomendadas
+por los principales bancos de inversión, ajustado por criterios de riesgo y tipo de estrategia (activa o
+pasiva)? ¿Ha sido este desempeño congruente con el estilo y riesgo asumidos?
+
+\section{Bases teóricas} 
+\cite{fama1970}, establece una teoría en la que describe que el precio actual de
+un activo refleja toda la información disponible que exista acerca del mismo, sea la información:
+histórica, pública y/o privada. En base a ello, y considerando la eficiencia de los mercados
+desarrollados, los instrumentos de inversión pasiva han mostrado un crecimiento en detrimento de
+otros instrumentos activamente gerenciados, tales como fondos mutuales, dado el mejor desempeño
+histórico que ha exhibido las estrategias pasivas.
+
+Así, por ejemplo, \cite{Chan1999} consiguen que solo una baja proporción de los
+fondos activamente gerenciados logra superar, de forma persistente, al desempeño de los índices de
+referencia pasivos del mercado. \cite{Pastor2020} hallan que durante la crisis de la COVID-19 el
+flujo de fondos hacia vehículos de inversión activa ha disminuido, aunado a un desempeño inferior en
+relación a los índices de referencia y fondos de inversión pasiva. Todo ello va de la mano con la teoría
+moderna de portafolios, desarrollada por \cite{Markowitz1952}, la cual establece un modelo que consiste
+en ubicar una cartera de inversión óptima, ajustada por el riesgo, mediante la elección de los activos
+adecuados que compongan dicha cartera.
+
+\section{Hipótesis} 
+La inversión ha sido una práctica que con los años se ha vuelto cada vez más popular. En
+sus comienzos era solo aplicada en países muy específicos, pero se ha globalizado y hoy en día es
+conocida y desarrollada en una gran variedad de países. 
+
+En el pasado existían muchas limitantes a la hora de invertir en el mercado de valores. Era necesario
+tener acceso a una cuenta de jubilación proporcionada por un empleador de una compañía, o poseer
+los fondos y el conocimiento suficiente para poder abrir una cuenta de inversión no patrocinada por
+un empleador.
+
+Con el pasar de los años estas limitantes se han ido mitigando y el tener acceso a una cuenta de
+inversión se ha vuelto cada vez más sencillo. Existen múltiples herramientas financieras que le
+permiten a los inversionistas adquirir participación en una empresa sin hacer uso de una gran cantidad
+de fondos. Además, existen muchas compañías que permiten abrir cuentas de inversión a nivel
+mundial desde plataformas virtuales, múltiples cursos de inversión e información de fácil acceso a
+través del Internet.
+
+Sin embargo, a pesar de la facilidad que existe para adquirir información hoy en día, muchos de los
+nuevos inversionistas no cuentan con los conocimientos necesarios para poder manejar sus
+inversiones de la forma más eficiente posible o guiarlas de acuerdo con sus necesidades. Lo anterior
+se debe a que, en su mayoría, estas personas desconocen cuáles son sus metas financieras y sus
+limitantes a la hora de invertir, por lo cual no utilizan estrategias de inversión que vayan de la mano
+con sus expectativas.
+
+Por esto último, la industria financiera, mediante bancos de inversión, ofrece asesorías de inversión
+hacia clientes, especialmente con ciertos requerimientos mínimos de patrimonio. De forma usual,
+ante la mayor demanda de este tipo de servicios, muchos bancos optan por ofrecer portafolios
+estandarizados bajo ciertos perfiles de riesgo.
+
+En base a lo anterior, las instituciones financieras recomiendan sus carteras a los inversores que
+encajen en cada perfil ofrecido. Si bien esta práctica responde a una necesidad, podría estar dejando
+de lado ciertas oportunidades de mejora. Esta investigación se enfoca en indagar sobre este tópico y
+poder así determinar si los portafolios ofrecidos a los inversionistas se ajustan a los perfiles de riesgo
+establecidos, y si éstos pueden ser considerados óptimos, o presentan un espacio de mejora en el
+desempeño. De igual forma, se busca establecer si la estrategia ofrecida resulta ser la más beneficiosa
+por perfil y horizonte de tiempo,
+
+\section{Método o plan de investigación} 
+Se utilizará la base de datos de Bloomberg para obtener el
+rendimiento y el riesgo de los índices de precios de acciones y bonos (por ejemplo, S\&P 500 e índices
+de bonos de Barclays), así como también las composiciones de los portafolios estandarizados ofrecidos
+por los principales bancos de inversión a nivel mundial (tales como Blackrock, Vanguard, Merril Lynch
+y Charles Schwab) a sus clientes en función del perfil de riesgo.
+
+Se hallará la frontera eficiente para cada período de tiempo considerado varios supuestos (ventas en
+corto no permitidas y existencia de una tasa de interés libre de riesgo), y utilizando activos
+tradicionales (acciones y bonos).
+
+A continuación, se examinará si los portafolios recomendados por los bancos de inversión se ubican
+en la frontera eficiente (se analizará si el rendimiento de la cartera de la frontera eficiente que tenga
+la misma desviación estándar que la cartera recomendada por el banco de inversión respectivo es 
+estadísticamente igual -usando varios niveles de significación estadística, - similar al análisis
+desarrollado por \cite{Garay2005}. Lo anterior se hará para períodos de referencia de 3,
+5, 10 años (2012-2022), evaluando si el riesgo evidenciado por las decisiones de inversión se ajustó a
+sus rendimientos, mediante el uso del ratio de Sharpe.
+
+Para establecer una comparación aproximada del rendimiento de un portafolio recomendado, por
+perfil de riesgo, compuesto por un solo tipo de activos con respecto a un mismo portafolio de un tipo
+de activo similar, se considerará identificar el activo equivalente al recomendado, utilizando el índice
+replicado como referencia. Esto es, si la recomendación incluye únicamente fondos mutuales, se
+determinará que fondos cotizados (ETFs) son equivalentes a esos fondos mutuales, y viceversa, a
+modo de determinar qué tipo de estrategias resulta más atractiva para cada inversor, de acuerdo con
+su perfil de riesgo y horizonte de inversión.
+
+\section{Conclusiones y resultados que pueden preveerse} 
+Se espera hallar una congruencia entre el nivel de
+rendimiento exhibido por las carteras de los bancos de inversión y la correspondiente a las carteras
+ubicadas en la frontera eficiente obtenida (con el mismo riesgo). Además, se espera que las carteras
+de inversión activas recomendadas por los bancos exhiban un desempeño inferior al de las carteras
+pasivas, ajustadas a su riesgo.
+
+% To print the credit authorship contribution details
+\printcredits
+
+\bibliographystyle{cas-model2-names}
+
+% Loading bibliography database
+\bibliography{refs}
+
+% Biography
+\bio{}
+% Here goes the biography details.
+\endbio
+
+
+\end{document}
+

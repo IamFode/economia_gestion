@@ -141,7 +141,7 @@ Se anticipa que este estudio arrojará luz sobre la efectividad de las carteras 
 % Keywords
 % Each keyword is seperated by \sep
 \begin{keywords}
-    Finanzas \sep Cartera \sep Bancos \sep Riesgo.
+    Finanzas \sep Cartera \sep Bancos \sep Riesgo \sep Rendimiento \sep Desempeño \sep Frontera eficiente \sep ETF \sep Fondos mutuales \sep Índice \sep riesgo
 \end{keywords}
 
 \maketitle
@@ -196,6 +196,180 @@ Se anticipa que este estudio arrojará luz sobre la efectividad de las carteras 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %% \appendix
+
+
+\section{Introduction}
+
+La inversión, que ha sido una práctica limitada a ciertos países, se ha globalizado y es ahora popular y accesible en todo el mundo. Aunque en el pasado hubo muchas restricciones para invertir en el mercado de valores, estas limitaciones se han ido mitigando con el tiempo. Hoy en día, existen múltiples herramientas financieras y plataformas virtuales que facilitan este cometido.
+
+Sin embargo, muchos nuevos inversores carecen del conocimiento necesario para manejar eficientemente sus inversiones. Esto se debe principalmente a que no conocen sus metas financieras y limitaciones de inversión, y por lo tanto, no utilizan estrategias de inversión que se alineen con sus expectativas.
+
+Para abordar este problema, la industria financiera ofrece asesoramiento de inversión a través de bancos, que suelen ofrecer carteras estandarizadas basadas en diferentes perfiles de riesgo. Pero, ¿estas carteras estandarizadas son las más adecuadas y optimas para los inversores?, ¿Se ajustan a sus perfiles de riesgo y horizonte de inversión? ¿Han logrado un rendimiento acorde?. También nos preguntamos si ¿existen posibilidades de mejora en los desempeños ofrecidos de estas carteras?, ¿cuál ha sido el desempeño de estos portafolios en los últimos {\color{red}3, 5 y 10 años (2000-2020)}?, ¿se ajustaron todas las carteras al nivel de riesgo ofrecido, con respecto a sus pares del mismo banco?, ¿Qué estrategia de inversión es la más beneficiosa para los inversores?.
+
+Este articulo se centra en el análisis de las estrategias de inversión activa (superar un índice de referencia del mercado) y la inversión pasiva (seguir un índice a través de un ETF o fondo mutuo), y el desempeño de las carteras recomendadas por los bancos de inversión con su correspondiente nivel de riesgo y eficiencia. 
+
+Identificaremos las proporciones representadas por diversos instrumentos financieros en las carteras recomendadas por los principales bancos de inversión a sus clientes, en función de su perfil de riesgo. Construir las fronteras eficientes para cada una de las carteras ofrecidas por las instituciones bancarias, para cada período de estudio. Determinaremos el desempeño de cada una de las carteras recomendadas en los últimos 3, 5 y 10 años. Analizaremos si el desempeño de las carteras muestra divergencias considerando el tipo de estrategia e instrumentos utilizados (activa o pasiva). Y evaluaremos si existen diferencias de desempeño en los portafolios ajustados tras revisión periódica de los bancos de un período a otro.
+
+De esta manera llevaremos a cabo este estudio para determinar si el desempeño exhibido por las carteras recomendadas por los bancos de inversión está en sintonía con el nivel de riesgo de los inversionistas a los que están dirigidas estas carteras, y si estas pueden ser consideradas eficientes.
+
+Las limitaciones de la investigación incluyen cambios en la composición y el criterio de riesgo de las carteras ofrecidas por los bancos a lo largo del período establecido {\color{red}(2000-2020)}. Esto podría haber llevado a la incorporación o eliminación de instrumentos de inversión según lo determinado por los asesores de los portafolios. 
+
+
+Además, no todos los bancos estudiados permitieron una comparación con respecto a las recomendaciones realizadas en 2014, debido a la dificultad para obtener información sobre las carteras de inversión recomendadas en ese año en función del riesgo de los inversionistas. Finalmente, ciertos fondos mutuales y fondos cotizados no tenían un índice de referencia concreto, por lo que se utilizaron índices equivalentes para estimar las fronteras y el desempeño de las carteras.
+
+
+\section{Revision de literatura}
+
+En este apartado, construiremos conceptos que nos permitan entender el problema y la solución que se propone.
+
+\subsection{Compañías de inversion}
+
+Las compañías de inversión, que agrupan los fondos de inversores individuales e institucionales, buscan invertir de manera más eficiente que los inversores individuales. Según \cite{BECCALLI}, estas compañías ofrecen la oportunidad de diversificar el riesgo, acceder a economías de escala y proporcionar liquidez al liquidar posiciones.
+
+En 1940, el Congreso de los Estados Unidos promulgó la Ley de Sociedades de Inversión (Investment Company Act of 1940), que clasifica a las compañías de inversión en tres tipos: Compañías de valor nominal, Compañías de unidades de inversión y Sociedades de Inversión Gestionadas23. Esta última, se pueden dividir en dos tipos: cerradas (Closed-End) y abiertas (Open-End). 
+
+Las compañías de inversión abiertas emiten nuevas acciones de forma continua ante la llegada de nuevos inversionistas y sus acciones cotizan únicamente en mercados primarios. Cuando los inversionistas liquidan sus posiciones, sus acciones son eliminadas y la porción pro-rata del portafolio de la compañía es liquidada y transformada a efectivo \cite{Baumol1990}. Estas acciones cotizan únicamente en mercados primarios y, cuando los inversionistas deciden liquidar sus posiciones, sus acciones son eliminadas y la porción pro-rata del portafolio de la compañía es liquidada y transformada a efectivo.
+
+En este contexto, los Fondos Mutuales emergen como una estructura definida bajo este marco. Estos fondos, que son el instrumento más común entre las compañías de inversión, son dirigidos por una junta de directores que establece los objetivos de inversión y selecciona al gestor del fondo.
+
+Dentro de estos Fondos Mutuales, existen varios tipos de acciones, siendo las más comunes el tipo A, B y C. Las acciones tipo A implican un cargo inicial que puede ser del 8,5\% del monto invertido al momento de la compra de las acciones. Por otro lado, las acciones tipo B no tienen gastos de entrada, sino que estos se aplican al momento de liquidación de las acciones. Finalmente, las acciones tipo C fundamentan sus costos en comisiones administrativas y gastos de gestión elevados en relación con los otros tipos de acciones.
+
+Sin embargo, es importante considerar que la estructura de costos asociada a estos fondos puede tener implicaciones significativas para los inversionistas. Según \cite{ADAMS}, en fondos indexados entre 1998 y 2007 existió un exceso de comisiones y gastos sobre los inversionistas, aplicados por los gestores de los fondos. Además, \cite{Bergstresser} afirman que entre 1996 y 2004, el uso de intermediarios por los inversionistas para adquirir fondos mutuales tendió a ofrecer un rendimiento menor a la opción de invertir directamente mediante la firma emisora de los fondos. Estas consideraciones subrayan la importancia de una comprensión detallada de la estructura y funcionamiento de las compañías de inversión abierta.
+
+Por otro lado, las compañías de inversión cerradas, también conocidas como fondos cerrados, operan con un número finito de acciones que se establecen en su emisión con la Comisión de Valores (Securities Exchange Commission). Estas acciones se cotizan en mercados secundarios y su precio se determina por las fuerzas de oferta y demanda en el mercado. A diferencia de los fondos abiertos, las acciones de los fondos cerrados no son liquidadas sino intercambiadas hacia otro accionista.
+
+Un tipo particular de fondo cerrado es el Fondo Cotizado (Exchange Traded Fund o ETF). Los ETFs son fondos de inversión abiertos que emiten unidades de inversión en su creación, las cuales luego son colocadas en mercados secundarios. Estas unidades pueden ser intercambiadas de forma similar a una acción común. A diferencia de los fondos mutuales, los ETFs no generan costos de entrada o salida a los inversionistas, pero mantienen gastos de gestión asociados al nivel de frecuencia en el cual el portafolio de activos es afectado.
+
+\cite{BenDavid} argumentan que los ETFs han tenido un impacto significativo en la industria financiera en el siglo 21 debido a su bajo costo, liquidez y funcionamiento pasivo. Estas características hacen que los ETFs sean una opción atractiva para los inversores que buscan diversificar su riesgo. Además, la presencia de ETFs puede aumentar la eficiencia de los mercados al permitir una mayor diseminación de información.
+
+\subsection{Hipótesis de eficiencia de los mercados}
+La Hipótesis de Eficiencia de Mercados (HEM) sostiene que los precios de los activos financieros reflejan toda la información disponible, ajustándose rápidamente a la llegada de nueva información. Según \cite{Reilly}, para que un mercado sea eficiente, deben cumplirse tres condiciones: existencia de numerosos inversores maximizando su utilidad, llegada aleatoria de nueva información al mercado, y decisiones de compra y venta de los inversores que reflejen rápidamente la información en el precio del activo.
+
+La HEM se basa en la hipótesis del camino aleatorio, que sostiene que los cambios en los precios de las acciones son aleatorios y, por lo tanto, impredecibles. Sin embargo, \cite{fama1970} desarrolló una base teórica más sólida para la eficiencia del mercado, argumentando que un mercado eficiente refleja con precisión el precio de un activo en relación con su riesgo. Esta eficiencia puede clasificarse en tres niveles: forma débil, forma semi-fuerte y forma fuerte.
+
+Estudios recientes respaldan la idea de que los mercados tienden a mostrar fuertes indicios de eficiencia. \cite{Tran} desarrollaron un estimador de la eficiencia del mercado y encontraron que los mercados suelen comportarse de manera eficiente. Sin embargo, durante períodos de considerable volatilidad, pueden existir ciclos de ineficiencia prolongada. Por otro lado, \cite{Yong} encontraron que los inversores sofisticados modifican sus patrones de inversión tras anuncios de adquisiciones y fusiones, afectando negativamente la eficiencia del mercado. No obstante, también observaron un efecto de sustitución entre los inversores sofisticados y los proveedores de información pública que equilibra nuevamente la eficiencia en los mercados.
+
+\subsection{Estrategias de inversión}
+
+Las estrategias de inversión pueden clasificarse en dos categorías principales: activas y pasivas. Los gestores de carteras pasivas buscan igualar un índice de referencia determinado, mientras que los gestores activos buscan superar dicho índice.
+
+En una estrategia pasiva, el gestor establece un portafolio con el objetivo de igualar una determinada meta, usualmente un índice. Aunque se pueden realizar ciertos ajustes durante la vida de la inversión, el gestor no busca generar Alfa, que es la diferencia entre el rendimiento conseguido y el esperado.
+
+Por otro lado, los gestores activos de un portafolio establecen como objetivo generar Alfa, es decir, que el portafolio obtenga un rendimiento superior al que se hubiese obtenido siguiendo únicamente un enfoque pasivo. Sin embargo, \cite{Malkiel2013} concluye que los elevados costos incurridos en el desarrollo de una estrategia activa a menudo funcionan como un elemento diferenciador entre ambas estrategias.
+
+\cite{Ding} encontraron que aquellos fondos que tenían una junta de directores más grande tendían a mantener rendimientos superiores, y consistentes, al mercado. Mientras que \cite{Cremers} determinaron que en muchos casos los inversores no poseen una alternativa pasiva, con costes reducidos, para acceder a este tipo de vehículos de inversión. En consecuencia, incurren en costos elevados al adquirir productos de inversión activa.
+
+Por último, \cite{Zaremba} evaluaron el rendimiento de estrategias de gestión activa para 64 mercados entre 1973 y 2018. Los autores determinaron que el desarrollo en la eficiencia global de los mercados ha provocado un descenso notable en el rendimiento de esta estrategia de forma general
+
+\subsection{Gestión pasiva de portafolios de inversión}
+
+La gestión pasiva de portafolios es una estrategia de inversión en la que el inversor no selecciona los activos ni su proporción dentro de la cartera. En cambio, esta estrategia se limita a replicar un índice específico para proporcionar al inversor los rendimientos del mercado. Según \cite{Sorensen}, la gestión pasiva no busca obtener rendimientos superiores ni evitar activos considerados inapropiados.
+
+\cite{Malkiel1973} argumenta que los fondos indexados ofrecen ventajas en términos de costos debido a la reducción de las transacciones y los impuestos asociados. En el estudio citado de \cite{Malkiel2013}, se encontró que el 71\% de los rendimientos de la gestión activa fue menor a los rendimientos ofrecidos por el S\&P500, principalmente debido a los altos costos de transacción derivados del gran número de operaciones que ejecutan los fondos gestionados activamente.
+
+\cite{Sorensen}, indicaron que solo el 11\% de los fondos en EEUU lograban rendimientos superiores a los del S\&P500. Por lo tanto, estos autores afirman que una gestión pasiva de portafolio es más eficiente que una gestión activa, ya que se replican los rendimientos del mercado que los gestores activos utilizan como benchmark de superación.
+
+\subsection{Teoría moderna de portafolios}
+
+La Teoría Moderna de Portafolio (TMP), desarrollada por \cite{Markowitz1952}, es un marco matemático para la selección de una cartera de activos de tal manera que se maximice el rendimiento esperado para un nivel de riesgo dado. Esta teoría formaliza y extiende la idea de diversificación en la inversión, es decir, que poseer diferentes tipos de activos financieros es menos arriesgado que poseer solo un tipo.
+
+Según Markowitz, al momento de crear una cartera, los inversionistas se enfrentan al problema de seleccionar qué activos arriesgados poseer, dada su incertidumbre. Este método establece que el inversor tiene una cantidad determinada con la que puede invertir en el presente, y este dinero que invierte durante un tiempo se conoce como periodo de tenencia. Al final de este periodo, el inversor venderá los valores adquiridos y utilizará los beneficios para cubrir gastos o los reinvertirá en otros activos.
+
+\cite{Markowitz1952} sostiene que el inversor típico busca rendimientos elevados pero también que sean lo más seguros posibles. Por lo tanto, cuando el inversor busca maximizar el rendimiento esperado mientras intenta minimizar el riesgo, se enfrenta a dos objetivos que influyen en su decisión de compra. Como resultado, el inversor debe diversificar adquiriendo una cesta de activos, en lugar de un único activo.
+
+\cite{Galvez} aplicaron el modelo de Markowitz para la formación de carteras de inversión y encontraron que proporcionaba cierto grado de cobertura frente al riesgo, evitando pérdidas por debajo de las que tuvo el mercado.
+
+\subsection{Rendimiento observado y rendimiento esperado de un activo}
+
+El rendimiento de un activo se refiere a la rentabilidad que este genera en relación a su costo inicial, es decir, el beneficio o pérdida obtenido en relación a los recursos utilizados. Según \cite{Gonzalez}, el rendimiento de una inversión en una acción que no reparte dividendos durante el periodo se calcula como una variación del precio final menos el precio de inicio.
+
+Por otro lado, el rendimiento esperado de un activo representa la expectativa de lo que el individuo espera que el valor rinda durante el siguiente periodo. Esta expectativa del inversor puede generarse evaluando el rendimiento promedio del activo en el pasado, o basándose en las perspectivas que tenga la empresa en ese momento. Es importante destacar que el rendimiento real es aquel que puede observarse una vez finalizado el periodo. En este sentido, la diferencia entre el rendimiento esperado y el rendimiento real puede proporcionar una medida útil de la precisión de las expectativas del inversor.
+
+En el ámbito de las inversiones, el rendimiento de un portafolio es un concepto clave. Este se define como el resultado de la rentabilidad promedio de los activos que conforman la cartera al final del periodo, y se calcula multiplicando el rendimiento de cada activo de la cartera por la proporción que este tiene dentro de la misma.
+
+Por otro lado, el rendimiento esperado de un portafolio es el promedio ponderado de los rendimientos esperados de los valores individuales que conforman la cartera. En una cartera compuesta por dos acciones, con un rendimiento esperado igual para ambas, el rendimiento del portafolio será igual al esperado por estas acciones, independientemente de las proporciones en las que estén en la cartera.
+
+Es importante tener en cuenta que la variabilidad del rendimiento que tiene un valor es medida por la varianza de este mismo, mientras que la covarianza mide la relación lineal entre los dos valores. Por lo tanto, la varianza de un portafolio depende de las varianzas individuales de los valores y de la covarianza que tengan los valores entre ellos.
+
+En este contexto, surge el concepto de frontera eficiente, que es el conjunto de combinaciones de oportunidades de inversión que establecen que a cualquier nivel de riesgo asumido se obtiene el mayor rendimiento posible. Las carteras que se encuentran en esta frontera eficiente se les caracteriza como carteras de inversión eficiente.
+
+Además, existe el portafolio de mínima varianza, que es aquel que ofrece el menor riesgo posible maximizando el beneficio obteniéndose de una combinación específica de los activos.
+
+Para determinar la frontera eficiente es necesario hacer una correcta estimación de los rendimientos esperados y las covarianzas de los distintos valores \cite{Zubeldia}. Sin embargo, \cite{Michaud} advierte que el uso de los datos históricos como estimador puede hacer que los portafolios sobre la frontera eficiente sean poco atractivos para los inversores.
+
+Finalmente, al añadir activos y buscar diversificación en una cartera, es importante considerar el ratio de Sharpe. Este ratio mide el rendimiento promedio obtenido en exceso en relación con la tasa libre de riesgo por unidad de volatilidad o riesgo total de una inversión. Permite a los inversionistas comparar sus retornos con el riesgo de sus inversiones \cite{Sharpe}. Mientras más grande sea el valor del Ratio de Sharpe, más atractivo será el retorno ajustado al riesgo para el inversionista.
+
+\subsection{Style box y perfiles de inversión}
+
+El perfil del inversionista es crucial al gestionar una cartera, ya que determina la idoneidad de cada activo ofrecido. Los bancos suelen ofrecer carteras con categorías similares en definición, pero es importante establecer un criterio para determinar las distintas categorías de riesgo que un inversor puede encontrar al buscar una cartera ajustada a su riesgo.
+
+Para ello, Morningstar (2020) ha desarrollado el Style Box, una representación gráfica de las características de los fondos mutuales. Esta caja está construida por 9 cuadrantes con un eje horizontal y uno vertical. El eje vertical representa la capitalización bursátil del activo o del fondo, dividido en tres categorías: grande, mediana y pequeña. El eje horizontal representa la valuación de cada fondo mutual o de cada activo, calculados bajo las ratios de Price to earnings y precio de valor en libros, entre otros factores. Este eje se clasifica en valor, blend (equilibrado) y crecimiento.
+
+Los nueve cuadros representan distintas maneras de clasificar a un fondo mutual: large value, large blend, large growth, medium value, medium blend, medium growth, small value, small blend y small growth. Esta clasificación determina donde puede clasificarse una inversión en un fondo o un activo en específico dependiendo en cuál cuadrante se encuentren ubicados.
+
+El Style box también es utilizado para construir distintos tipos de carteras que instituciones les ofrecen a sus clientes, carteras compuestas por distintos tipos de activos, como totalmente renta fija, totalmente renta variable y un conjunto de ambas.
+
+Un estudio realizado por \cite{Schadler} determinó que los cuadrantes se ajustan al nivel de riesgo esperado siendo el cuadrante superior izquierdo el más conservador, mientras que el inferior derecho el más arriesgado. A su vez, afirman que retornos más elevados son posibles de alcanzar en los cuadrantes de menor riesgo.
+
+\subsection{Prueba retrospectiva (Backtesting)}
+El Backtesting es un método que permite determinar la efectividad de una estrategia o un modelo financiero. Este método evalúa la viabilidad de una estrategia de inversión basándose en la data histórica obtenida \cite{Yong}. A través de esta técnica, empleada en la página electrónica Portfolio Visualizer, es posible determinar y comparar los resultados de los activos financieros en los distintos periodos de tiempo establecidos. En resumen, el Backtesting es una herramienta valiosa para comparar y evaluar la efectividad de diferentes estrategias de inversión.
+
+\subsection{Antecedentes sobre el estudio del desempeño comparativo de carteras de inversión bajo estrategias de gestión diversas.}
+
+La comparación de la rentabilidad de estrategias o productos financieros es un tema ampliamente estudiado en la literatura financiera. A medida que los fondos de gestión pasiva ganan relevancia, la comparación del desempeño, considerando costos asociados, se vuelve crucial para las decisiones de los inversionistas.
+
+Varios autores han realizado estudios comparativos del desempeño de estos productos y estrategias. \cite{Choi} reflejan un cambio de tendencia, hallando que la persistencia del desempeño de los fondos mutuales y su habilidad para crear Alfa, en el período 1963-1993 no se replica para el período 1994-2018, argumentando que se debe a un menor rendimiento en estilos más agresivos. \cite{Reuter} hallan que los fondos manejados de forma activa vendidos directamente por las firmas a sus clientes cumplen el objetivo de superar sus determinados objetivos de mercado. Sin embargo, argumentan que aquellos fondos vendidos a través de corredores de bolsa fallan en replicar este resultado, debido a los bajos incentivos a tomar mayores riesgos frente a los inversionistas.
+
+\cite{Pastor} evalúan el desempeño comparativo de fondos manejados de forma activa ante aquellos fondos pasivos durante la crisis de la COVID-19. Concluyen que los fondos gestionados de forma activa fallan en superar a sus pares de gestión pasiva, lo cual contradice la hipótesis de que la gestión activa tiende a generar mejores resultados durante épocas recesivas. \cite{Souza} desarrollaron un estudio para determinar si el desempeño de fondos de gestión activa varía durante los ciclos económicos, centrando su atención en periodos recesivos. Afirman que los resultados no avalan el uso de estrategias activas con el objetivo de aumentar la utilidad del inversor produciendo un rendimiento contra cíclico por encima del ofrecido por el mercado.
+
+\cite{Gerakos} concluyen que, en general, los fondos de gestión activa superan de forma consistente a sus pares pasivos y al mercado durante el período de 2000 a 2012. Recomiendan utilizar como parámetro comparativo y de estimación el modelo de Sharpe (1992) en contraste a un modelo de varianzas.
+
+\cite{Sharifzadeh} realizan una comparación de 230 fondos mutuales con sus pares pasivos (ETFs) para cada estilo y estrategia de inversión, así como para el índice o meta replicada. Para el período entre 2002 y 2010, en términos de la ratio de Sharpe, la gestión pasiva fue superior en algunos estilos, inferior en otros y en el resto no existió una diferencia estadísticamente significativa.
+
+Finalmente, \cite{Svetina} realiza un estudio sobre los ETFs que siguen estrategias similares a fondos indexados. Argumenta que solo el 17\% replica de forma directa los fondos, ofreciendo resultados similares durante los períodos de estudio.
+
+\section{Metodología}
+Esta sección presenta la metodología empleada en la investigación, delineando las limitaciones del problema identificado y los objetivos propuestos. Se enfoca en resumir los párrafos que están interrelacionados, siguiendo las mejores prácticas de redacción de artículos científicos y teniendo en cuenta todas las referencias bibliográficas. La metodología es esencial para entender el alcance de la investigación y proporciona un marco para interpretar los resultados obtenidos.
+
+Este estudio de tipo descriptivo-comparativo se centra en el análisis de los portafolios ofrecidos por los principales bancos de inversión en Estados Unidos. Se observa y compara el comportamiento de variables para describir atributos de manera objetiva y sistemática. El objetivo es determinar si estos portafolios se ajustan al perfil de riesgo supuesto, cuán alejado está su desempeño del óptimo, su consistencia en el tiempo y las estrategias más adecuadas según los instrumentos utilizados. Se analizarán los portafolios recomendados al cierre del año {\color{red}2020} y se compararán con sus pares de {\color{red}2014}, utilizando ETFs para la estrategia pasiva y Fondos Mutuales para la estrategia activa. Finalmente, se evaluará el rendimiento de las carteras en {\color{red}períodos de 3, 5 y 10 años.}
+
+La investigación sigue un diseño no experimental longitudinal, en el que las variables se observan y analizan a lo largo del tiempo en períodos específicos, sin ser manipuladas deliberadamente. El objetivo es hacer inferencias sobre el cambio de las variables. Este enfoque permite un análisis detallado de las tendencias y patrones a lo largo del tiempo.
+
+{\color{red}Este estudio emplea un diseño documental, recopilando información de diversas fuentes, incluyendo libros electrónicos como “Serie 7 General Security Representative Exam License Exam Manual” y “The Intelligent Investor”, trabajos de grado como “Inversión Activa vs. Pasiva: Una aplicación en el caso colombiano” de Vásquez, A., e investigaciones como “Determinants of the Success of Active vs. Passive Investment Strategy” de Birla, R. (2012). También se consultaron páginas web de contenido financiero, instituciones financieras como Morningstar y FINRA, y se utilizó la herramienta de Backtesting de Portfolio Visualizer y la terminal de Bloomberg para la recolección de datos de los instrumentos evaluados.}
+
+La investigación adopta un enfoque retrospectivo o histórico en el manejo del tiempo, estudiando el Ratio de Sharpe y los rendimientos de los ETF’s y Fondos Mutuales en diversas categorías y horizontes de tiempo para los portafolios recomendados en los últimos 10 años, utilizando información generada hasta el {\color{red}año 2020 inclusive.}
+
+En cuanto al número de variables, el diseño es multivariable, ya que se examinan las herramientas financieras (ETFs y Fondos Mutuales), el Ratio de Sharpe, el rendimiento de estas herramientas, el tiempo en el que fueron analizadas y los portafolios de los bancos de inversión. Y las unidades de estudio son los portafolios recomendados por 3 bancos de inversión en EE. UU. para {\color{red}los años 2014 y 2020.}
+
+Y las técnicas e instrumentos de recolección de datos  se basó en la técnica de revisión documental, que implicó la búsqueda de información en diversas fuentes impresas y digitales. Se consultaron tesis de grado, proyectos de investigación, libros, archivos estadísticos impresos, documentos digitales, libros electrónicos, artículos de revistas especializadas y bases de datos electrónicas. Esta amplia gama de fuentes permitió una evaluación exhaustiva de los activos seleccionados. Las fuentes primarias de información y resultados fueron Bloomberg, Morningstar, ETF Database, Portfolio Visualizer y las 11 instituciones que autorizaron las carteras evaluadas. La recolección de datos a través de estos medios fue esencial para el desarrollo de la investigación.
+
+\subsection{Procedimientos empleados en la obtención de datos}
+
+El procedimiento para la obtención de los resultados en este estudio se llevó a cabo en seis pasos:
+
+\begin{enumerate}[1.]
+    \item Selección de bancos y portafolios: Se inició con la búsqueda de los principales bancos de inversión en EE. UU. por magnitud de activos manejados, dando prioridad a Vanguard, Blackrock (Ishares) y Statestreet. Se seleccionaron 11 bancos de inversión de EE. UU., incluyendo Vanguard, Blackrock (Ishares), Fidelity, Invesco, BMO, Merrill Lynch, Statestreet, Fidelity, Capital Group, Cambria y Columbia Threadneedle Investments. La disponibilidad de la composición de las carteras fue un aspecto clave para la selección.
+
+    \item Obtención de la composición de las carteras recomendadas: Se obtuvo la información y los datos de cada activo incluido en las carteras por perfil de riesgo. Se consideraron dos factores: los costos de manejo de los activos y la reinversión de dividendos. Los costos asociados al uso de Fondos Mutuales y Fondos Cotizados (ETFs) fueron considerados, incluyendo costos de entrada y manejo.
+
+    \item Construcción de Frontera Eficiente para cada cartera y plazo: Se estimó la frontera eficiente para cada cartera a 3, 5 y 10 años, utilizando los rendimientos mensuales de cada activo (índice) incluido en la cartera. Se estimaron 20 portafolios que conformaban las distintas combinaciones de activos para cada cartera, ubicadas en la frontera eficiente. La estimación de las fronteras se realizó mediante un archivo tipo macro de Excel.
+
+    \item Cálculo del desempeño de cada cartera y su respectiva ratio de Sharpe: El desempeño de cada cartera recomendada fue obtenido mediante los rendimientos mensuales de cada activo (índice) incluido por su peso en la cartera. Se calculó el punto equivalente en varianza y desviación, ubicado en la frontera eficiente, para el portafolio recomendado y su par óptimo. Se calcularon sus respectivas ratios de Sharpe para 3, 5 y 10 años.
+
+    Para referencia de la tasa libre de riesgo se consideraron las notas del tesoro de EE. UU. con vencimiento a 3, 5 y 10 años, igualando el horizonte de inversión de las carteras. Los rendimientos promedio se tomaron para los diferentes horizontes a partir de los datos históricos correspondientes.
+
+    \item Selección de Fondos Cotizados y Fondos Mutuales equivalentes: Se identificó el activo equivalente al recomendado, utilizando el índice replicado como referencia. Esto permitió determinar qué tipo de estrategias resulta más atractiva para cada inversor, de acuerdo con su perfil de riesgo y horizonte de inversión.
+
+    \item Cálculo de Desempeño y Ratio de Sharpe de portafolios equivalentes: Se utilizó la herramienta de Backtesting mediante el portal Portfolio Visualizer para obtener los retornos de cada portafolio, y de su equivalente, a 3, 5 y 10 años. Se obtuvo el retorno anualizado, y el total, de los portafolios, así como sus respectivas ratios de Sharpe. Se supuso la reinversión de dividendos pagados, así como los costos de manejo de los activos. Se consideró al ratio de Sharpe como la métrica más adecuada para determinar la estrategia más conveniente de acuerdo al perfil y horizonte de inversión.
+\end{enumerate}
+
+\section{Resultados}
+
+\section{Conclusiones}
+
+
+
+\begin{comment}
 
 \section{Objetivo(s)}
 Hallar las proporciones representadas por diversos instrumentos financieros en las
@@ -297,6 +471,8 @@ ubicadas en la frontera eficiente obtenida (con el mismo riesgo). Además, se es
 de inversión activas recomendadas por los bancos exhiban un desempeño inferior al de las carteras
 pasivas, ajustadas a su riesgo.
 
+\end{comment}
+
 % To print the credit authorship contribution details
 \printcredits
 
@@ -309,6 +485,7 @@ pasivas, ajustadas a su riesgo.
 \bio{}
 % Here goes the biography details.
 \endbio
+
 
 
 \end{document}

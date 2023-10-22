@@ -2,6 +2,8 @@
 
 %Packages
 \usepackage[authoryear,longnamesfirst]{natbib}
+\usepackage[spanish]{babel}
+
 
 %%%Author macros
 \def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
@@ -198,13 +200,13 @@ Se anticipa que este estudio arrojará luz sobre la efectividad de las carteras 
 %% \appendix
 
 
-\section{Introduction}
+\section{Introducción}
 
 La inversión, que ha sido una práctica limitada a ciertos países, se ha globalizado y es ahora popular y accesible en todo el mundo. Aunque en el pasado hubo muchas restricciones para invertir en el mercado de valores, estas limitaciones se han ido mitigando con el tiempo. Hoy en día, existen múltiples herramientas financieras y plataformas virtuales que facilitan este cometido.
 
 Sin embargo, muchos nuevos inversores carecen del conocimiento necesario para manejar eficientemente sus inversiones. Esto se debe principalmente a que no conocen sus metas financieras y limitaciones de inversión, y por lo tanto, no utilizan estrategias de inversión que se alineen con sus expectativas.
 
-Para abordar este problema, la industria financiera ofrece asesoramiento de inversión a través de bancos, que suelen ofrecer carteras estandarizadas basadas en diferentes perfiles de riesgo. Pero, ¿estas carteras estandarizadas son las más adecuadas y optimas para los inversores?, ¿Se ajustan a sus perfiles de riesgo y horizonte de inversión? ¿Han logrado un rendimiento acorde?. También nos preguntamos si ¿existen posibilidades de mejora en los desempeños ofrecidos de estas carteras?, ¿cuál ha sido el desempeño de estos portafolios en los últimos {\color{red}3, 5 y 10 años (2000-2020)}?, ¿se ajustaron todas las carteras al nivel de riesgo ofrecido, con respecto a sus pares del mismo banco?, ¿Qué estrategia de inversión es la más beneficiosa para los inversores?.
+Para abordar este problema, la industria financiera ofrece asesoramiento de inversión a través de bancos, que suelen ofrecer carteras estandarizadas basadas en diferentes perfiles de riesgo. Pero, ¿estas carteras estandarizadas son las más adecuadas y optimas para los inversores?, ¿Se ajustan a sus perfiles de riesgo y horizonte de inversión? ¿Han logrado un rendimiento acorde?. También nos preguntamos si ¿existen posibilidades de mejora en los desempeños ofrecidos de estas carteras?, ¿cuál ha sido el desempeño de estos portafolios en los últimos 3, 5 y 10 años (2000-2022), ¿se ajustaron todas las carteras al nivel de riesgo ofrecido, con respecto a sus pares del mismo banco?, ¿Qué estrategia de inversión es la más beneficiosa para los inversores?.
 
 Este articulo se centra en el análisis de las estrategias de inversión activa (superar un índice de referencia del mercado) y la inversión pasiva (seguir un índice a través de un ETF o fondo mutuo), y el desempeño de las carteras recomendadas por los bancos de inversión con su correspondiente nivel de riesgo y eficiencia. 
 
@@ -212,7 +214,7 @@ Identificaremos las proporciones representadas por diversos instrumentos financi
 
 De esta manera llevaremos a cabo este estudio para determinar si el desempeño exhibido por las carteras recomendadas por los bancos de inversión está en sintonía con el nivel de riesgo de los inversionistas a los que están dirigidas estas carteras, y si estas pueden ser consideradas eficientes.
 
-Las limitaciones de la investigación incluyen cambios en la composición y el criterio de riesgo de las carteras ofrecidas por los bancos a lo largo del período establecido {\color{red}(2000-2020)}. Esto podría haber llevado a la incorporación o eliminación de instrumentos de inversión según lo determinado por los asesores de los portafolios. 
+Las limitaciones de la investigación incluyen cambios en la composición y el criterio de riesgo de las carteras ofrecidas por los bancos a lo largo del período establecido (2000-2022). Esto podría haber llevado a la incorporación o eliminación de instrumentos de inversión según lo determinado por los asesores de los portafolios. 
 
 
 Además, no todos los bancos estudiados permitieron una comparación con respecto a las recomendaciones realizadas en 2014, debido a la dificultad para obtener información sobre las carteras de inversión recomendadas en ese año en función del riesgo de los inversionistas. Finalmente, ciertos fondos mutuales y fondos cotizados no tenían un índice de referencia concreto, por lo que se utilizaron índices equivalentes para estimar las fronteras y el desempeño de las carteras.
@@ -226,7 +228,7 @@ En este apartado, construiremos conceptos que nos permitan entender el problema 
 
 Las compañías de inversión, que agrupan los fondos de inversores individuales e institucionales, buscan invertir de manera más eficiente que los inversores individuales. Según \cite{BECCALLI}, estas compañías ofrecen la oportunidad de diversificar el riesgo, acceder a economías de escala y proporcionar liquidez al liquidar posiciones.
 
-En 1940, el Congreso de los Estados Unidos promulgó la Ley de Sociedades de Inversión (Investment Company Act of 1940), que clasifica a las compañías de inversión en tres tipos: Compañías de valor nominal, Compañías de unidades de inversión y Sociedades de Inversión Gestionadas23. Esta última, se pueden dividir en dos tipos: cerradas (Closed-End) y abiertas (Open-End). 
+En 1940, el Congreso de los Estados Unidos promulgó la Ley de Sociedades de Inversión (Investment Company Act of 1940), que clasifica a las compañías de inversión en tres tipos: Compañías de valor nominal, Compañías de unidades de inversión y Sociedades de Inversión Gestionadas. Esta última, se pueden dividir en dos tipos: cerradas (Closed-End) y abiertas (Open-End). 
 
 Las compañías de inversión abiertas emiten nuevas acciones de forma continua ante la llegada de nuevos inversionistas y sus acciones cotizan únicamente en mercados primarios. Cuando los inversionistas liquidan sus posiciones, sus acciones son eliminadas y la porción pro-rata del portafolio de la compañía es liquidada y transformada a efectivo \cite{Baumol1990}. Estas acciones cotizan únicamente en mercados primarios y, cuando los inversionistas deciden liquidar sus posiciones, sus acciones son eliminadas y la porción pro-rata del portafolio de la compañía es liquidada y transformada a efectivo.
 
@@ -331,15 +333,13 @@ Finalmente, \cite{Svetina} realiza un estudio sobre los ETFs que siguen estrateg
 \section{Metodología}
 Esta sección presenta la metodología empleada en la investigación, delineando las limitaciones del problema identificado y los objetivos propuestos. Se enfoca en resumir los párrafos que están interrelacionados, siguiendo las mejores prácticas de redacción de artículos científicos y teniendo en cuenta todas las referencias bibliográficas. La metodología es esencial para entender el alcance de la investigación y proporciona un marco para interpretar los resultados obtenidos.
 
-Este estudio de tipo descriptivo-comparativo se centra en el análisis de los portafolios ofrecidos por los principales bancos de inversión en Estados Unidos. Se observa y compara el comportamiento de variables para describir atributos de manera objetiva y sistemática. El objetivo es determinar si estos portafolios se ajustan al perfil de riesgo supuesto, cuán alejado está su desempeño del óptimo, su consistencia en el tiempo y las estrategias más adecuadas según los instrumentos utilizados. Se analizarán los portafolios recomendados al cierre del año {\color{red}2020} y se compararán con sus pares de {\color{red}2014}, utilizando ETFs para la estrategia pasiva y Fondos Mutuales para la estrategia activa. Finalmente, se evaluará el rendimiento de las carteras en {\color{red}períodos de 3, 5 y 10 años.}
+Este estudio de tipo descriptivo-comparativo se centra en el análisis de los portafolios ofrecidos por los principales bancos de inversión en Estados Unidos. Se observa y compara el comportamiento de variables para describir atributos de manera objetiva y sistemática. El objetivo es determinar si estos portafolios se ajustan al perfil de riesgo supuesto, cuán alejado está su desempeño del óptimo, su consistencia en el tiempo y las estrategias más adecuadas según los instrumentos utilizados. Se analizarán los portafolios recomendados al cierre del año 2022 y se compararán con sus pares de 2014, utilizando ETFs para la estrategia pasiva y Fondos Mutuales para la estrategia activa. Finalmente, se evaluará el rendimiento de las carteras en períodos de 3, 5 y 10 años.
 
-La investigación sigue un diseño no experimental longitudinal, en el que las variables se observan y analizan a lo largo del tiempo en períodos específicos, sin ser manipuladas deliberadamente. El objetivo es hacer inferencias sobre el cambio de las variables. Este enfoque permite un análisis detallado de las tendencias y patrones a lo largo del tiempo.
+La investigación sigue un diseño no experimental longitudinal, en el que las variables se observan y analizan a lo largo del tiempo en períodos específicos, sin ser manipuladas deliberadamente. El objetivo es hacer inferencias sobre el cambio de las variables. Este enfoque permite un análisis detallado de las tendencias y patrones a lo largo del tiempo.  Emplea un diseño documental, recopilando información de diversas fuentes, incluyendo libros electrónicos como “Serie 7 General Security Representative Exam License Exam Manual” y “The Intelligent Investor”, trabajos de grado como “Inversión Activa vs. Pasiva: Una aplicación en el caso colombiano” de Vásquez, A., e investigaciones como “Determinants of the Success of Active vs. Passive Investment Strategy” de Birla, R. (2012). También se consultaron páginas web de contenido financiero, instituciones financieras como Morningstar y FINRA, y se utilizó la herramienta de Backtesting de Portfolio Visualizer y la terminal de Bloomberg para la recolección de datos de los instrumentos evaluados.
 
-{\color{red}Este estudio emplea un diseño documental, recopilando información de diversas fuentes, incluyendo libros electrónicos como “Serie 7 General Security Representative Exam License Exam Manual” y “The Intelligent Investor”, trabajos de grado como “Inversión Activa vs. Pasiva: Una aplicación en el caso colombiano” de Vásquez, A., e investigaciones como “Determinants of the Success of Active vs. Passive Investment Strategy” de Birla, R. (2012). También se consultaron páginas web de contenido financiero, instituciones financieras como Morningstar y FINRA, y se utilizó la herramienta de Backtesting de Portfolio Visualizer y la terminal de Bloomberg para la recolección de datos de los instrumentos evaluados.}
+La investigación adopta un enfoque retrospectivo o histórico en el manejo del tiempo, estudiando el Ratio de Sharpe y los rendimientos de los ETF’s y Fondos Mutuales en diversas categorías y horizontes de tiempo para los portafolios recomendados en los últimos 10 años, utilizando información generada hasta el año 2022 inclusive.
 
-La investigación adopta un enfoque retrospectivo o histórico en el manejo del tiempo, estudiando el Ratio de Sharpe y los rendimientos de los ETF’s y Fondos Mutuales en diversas categorías y horizontes de tiempo para los portafolios recomendados en los últimos 10 años, utilizando información generada hasta el {\color{red}año 2020 inclusive.}
-
-En cuanto al número de variables, el diseño es multivariable, ya que se examinan las herramientas financieras (ETFs y Fondos Mutuales), el Ratio de Sharpe, el rendimiento de estas herramientas, el tiempo en el que fueron analizadas y los portafolios de los bancos de inversión. Y las unidades de estudio son los portafolios recomendados por 3 bancos de inversión en EE. UU. para {\color{red}los años 2014 y 2020.}
+En cuanto al número de variables, el diseño es multivariable, ya que se examinan las herramientas financieras (ETFs y Fondos Mutuales), el Ratio de Sharpe, el rendimiento de estas herramientas, el tiempo en el que fueron analizadas y los portafolios de los bancos de inversión. Y las unidades de estudio son los portafolios recomendados por 3 bancos de inversión en EE. UU. para los años 2014 y 2022.
 
 Y las técnicas e instrumentos de recolección de datos  se basó en la técnica de revisión documental, que implicó la búsqueda de información en diversas fuentes impresas y digitales. Se consultaron tesis de grado, proyectos de investigación, libros, archivos estadísticos impresos, documentos digitales, libros electrónicos, artículos de revistas especializadas y bases de datos electrónicas. Esta amplia gama de fuentes permitió una evaluación exhaustiva de los activos seleccionados. Las fuentes primarias de información y resultados fueron Bloomberg, Morningstar, ETF Database, Portfolio Visualizer y las 11 instituciones que autorizaron las carteras evaluadas. La recolección de datos a través de estos medios fue esencial para el desarrollo de la investigación.
 
@@ -358,14 +358,287 @@ El procedimiento para la obtención de los resultados en este estudio se llevó 
 
     Para referencia de la tasa libre de riesgo se consideraron las notas del tesoro de EE. UU. con vencimiento a 3, 5 y 10 años, igualando el horizonte de inversión de las carteras. Los rendimientos promedio se tomaron para los diferentes horizontes a partir de los datos históricos correspondientes.
 
+\begin{center}
+    Tabla 1\\
+    Rendimiento anual promedio de notas del tesoro de EE.UU.\\
+
+    \includegraphics[width=0.3\textwidth]{image/tabla1.png}
+
+	\tiny Fuente: Reserva Federal.
+\end{center}
+Con fines comparativos también se obtuvo la ratio de Sharpe para el S\&P 500 en el mismo período.
+
+\begin{center}
+    Tabla 2\\
+    Ratio de Sharpe para índice S\&P 500\\
+
+    \includegraphics[width=0.3\textwidth]{image/tabla2.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+
     \item Selección de Fondos Cotizados y Fondos Mutuales equivalentes: Se identificó el activo equivalente al recomendado, utilizando el índice replicado como referencia. Esto permitió determinar qué tipo de estrategias resulta más atractiva para cada inversor, de acuerdo con su perfil de riesgo y horizonte de inversión.
 
     \item Cálculo de Desempeño y Ratio de Sharpe de portafolios equivalentes: Se utilizó la herramienta de Backtesting mediante el portal Portfolio Visualizer para obtener los retornos de cada portafolio, y de su equivalente, a 3, 5 y 10 años. Se obtuvo el retorno anualizado, y el total, de los portafolios, así como sus respectivas ratios de Sharpe. Se supuso la reinversión de dividendos pagados, así como los costos de manejo de los activos. Se consideró al ratio de Sharpe como la métrica más adecuada para determinar la estrategia más conveniente de acuerdo al perfil y horizonte de inversión.
 \end{enumerate}
 
 \section{Resultados}
+Tras la selección de las carteras y de los bancos, fue posible construir las fronteras eficientes para cada cartera y plazo estudiado, bajo los supuestos que fueron descritos anteriormente. Todas las fronteras elaboradas, junto con los portafolios y sus desempeños, se encuentran desglosados en los anexos del presente trabajo. 
+
+Debajo se procederá con el análisis de los resultados más destacados del presente trabajo. En ellos existen algunas consideraciones previas. 
+
+En principio, para cada banco, se espera que a medida que aumente el riesgo observado de la cartera, así lo haga su rendimiento registrado. De forma similar, se espera que a medida que el plazo estudiado aumente, así también lo haga la dispersión del desempeño ofrecido por las carteras con respecto al resultado óptimo hallado. 
+
+Si bien el primer punto, exceptuando casos puntuales, se cumple de forma consistente, la segunda consideración fue menos certera, una vez que se obtuvieron los resultados.
+
+A partir de este punto, se procederá con el análisis de los resultados obtenidos.
+
+\subsection{Vanguard}
+Para las carteras de Vanguard, tanto para 2014 como 2022, toda la selección de activos consiste en ETFs del banco. En total utilizaron 4 fondos cotizados, dos compuestos de acciones y otros dos de renta fija. Para cada caso, uno consiste en activos de EE. UU. (VTI y BND) y el otro de activos extranjeros (VXUS y BNDX). 
+
+El primer aspecto para destacar en el rendimiento y ubicación de las carteras es que para todos los casos las carteras recomendadas en 2014 tuvieron un rendimiento mayor a aquellas recomendadas en 2022, sin excepción. 
+
+Un segundo factor inmediato para destacar es el hecho de que para los portafolios en los extremos (100\% renta fija y 100\% renta variable), los portafolios recomendados se encuentran ubicados en la frontera eficiente, salvo para el caso a 10 años de 100\% renta variable, donde se encuentra la dispersión más alta de toda la muestra de Vanguard.
+
+Por otro lado, tanto para 2014 como para 2022 se repite un patrón en cuanto a la dispersión observada entre los portafolios recomendados y el escenario sobre la frontera. Para todos los casos, salvo las excepciones mencionadas, la dispersión es creciente a medida que la renta fija es sustituida por renta variable. De igual manera, en cada caso se observa que la dispersión a 5 años es la inferior en cada cartera con respecto a los otros plazos observados.
+
+\begin{center}
+    Tabla 3.\\
+    Rendimientos portafolios Vanguard y diferencia con óptimo 2014\\
+    \includegraphics[width=0.8\textwidth]{image/tabla3.png}
+
+    \tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\begin{center}
+    Gráfico 1\\
+
+    Diferencia con respecto a portafolio óptimo para Vanguard en 2014\\
+
+	\includegraphics[width=0.9\textwidth]{image/imagen1.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\begin{center}
+    Tabla 4\\
+    Rendimiento de portafolios Vanguard y diferencia con óptimo 2022\\
+
+    \includegraphics[width=0.8\textwidth]{image/tabla4.png}
+
+    \tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\begin{center}
+    Gráfica 2\\
+    Diferencia con respecto a portafolio óptimo para Vanguard en 2022\\
+
+    \includegraphics[width=0.9\textwidth]{image/imagen2.png}
+
+    \tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+C acertado afirmar que su adición ofrece un retorno ajustado por riesgo mejor que el portafolio más conservador ofrecido por Vanguard. A partir de allí, la medida de Sharpe decrece a medida que la renta variable sustituye el peso de los bonos en cada cartera. Esta tendencia se observa en todos los plazos, tanto para las carteras recomendadas como para aquellas ubicadas en la frontera óptima. 
+Por último, cuando se comparan las medidas de Sharpe de los portafolios ante la mostrada por el S\&P 500 en los mismos períodos se observa que, en general, las primeras 2 carteras recomendadas mejoran al índice de mercado. Sin embargo, a partir del punto donde la renta variable comienza a tener una participación mayoritaria en la cartera esta tendencia se revierte. Esto no sucede de manera similar en el caso de las carteras sugeridas por la frontera eficiente, donde a excepción de algunos casos, todos los portafolios ofrecen una medida de Sharpe superior a la del mercado. Especialmente a medida que el horizonte de tiempo es mayor. 
+
+\begin{center}
+    Tabla 5\\
+    Ratio de Sharpe para portafolios Vanguard (2014) y diferencia con óptimo.\\
+
+	\includegraphics[width=0.5\textwidth]{image/tabla5.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\newpage
+\begin{center}
+    Tabla 6\\
+    Ratio de Sharpe para portafolios Vanguard (2022) y diferencia con óptimo.\\
+
+    \includegraphics[width=0.5\textwidth]{image/tabla6.png}
+
+    \tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\subsection{Fidelity}
+Para el caso de Fidelity, tanto en 2014 como 2022, las carteras se encontraron compuestas por fondos mutuales en su totalidad. Todos, con la excepción de (FBNDX), carecen de costos de entrada o salida. 
+Una diferencia notable entre los dos años de referencia se encuentra en que en las carteras de 2014 se utilizaron en total 4 activos, mientras que en las recomendadas en 2022 se utilizaron 15 activos. 
+La composición de las carteras varía de acuerdo con el riesgo. Sin embargo, todas poseen bonos y acciones, sin activos de inversión alternativa. Estas poseen exposición tanto a mercado local (EE. UU.), como a mercados internacionales desarrollados y emergentes. 
+Para las carteras recomendadas en 2014 se denota una tendencia clara en cuanto a la dispersión con respecto al portafolio óptimo para cada combinación de activos. En cada portafolio la dispersión aumenta a medida que el plazo de tiempo observado es mayor. Sin embargo, un aspecto destacable es el hecho de que para el portafolio más agresivo todos los períodos se encuentran ubicados en la frontera eficiente, luego de contabilizar los costos de manejo de la cartera. Otro factor destacable es el hecho de que, exceptuando el portafolio a 10 años de crecimiento, todas las carteras se encuentran a una distancia similar al óptimo para cada nivel de riesgo. 
+Por su parte, las carteras ajustadas en 2022 presentan una tendencia opuesta a las de sus pares de 6 años atrás. Esto es, a medida que el plazo observado aumenta, la distancia con respecto a la frontera eficiente disminuye. Con la excepción de los dos portafolios en los extremos de riesgo, esta tendencia se cumple en cada caso. Si es destacable el hecho de que, contrario a lo sucedido para las carteras de 2014, a medida que se aumenta el riesgo de la cartera la distancia con respecto al óptimo también aumentó.
+
+\begin{center}
+	Tabla 7\\
+	Rendimientos portafolios Fidelity y diferencia con óptimo 2014\\
+
+	\includegraphics[width=0.8\textwidth]{image/tabla7.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+\newpage
+\begin{center}
+	Gráfico 3\\
+	Diferencia con respecto a portafolio óptimo para Fidelity en 2014\\
+
+	\includegraphics[width=0.9\textwidth]{image/imagen3.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\begin{center}
+	Tabla 8\\
+	Rendimientos portafolios Fidelity y diferencia con óptimo 2022\\
+
+	\includegraphics[width=0.8\textwidth]{image/tabla8.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\begin{center}
+	Gráfico 4\\
+	Diferencia con respecto a portafolio óptimo para Fidelity en 2022\\
+
+	\includegraphics[width=0.9\textwidth]{image/imagen4.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+Cuando se observa el desempeño, ajustado por el riesgo, de cada cartera se destacan varios detalles. En principio, para las carteras de 2014, se observa que, sin excepción, la medida de Sharpe decrece mientras se aumenta el riesgo de estas. Esto se repite tanto para las carteras recomendadas como para las óptimas. 
+
+Ahora bien, cuando se compara contra el S\&P 500, los portafolios a 5 años de 2014 son los únicos es tomar un valor aproximado al de mercado. El resto de perfiles y horizontes muestra un rezago considerable en comparación al mercado. Destaca que esto no sucede con los portafolios óptimos estimados para 2014. 
+
+Lo anterior se replica en las carteras ofrecidas en 2022 difieren en lo anterior. 
+Por último, y similar a lo observado en el caso de Vanguard, todas las carteras recomendadas en 2014 superan de manera considerable a sus pares de 2022, con una diferencia en promedio de 0,17\% mensual en los rendimientos ofrecidos.
+
+\begin{center}
+	Tabla 9\\
+	Ratio de Sharpe para portafolios Fidelity (2014) y diferencia con óptimo.\\
+
+	\includegraphics[width=0.45\textwidth]{image/tabla9.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+\begin{center}
+	Tabla 10\\
+	Ratio de Sharpe para portafolios Fidelity (2022) y diferencia con óptimo.\\
+
+	\includegraphics[width=0.45\textwidth]{image/tabla10.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+Observando los resultados, parece existir evidencia considerable para argumentar que los cambios, y aumento de activos ofrecidos, en los portafolios de 2022 no fueron justificados en su rendimiento.
+
+\subsection{Comparación de tipos de activos y estrategias. Fondos Mutuales y Fondos Cotizados (ETFs) }
+
+Adicional a los resultados hallados mediante la elaboración de las fronteras eficientes, se buscó estimar la efectividad de las estrategias utilizadas por una selección de tres bancos. La muestra se limitó a tres bancos dada la especificación de las carteras ofrecidas por estos. Fidelity utilizó únicamente fondos mutuales, mientras que Vanguard solo seleccionó fondos cotizados. Esto permitió buscar pares similares para establecer carteras opuestas y determinar que escenario le podría ser más rentable a un inversor con cada perfil y horizonte. 
+
+Entendiendo que la similitud de índices de referencia puede generar ciertas complejidades al momento de comparar los tipos de activos, especialmente conociendo que mientras un ETF pasivo busca replicar el índice, el fondo mutual activo suele tratar de generar alfa partiendo de la referencia, se utilizó la ratio de Sharpe como medida definitoria para determinar que selección de cartera puede ser más conveniente ajustando por desempeño y riesgo. 
+
+ Con lo anterior establecido, es posible notar que, salvo para el caso de Fidelity, los resultados son consistentes en todos los horizontes de inversión, con algunas excepciones.
+
+ Para el caso de Vanguard, donde ofrecen carteras con 4 ETFs, parece ser la opción más recomendable. Exceptuando los casos más conservadores para 5 y 10 años, el resto de los escenarios son dominados por la estrategia pasiva de uso de fondos cotizados.
+
+ \begin{center}
+     Tabla 11\\
+     Activo con mejor ratio de Sharpe por horizonte y perfil de riesgo para Vanguard\\
+
+     \includegraphics[width=0.6\textwidth]{image/tabla11.png}
+
+     \tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+El caso donde se evidenció una mayor dispersión en los resultados fue para las carteras de Fidelity, las cuales se encuentran conformadas por fondos mutuales en su totalidad. Para su caso, en horizontes de 3 años la selección de una estrategia más activa resultó más atractiva. Mientras que, para plazos intermedios, a medida que el riesgo aumentó, la opción pasiva resultó más eficiente. Por último, para plazos largos, con la excepción de los dos casos más agresivos, donde los resultados fueron similares para cada estrategia, el uso de fondos mutuales resultó, en su mayoría, la estrategia ganadora.
+
+\begin{center}
+	Tabla 12\\
+	Activo con mejor ratio de Sharpe por horizonte y perfil de riesgo para Fidelity\\
+
+	\includegraphics[width=0.5\textwidth]{image/tabla12.png}
+
+	\tiny Fuente: Bloomberg, elaboración propia.
+\end{center}
+
+En vista de los resultados, es posible afirmar que tanto Fidelity como Vanguard poseen carteras que, al menos en la selección del tipo de activos, parecen ser las más adecuadas para la mayoría de los perfiles estudiados.
 
 \section{Conclusiones}
+El presente trabajo se fundamentó en las carteras ofrecidas por los principales bancos de inversión en EE. UU. a sus clientes, de acuerdo a los perfiles de riesgo de cada inversor. Mediante estas su buscó determinar si los perfiles ofrecidos correspondían al riesgo ofrecido, así como si las carteras eran óptimas. 
+
+Para ello, se desarrolló una frontera eficiente, para cada cartera, en horizontes de 3, 5 y 10 años. Mediante éstas fue posible determinar qué tan alejados se encontraron los portafolios recomendados del punto de mayor eficiencia, dados los activos utilizados. 
+Si bien los resultados variaron de forma considerable para cada banco, sí existió una tendencia general relacionada al nivel de riesgo ofrecido. A medida que el riesgo de las carteras aumentó, así lo hizo su dispersión con respecto al óptimo hallado en las fronteras estimadas. 
+
+Así mismo, otro factor en común en el caso de los dos bancos (Fidelity y Vanguard), para los cuales fue posible realizar una comparación de las carteras de los años 2014 y 2022, fue que las carteras actualizadas en 2022 no resultaron ser más eficientes ni ofrecieron un mayor desempeño que aquellas ofrecidas en 2014. Estos resultados fueron consistentes para todos los periodos evaluados entre 2012 y 2022.
+
+Otro aspecto resaltante de los resultados hallados fue la consistencia en las dispersiones, con respecto a la frontera, a través de los horizontes evaluados. Para cada plazo estudiado, salvo ligeras excepciones, las dispersiones fueron mayores para plazos largos, tanto para perfiles conservadores como agresivos. 
+
+En relación al desempeño de las carteras, las cuales están sustentadas en criterios de riesgo y diversificación, se notó que, salvo contadas excepciones, solo los portafolios moderados y conservadores ofrecieron desempeños superiores al S\&P 500, una vez se ajustó por riesgo. A medida que el riesgo de las carteras aumentó, la medida de Sharpe no justificó el riesgo adicional tomado en los portafolios, una vez comparado con el índice de mercado. Para el cado específico de Fidelity, con la excepción de los portafolios a plazos medios de 2014, casi todos fueron inferiores al mercado.  
+
+Ahora bien, con respecto a lo anterior, también fue hallado que los pares eficientes de los portafolios ofrecidos, si bien mantenían resultados similares, mostraron un desempeño mejor al mercado incluso en carteras moderadamente agresivas o de crecimiento.  
+
+En función a los perfiles de riesgo evaluados todos los bancos mostraron congruencia en los portafolios recomendados, de acuerdo al riesgo ofrecido. Esto es, evaluando el portafolio de mínima varianza para cada cartera, a medida que se aumentó el riesgo, la cartera ofrecida mostró una mayor distancia con respecto al punto de mínima varianza, y al portafolio que le precedía en criterios de riesgo. 
+
+En último lugar, buscando establecer criterios de selección de activos más adecuados, se buscó comparar carteras de acuerdo al tipo de vehículo de inversión ofrecido. Usando de muestra a 2 bancos, de los cuales sus carteras se encontraron conformadas únicamente por un tipo de activo, se estableció una comparación entre Fondos Mutuales, como proxy de manejo activo de inversiones, y Fondos Cotizados (ETFs), como proxy de inversión pasiva. 
+
+Usando las carteras de Fidelity y Vanguard, se determinaron portafolios equivalentes, utilizando un vehículo de inversión opuesto al ofrecido por la cartera, utilizando el índice replicado por el activo como modelo para hallar la equivalencia de los activos, y se realizó una comparación por perfil de riesgo y horizontes de tiempo a 3, 4 y 5 años, midiendo el desempeño de cada cartera. Se utilizó la medida de Sharpe como criterio de decisión.  Las carteras mostraron unos resultados mixtos. Para Vanguard, los portafolios compuestos por ETFs obtuvieron un mejor ratio Sharpe que su equivalente en fondos mutuales. Sin embargo, para Fidelity se observa como a 3 y 10 años los fondos mutuales tienen mejor desempeño que sus equivalentes en ETFs, pero a 5 años en los portafolios más expuestos a la renta variables los ETFs consiguen un mejor ratio que los fondos mutuales.
+
+Es de destacar que, tanto Fidelity como Vanguard, al menos en lo que a selección de tipo de activos se refiere, parecen encontrarse ofreciendo las mejores opciones, salvo excepciones. 
+
+En lo observado para ambas instituciones es posible afirmar dos cuestiones. En primer lugar, los resultados de los portafolios modificados en 2022 no resultaron en mejoras para sus clientes, al menos en término de desempeño y riesgo. En segundo lugar, ambas instituciones si parecen justificar el uso de las estrategias seleccionadas para cada perfil de riesgo, en términos generales, aunque no absolutos. 
+
+Algo que se debe destacar es que, contraria a la hipótesis de esta investigación, el uso de estrategias activas fue más justificable en perfiles más conservadores.
+
+Como cierre resulta útil comentar algunas limitantes del presente trabado y recomendaciones para futuros trabajos. 
+
+La investigación actual abarca un margen amplio de temas que ofrecen un espacio considerable para futuros trabajos. En primer lugar, habiendo considerado los costos de manejo de todos los activos utilizados, sí es recomendable, para futuros estudios, agregar los costos de corretaje, especialmente para los Fondos Mutuales, los cuáles pueden ser determinantes en el análisis comparativo con respecto a los fondos cotizados. 
+
+Por su parte, para el presente trabajo, se consideraron fondos cotizados de manejo pasivo, dado que estos son los ofrecidos por los bancos estudiados. Sin embargo, en el presente, cada vez son más populares los fondos cotizados de manejo activo. Si bien no han estado en el mercado un tiempo suficiente como para evaluar sus resultados de manera consistente, sí se considera como un factor a tomar en cuenta en futuros estudios comparativos. 
+
+Adicionalmente, por limitaciones de espacio y recursos, el estudio de carteras se limitó a las ofrecidas en 2014 y 2022 por dos instituciones. Parece útil ampliar la muestra estudiada en estudios posteriores.
+
+\newpage
+
+\begin{center}
+    \textbf{ANEXO (v. reducida)}
+\end{center}
+
+\begin{center}
+    Gráfica 5.\\
+    Frontera eficiente a 3 años para portafolio 80-20 para Vanguard.\\
+
+    \includegraphics[scale=1.5]{image/imagen5.png}
+
+\end{center}
+
+\begin{center}
+    Gráfica 5.\\
+    Frontera eficiente a 3 años para portafolio 80-20 para Vanguard.\\
+
+    \includegraphics[scale=1.5]{image/imagen6.png}
+
+\end{center}
+
+\begin{center}
+    Gráfica 5.\\
+    Frontera eficiente a 3 años para portafolio 80-20 para Vanguard.\\
+
+    \includegraphics[scale=1.2]{image/imagen7.png}
+
+\end{center}
+
+\newpage
+
+\begin{center}
+    Tabla 13.\\
+    Resultados de Backtesting para cada perfil y horizonte de acuerdo con el activo utilizado para Fidelity\\
+
+    \includegraphics[scale=.7]{image/tabla13.png}
+
+    \tiny Fuente: Bloomberg y Portafolios Visualizer, elaboración propia.
+
+\end{center}
+
 
 
 

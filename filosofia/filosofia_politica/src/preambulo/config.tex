@@ -1,0 +1,19 @@
+% MARGENES
+\setlrmarginsandblock{3cm}{3cm}{*} % Márgenes izquierdo y derecho
+\setulmarginsandblock{3cm}{3cm}{*} % Márgenes superior e inferior
+\checkandfixthelayout
+
+% ESTILO DE CAPÍTULOS
+\chapterstyle{dash} % Estilo de capítulo
+
+% INDICE GENERAL
+\renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}} % Puntos para capítulos en el índice general
+\renewcommand*{\cftchapterfont}{\tiny} % Tamaño de letra de los capítulos
+\renewcommand*{\cftchapterpagefont}{\tiny} % Tamaño de letra de los números de página de los capítulos
+\renewcommand{\cftchapteraftersnum}{.} % Punto después del número de capítulo en el índice general
+
+% TIPOS DE LETRA MATHPAZO
+\DeclareSymbolFont{letters}{OML}{zplm}{m}{it} % Letras itálicas
+
+% SALTOS DE PARRAFO
+\setlength{\parskip}{0.5cm} % Espacio entre párrafos

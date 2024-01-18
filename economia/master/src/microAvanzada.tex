@@ -1,0 +1,298 @@
+\chapter{Teoría del consumidor: Preferencias y dualidad}
+
+\section{Problema del consumidor}
+El problema del consumidor tiene tres ingredientes:
+
+\begin{enumerate}
+    \item Que cestas existen?
+    \item Qué cestas puede adquirir un consumidor?
+    \item Cuáles son los gustos del consumidor?
+\end{enumerate}
+
+Decimos que hay $i=1,2,\ldots,l$ consumidores, e $I=1,2,\ldots,m$ mercancías.\\
+
+\begin{center}
+    \textit{La solución del problema de elección del consumidor consiste en elegir de entre todas las cestas que existen y que podemos adquirir aquella cesta que le aporte más bienestar.}
+\end{center}
+
+La solución estará representada por una función de demanda, que nos dirá cuanto de esos bienes que consumiremos para \textbf{maximizar nuestro bienestar}.\\
+
+
+
+\section{Dos supuestos implícitos de la teoría del consumidor}
+
+\begin{enumerate}
+    \item Cada \textbf{agente es aislado o independiente} de los demás. No hay interacción entre los agentes.
+    \item El objetivo de esta teoría no es descubrir precios. Si no cual es el comportamiento del consumidor con \textbf{precios dados o exógenos que los aceptamos}.
+\end{enumerate}
+
+\section{Conjunto de consumo}
+
+\paragraph{Mercancía} Es un bien o servicio definido por sus características físicas, su localización o estado de naturaleza.\\
+\paragraph{Conjunto de consumo} Es un conjunto de planes de consumo que existen para un consumidor $i$, representado por el conjunto $\mathcal{X}^i$.
+\paragraph{Plan de consumo} $i:\textbf{X}^i=\left(x_1^i,\ldots,X_L^i\right)\in \mathcal{X}^i$ donde $x_l^i$ es la cantidad de mercadería $l$ consumida por el consumidor $i$.
+
+\subsection{Propiedades del conjunto de consumo \boldmath$\mathcal{X}^i$ (Que cestas existen?))}
+
+\begin{itemize}
+    \item \textbf{No vacío}: $\mathcal{X}^i\neq \emptyset$;
+    \item Los bienes son una cantidad no negativa: $x_l^i\geq 0$;
+    \item No consumir nada es una opción de consumo: $\textbf{0}^i\in \mathcal{X}^i$;
+    \item Es un conjunto cerrado;
+    \item Es un conjunto convexo (Cualquier cesta de bienes pertenece al conjunto de consumo).
+\end{itemize}
+
+\subsection{Conjunto presupuestario (Qué cestas puede adquirir un consumidor?)}
+\paragraph{Dotaciones iniciales} Es un vector $\overline{\omega}^i = \left(\overline{\omega}_1^i,\ldots,\overline{\omega}_L^i\right)\in \mathbb{R}^L_+$ donde $\overline{\omega}^i_l$ es la dotación del bien $l$ adquirida por el consumidor $i$..
+\paragraph{Precios dados} $\overline{p}= \left(\overline{p}_1,\ldots,\overline{p}_L\right)\in \mathbb{R}^L_+$ donde $\overline{p}_l$ es el precio del bien $l$.
+\paragraph{Riqueza o renta} $M^i\left(\overline{\textbf{p}}\right)=\left[\overline{\textbf{p}} \overline{\omega}^i=\displaystyle\sum_{l=1}^L \overline{\textbf{p}_l} \overline{\omega}_l^i\right]$
+\paragraph{Gasto del plan de consumo \boldmath$\textbf{x}^i$} $\overline{\textbf{p}}\textbf{x}^i=\displaystyle\sum_{l=1}^L \overline{\textbf{p}_l} x_l^i$
+\paragraph{Conjunto presupuestario \boldmath $\beta^i$} De aquellos de los que existen y que podemos adquirir, estarán representados por:
+$$\beta^i\left(\overline{\textbf{p}}\right)=\hat{\beta}^i\left[\overline{\textbf{p}},M^i\left(\overline{\textbf{p}}\right)\right]=\left\{\textbf{x}^i\in \mathcal{X}^i:\overline{\textbf{p}}\textbf{x}^i\leq M^i\left(\overline{\textbf{p}}\right)\left[=\overline{\textbf{p}}\overline{\omega}^i\right]\right\}$$
+Es decir, de todas cestas que están en el conjunto de consumo, aquellas en las que su precio valga por lo mucho mi renta.
+\paragraph{NOTA: Relación marginal de sustitución} $\text{RMI}(\textbf{x})=-\dfrac{\triangle x_2}{\triangle x_1}=\dfrac{\overline{p}_1}{\overline{p}_2}$. Es lo que nos estamos perdiendo de un bien para incrementar en una unidad del otro bien.
+
+\subsection{Preferencias del consumidor (Cuáles son los gustos del consumidor?)}
+\begin{center}
+    \textit{Yo prefiero esto antes que aquello.}
+\end{center}
+Formalmente es una relación binaria, con el criterio de \textbf{ser como mínimo tan preferido como}: $\succeq^i$. 
+
+\begin{axioma}[Completitud]
+    Para todo $\textbf{x}^i,\textbf{y}^i\in \mathcal{X}^i$ se cumple que $\textbf{x}^i\succeq^i \textbf{y}^i$ o bien $\textbf{y}^i\succeq^i \textbf{x}^i$
+\end{axioma}
+
+\begin{axioma}[Reflexividad]
+    Par todo $\textbf{x}^i\in \mathcal{X}^i$ se cumple que $\textbf{x}^i\succeq^i \textbf{x}^i$. Por lo tanto $\textbf{x}^i\sim^i \textbf{x}^i$.
+\end{axioma}
+
+\begin{axioma}[Transitividad]
+    Para todo $\textbf{x}^i,\textbf{y}^i,\textbf{z}^i\in \mathcal{X}^i$ se cumple que si $\textbf{x}^i\succeq^i \textbf{y}^i$ e $\textbf{y}^i\succeq^i \textbf{z}^i$ entonces $\textbf{x}^i\succeq^i \textbf{z}^i$.
+\end{axioma}
+
+Estos axiomas se llaman \textbf{preferencias racionales}.
+
+\subsection{Conjunto de planes de consumo}
+
+\begin{itemize}
+    \item Por lo menos mejores que ese: $\mathcal{MI}^i\left(\textbf{x}^i_0\right) \equiv \left\{\textbf{x}^i\in \mathcal{X}^i:\textbf{x}^i\succeq^i \textbf{x}^i_0\right\}$;
+    \item Peores o iguales que ese: $\mathcal{PI}^i\left(\textbf{x}^i_0\right) \equiv \left\{\textbf{x}^i\in \mathcal{X}^i:\textbf{x}_0^i\succeq^i \textbf{x}^i\right\}$;
+    \item Estrictamente mejores: $\mathcal{M}^i\left(\textbf{x}^i_0\right) \equiv \left\{\textbf{x}^i\in \mathcal{X}^i:\textbf{x}^i\succ^i \textbf{x}^i_0\right\}$;
+    \item Estrictamente peores: $\mathcal{P}^i\left(\textbf{x}^i_0\right) \equiv \left\{\textbf{x}^i\in \mathcal{X}^i:\textbf{x}_0^i\succ^i \textbf{x}^i\right\}$;
+    \item Indiferentes: $\mathcal{I}\left(\textbf{x}_0^i\right)\equiv \left\{\textbf{x}^i\in \mathcal{X}^i:\textbf{x}_0^i\sim^i \textbf{x}^i\right\}$.
+\end{itemize}
+
+Los conjuntos $\mathcal{MI}^i\left(\textbf{x}^i\right)$ y $\mathcal{PI}^i\left(\textbf{x}^i\right)$ son conjuntos cerrados. Y $\mathcal{M}^i\left(\textbf{x}^i\right)$ y $\mathcal{P}^i\left(\textbf{x}^i\right)$ son conjuntos abiertos.
+
+\begin{axioma}[No saciabilidad local]
+    Para todo $\textbf{x}_0^i\in \mathcal{X}^i$, y para todo número real $\epsilon>0$. Existe una cesta $\textbf{x}^i\in B\left(\textbf{x}^i_0,\epsilon\right)$ tal que $\textbf{x}^i\succ^i \textbf{x}^i_0$.
+\end{axioma}
+
+\begin{axioma}[Monotonicidad]
+    Para todo par de planes de consumo $\textbf{x}^i,\textbf{y}^i\in \mathcal{X}^i$, tal que $x^i\geq y^i$. Entonces, $\textbf{x}^i\succeq^i \textbf{y}^i$ (Siempre vamos a querer más que menos).
+\end{axioma}
+
+\begin{axioma}[Convexidad]
+    Para todo par de planes de consumo $\textbf{x}^i,\textbf{y}^i\in \mathcal{X}^i$, y $\lambda\in [0,1]$ se cumple que $\textbf{z}^i_\lambda = \lambda\textbf{x}^i+(1-\lambda)\textbf{y}^i$. Entonces, $\textbf{z}_\lambda^i\succeq^i \textbf{x}^i$ y $\textbf{z}^i \succeq^i \textbf{y}^i$. 
+\end{axioma}
+
+\begin{axioma}[Convexidad estricta]
+    Para todo par de planes de consumo $\textbf{x}^i,\textbf{y}^i \textbf{z}^i \in \mathcal{X}^i$, con $\textbf{z}^i\neq \textbf{y}^i$, tal que $\textbf{z}^i\succeq^i \textbf{x}^i$ e $\textbf{y}^i \succeq^i \textbf{x}^i$. Entonces,  $\lambda\textbf{z}^i+(1-\lambda)\textbf{y}^i \succeq^i \textbf{x}^i$ para todo $\lambda\in [0,1]$.
+\end{axioma}
+
+$\mathcal{M}^i\left(\textbf{x}^i\right)$ y $\mathcal{MI}^i\left(\textbf{x}^i\right)$ son convexos.
+
+
+\section{Función de utilidad}
+Para representar los gustos debemos crear una función de utilidad con valores numéricos que solo nos indicarán si prefiero una cesta a otra, no cuanto la prefiero.
+
+Sea $u^i:\mathcal{X}^i \equiv \mathbb{R}^L_+ \to \mathbb{R}$ la función de utilidad de las preferencias del consumidor $i$. Entonces, para todo $\textbf{x}^i,\textbf{y}^i\in \mathcal{X}^i$ se verifica que 
+\begin{enumerate}[\bfseries i)]
+    \item $\textbf{x}^i\succ^i\textbf{y}^i \iff u^i\left(\textbf{x}^i\right)>u^i\left(\textbf{y}^i\right)$;
+    \item $\textbf{x}^i\sim^i\textbf{y}^i \iff u^i\left(\textbf{x}^i\right)=u^i\left(\textbf{y}^i\right)$.
+ \end{enumerate}
+
+
+\begin{teo}
+    Si la relación binaria $\succeq$ es completa, transitiva, continua y estrictamente monótona. Existe, una función real y continua, $u:\mathbb{R}^n_+\to \mathbb{R}$ el cual representa a $succeq$.\\
+
+	Demostración.-\; Dado que sólo menciona la existencia podemos afirmar que podría haber por lo menos una función que represente la relación de preferencia. Por lo que si podemos imaginar una sola función que sea continua y que represente las preferencias dadas, habremos demostrado el teorema.\\
+
+	Sea un vector de unos $\textbf{e}\equiv(1,\ldots,1)\in \mathbb{R}^n_+$ y sea $u:\mathbb{R}^n_+\to \mathbb{R}$ tal que,
+	\begin{equation}
+	    u(\textbf{x})\textbf{e}\sim \textbf{x}.
+	\end{equation}
+	Es decir, tomamos cualquier $\textbf{x}$ en el dominio de $\mathbb{R}^n_+$ y asignamos el número $u(\textbf{x})$ de manera que el conjunto $u(\textbf{x})e$, con $u(\textbf{x})$ unidades de cada bien sea indiferente a $\textbf{x}$.\\
+
+	Ahora, nos preguntamos ¿si existe siempre un número $u(\textbf{x})$ que satisfaga 1.1? y ¿está determinada de forma única, de modo que $u(x)$ sea una función bien definida?. \\
+
+	Para ver la primera cuestión; sea $\textbf{x}\in \mathbb{R}^n_+$.  Consideremos los dos conjuntos:
+	$$
+	\begin{array}{rcl}
+	    A &\equiv& \left\{t\geq 0: t\textbf{e}\succeq \textbf{x}\right\}\\\\
+	    B &\equiv& \left\{t\geq 0: t\textbf{e}\preceq \textbf{x}\right\}
+	\end{array}
+	$$
+	Notemos que si $t^*\in A\cap B$. Entonces, $t^*\textbf{e}\sim \textbf{x}$. Por lo que, $u(\textbf{x})=t^*$ podría satisfacer 1.1. Para ello, demostraremos que $A\cap B$ es no vacío. \\
+
+	Sabemos que la continuidad de $\succeq$ para $A$ y $B$ es cerrada en $\mathbb{R}_+$. También por la Monotonicidad estricta, $t\in A$ implica que $t'\in A$ para todo $t'\geq t$. Como consecuencia, $A$ es un intervalo $[\underline{t},\infty)$. Lo propio para $B\in \mathbb{R}_+$ que es un intervalo con dominio en $[0,\overline{t}]$.\\
+
+	Luego, para cualquier $t\geq 0$, $\succeq$ implica que $t\textbf{e}\succeq \textbf{x}$ o $t\textbf{e}\preceq \textbf{x}$. Es decir, $t\in A\cup B$. Esto significa que $\mathbb{R}_+=A\cup B=[0,\overline{t}]\cup [\underline{t},\infty]$. Concluimos que $\underline{t}\leq \overline{t}$, de modo que $A\cap B\neq \emptyset$.\\
+
+	Respondamos la segunda cuestión. Debemos demostrar que sólo hay un número $t\geq 0$ tal que $t\textbf{e}\sim \textbf{x}$. Supongamos que existe $t_1\textbf{e}\sim \textbf{x}$ y $t_2\textbf{e}\sim\textbf{x}$, por lo transitividad de $\sim$ se tiene $t_1\textbf{e}\sim t_2\textbf{e}$. Así, por la Monotonicidad estricta $t_1=t_2$.\\
+
+	Concluimos que para cada $\textbf{x}\in \mathbb{R}_+^n$ hay exactamente un número $u(\textbf{x})$, tal que se satisface 1.1. Ahora, demostraremos que esta función representa las preferencias.\\
+
+	Consideremos dos cestas $\textbf{x}^1$ y $\textbf{x}^2$. Consideremos también que sus números de utilidad asociados a $u(\textbf{x}^1)$ y $u(\textbf{x}^2)$. Lo que por definición satisface $u(\textbf{x}^1)\textbf{e}\sim\textbf{x}^1$ y $u(\textbf{x}^2)\textbf{e}\sim\textbf{x}^2$. 
+	$$
+	\begin{array}{rcl}
+	    \textbf{x}^1 \succeq \textbf{x}^2 &\iff& u(\textbf{x}^1)\textbf{e}\sim \textbf{x}^1\succeq \textbf{x}^2 \sim u(\textbf{x}^2)\textbf{e}\\\\
+					      &\iff& u(\textbf{x}^1)\succeq u(\textbf{x}^2)\\\\
+					      &\iff& u(\textbf{x}^1)\geq u(\textbf{x}^2).
+	\end{array}
+	$$
+
+	Sólo queda demostrar que la función de utilidad $u:\mathbb{R}_+^n\to \mathbb{R}$ es continua. Basta demostrar que la imagen inversa sobre $u$ de cada bola abierta en $\mathbb{R}$ es abierta en $\mathbb{R}_+^n$. Ya que, la bola abierta en $\mathbb{R}$, son intervalos abiertos. Entonces, equivale a demostrar que $u^{-1}\left[(a,b)\right]$ es abierto en $\mathbb{R}_+^n$ para todo $a<b$. Por lo que,
+	$$
+	\begin{array}{rcl}
+	    u^{-1}\left[(a,b)\right] &=& \left\{x\in \mathbb{R}_+^n | a<u(\textbf{x}) < b\right\}\\\\
+				     &=& \left\{x\in \mathbb{R}_+^n | a\textbf{e}\prec u(\textbf{x})\textbf{e} \prec b\textbf{e}\right\}\\\\
+				     &=& \left\{x\in \mathbb{R}_+^n | a\textbf{e}\prec \textbf{x} \prec b\textbf{e}\right\}.
+	\end{array}
+	$$
+	Es decir,
+	\begin{equation}
+	    e^{-1}\left[(a,b)\right]=\;\; \succ (a\textbf{e}) \bigcap \prec (b\textbf{e}).
+	\end{equation}
+	Sabemos que por la continuidad de $\succeq$, los conjuntos $\succeq (a\textbf{e})$ y $\prec (b\textbf{e})$ son cerrados en $X=\mathbb{R}_+^n$. En consecuencia, los conjuntos de 1.2 al ser complementos de estos conjuntos cerrados, son abiertos en $\mathbb{R}_+^n$. Por lo tanto, $u^{-1}\left[(a,b)\right]$ siendo la intersección de dos conjuntos abiertos en $\mathbb{R}^n_+$ es abierto en $\mathbb{R}_+^n$.
+\end{teo}
+
+
+\chapter{Teoría del consumidor: Decisiones y dualidad}
+
+La solución al problema del consumidor viene dado por:
+
+$$
+\left[P^i\right]
+\left\{
+    \begin{array}{rcl}
+	\max_{x_1^i,x_2^i,\ldots,x_L^i}\in \mathbb{R}^L & u\left(x_1^i,x_2^i,\ldots,x_L^i\right) & :\textbf{S3}\\\\
+	\text{s.a.} & \textbf{x}^i \in \beta^i(\textbf{p}\left[=\hat{\beta}^i \left(\textbf{p},M^i(\textbf{p})\right)\right] & :\textbf{S1,S2}\\\\
+	\text{dados} & \left(\overline{p}_1,\overline{p}_2,\ldots,\overline{p}_L\right), \overline{M}^i \left(=M^i(\overline{p})\right) & :\textbf{S2}
+    \end{array}
+\right.
+$$
+
+Nos preguntamos:
+
+\begin{enumerate}
+    \item ¿Por qué hay solución?
+    \item ¿Por qué sólo hay una?
+    \item ¿por qué gastamos toda la renta?
+\end{enumerate}
+
+\subsection{Existencia de solución}
+
+\begin{itemize}
+    \item Porque el conjunto de consumo $\beta^i\left(\overline{p},\overline{M}^i\right)$ es compacto (cerrado y acotado), y
+    \item porque las preferencias son continuas.
+\end{itemize}
+
+Esto se verifica con
+
+\begin{teo}[Teorema de Weierstrass] Si una función continua es un compacto. Entonces, dentro de ese compacto alcanzará al máximo y al mínimo.
+\end{teo}
+
+\subsection{Unicidad de la solución}
+\begin{itemize}
+    \item Porque un conjunto de consumo $\beta^i\left(\overline{p},\overline{M}^i\right)$ es compacto, no vacío y convexo, y
+    \item porque las preferencias son continuas y estrictamente convexas.
+\end{itemize}
+
+Es decir, si existieran dos soluciones igual de buenas. Entonces, la combinación convexa de ambas sería mejor que cada una de ellas. Lo que contradice la hipótesis de que ambas son soluciones en un conjunto convexo.
+
+\subsection{Gasto total de la renta}
+\begin{itemize}
+    \item Porque los precios son estrictamente positivos, y
+    \item porque la no saciabilidad local, y monotonicidad de las preferencias. 
+\end{itemize}
+
+Es decir,
+$$\textbf{x}^{i*}\in \mathcal{F}r \beta^i\left(\overline{p},\overline{M}^i\right) \textbf{ y }  \overline{px}^* = \overline{M}^i.$$
+En otras palabras,
+El problema del consumidor $\textbf{x}^{i*}$ cae en la frontera del conjunto presupuestario $\mathcal{F}r$ (la solución), y lo que vale esa solución $\overline{px}^*$ es toda la renta $\overline{M}^i$. \\
+
+Cómo más es mejor (monotonía), y no hay saciedad local. Entonces, la solución debe estar en la frontera del conjunto presupuestario. 
+
+\paragraph{Observaciones:} 
+
+\begin{itemize}
+    \item La función de utilidad es diferenciable.
+    \item La solución al problema $\left[P^i\right]$,
+	$$
+	\begin{array}{rrcl}
+	    d^i: & \mathbb{R}_{++}^L & \to & \mathcal{X}^i\equiv\mathbb{R}^L_+\\\\
+		 & \left(\textbf{p},M^i\right) & \mapsto & d^i\left(\textbf{p},M^i\right) = \textbf{x}^{i*}.
+	\end{array}
+	$$
+    se denomina \textbf{función de demanda normal} o función de demanda marshalliana.
+    \item Una función de demanda es continua.
+    \item Una función de demanda es homogénea de grado cero.
+	Sea $f(x,y)$ una función homogénea de grado $k$. Si $k=0$.  Entonces,
+	$$f(\lambda x, \lambda y) = \lambda^k f(x,y) = \lambda^0 f(x,y)= f(x,y).$$
+\end{itemize}
+
+\section{Curva de demanda y curva de Engel}
+La \textbf{curva de demanda} son las cantidad de un bien que estamos dispuestos a comprar para cada nivel de precios, manteniendo constante las demás variables.
+$$x_1^* = D(p_1)=d_1(\overline{p}_1,\overline{p}_2,\ldots,\overline{p}_L,\overline{M}).$$
+
+La \textbf{curva de Engel} son las cantidades de un bien que estamos dispuestos a comprar para cada nivel de renta, manteniendo constante las demás variables.
+$$x_1^* = E(M)=d_1(\overline{p}_1,\overline{p}_2,\ldots,\overline{p}_L,M).$$
+
+\section{Tipos de bienes}
+
+Si hacemos variar el precio $p_1$,
+$$x_1^* = D(p_1)=d_1(p_1,\overline{p}_2,\ldots,\overline{p}_L,\overline{M}).$$
+Entonces,
+
+$$\dfrac{\triangle \hat{d}_1^i\left(\textbf{p},M^i\right)}{\triangle p_1} < 0 \qquad \left(\dfrac{\partial d_1^i\left(\textbf{p},M^i\right)}{\partial p_1}<0\right)$$
+
+Se llamará un \textbf{bien ordinario}. Es decir, si sube el precio del bien 1, la cantidad demandada del bien 1 disminuye.\\
+
+Y si,
+
+$$\dfrac{\triangle \hat{d}_1^i\left(\textbf{p},M^i\right)}{\triangle p_1} > 0 \qquad \left(\dfrac{\partial d_1^i\left(\textbf{p},M^i\right)}{\partial p_1}>0\right)$$
+
+Se llamará un \textbf{bien Giffen}. Es decir, si sube el precio del bien 1, la cantidad demandada del bien 1 aumenta (compro más).\\
+
+\subsection{Tipo de bienes según la curva de Engel}
+Si hacemos variar la renta $M$,
+$$x_1^* = E(M)=d_1(\overline{p}_1,\overline{p}_2,\ldots,\overline{p}_L,M).$$
+Entonces, 
+$$\dfrac{\triangle E_1\left(\textbf{p},M^i\right)}{\triangle M} > 0 \qquad \left(\dfrac{\partial E_1\left(\textbf{p},M^i\right)}{\partial M}>0\right)$$
+Se llamará un \textbf{bien normal}. Es decir, si sube la renta, la cantidad demandada del bien 1 aumenta.\\
+Y si,
+$$\dfrac{\triangle E_1\left(\textbf{p},M^i\right)}{\triangle M} < 0 \qquad \left(\dfrac{\partial E_1\left(\textbf{p},M^i\right)}{\partial M}<0\right)$$
+Se llamará un \textbf{bien inferior}. Es decir, si sube la renta, la cantidad demandada del bien 1 disminuye (compro menos).\\
+
+Los \textbf{bienes Veblen} son los que si sube la renta aumenta la cantidad demandada. Es decir, son bienes normales con pendiente positiva.\\
+
+\section{Función indirecta de utilidad}
+
+La \textbf{función indirecta de utilidad} es la función que nos permite calcular el nivel de utilidad que alcanza el consumidor para cada nivel de precios y renta. Es decir, es la función que nos permite calcular el valor de la función de utilidad para cada nivel de precios y renta (Ahora depende de los precios). \\
+$$
+\begin{array}{rrcl}
+    v^i: & \mathbb{R}_{++}^L \times \mathbb{R}_+ & \to &\mathbb{R}\\\\
+	 & \left(\textbf{p},M^i\right) & \mapsto & v^i\left(\textbf{p},M^i\right) = u^i\left(\textbf{x}^{i*}\right)=u^i\left(d^i\left(d^i(\textbf{p},M^i)\right)\right).
+\end{array}
+$$
+
+Si los precios fueran estos tu utilidad fueran estos otros. 
+
+\paragraph{Propiedades de la función indirecta de utilidad:}
+
+\begin{itemize}
+    \item Continua,
+    \item Homogénea de grado cero en $\left(\textbf{p},M^i\right)$, y
+    \item cuasi-convexa en $\textbf{p}$.
+\end{itemize}

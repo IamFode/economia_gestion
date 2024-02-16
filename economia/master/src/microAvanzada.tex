@@ -114,7 +114,7 @@ Sea $u^i:\mathcal{X}^i \equiv \mathbb{R}^L_+ \to \mathbb{R}$ la función de util
 
 
 \begin{teo}
-    Si la relación binaria $\succeq$ es completa, transitiva, continua y estrictamente monótona. Existe, una función real y continua, $u:\mathbb{R}^n_+\to \mathbb{R}$ el cual representa a $succeq$.\\
+    Si la relación binaria $\succeq$ es completa, transitiva, continua y estrictamente monótona. Existe, una función real y continua, $u:\mathbb{R}^n_+\to \mathbb{R}$ el cual representa a $\succeq$.\\
 
 	Demostración.-\; Dado que sólo menciona la existencia podemos afirmar que podría haber por lo menos una función que represente la relación de preferencia. Por lo que si podemos imaginar una sola función que sea continua y que represente las preferencias dadas, habremos demostrado el teorema.\\
 
@@ -296,3 +296,355 @@ Si los precios fueran estos tu utilidad fueran estos otros.
     \item Homogénea de grado cero en $\left(\textbf{p},M^i\right)$, y
     \item cuasi-convexa en $\textbf{p}$.
 \end{itemize}
+
+Podemos pasar de la función indirecta de utilidad a la demanda marshalliana. Se le llama \textbf{identidad de Roy}, que nos da la cantidad de cada bien demandada en el óptimo.
+
+$$x_k^{i*} = d_k^i\left(\textbf{p},M^i\right) = -\dfrac{\dfrac{\partial v^i\left(\textbf{p},M^i\right)}{\partial p_k}}{\dfrac{\partial v^i\left(\textbf{p},M^i\right)}{\partial M}}, \qquad k=1,2,\ldots, l$$
+
+
+\section{Función de gasto}
+¿Cuál sería el gasto mínimo que debemos de hacer para llegar a un nivel de utilidad?.
+
+$$
+\begin{array}{rrclcll}
+    e^i: & \mathbb{R}_{++}^L \times \mathbb{R} & \to &\mathbb{R}&&&\\\\
+	 & \left(\textbf{p},u^i\right) & \mapsto & e^i\left(\textbf{p},u^i\right) &=& \min_{\textbf{x} \in \mathcal{X}^i} & \textbf{px}\\\\
+	 & & & &&\text{s.a. } & u^i(\textbf{x}) \geq u^0.
+\end{array}
+$$
+
+\paragraph{Propiedades de la función de gasto:}
+
+\begin{itemize}
+    \item Continua,
+    \item Homogénea de grado uno en $\textbf{p}$, y
+    \item cóncava en $\textbf{p}$.
+\end{itemize}
+
+Lo que nos da el problema dual del consumidor $i$.
+$$
+\left[P^i\right]
+\left\{
+    \begin{array}{rl}
+	\min_{\left(x_1,x_2,\ldots,x_L^i\right) \in \mathbb{R}^L} & \overline{p}_1x_1^i+\overline{p}_2x_2^i+\ldots+\overline{p}_Lx_L^i\\\\
+	\text{s.a. } & u^i\left(x_1^i,x_2^i,\ldots,x_L^i\right) \geq u^0\\\\
+    \end{array}
+\right.
+$$
+
+La solución nos dará una \textbf{función de demanda compensada o función de demanda hicksiana}.
+$$
+\begin{array}{rrcl}
+    h^i: & \mathbb{R}_{++}^L \times \mathbb{R} & \to & \mathcal{X}^i\equiv \mathbb{R}_{+}^L\\\\
+	 & \left(\textbf{p},u^i\right) & \mapsto & h^i\left(\textbf{p},u^i\right) = \textbf{x}^{i*}= \left(x_1^{i*},x_2^{i*},\ldots,x_L^{i*}\right)=h\left(p_1,p_2,\ldots,p_L,u\right).
+\end{array}
+$$
+Llevando $\textbf{x}^{i*}$ a la función de gasto,
+$$e^i\left(\textbf{p},u^i\right) = \textbf{px}^{i*} = \textbf{p}h^i\left(p_1,p_2,\ldots,p_L,u\right).$$
+
+Ahora, podemos pasar de la función de gasto a la demanda compensada hicksiana. Sea $e\left(P_1,P_2,\ldots,P_L,u\right)$ la función de gasto de un consumidor, obtenemos por el \textbf{lema de Shephard} la demanda hicksiana de la siguiente forma:
+$$h_k^i \left(\textbf{p},u\right) = \dfrac{\partial e^i\left(\textbf{p},u\right)}{\partial p_k}, \qquad k=1,2,\ldots,L.$$
+
+
+
+\chapter{Núcleo y equilibrio}
+
+\section{Economía de intercambio}
+
+Una economía $\mathcal{E}$ es definida por: $n$ número de consumidores que intercambian $l$ mercancías. Cada consumidor $i$ es un conjunto de consumo $X_i\subset \mathbb{R}^l_+$, con un consumo inicial y una relación de preferencias representados por la función de utilidad $U_i$ que ordenan los distintos vectores $\omega_i\in X_i$.\\
+
+Si el conjunto de consumo es positivo y continuo, siempre existe una función de utilidad que las representa. Es decir, La función de utilidad $U_i:\mathbb{R}^l_+\to \mathbb{R}$, representa las preferencias de un agente $i$ sobre el consumo. $U_i(x)\geq U_i(y)$ si y sólo si $x\succeq_i y$.\\
+$$\mathcal{E}=\left\{X_i,\omega_i,U_i,i=1,\ldots,n\right\}.$$
+
+
+\section{Distribución de los recursos}
+
+Sean, $\displaystyle \omega^h=\sum_{i=1}^n w_i^h,\; h\in \left\{1,\ldots,l\right\}$ y  $\displaystyle X=\prod_{i=1}^n X_i$. Una asignación $x=\left(x_1,x_2,\ldots,x_n\right)\in X$ es factible (si lo que le corresponderá a cada uno es lo que hay) $\displaystyle\sum_{i=1}^n x_i\leq \sum_{i=1}^n \omega_i$. Esto es, $\displaystyle\sum_{i=1}^n x_i^h \leq \sum_{i=1}^n w_i^h = w^h$ para todo $h\in\left\{1,\ldots,l\right\}$.
+
+Nos preguntamos: ¿Que propiedades serían deseadas?
+
+\section{Eficiencia o optimalidad de Pareto}
+Un reparto es optimo de Pareto, si es factible (que no se reparte más de lo que hay).\\
+
+Sea $x=\left(x_1,\ldots,x_n\right)$ una asignación factible. 
+\begin{itemize}
+    \item $x$ es débilmente eficiente si no existe una asignación factible $y$ tal que: $x_i\succeq_i y_i$ para cada individuo $i$.
+    \item $x$ es fuertemente eficiente si no existe una asignación factible $y$ tal que: 
+	\begin{enumerate}
+	    \item $y_i\succeq_i x_i$ para cada individuo $i$.
+	    \item $y_k\succeq_k x_k$ para cada consumidor $j$.
+	\end{enumerate}
+\end{itemize}
+
+Es eficiente si no hay otro mejor. Por ejemplo, todo para mi es eficiente porque no hay otro reparto donde yo esté mejor.\\
+
+
+\section{El núcleo}
+Una coalición $S$ de consumidores, bloquea, veta, impide un reparto $x$ si la coalición no puede consumir más de lo que tiene disponible y la coalición puede encontrar una alternativa que haga que todos sus miembros estén mejor. Es decir, una coalición $S$ de consumidores, bloquea $x$ si existe una asignación $y$ tal que:
+\begin{enumerate}[i)]
+    \item $\sum_{i\in S} y_i\leq \sum_{i\in S} \omega_i$.
+    \item $y_i\succeq_i x_i$ para cada miembro en la coalición $S$.
+\end{enumerate}
+
+Somos todos agentes de la economía y nos proponen un reparto, pero tu y yo nos repartimos lo que tenemos y estamos bien.\\
+
+El núcleo esta formado por las asignaciones que no están vetadas por ninguna coalición de agentes que son óptimos de Pareto de cualquier subeconomía que se puede forma una economía.\\
+
+La coalición es una alianza temporal de agentes que se unen para vetar un reparto.
+
+El núcleo da fundamentos para argumentar el equilibro Walrasiano, porque Edgeworth conjeturo que si la economía crecía, entonces las relaciones de equilibro iban a coincidir. 
+
+
+\section{Asignaciones JUSTAS}
+Es libre de envidia. Es decir, si lo que me toca a mi es por lo menos tan bueno como lo que le toca a ti. Si todos tenemos derecho al pastel, por que a ti te tocará más de lo que me toca.
+
+
+Un juego $\mathcal{G}$ en su forma normal se define por:
+\begin{itemize}
+	\item Un conjunto de jugadores $J=\left\{1,2,\ldots,n\right\}$.
+	\item Para cada jugador $i$, un conjunto de estrategias $S_i$.
+	\item $\begin{array}{rrcl}
+		\pi_i:&S\times S_i &\to& \mathbb{R}\\
+		      &(s,z) &\mapsto& \pi_i(s,z)
+	\end{array}$ denotado la función de pago para el jugador $i$. $z$ es el pago que recibe el jugador $i$, si cambia de $s_i$ a $z$.
+\end{itemize}
+Dado un perfil de estrategias $s$, denotemos con $s_{-i}$ las estrategias de todos los jugadores excepto $i$. Por tanto, escribimos $s=(s_i,s_{-i})$.\\
+
+Un equilibro de Nash es un perfil de estrategias $s^*\in S$, tal que para cada jugador $i\in J$ 
+$$\pi_i(s^*)\geq \pi_i(s_{-i}^*,s_i),\; \forall s_i\in S_i.$$
+El pago que recibe el jugador $i$ es mayor o igual al pago que recibe si cambia de estrategia.\\
+
+El equilibro de Nash no es eficiente, pero es estable.
+
+
+\section{Precios}
+El sistema de precios es un vector $p\in\mathbb{R}^l_+$. El conjunto presupuestario es:
+$$B_i(p)=\left\{x\in X_i| p\cdot x\leq p\cdot \omega_i\right\}.$$
+Podemos normalizar los precios como:
+$$\triangle = \left\{p\in\mathbb{R}^l_+, \sum_{h=1}^l p_h=1\right\}.$$
+
+
+\section{Equilibrio competitivo (Walrasiano)}
+El equilibro Walrasiano para $\mathcal{E}$ es un par $(p,x$, donde $p$ es un sistema de precios y $x$ es un reparto factible, tal que para cada agente $i$, el paquete $x$ maximiza la función de utilidad $U_i$ en el conjunto presupuestario:
+$$B_i(p)=\left\{x\in X_i| p\cdot x\leq p\cdot \omega_i\right\}.$$
+Tiene un reparto descentralizado, nadie tiene que decirle a nadie que hacer.\\
+¿Que tiene de interese esta definición?
+
+\section{Ley de Walras}
+El valor de exceso de demanda agregada es cero
+$$p\cdot Z(p)=p\cdot \left(\sum_{i=1}^n x_i(p)-\sum_{i=1}^n \omega_i\right)=0.$$\\
+
+¿Que supuestos sobre las características de los individuos nos aseguran que existe un equilibro Walrasiano?, ¿El equilibro Walrasiano, cuando existe,es único?. ¿Que propiedades bienestar cumplen las distribuciones de recursos inducidas por un equilibro Walrasiano?. ¿Es el equilibro Walrasiano socialmente estable?.
+
+\chapter{Intercambio de economías puras: Teoremas Welfare}
+
+\section{Intercambios y mercados}
+
+\begin{itemize}
+    \item Mecanismos de intercambio (libre de precios):
+	Asignaciones eficientes y el núcleo.
+    \item Mercados (precios):
+	Equilbrio competitivo (Walrasiano).
+\end{itemize}
+
+Tenemos dos preguntas
+
+\begin{itemize}
+    \item Dada una asignación walrasiana, ¿es eficiente? ¿Está en el núcleo?. El primer teorema es: Toda asignación walrasiana es eficiente.
+    \item Dada una asignación eficiente, ¿se puede descentralizar mediante un sistema de precios?.
+\end{itemize}
+
+\section{Primer teorema del bienestar}
+\begin{teo}
+    Sea $x$ una asignación Walrasiana. Existe un sistema de precios $p$ tal que $(x, p)$ es equilibrio.\\
+
+	Demostración.-\; Supongamos que $x$ no está en el núcleo. Hay una coalición $S$ veta $x$. $\sum_{i\in S} y_i\leq \sum_{i\in S} \omega_i$ y $U_i(y_i)> U_i(x_i)$ para todo $i\in S$.
+	$$p\cdot y_i > p\cdot \omega_i, \; i\in S.$$
+	$$p\cdot \sum_{i\in S} y_i > p\cdot \sum_{i\in S} \omega_i.$$
+\end{teo}
+
+\subsection{Eficiencia y descentralización}
+$X:I=[0,1] \to \mathbb{R}^n_+$, $X$ es factible si y sólo si
+$$\int_I x(t)\; dt\leq \int_I \omega(t)\; dt.$$
+Ahora, $X$ está vetada por $S\subset [0,1]$ si y sólo si, existe $I: S\to \mathbb{R}^n_1$ tal que
+\begin{enumerate}[i)]
+    \item $\displaystyle\int_S y(t)\; dt\leq \int_S \omega(t)\; dt$.
+    \item $u_i(y(t))>u_i(x(t))$ para todo $i\in S$.
+\end{enumerate}
+
+Aumann considere que la economía tiene infinitos agentes. Dado $\epsilon$ continua. Entonces,
+$$W(\epsilon)=C(\epsilon).$$
+
+Cuando se tiene equilibro finito. Entonces,
+
+\section{Segundo teorema del bienestar}
+\begin{teo}
+    Supongamos preferencias son continuas monótonas y convexas para cada consumidor $i$. Además supongamos $w_i\geq 0$ para cada $i$.\\
+
+    Si $x$ es una asignación eficiente (óptima de Pareto), entonces existen precios $p$ tales que $(p, x)$ es un equilibrio walrasiano para la economía con dotaciones dadas por $x$.\\
+
+	Demostración.-\; La idea de nuestra prueba es la siguiente: Considere $\omega$, las dotaciones totales de la economía. Sea $A$ el conjunto de dotaciones totales que podrían distribuirse de manera que cada agente esté estrictamente en mejor situación que con la asignación $x$. $A$ es convexo y $\omega$ no pertenece a $A$. Existe $p$ que separa $A$ de $\omega$. No es difícil demostrar que $(p, x)$ es un equilibrio walrasiano si las dotaciones son $x$.
+\end{teo}
+
+
+\chapter{Existencia del equilibro de Nash}
+\begin{teo} Para cada jugador $i$, sea $S_i$ no vacío, compacto y convexo, y $\pi_i$ continuo en los perfiles de estrategia y estrictamente cuasi cóncavo en la estrategia del jugador $i$. Entonces, hay un equilibrio de Nash.
+\end{teo}
+
+
+\chapter{Decisión colectiva: Teorema de Imposibilidad de Arrow}
+
+\section{Teoría de elección social}
+Estudia la toma de decisiones colectivas a partir de las preferencias de los individuos de una sociedad. La idea principal es:
+\begin{center}
+    Pasar de las preferencias individuales a las preferencias sociales.
+\end{center}
+
+Las \textbf{preferencias sociales} son una relación de Orden social coherente que permita una ordenación de alternativas desde el punto de vista social $R=f(R^1,\ldots,R^n)$.
+
+\subsection{Construcción de una relación de orden social (R)}
+\begin{enumerate}
+    \item $\textbf{N}=\left\{1,2,\ldots,n\right\}$ es el conjunto de individuos de la sociedad $(N\geq 2)$.
+    \item $\textbf{X}:$ conjunto no vacío de estados o alternativas sociales.
+	\begin{itemize}
+	    \item Candidatos a un puesto (delegado, decano, presidente, etc.).
+	    \item Colección de planes de obras públicas (carril bici, parque infantil, etc.).
+	\end{itemize}
+    \item $R^i$ orden de preferencias del individuo $i$-ésimo sobre alternativas de $X$ ($P^i$ preferencias estricta: $I^i$ indiferencia).
+    \item $R^i$ es completa y transitiva (racional) con objeto de que los individuos puedan realizar comparaciones binarias sobre cualesquiera de los elementos de $X$.
+\end{enumerate}
+
+\subsection{Relación de orden social (R)}
+
+\begin{def.} Una relación de orden social, $\textbf{R}$, es una relación binaria sobre el conjunto de estados sociales $\textbf{X}$ completa y transitiva, que depende de alguna forma de los órdenes de preferencias individuales.
+    $$R=f(R^1,\ldots,R^n).$$
+    siendo $(R^1,\ldots,R^n)$ el perfil de preferencias de los $N$ individuos.
+\end{def.}
+
+Para cualesquiera $(x,y)\in \textbf{X}$ podemos decir que $xRy$, $x$ es socialmente al menos tan bueno como $y$ (con $P$ e $I$ suendo las relaciones asociadas de estricta preferencia e indiferencia asociadas de estricta preferencia e indiferencia social, respectivamente).
+
+\begin{ejem} Supongamos que los agentes tienen preferencias sobre alternativas $(x,y)$ representadas por la función:
+    $$
+    R^i(x,y) = 
+	\left\{
+	    \begin{array}{rcl}
+		1 & \mbox{si} & xP^iy\\\\
+		0 & \mbox{si} & xI^iy\\\\
+		-1 & \mbox{si} & yP^ix
+	    \end{array}
+	\right.
+    $$
+    Un ejemplo de relación de orden social que representa las preferencias sociales pueden ser:
+    $$ R = f(R^1,\ldots,R^n) = \text{signo} \sum_{i=1}^N \beta^i R^i.$$
+    donde $\beta^i$ son los pesos que se asignan a las preferencias de los individuos.
+\end{ejem}
+
+\begin{ejem}[Votación por mayoría] donde $\beta=1, \; \forall i = 1,\ldots,N$, donde todos tenemos la misma oportunidad.
+    $$R=f(R^1,\ldots,R^n)=\text{signo} \sum_{i=1}^N R^i, \quad 
+    R^i \to
+	\left\{
+	    \begin{array}{rcl}
+		>0 & \mbox{si} & xPy\\
+		=0 & \mbox{si} & xIy\\
+		<0 & \mbox{si} & yPx
+	    \end{array}
+	\right.
+    $$
+\end{ejem}
+
+\begin{ejem}[Dictadura] $\beta^j=1$ y $\beta^i=0$ para $\forall i\neq j$, $j$ (dictador).
+	$$R=f(R^1,\ldots,R^n) =
+	R^j  = 
+	\left\{
+	    \begin{array}{rcl}
+		1 & \mbox{si} & xPy\\
+		0 & \mbox{si} & xIy\\
+		-1 & \mbox{si} & yPx
+	    \end{array}
+	\right.
+	$$
+\end{ejem}
+
+\begin{ejem}[Votación con 2 alternativas] Sean $3$ agentes $(1,2,3$ con el siguiente perfil de preferencias sobre 2 alternativas $(x,y)$.
+    $$
+    \begin{matrix}
+	& \textbf{1} & \textbf{2} & \textbf{3}\\
+	1^o & x & y & y\\
+	2^o & y & x & x\\
+    \end{matrix}
+    $$
+    De donde, $R^1(x,y)=1$, $R^2(x,y)=-1$, $R^3(x,y)=-1$. Entonces, 
+    $$R(x,y)=\text{signo} \sum_{i=1}^3 R^i(x,y)=\text{signo}(1-1-1)=-1<0$$
+    Por lo tanto, la alternativa $y$ es la socialmente preferida: $yPx$.
+\end{ejem}
+
+\begin{ejem}[Con tres alternativas]
+    $$
+    \begin{matrix}
+	& \textbf{1} & \textbf{2} & \textbf{3}\\
+	1^o & x & y & z\\
+	2^o & y & z & x\\
+	3^o & z & x & y\\
+    \end{matrix}
+    $$
+    Encontramos que existe un triple empate.
+\end{ejem}
+
+\textit{\textbf{¿Existe algún otro criterio (distinto del dictatorial) que permita llegar a una preferencia social (algún ganador)?}}
+
+
+\subsection{Normas para elegir la propuesta}
+\begin{enumerate}[\bfseries 1.]
+    \item  Regla de pluralidad (mayoría relativa): cada uno vota por la alternativa preferida y sale elegida la que obtenga más votos: gana A. 
+    \item Regla de Borda: cada votante asigna 4, 3, 2, 1 y 0 votos de la alternativa más preferida a la menos preferida. Gana la que más puntos obtenga: gana B. 
+    \item Método de Condorcet: comparamos propuesta con cada una de las otras por separado (no siempre hay ganador de Condorcet): gana C. 
+    \item Eliminación secuencial: se vota en diferentes rondas eliminando la alternativa menos votada en cada ronda. Gana la que se mantiene:gana D. 
+    \item Doble vuelta: Las dos alternativas con más votos en una primera ronda se enfrentan en una segunda ronda. Gana el que tenga más votos en la 2ª ronda: gana E.
+\end{enumerate}
+
+\section{Teorema de Arrow}
+Arrow pensó en incorporar un conjunto de propiedades que debería cumplir una relación de orden social para que fuera considerada como una relación de orden social justa. \\
+
+Ahora, para diseñar una \textbf{regla de valoración social} requiere dar respuesta a las siguientes cuestiones 
+
+\begin{enumerate}[a)]
+    \item Argumentos a utilizar, solo ordenación de alternativas, o también intensidad de preferencias.
+    \item Aplicabilidad: a todas las configuraciones posibles de valoraciones individuales (perfiles) o sólo a algunas.
+    \item Coherence: presente alguna racionalidad (ej. aplicada en dos circunstancias idénticas de el mismo resultado)
+    \item Operatividad: elija alguna alternativa.
+    \item Comportamiento: como responde la regla a las valoraciones individuales (ej. si todos prefieren $x$ a $y$, la regla debería valorar más a $x$ que a $y$).
+\end{enumerate}
+
+Argumentos de \textbf{enfoque de Arrow} a utilizar: ordenaciones individuales (no las intensidades de preferencia).
+\begin{itemize}
+    \item  Aplicabilidad: universal, es decir, pueda ser aplicada a cualesquiera que sean las configuraciones de pref. indiv.
+    \item  Coherencia/operatividad: la regla de evaluación debe ser una relación de orden completa y transitiva.
+    \item  Comportamiento: unanimidad, mínimamente democrática (no dictatorial), e independiente de alternativas irrelevantes (tenga sólo en cuenta las preferencias individuales sobre las alternativas que se están valorando.
+\end{itemize}
+
+Todo esto da lugar a los \textbf{Aximoas de Arrow}:
+
+\begin{enumerate}[\bfseries 1.]
+    \item Dominio Universal o no restringido (U). La relación de orden social debe estar definida sobre cualquier perfil de preferencias individuales.
+    \item Principio de Pareto Débil (P). Para cualesquiera par de alternativas sociales $x,y$ en $X$, si $x$ es preferido a y para todo $i$ $(xP^iy,\forall i)$, entonces $x$ será socialmente preferido a y $(xPy)$.
+    \item Independencia de alternativas irrelevantes (IAI). El orden social entre dos alternativas $x,y$ sólo depende del orden de estas dos alternativas. Formalmente, sea $Y\subset \textbf{X}$, y sea $R(\textbf{X}/Y)$ el orden social de $X$ restringido al conjunto $Y$, $R(Y)$ el orden social del conjunto $Y$. Entonces, $R(\textbf{X}/Y) = R(Y)$.
+    \item No dictatorial (ND): no existe un individuo cuyas preferencias determinan el orden social.
+\end{enumerate}
+
+\subsection{Teorema de imposibilidad de Arrow}
+Si el número de agentes es $N\geq 2$, y el número de alternativas (estados sociales) es mayor o igual que tres, no existe ninguna Relación de Orden Social que satisfaga simultáneamente los axiomas DU, P, IAI y ND.
+
+La única ROS que satisface los axiomas DU, P, IAI es la dictatorial. Es decir, existe algún $j\in N$ tal que, para cualquier perfil de preferencias $(R_1,\ldots,R^N)$, y para todo par de alternativas $(x,y)\in \textbf{X}$, se verifica:
+$$xP^jy \Rightarrow x P y.$$
+
+Existen algunos problemas con el teorema de Arrow:
+
+\begin{itemize}
+    \item No existe ningún mecanismo “perfecto” (que cumpla las condiciones de Arrow) que permita agregar las preferencias individuales para obtener una preferencia social.
+    \item  Sen (1970, pág. 38): cada una de las condiciones de Arrow resulta bastante inocua, pero conjuntamente “parecen producir un monstruo capaz de devorar todas las pequeñas funciones de bienestar social del mundo”.
+    \item  Desde entonces, gran parte del programa de investigación se ha dedicado a la búsqueda de vías de escape a este resultado.
+\end{itemize}
+
+
+Ahora necesitamos buscar un \textbf{Funcional de bienestar social} 
+

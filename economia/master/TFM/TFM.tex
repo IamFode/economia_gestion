@@ -84,7 +84,7 @@
 \begin{abstract}
 En construcción\\
 En construcción\\
-En construcción\\
+En construcción\\\\
 \end{abstract}
 
 % Use if graphical abstract is present
@@ -111,27 +111,88 @@ En construcción\\
 
 
 % Main text
-\section{Propuesta de trabajo de fin de máster}
+\section{Objetivo}
+Estudiar la relación dinámica entre la cantidad de dinero y el nivel de precios, utilizando el análisis wavelets.
 
+
+\section{Introducción}
+Daremos un breve repaso de la teoría cuantitativa del dinero y la relación entre la cantidad de dinero y el nivel de precios. Además, se mencionará la importancia de estudiar esta relación. Se analizará las oportunidades de usar wavelets frente a técnica cómo la Transformada de Fourier. También mencionaremos algunos trabajos anteriores que aplican el análisis wavelet a la economía.
+
+
+\section{Literatura relacionada}
+Empezamos describiendo  la teoría cuantitativa del dinero, que se remonta a los escritos de David Hume y John Stuart Mill. Sin embargo, la versión moderna de la teoría cuantitativa del dinero se debe a Irving Fisher. La teoría cuantitativa del dinero establece que la cantidad de dinero en una economía es proporcional al nivel de precios.
+
+Luego, mencionaremos algunos métodos clásicos para analizar la relación dinámica entre la cantidad de dinero y el nivel de precios. En particular, se mencionará la Transformada de Fourier, análisis de series de tiempo y el coeficiente de relación de Pearson.
+
+\begin{itemize}
+    \item Lucas, R. E. (1980). Two Illustrations of the Quantity Theory of Money. The American Economic Review, 70(5), 1005–1014. http://www.jstor.org/stable/1805778
+    \item Dwyer, G. P., \& Fisher, M. E. (2009). Inflation and Monetary Regimes (Federal Reserve Bank of Atlanta Working Paper Series No. 2009-26). SSRN. https://ssrn.com/abstract=1480896
+    \item Becker, R., Enders, W., \& Hurn, S. (2006). Modeling Inflation and Money Demand Using a Fourier-Series Approximation. En C. Milas, P. Rothman, \& D. van Dijk (Eds.), Nonlinear Time Series Analysis of Business Cycles (Contributions to Economic Analysis, Vol. 276, pp. 221-246). Elsevier. https://doi.org/10.1016/S0573-8555(05)76009-0
+\end{itemize}
+
+\section{Teoría wavelets y métodos}
+Daremos una Introducción a la teoría wavelets y los métodos que se utilizarán en el trabajo. En particular, se mencionará la Transformada Wavelet Continua, la Coherencia Wavelet y la Diferencia de Fase.
+
+    \begin{itemize}
+	\item Aguiar-Conraria, L., Azevedo, N., Soares, M.J., 2008. Using wavelets to decompose the time–frequency effects of monetary policy. Physica A: Statistical Mechanics and its Applications 387, 2863–2878. URL: https://www.sciencedirect.com/science/article/pii/S037843710800040X,\\ doi:https://doi.org/10.1016/j.physa.2008.01.063.
+    \end{itemize}
+
+\subsection{Transformada wavelet continua}
+En esta sección explicaremos la transformada wavelet continua. En particular la función wavelet de Morlet que utilizaremos para nuestros fines. 
+	\begin{itemize}
+	    \item Daubechies, I. (1988). Orthonormal bases of compactly supported wavelets. Communications on Pure and Applied Mathematics, 41(7), 909-996. https://doi.org/10.1002/cpa.3160410705
+	    \item Morlet, J., Arens, G., Fourgeau, E., \& Glard, D. (1982). Wave propagation and sampling theory—Part I: Complex signal and scattering in multilayered media. Geophysics, 47(2), 203-221
+	\end{itemize}
+\subsection{Coherencia wavelet y diferencia de fase}
+Por último explicaremos la coherencia wavelet y la diferencia de fase, que son los métodos que utilizaremos para analizar la relación dinámica entre la cantidad de dinero y el nivel de precios.
+
+    \begin{itemize}
+	\item Torrence, C., \& Compo, G. P. (1998). A Practical Guide to Wavelet Analysis. Bulletin of the American Meteorological Society, 79(1), 61-78. https://doi.org/10.1175/1520-0477(1998)079<0061:APGTWA>2.0.CO;2
+    \end{itemize}
+
+\section{Resultados}
+\subsubsection{Descripción de los datos}
+Inicialmente, mi objetivo es realizar un estudio exhaustivo de los diversos indicadores de la cantidad de dinero presentes en la economía. Este estudio se llevará a cabo para todos los países y abarcará todos los años para los que se disponga de registros. Los indicadores que se analizarán son los siguientes:
+\begin{enumerate}
+    \item Courrency-IFS
+    \item RM-Courrency
+    \item BM-IFS
+    \item BM-Nac-IFS
+    \item M1
+    \item M2
+    \item M3
+    \item M4
+    \item M5
+    \item RR
+\end{enumerate}
+Cada uno de estos indicadores proporciona una visión única de la cantidad de dinero en circulación y será crucial para entender las dinámicas económicas a lo largo del tiempo y a través de diferentes países.
+
+\subsubsection{resultados empíricos}
+Se realizara un análisis con Python o Matlab.
+
+\subsection{Conclusiones}
+
+\begin{comment}
 Según \cite{Ramsey2016}, las wavelets son una generalización del análisis de Fourier en el que la estacionariedad de la serie temporal ya no es crítica y se puede lograr la localización de una señal. En este sentido, tomando prestada la idea de Strang (véase \cite{Strang1996}, las wavelets son como una notación musical en la que cada nota se caracteriza por su frecuencia, su posición en el tiempo y su duración. Es decir, nos permitirá estudiar la evolución en tiempo y en espacio frecuencia (corto y largo plazo). 
 
 Ahora, surge la siguiente duda: ¿De que manera podría ayudarnos las wavelets a analizar la relación entre la inflación y los regímenes monetarios?. Como menciona \cite{AguiarConraria2008} y \cite{Jiang2015}, podríamos utilizar herramientas como: la coherencia wavelet\footnote[1]{Analiza el coeficiente de correlación entre dos series de tiempo localizado en el espacio tiempo-frecuencia} y la diferencias de fase\footnote[2]{Proporciona información sobre el retardo, o sincronización, entre las oscilaciones de las dos series temporales.}, para encontrar vínculos fuertes, dinámicas transitorias y poder cuantificar el grado de relación no necesariamente lineal entre dos series temporales no estacionarias en tiempo-frecuencia.
 
 En fin, las Wavelets y las herramientas mencionadas nos permitirán analizar la relación entre la cantidad de dinero y el nivel de precios en el tiempo y en el espacio frecuencia.
+\end{comment}
 
 
 % To print the credit authorship contribution details
-\printcredits
+%\printcredits
 
-\bibliographystyle{cas-model2-names}
+%\bibliographystyle{cas-model2-names}
 
 % Loading bibliography database
-\bibliography{refs}
+%\bibliography{refs}
 
 % Biography
-\bio{}
+%\bio{}
 % Here goes the biography details.
-\endbio
+%\endbio
 
 
 \end{document}

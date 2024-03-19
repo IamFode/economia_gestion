@@ -888,7 +888,7 @@ Incluimos valores retardados del regresando, $t-1$ y a perturbación.
 
 - Si existe endogeneidad entre la variable y el error.
 
-Lo mismo que en estadística, trasladaremos el método de los moementos a la econométrica.
+Lo mismo que en estadística, trasladaremos el método de los momentos a la econométrica.
 
 - Para un modelo de regresión lineal el método de los momentos es:
 

@@ -1,20 +1,10 @@
-
+\textbf{Máster Universitario en Economía. Microeconomía Avanzada. Curso 23/24. Ejercicios 1}
 \begin{center}
-    \textbf{Equilibro general}
+    \textbf{Paredes Aguilera Christian Limbert}
 \end{center}
-
 \begin{center}
-\textbf{Prof. Carlos Hervés Beloso}
+	\rule{1\textwidth}{0.4pt}
 \end{center}
-
-\begin{center}
-\textbf{Alumno: Christian Limbert Paredes Aguilera}
-\end{center}
-
-\begin{center}
-	\rule{0.5\textwidth}{0.4pt}
-\end{center}
-\vspace{1cm}
 
 \begin{enumerate}[\textbf{Ejercicio} \bfseries 1.]
 
@@ -27,10 +17,10 @@
 		\coordinate (A) at (0,0);
 		\coordinate (B) at (20,20);
 		\begin{scope}[->,>=latex,thick]
-		    \draw (A) -- +(22,0)node[right]{$x_1$};
-		    \draw (A) -- +(0,22)node[above]{$x_2$};
-		    \draw (B) -- +(-22,0)node[left]{$x_1$};
-		    \draw (B) -- +(0,-22)node[below]{$x_2$};
+		    \draw (A) -- +(20,0)node[right]{$x_1$};
+		    \draw (A) -- +(0,20)node[above]{$x_2$};
+		    \draw (B) -- +(-20,0)node[left]{$x_1$};
+		    \draw (B) -- +(0,-20)node[below]{$x_2$};
 		\end{scope}
 		\node[below left] at (A) {$O_j$};
 		\node[above right] at (B) {$O_k$};
@@ -66,37 +56,26 @@
 			\node[below left] at (a) {$o_j$};
 			\node[above right] at (b) {$o_k$};
 
-			% curvas de indiferencia
-			%\draw[variable=\x,domain=0:2.5,thick,red!40] plot ({\x},{5-2*\x});
-			%\draw[variable=\x,domain=0:5,thick,red!40] plot ({\x},{10-2*\x});
-			%\draw[variable=\x,domain=0:7.5,thick,red!40] plot ({\x},{15-2*\x});
-			%\draw[variable=\x,domain=0:10,thick,red!40] plot ({\x},{20-2*\x});
-			%\draw[variable=\x,domain=2.5:12.5,thick,red!40] plot ({\x},{25-2*\x});
 			\draw[variable=\x,domain=5:15,thick,red!40] plot ({\x},{30-2*\x});
-			%\draw[variable=\x,domain=7.5:17.5,thick,red!40] plot ({\x},{35-2*\x});
 			\draw[variable=\x,domain=10:20,thick,red] plot ({\x},{40-2*\x})node[below right]{$u_j$};
 			\draw[variable=\x,domain=12.5:20,thick,red!70] plot ({\x},{45-2*\x});
-			%\draw[variable=\x,domain=15:20,thick,red!40] plot ({\x},{50-2*\x});
-			%\draw[variable=\x,domain=17.5:20,thick,red!40] plot ({\x},{55-2*\x});
 			\fill[fill=red!4,opacity=.5] (10,20) -- plot[domain=10:20] (\x,{40-2*\x}) -- (20,20);
 
-			%\draw[variable=\x,domain=0:5,thick,blue!50] plot ({\x},{(5-\x)/2});
-			%\draw[variable=\x,domain=0:10,thick,blue!50] plot ({\x},{(10-\x)/2});
 			\draw[variable=\x,domain=0:15,thick,blue!50] plot ({\x},{(15-\x)/2});
-			%\draw[variable=\x,domain=0:20,thick,blue!50] plot ({\x},{(20-\x)/2});
-			%\draw[variable=\x,domain=0:20,thick,blue!50] plot ({\x},{(25-\x)/2});
 			\draw[variable=\x,domain=0:20,thick,blue!70] plot ({\x},{(30-\x)/2});
 			\draw[variable=\x,domain=0:20,thick,blue] plot ({\x},{(35-\x)/2})node[right]{$u_k$};
-			%\draw[variable=\x,domain=0:20,thick,blue!50] plot ({\x},{(40-\x)/2});
-			%\draw[variable=\x,domain=5:20,thick,blue!50] plot ({\x},{(45-\x)/2});
-			%\draw[variable=\x,domain=10:20,thick,blue!50] plot ({\x},{(50-\x)/2});
-			%\draw[variable=\x,domain=15:20,thick,blue!50] plot ({\x},{(55-\x)/2});
 			\fill[fill=blue!4,opacity=.5] (0,0) -- plot[domain=0:20] (\x,{(35-\x)/2}) -- (20,0);
 
 			% curva de contrato
-			\draw[thick,green!50] (0,0)--(20,0)--(20,20)node[below right]{\tiny Curva de contrato};
+			\draw[green, line width=3pt,opacity=.6] (0,0)--(20,0)--(20,20)node[below right]{\tiny Curva de contrato};
 
 			\draw[thick,gray!40] (0,0) -- (20,20);
+			\draw[fill=black] (15,10) circle (0.3cm) node[above right]{$\omega_{j,k}$};
+
+			\draw[thick,gray!40] (0,0) -- (20,20);
+
+			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
+			\draw[dashed,blue] (15,0)node[below]{$15$} -- (15,20)node[above]{$5$};
 		    \end{tikzpicture}
 		\end{center}
 
@@ -129,14 +108,21 @@
 			\draw[variable=\x,domain=0:15,thick,red,opacity=.6] plot ({\x},{15-\x});
 
 			% curva de contrato
-			\draw[green] plot [smooth, tension=1] coordinates {(2,15) (4,17.5) (7,19)};
-			\draw[green] plot [smooth, tension=1] coordinates {(2,10) (6,15) (12,19)};
-			\draw[green] plot [smooth, tension=1] coordinates {(1,1) (8,12) (19,19)};
-			\draw[green] plot [smooth, tension=1] coordinates {(5,2) (10.5,9) (18,13)};
-			\draw[green] plot [smooth, tension=1] coordinates {(10,2) (13,6) (17,8)};
-			\draw[green] plot [smooth, tension=1] coordinates {(15,2) (16,3) (18,4)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(2,15) (4,17.5) (7,19)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(2,10) (6,15) (12,19)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(1,1) (8,12) (19,19)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(5,2) (10.5,9) (18,13)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(10,2) (13,6) (17,8)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(15,2) (16,3) (18,4)};
 
 			\draw[thick,gray!40] (0,0) -- (20,20);
+
+			\draw[fill=black] (15,10) circle (0.3cm) node[above right]{$\omega_{j,k}$};
+
+			\draw[thick,gray!40] (0,0) -- (20,20);
+
+			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
+			\draw[dashed,blue] (15,0)node[below]{$15$} -- (15,20)node[above]{$5$};
 		    \end{tikzpicture}
 		\end{center}
 
@@ -181,8 +167,14 @@
 
 			\draw[thick,gray!40] (0,0) -- (20,20);
 
+			\draw[fill=black] (15,10) circle (0.3cm) node[above right]{$\omega_{j,k}$};
 
-			\draw[green](20,20)--(0,20)--(0,0);
+			\draw[thick,gray!40] (0,0) -- (20,20);
+
+			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
+			\draw[dashed,blue] (15,0)node[below]{$15$} -- (15,20)node[above]{$5$};
+
+			\draw[green,line width=3pt,opacity=.6](20,20)--(0,20)--(0,0)--(20,0)--cycle;
 		    \end{tikzpicture}
 		\end{center}
 \newpage
@@ -214,7 +206,7 @@
 			\draw[thick,red](0,5)--(5,5)--(5,0);
 
 			\draw[thick,gray!40] (0,0) -- (20,20);
-			\draw[thick,green] (0,0) -- (20,20);
+			\draw[green,line width=3pt,opacity=.6] (0,0) -- (20,20);
 
 			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
 			\draw[dashed,blue] (15,0)node[below]{$15$} -- (15,20)node[above]{$5$};
@@ -248,19 +240,19 @@
 			\draw[thick,red](0,15)--(10,15)--(10,3);
 			\draw[thick,red](0,12.5)--(5,12.5)--(5,.5);
 
-			\draw[thick,gray!40] (0,0) -- (20,20);
-			\draw[thick,green] (0,10) -- (20,20);
-			\draw[thick,green] (0,0) -- (20,10);
+			\draw[thick,gray!60] (0,0) -- (20,20);
+			\draw[thick,green,line width=3pt,opacity=.6] (0,10) -- (20,20);
+			\draw[thick,green,line width=3pt,opacity=.6] (0,0) -- (20,10);
 
-			\draw[green] plot [smooth, tension=1] coordinates {(2,2) (1,6) (1.5,9)};
-			\draw[green] plot [smooth, tension=1] coordinates {(4,3) (3,6) (3.5,10)};
-			\draw[green] plot [smooth, tension=1] coordinates {(6,4) (5,7) (5.5,11)};
-			\draw[green] plot [smooth, tension=1] coordinates {(8,5) (7,8) (7.5,12)};
-			\draw[green] plot [smooth, tension=1] coordinates {(10,6) (9,9) (9.5,13)};
-			\draw[green] plot [smooth, tension=1] coordinates {(12,7) (11,10) (11.5,14)};
-			\draw[green] plot [smooth, tension=1] coordinates {(14,8) (13,11) (13.5,15)};
-			\draw[green] plot [smooth, tension=1] coordinates {(16,9) (15,12) (15.5,16)};
-			\draw[green] plot [smooth, tension=1] coordinates {(18,10) (17,13) (17.5,17)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(2,2) (1,6) (1.5,9)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(4,3) (3,6) (3.5,10)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(6,4) (5,7) (5.5,11)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(8,5) (7,8) (7.5,12)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(10,6) (9,9) (9.5,13)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(12,7) (11,10) (11.5,14)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(14,8) (13,11) (13.5,15)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(16,9) (15,12) (15.5,16)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(18,10) (17,13) (17.5,17)};
 			
 
 			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
@@ -296,8 +288,19 @@
 			\draw[thick,red](0,12.5)--(5,12.5)--(5,.5);
 
 			\draw[thick,gray!40] (0,0) -- (20,20);
-			\draw[thick,green] (0,0) -- (20,10);
-			\draw[thick,green] (20,20) -- (10,0);
+			\draw[thick,green,line width=3pt,opacity=.6] (0,0) -- (20,10);
+			\draw[thick,green,line width=3pt,opacity=.6] (20,20) -- (10,0);
+
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(20,10.5) (19,13) (19,16)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(19,10) (18,12) (18,14)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(18,9.5) (17.3,10.5) (16.9,12.5)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(17,9) (16,10) (16,11)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(16,8.5) (15.5,9) (15.5,9.5)};
+
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(5,2) (7,1) (10,1)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(7,2.5) (8,2) (10,2)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(8,3.5) (9,3) (10.5,3)};
+			\draw[green,line width=3pt,opacity=.6] plot [smooth, tension=1] coordinates {(9.5,4.5) (10,4) (11.5,4)};
 
 			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
 			\draw[dashed,blue] (15,0)node[below]{$15$} -- (15,20)node[above]{$5$};
@@ -327,12 +330,27 @@
 
 			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
 			\draw[dashed,blue] (15,0)node[below]{$15$} -- (15,20)node[above]{$5$};
+			\draw[variable=\x,domain=7.5:20,thick,red] plot ({\x},{(15^(1/2)*10^(1/2))^2/\x});
+			\coordinate (A) at (10,10);  % Define the point of rotation
+			\begin{scope}[rotate around={180:(A)}]  % Rotate around point A
+			    \draw[variable=\x,domain=2.5:20,thick,blue] plot ({\x},{(5^(1/2)*10^(1/2))^2/\x});
+			\end{scope}
+
+			\draw[green,line width=3pt,opacity=.6](0,0)--(20,20);
 		    \end{tikzpicture}
 		\end{center}
 
 \newpage
 	    %---------- viii)
-	    \item \textbf{\boldmath $u_j(x_1,x_2)=x_1^{3/2}x_2^{1/4}$; $u_k(x_1,x_2)=x_1^{1/4}x_2^{3/4}$.}\\
+	    \item \textbf{\boldmath $u_j(x_1,x_2)=x_1^{3/4}x_2^{1/4}$; $u_k(x_1,x_2)=x_1^{1/4}x_2^{3/4}$.}\\
+
+		$$\dfrac{u}{x_1^{3/4}}=x_2^{1/4}\rightarrow  \rightarrow x_2=\dfrac{u^4}{x_1^{3}}$$
+
+		$$u=15^{3/4}*10^{1/4}$$
+
+		$$x_2=\dfrac{(15^{3/4}*10^{1/4})^4}{x_1^3}$$
+
+		$$\dfrac{u}{x_1^{1/4}}=x_2^{3/4}\rightarrow x^3=\dfrac{u^4}{x_1}\rightarrow x_2=\dfrac{u^{4/3}}{x_1^{1/3}}$$
 
 		\textbf{Solución:}
 		\begin{center}
@@ -354,11 +372,51 @@
 
 			\draw[dashed,blue] (0,10)node[left]{$10$} -- (20,10)node[right]{$10$};
 			\draw[dashed,blue] (15,0)node[below]{$15$} -- (15,20)node[above]{$5$};
+			\draw[variable=\x,domain=.5:20,thick,red] plot ({\x},{10/\x});
+			\coordinate (A) at (10,10);  % Define the point of rotation
+			\begin{scope}[rotate around={180:(A)}]  % Rotate around point A
+			    \draw[variable=\x,domain=.6:20,thick,blue] plot ({\x},{(5^(1/4)*10^(3/4))^(4/3)/\x^(1/3)});
+			\end{scope}
 		    \end{tikzpicture}
 		\end{center}
 
-
-	
 	\end{enumerate}
+
+    % ------------------ 3.
+    \item \textbf{\boldmath Considere la economía con dos agentes $(j, k)$ y dos bienes $(x_1, x_2)$ que viene descrita en la gráfica adjunta. Complete el gráfico con las preferencias de los individuos de tal manera que la asignación sea eficiente, y además muestre una situación igualitaria. Explique su respuesta.}\\
+
+	\textbf{Solución:}
+	\begin{center}
+	    \begin{tikzpicture}[scale=0.3]
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (20,20);
+		\begin{scope}[->,>=latex,thick]
+		    \draw (A) -- +(22,0)node[right]{$x_1$};
+		    \draw (A) -- +(0,22)node[above]{$x_2$};
+		    \draw (B) -- +(-22,0)node[left]{$x_1$};
+		    \draw (B) -- +(0,-22)node[below]{$x_2$};
+		\end{scope}
+		\node[below left] at (A) {$O_j$};
+		\node[above right] at (B) {$O_k$};
+
+		\draw[fill=black] (14.1,5.9) circle (0.3cm);
+
+		\draw[thick,gray!40] (0,0) -- (20,20);
+		\draw[thick,gray!40] (0,20) -- (20,0);
+
+
+		\begin{scope}[rotate around={-15:(A)}]  % Rotate around point A
+		    \draw[variable=\x,domain=5.5:19,thick,red,<-] plot ({\x},{(10^(1/2)*10^(1/2))^2/(\x)+1})node[right]{$A_k$};
+		\end{scope}
+		\coordinate (A) at (10,10);  % Define the point of rotation
+		\begin{scope}[rotate around={197:(A)}]  % Rotate around point A
+		    \draw[variable=\x,domain=4.9:17,thick,blue,->] plot ({\x},{(10^(1/2)*10^(1/2))^2/(\x)+1.5})node[left]{$A_j$};
+		\end{scope}
+		\begin{scope}[rotate around={94:(14,11)}]  % Rotate around point A
+		    \draw[variable=\x,domain=3.9:22.5,green,line width=3pt,opacity=.6] plot ({\x},{(10^(1/2)*10^(1/2))^2/(\x)});
+		\end{scope}
+	    \end{tikzpicture}
+	\end{center}
+
 
 \end{enumerate}
